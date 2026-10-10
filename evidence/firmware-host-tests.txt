@@ -1,0 +1,1 @@
+PASS: portable C parsing, bounds, sequence, session, watchdog and clock rollover. No transmitter output.

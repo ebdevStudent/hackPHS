@@ -1,0 +1,2 @@
+Visitor URL: http://127.0.0.1:62400/
+Operator token saved to /private/var/folders/h4/crl8fldd0p13dp5_tj4bwx7m0000gn/T/portable-rehearsal-frca8w2d/operator-token (local, private). Startup: MANUAL.

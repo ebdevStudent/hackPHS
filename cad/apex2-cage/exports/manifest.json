@@ -1,0 +1,83 @@
+{
+  "document": "Apex2 Ball Cage P1A",
+  "status": "vendor/provisional CAD; physical validation pending",
+  "sources": {
+    "build_p1a.py": "fa9c22e3a93b7241ad00a885563a39545add8580e4a8b6b5bd3c35ea54d63eaa",
+    "build_p1b.py": "34a4138bbab8a1afce233cb1bd809c73c55f331a3945fbfd20f276d76fc67262",
+    "validation.py": "3f495136590ab032409955d79dea603a3029a7c9ee7cf103c260e79837e0f28e",
+    "vendor_specs.json": "a324caf1a4e81e26ff2fc18afbb49890d4c51ae427a5b69928f0012d66265986",
+    "measurements.json": "9f94d8cf92e8084bab96ead087fd812b770bc494945cef18a0ed8dbf0180e043"
+  },
+  "parts": [
+    {
+      "name": "socket_fit_strip",
+      "qty": 1,
+      "native_volume_mm3": 3590.540258308102,
+      "native_lumps": 1,
+      "sha256": "a7609e639ab90f9bb4ee1b108b8574aee41b02a7b077105476a2d10bcf7bf726"
+    },
+    {
+      "name": "rod_cutting_jig",
+      "qty": 1,
+      "native_volume_mm3": 5925.83033197365,
+      "native_lumps": 1,
+      "sha256": "c154db4e8c4f1d1597a0a13e95f4b3a3b9e91f3f94da4af25886cd70bafa7795"
+    },
+    {
+      "name": "hub_3way",
+      "qty": 46,
+      "native_volume_mm3": 211.64525138499874,
+      "native_lumps": 1,
+      "sha256": "c8bbd6bc5c94e5f763bc1c2705145a7490c85775825373ce20be203160734b6f"
+    },
+    {
+      "name": "hub_3way_mount_A",
+      "qty": 4,
+      "native_volume_mm3": 518.4952802789944,
+      "native_lumps": 1,
+      "sha256": "30318ae75420ff7410b3c082e698dab4866ca11565208aa0c3e60f79250f4a3a"
+    },
+    {
+      "name": "hub_4way",
+      "qty": 10,
+      "native_volume_mm3": 257.5810663373139,
+      "native_lumps": 1,
+      "sha256": "c85392a1ce6ffd8b5b49e00981cbad5c96e0f1a3afdd7749be9ffa59477ce41e"
+    },
+    {
+      "name": "hub_pole_5way",
+      "qty": 2,
+      "native_volume_mm3": 303.114182454726,
+      "native_lumps": 1,
+      "sha256": "b931730da9d8f7a6d1c57dc182f26109137d7606fa2625a576bd51ef53339cae"
+    },
+    {
+      "name": "carrier_plate",
+      "qty": 1,
+      "native_volume_mm3": 3627.7139881012504,
+      "native_lumps": 1,
+      "sha256": "cb6590725e35985069afaeff1327abbe2c53e9b6dc58d6e341c7cc4450a2d41e"
+    },
+    {
+      "name": "nut_shield_plate",
+      "qty": 1,
+      "native_volume_mm3": 1250.4800000000014,
+      "native_lumps": 1,
+      "sha256": "fecab26eb8f4a94e5b925fea51a520bb005ddd321dd3803ce993781540b2beac"
+    },
+    {
+      "name": "support_arm",
+      "qty": 2,
+      "native_volume_mm3": 2411.930220671715,
+      "native_lumps": 1,
+      "sha256": "25aafc95067f674042c827486cab546248eac67c6eb43dbcb74e6790eceb4131"
+    },
+    {
+      "name": "x_bracket",
+      "qty": 2,
+      "native_volume_mm3": 2207.2870918490075,
+      "native_lumps": 1,
+      "sha256": "f6b8c7fc83151b1acf7264c9784b29a19ff4f2042cfbc3ee3f4bbbeb754f89c9"
+    }
+  ]
+}

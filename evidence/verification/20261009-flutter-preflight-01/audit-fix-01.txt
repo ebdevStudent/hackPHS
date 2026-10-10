@@ -1,0 +1,7 @@
+Computing fixes in flutter_operator...
+Applying fixes...
+
+lib/ui/operations.dart
+  prefer_interpolation_to_compose_strings - 1 fix
+
+1 fix made in 1 file.

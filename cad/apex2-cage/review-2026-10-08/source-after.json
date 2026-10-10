@@ -1,0 +1,8 @@
+{
+  "build_p1a.py": "0fa963ad26ad83e29f31411eb00ee2d7683a44a28634fdd9dbafbbf6b1c2a682",
+  "build_p1b.py": "95a2825c007bf92c622ca5fe9f14471cd53053c162bb34e5fbcfab7e7ec049bf",
+  "validation.py": "3f495136590ab032409955d79dea603a3029a7c9ee7cf103c260e79837e0f28e",
+  "vendor_specs.json": "a324caf1a4e81e26ff2fc18afbb49890d4c51ae427a5b69928f0012d66265986",
+  "measurements.json": "9f94d8cf92e8084bab96ead087fd812b770bc494945cef18a0ed8dbf0180e043",
+  "make_plates.py": "630943769e2341126be99dd2dd9949bee3672f04cc56e153f3f7f0eb82ffc22a"
+}

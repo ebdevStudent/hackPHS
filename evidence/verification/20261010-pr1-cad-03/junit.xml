@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="2" failures="0" skipped="0" tests="45" time="1.105" timestamp="2026-10-10T14:35:17.355405-04:00" hostname="Devis-MacBook-Air-2.local"><testcase classname="cad.kit.tests.test_final_fits" name="test_selected_coupon_bores_resolve_exactly" time="0.017" /><testcase classname="cad.kit.tests.test_final_fits" name="test_pin_diameter_follows_print_axis[inner_junction_X_pin-2.15]" time="0.025" /><testcase classname="cad.kit.tests.test_final_fits" name="test_pin_diameter_follows_print_axis[arm_pivot_block-2.25]" time="0.024" /><testcase classname="cad.kit.tests.test_final_fits" name="test_pin_diameter_follows_print_axis[hub_pole_5way_pivot-2.25]" time="0.024" /><testcase classname="cad.kit.tests.test_final_fits" name="test_unknown_pin_part_cannot_silently_use_a_wrong_axis" time="0.024" /><testcase classname="cad.kit.tests.test_final_fits" name="test_final_running_gap_and_pin_stack_agree" time="0.015" /><testcase classname="cad.kit.tests.test_kit" name="test_resolved_parameters_reproduce_the_recorded_cage" time="0.011" /><testcase classname="cad.kit.tests.test_kit" name="test_p1b_overrides_and_swept_radius_match_the_generator_report" time="0.024" /><testcase classname="cad.kit.tests.test_kit" name="test_measured_values_override_vendor_values" time="0.011" /><testcase classname="cad.kit.tests.test_kit" name="test_expression_evaluation[2 mm-2]" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_expression_evaluation[49 mm / (2 * sin(36 deg))-41.68188960924996]" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_expression_evaluation[3 ^ 2-9]" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_expression_evaluation[sqrt(16)-4]" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_loading_the_generator_does_not_leave_the_stub_installed" time="0.005" /><testcase classname="cad.kit.tests.test_kit" name="test_schema_names_exist_in_the_generators" time="0.014" /><testcase classname="cad.kit.tests.test_kit" name="test_valid_form_is_accepted" time="0.006" /><testcase classname="cad.kit.tests.test_kit" name="test_bad_rows_are_errors[row0-unknown name]" time="0.005" /><testcase classname="cad.kit.tests.test_kit" name="test_bad_rows_are_errors[row1-unit must be]" time="0.005" /><testcase classname="cad.kit.tests.test_kit" name="test_bad_rows_are_errors[row2-not a number]" time="0.005" /><testcase classname="cad.kit.tests.test_kit" name="test_bad_rows_are_errors[row3-outside]" time="0.005" /><testcase classname="cad.kit.tests.test_kit" name="test_bad_rows_are_errors[row4-outside]" time="0.005" /><testcase classname="cad.kit.tests.test_kit" name="test_bad_rows_are_errors[row5-not a number]" time="0.005" /><testcase classname="cad.kit.tests.test_kit" name="test_duplicates_overlap_and_rod_gate_are_reported" time="0.021" /><testcase classname="cad.kit.tests.test_kit" name="test_vendor_deviation_and_thrust_warnings" time="0.006" /><testcase classname="cad.kit.tests.test_kit" name="test_write_keeps_a_backup_and_never_runs_on_errors" time="0.020" /><testcase classname="cad.kit.tests.test_kit" name="test_blank_form_lists_every_field" time="0.002" /><testcase classname="cad.kit.tests.test_kit" name="test_test_pieces_are_single_closed_printable_bodies" time="0.044" /><testcase classname="cad.kit.tests.test_kit" name="test_jig_reproduces_the_cage_span_and_socket" time="0.006" /><testcase classname="cad.kit.tests.test_kit" name="test_socket_bore_is_cut_with_the_generator_clearance" time="0.023" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_pass_and_stiffness" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_failures[kwargs0-residual]" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_failures[kwargs1-slip]" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_failures[kwargs2-top load]" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_failures[kwargs3-damage]" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_unreadable_and_empty_logs_fail" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_opening_inventory_matches_the_cage" time="0.518" /><testcase classname="cad.kit.tests.test_kit" name="test_small_objects_pass_and_large_objects_rest_outside_the_props" time="0.000" /><testcase classname="cad.kit.tests.test_kit" name="test_resting_height_matches_the_closed_form_for_a_regular_hexagon" time="0.038" /><testcase classname="cad.kit.tests.test_kit" name="test_mass_report_is_consistent" time="0.021" /><testcase classname="cad.kit.tests.test_kit" name="test_solid_cage_matches_the_generator_and_never_touches_the_props" time="0.027"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl'&quot;">@pytest.fixture(scope='module')
+    def clash():
+&gt;       return clash_check.analyse([20, 90])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad/kit/tests/test_kit.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cad/kit/clash_check.py:122: in analyse
+    points, edges, hubs, rods = build_cage(values)
+                                ^^^^^^^^^^^^^^^^^^
+cad/kit/clash_check.py:67: in build_cage
+    solid = to_manifold(read_mesh_stl(exports / f'{name}.stl'))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cad/kit/test_pieces.py:137: in read_mesh_stl
+    data = Path(path).read_bytes()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+&gt;       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl'
+
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py:537: FileNotFoundError</error></testcase><testcase classname="cad.kit.tests.test_kit" name="test_solid_balls_agree_with_the_rod_model" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl'&quot;">@pytest.fixture(scope='module')
+    def clash():
+&gt;       return clash_check.analyse([20, 90])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad/kit/tests/test_kit.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cad/kit/clash_check.py:122: in analyse
+    points, edges, hubs, rods = build_cage(values)
+                                ^^^^^^^^^^^^^^^^^^
+cad/kit/clash_check.py:67: in build_cage
+    solid = to_manifold(read_mesh_stl(exports / f'{name}.stl'))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cad/kit/test_pieces.py:137: in read_mesh_stl
+    data = Path(path).read_bytes()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+&gt;       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl'
+
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py:537: FileNotFoundError</error></testcase><testcase classname="cad.kit.tests.test_kit" name="test_descent_stops_at_first_contact" time="0.004" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_jig_assembly_fits" time="0.034" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_assembly_detects_a_misplaced_rod" time="0.023" /><testcase classname="cad.kit.tests.test_kit" name="test_bend_predictions_follow_beam_theory" time="0.000" /></testsuite></testsuites>

@@ -1,0 +1,48 @@
+..F............F..FF........................FF........                   [100%]
+=================================== FAILURES ===================================
+_____________ test_seeded_c_python_protocol_and_watchdog_parity[2] _____________
+tests/test_protocol_parity.py:79: in test_seeded_c_python_protocol_and_watchdog_parity
+    compare(c_library, python, native, frame, ms)
+tests/test_protocol_parity.py:47: in compare
+    assert (python.enabled, python.yaw, python.seq, python.fault == 'WATCHDOG') == (
+E   AssertionError: ('CMD 1 s2_33 4 1 100
+E     ', 8014)
+E   assert (False, 0, 4, False) == (False, 0, 4, True)
+E     
+E     At index 3 diff: False != True
+E     Use -v to get more diff
+_________________ test_exact_watchdog_boundary_matches_c[100] __________________
+tests/test_protocol_parity.py:90: in test_exact_watchdog_boundary_matches_c
+    assert not python.enabled and not native.enabled
+E   assert (not True)
+E    +  where True = <ball_demo.protocol.BridgeCore object at 0x10700f1d0>.enabled
+_________________ test_exact_watchdog_boundary_matches_c[222] __________________
+tests/test_protocol_parity.py:90: in test_exact_watchdog_boundary_matches_c
+    assert not python.enabled and not native.enabled
+E   assert (not True)
+E    +  where True = <ball_demo.protocol.BridgeCore object at 0x1074407e0>.enabled
+_________________ test_exact_watchdog_boundary_matches_c[333] __________________
+tests/test_protocol_parity.py:90: in test_exact_watchdog_boundary_matches_c
+    assert not python.enabled and not native.enabled
+E   assert (not True)
+E    +  where True = <ball_demo.protocol.BridgeCore object at 0x1073028f0>.enabled
+__________________ test_old_ack_cannot_undo_confirmed_neutral __________________
+tests/test_bridge_edges.py:100: in test_old_ack_cannot_undo_confirmed_neutral
+    assert feed(adapter, f'ACK 1 {adapter.session} 1 1 500 NONE\n', 1.14) == []
+E   AssertionError: assert [{'seq': 1, '...ult': 'NONE'}] == []
+E     
+E     Left contains one more item: {'seq': 1, 'yaw': 500, 'fault': 'NONE'}
+E     Use -v to get more diff
+____________ test_replayed_ready_does_not_hide_missing_command_ack _____________
+tests/test_bridge_edges.py:107: in test_replayed_ready_does_not_hide_missing_command_ack
+    assert adapter.last_ack == 1 and adapter.accepted_yaw == 0
+E   assert (1.3 == 1)
+E    +  where 1.3 = <ball_demo.bridge.SerialBridge object at 0x1072cd190>.last_ack
+=========================== short test summary info ============================
+FAILED tests/test_protocol_parity.py::test_seeded_c_python_protocol_and_watchdog_parity[2]
+FAILED tests/test_protocol_parity.py::test_exact_watchdog_boundary_matches_c[100]
+FAILED tests/test_protocol_parity.py::test_exact_watchdog_boundary_matches_c[222]
+FAILED tests/test_protocol_parity.py::test_exact_watchdog_boundary_matches_c[333]
+FAILED tests/test_bridge_edges.py::test_old_ack_cannot_undo_confirmed_neutral
+FAILED tests/test_bridge_edges.py::test_replayed_ready_does_not_hide_missing_command_ack
+6 failed, 48 passed in 0.84s

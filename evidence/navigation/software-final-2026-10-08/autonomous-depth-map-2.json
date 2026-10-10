@@ -1,0 +1,4725 @@
+{
+  "schema_version": 1,
+  "label": "SYNTHETIC estimated-vision waypoint follower / MOCK OUTPUT ONLY",
+  "map": {
+    "schema_version": 1,
+    "map_id": "EXAMPLE-room",
+    "map_version": 1,
+    "frame_id": "example_world",
+    "axes": "right_handed_z_up",
+    "units": "m",
+    "permitted": {
+      "minimum": [
+        0.0,
+        0.1,
+        0.0
+      ],
+      "maximum": [
+        2.0,
+        3.1,
+        2.0
+      ]
+    },
+    "observed_free": [
+      {
+        "minimum": [
+          0.0,
+          0.9,
+          0.2
+        ],
+        "maximum": [
+          2.0,
+          1.9000000000000001,
+          1.8
+        ]
+      },
+      {
+        "minimum": [
+          0.0,
+          1.1,
+          0.0
+        ],
+        "maximum": [
+          2.0,
+          1.9000000000000001,
+          0.2
+        ]
+      },
+      {
+        "minimum": [
+          0.0,
+          1.1,
+          1.8
+        ],
+        "maximum": [
+          2.0,
+          1.9000000000000001,
+          2.0
+        ]
+      },
+      {
+        "minimum": [
+          0.2,
+          0.7000000000000001,
+          0.4
+        ],
+        "maximum": [
+          1.8,
+          0.9,
+          1.6
+        ]
+      },
+      {
+        "minimum": [
+          0.4,
+          0.5,
+          0.6000000000000001
+        ],
+        "maximum": [
+          1.6,
+          0.7000000000000001,
+          1.4000000000000001
+        ]
+      },
+      {
+        "minimum": [
+          0.8,
+          0.30000000000000004,
+          0.8
+        ],
+        "maximum": [
+          1.2000000000000002,
+          0.5,
+          1.2000000000000002
+        ]
+      }
+    ],
+    "occupied": [
+      {
+        "minimum": [
+          0.0,
+          2.1,
+          0.0
+        ],
+        "maximum": [
+          2.0,
+          2.3000000000000003,
+          2.0
+        ]
+      }
+    ],
+    "uncertainty_m": 0.03,
+    "acquired_utc": "2026-10-08T00:00:00Z",
+    "evidence": "SIMULATION COPY of bundle SHA256 2f5e6e8b9af9be6e0c5c8a5053cf05fd3d031389aaabe5b424876b44b95e1302; INVENTED synthetic depth plane",
+    "example": true
+  },
+  "physical_output": false,
+  "physical_telemetry": null,
+  "samples": [
+    {
+      "t": 1.0,
+      "available": true,
+      "status": "acquiring",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": null,
+      "pose_age_s": null,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.000000000000595,
+        0.900000000012585,
+        0.999999999943144
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 1.05,
+      "available": true,
+      "status": "acquiring",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": null,
+      "pose_age_s": null,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.000000000000595,
+        0.900000000012585,
+        0.999999999943144
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 1.1,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 2,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.1,
+          "exposure_s": 1.1,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0009770045809383834,
+            -0.999999462859871,
+            0.0003460375964837723,
+            0.9977480363844814
+          ],
+          [
+            0.999994856382157,
+            0.000978057089231292,
+            0.0030546053033935084,
+            0.8981721656658932
+          ],
+          [
+            -0.003054942107166804,
+            0.00034305145322424284,
+            0.9999952748110474,
+            1.006322116018547
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.025170325190811315,
+        "reprojection_px": 0.0301426672543583,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9977480363844814,
+          0.8981721656658932,
+          1.006322116018547
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5663088345813252,
+      "clearance_m": 0.2901703251908113,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000448712114856,
+        0.9099991058728852,
+        0.999874029434923
+      ],
+      "mock_velocity_m_s": [
+        0.0008974242178094628,
+        0.19998211720600598,
+        -0.002519410164421586
+      ]
+    },
+    {
+      "t": 1.15,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 3,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.15,
+          "exposure_s": 1.15,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0010293821492763054,
+            -0.9999994653469519,
+            9.837784583445881e-05,
+            0.9977215782938486
+          ],
+          [
+            0.999999207153192,
+            0.0010294532274193397,
+            0.0007252027575380893,
+            0.909604706687613
+          ],
+          [
+            -0.0007253036451971256,
+            9.763125706268216e-05,
+            0.9999997322013439,
+            1.0014126719198149
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.025221648789777198,
+        "reprojection_px": 0.04879262540331267,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9977215782938486,
+          0.909604706687613,
+          1.0014126719198149
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5661502681085664,
+      "clearance_m": 0.2902216487897772,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.000091331438434,
+        0.9199989564537878,
+        0.9998452230652236
+      ],
+      "mock_velocity_m_s": [
+        0.000929204538971213,
+        0.19999701161805059,
+        -0.0005761273939873096
+      ]
+    },
+    {
+      "t": 1.2,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 4,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.2,
+          "exposure_s": 1.2,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0001906726535360292,
+            -0.9999999800638365,
+            5.929810325979431e-05,
+            0.9996339726285149
+          ],
+          [
+            0.9999990017462616,
+            0.00019075548686024697,
+            0.00140004243661493,
+            0.9193543536924007
+          ],
+          [
+            -0.0014000537201420127,
+            5.903109425878872e-05,
+            0.9999990181819732,
+            1.0027327045944963
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.025134847563015608,
+        "reprojection_px": 0.034110963074167916,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9996339726285149,
+          0.9193543536924007,
+          1.0027327045944963
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5700347942531168,
+      "clearance_m": 0.29013484756301555,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000989466400372,
+        0.9299987919343731,
+        0.9997883691301637
+      ],
+      "mock_velocity_m_s": [
+        0.00015230403206020974,
+        0.19999670961170612,
+        -0.0011370787011982613
+      ]
+    },
+    {
+      "t": 1.25,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 5,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.25,
+          "exposure_s": 1.25,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            8.508798893667283e-05,
+            -0.9999999955271209,
+            4.130124017361295e-05,
+            0.9998766146604005
+          ],
+          [
+            0.9999994623169989,
+            8.513062832365956e-05,
+            0.0010334981805273811,
+            0.9293154318912122
+          ],
+          [
+            -0.0010335016919051953,
+            4.12132796848874e-05,
+            0.9999994650877161,
+            1.0018753716309283
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.025065561917147153,
+        "reprojection_px": 0.023290695591336206,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9998766146604005,
+          0.9293154318912122,
+          1.0018753716309283
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5705341866162434,
+      "clearance_m": 0.29006556191714716,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0001015680209866,
+        0.9399987122165505,
+        0.9997485259568808
+      ],
+      "mock_velocity_m_s": [
+        5.242761898663688e-05,
+        0.19999840564354976,
+        -0.0007968634656577895
+      ]
+    },
+    {
+      "t": 1.3,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 6,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.3,
+          "exposure_s": 1.3,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0003103989255800752,
+            -0.9999999431896922,
+            -0.00013142724044349269,
+            1.0008168013200474
+          ],
+          [
+            0.9999999068103579,
+            -0.00031043834406357885,
+            0.0003000121834525828,
+            0.9399745488467147
+          ],
+          [
+            -0.00030005296646368646,
+            -0.00013133410473643056,
+            0.9999999463597838,
+            1.0005028121843313
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.025058467494997686,
+        "reprojection_px": 0.02772953731165286,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0008168013200474,
+          0.9399745488467147,
+          1.0005028121843313
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.572571881733545,
+      "clearance_m": 0.29005846749499764,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000838124915354,
+        0.9499986904802629,
+        0.9997375958857262
+      ],
+      "mock_velocity_m_s": [
+        -0.00035511058902362383,
+        0.199999565274246,
+        -0.00021860142309246952
+      ]
+    },
+    {
+      "t": 1.35,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 7,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.35,
+          "exposure_s": 1.35,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            9.674837148585446e-05,
+            -0.9999999920731407,
+            8.058207579637836e-05,
+            0.9998154663718383
+          ],
+          [
+            0.9999987199809954,
+            9.68769441001568e-05,
+            0.0015970758367131381,
+            0.949464502046751
+          ],
+          [
+            -0.0015970836305985953,
+            8.042745816344853e-05,
+            0.9999987214268329,
+            1.0029656496659096
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.025061991178916374,
+        "reprojection_px": 0.03452245758764357,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9998154663718383,
+          0.949464502046751,
+          1.0029656496659096
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5703867394956033,
+      "clearance_m": 0.2900619911789164,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.000087908275681,
+        0.9599984730020539,
+        0.9996717723228113
+      ],
+      "mock_velocity_m_s": [
+        8.19156829132186e-05,
+        0.19999565043582068,
+        -0.001316471258297865
+      ]
+    },
+    {
+      "t": 1.4,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 8,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.4,
+          "exposure_s": 1.4,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.00012097066567170869,
+            -0.9999999804719055,
+            -0.00015627631684631612,
+            1.0004000526467038
+          ],
+          [
+            0.999999095644945,
+            -0.00012076123433359897,
+            -0.0013394498932259697,
+            0.9602989591729312
+          ],
+          [
+            0.0013394309949481458,
+            -0.00015643820966225642,
+            0.9999990907254349,
+            0.9968463901567873
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.025072970423649976,
+        "reprojection_px": 0.04307372396447203,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0004000526467038,
+          0.9602989591729312,
+          0.9968463901567873
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5717061552901057,
+      "clearance_m": 0.29007297042365,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000788102259828,
+        0.9699982116733695,
+        0.9997434921309885
+      ],
+      "mock_velocity_m_s": [
+        -0.00018196099396453036,
+        0.19999477342631403,
+        0.001434396163543227
+      ]
+    },
+    {
+      "t": 1.45,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 9,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.45,
+          "exposure_s": 1.45,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -8.718632972430875e-06,
+            -0.9999999978924379,
+            -6.433591405916404e-05,
+            1.0001181168233952
+          ],
+          [
+            0.9999999537693426,
+            -8.699077682788143e-06,
+            -0.0003039500595339191,
+            0.9702424270626453
+          ],
+          [
+            0.0003039494992302113,
+            -6.433856111388346e-05,
+            0.9999999517376245,
+            0.9990950428661272
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02505757737912609,
+        "reprojection_px": 0.04575237627930345,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0001181168233952,
+          0.9702424270626453,
+          0.9990950428661272
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.571071172028254,
+      "clearance_m": 0.2900575773791261,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000760617797773,
+        0.9799981891250699,
+        0.9997645494700637
+      ],
+      "mock_velocity_m_s": [
+        -5.496892410973605e-05,
+        0.19999954903400607,
+        0.00042114678150432
+      ]
+    },
+    {
+      "t": 1.5,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 10,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.5,
+          "exposure_s": 1.5,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0007207573979926883,
+            -0.9999997355093057,
+            9.741710127371666e-05,
+            0.9985356591397735
+          ],
+          [
+            0.9999978109684879,
+            0.0007205646452197294,
+            -0.00196439426387667,
+            0.981006393540088
+          ],
+          [
+            0.00196432354899365,
+            9.883273972287576e-05,
+            0.9999980658306715,
+            0.995849513902042
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.025035595807548976,
+        "reprojection_px": 0.04618591528200687,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9985356591397735,
+          0.981006393540088,
+          0.995849513902042
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5673014407734542,
+      "clearance_m": 0.290035595807549,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0001110088543046,
+        0.9899976374701681,
+        0.9998636024644381
+      ],
+      "mock_velocity_m_s": [
+        0.000698941490547667,
+        0.19998896690196433,
+        0.001981059887487804
+      ]
+    },
+    {
+      "t": 1.55,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 11,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.55,
+          "exposure_s": 1.55,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -4.803217991088362e-05,
+            -0.9999999987943197,
+            -1.0211290055783026e-05,
+            1.0001797743902536
+          ],
+          [
+            0.9999996276972106,
+            -4.802336436683409e-05,
+            -0.0008615678712215317,
+            0.990107376521517
+          ],
+          [
+            0.0008615673798022532,
+            -1.0252669237087205e-05,
+            0.9999996287981975,
+            0.9980555364165088
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024947052802601323,
+        "reprojection_px": 0.030372011305574067,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0001797743902536,
+          0.990107376521517,
+          0.9980555364165088
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5712349157531482,
+      "clearance_m": 0.28994705280260136,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.000106623014212,
+        0.9999975239903751,
+        0.9999110402909902
+      ],
+      "mock_velocity_m_s": [
+        -8.771680185506309e-05,
+        0.19999773040414104,
+        0.0009487565310434501
+      ]
+    },
+    {
+      "t": 1.6,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 12,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.6,
+          "exposure_s": 1.6,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0002488144001612441,
+            -0.9999999688226026,
+            -2.1123173637868848e-05,
+            1.000705528230057
+          ],
+          [
+            0.9999998278355302,
+            -0.0002488031394328659,
+            -0.0005314375863113631,
+            1.0001491847238886
+          ],
+          [
+            0.0005314323142306064,
+            -2.1255399325470015e-05,
+            0.9999998585639418,
+            0.9988200274152159
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024970540642820956,
+        "reprojection_px": 0.04247641704340255,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.000705528230057,
+          1.0001491847238886,
+          0.9988200274152159
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.572560803622029,
+      "clearance_m": 0.2899705406428209,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000889783319262,
+        1.0099974648810228,
+        0.9999405504373989
+      ],
+      "mock_velocity_m_s": [
+        -0.00035289364571539864,
+        0.19999881781295206,
+        0.0005902029281734698
+      ]
+    },
+    {
+      "t": 1.65,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 13,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.65,
+          "exposure_s": 1.65,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -4.088552336419548e-05,
+            -0.9999999988982592,
+            -2.3061997278836384e-05,
+            1.0002364241951
+          ],
+          [
+            0.9999995076372623,
+            -4.086263750346504e-05,
+            -0.000991491541942318,
+            1.010608586382624
+          ],
+          [
+            0.0009914905984759164,
+            -2.310252357457175e-05,
+            0.9999995082062123,
+            0.9980553552146376
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024909232917392957,
+        "reprojection_px": 0.033502824908145344,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0002364241951,
+          1.010608586382624,
+          0.9980553552146376
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5714034900701506,
+      "clearance_m": 0.2899092329173929,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000829067752606,
+        1.0199973383369216,
+        0.999990490423465
+      ],
+      "mock_velocity_m_s": [
+        -0.00012143113331391928,
+        0.19999746911797797,
+        0.0009987997213213196
+      ]
+    },
+    {
+      "t": 1.7000000000000002,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 14,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.7000000000000002,
+          "exposure_s": 1.7000000000000002,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0005966528636902806,
+            -0.9999998066673988,
+            0.00017513002364733993,
+            0.998853626563376
+          ],
+          [
+            0.9999989644417432,
+            0.000596422987923962,
+            -0.0013097309116370634,
+            1.0206403047899624
+          ],
+          [
+            0.0013096262068514005,
+            0.0001759112969890898,
+            0.9999991269668259,
+            0.9974188427047603
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024892968823731022,
+        "reprojection_px": 0.03537950192446522,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.998853626563376,
+          1.0206403047899624,
+          0.9974188427047603
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5677744719123512,
+      "clearance_m": 0.28989296882373106,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0001131245786554,
+        1.0299970612191374,
+        1.000058528377928
+      ],
+      "mock_velocity_m_s": [
+        0.000604356067896301,
+        0.19999445764431623,
+        0.0013607590892604363
+      ]
+    },
+    {
+      "t": 1.75,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 15,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.75,
+          "exposure_s": 1.75,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -5.974951881642308e-05,
+            -0.9999999978478834,
+            -2.7096634787796993e-05,
+            1.000142591428575
+          ],
+          [
+            0.9999992600443071,
+            -5.9782398392143756e-05,
+            0.0012150460496824682,
+            1.0292982581483048
+          ],
+          [
+            -0.0012150476669693638,
+            -2.7024016320679513e-05,
+            0.999999261464162,
+            1.0024089863836907
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024880646839447386,
+        "reprojection_px": 0.03847482372857165,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.000142591428575,
+          1.0292982581483048,
+          1.0024089863836907
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5711809794831477,
+      "clearance_m": 0.28988064683944736,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0001092781330843,
+        1.0399968493368825,
+        0.999993545264293
+      ],
+      "mock_velocity_m_s": [
+        -7.692891142270087e-05,
+        0.19999576235490468,
+        -0.0012996622726999519
+      ]
+    },
+    {
+      "t": 1.8,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 16,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.8,
+          "exposure_s": 1.8,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0013819641720364492,
+            -0.9999990415045763,
+            -8.464606700937934e-05,
+            1.0029448880736096
+          ],
+          [
+            0.9999985943455192,
+            -0.0013820439127288117,
+            0.0009493479917788164,
+            1.0396902694359826
+          ],
+          [
+            -0.0009494640664147572,
+            -8.33339831148224e-05,
+            0.999999545786614,
+            1.0018428364084195
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024860801416449616,
+        "reprojection_px": 0.03955936131721626,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0029448880736096,
+          1.0396902694359826,
+          1.0018428364084195
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5789693575298882,
+      "clearance_m": 0.28986080141644965,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.000027549804529,
+        1.0499963845671203,
+        0.9999424017451859
+      ],
+      "mock_velocity_m_s": [
+        -0.0016345665711036896,
+        0.199990704604754,
+        -0.001022870382140944
+      ]
+    },
+    {
+      "t": 1.85,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 17,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.85,
+          "exposure_s": 1.85,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.00040177543218956576,
+            -0.9999999177678793,
+            -5.514287644275276e-05,
+            0.9992226968541947
+          ],
+          [
+            0.9999981546942516,
+            0.00040187831471698223,
+            -0.0018785904056434271,
+            1.0504930946695048
+          ],
+          [
+            0.0018786124118892076,
+            -5.438800321515131e-05,
+            0.9999982339271161,
+            0.9962663719130983
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024829058474379988,
+        "reprojection_px": 0.03776013822690458,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9992226968541947,
+          1.0504930946695048,
+          0.9962663719130983
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5685723310672146,
+      "clearance_m": 0.28982905847438,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000497884746087,
+        1.05999578930409,
+        1.0000492209748173
+      ],
+      "mock_velocity_m_s": [
+        0.00044477340159427794,
+        0.19998809473939597,
+        0.002136384592627438
+      ]
+    },
+    {
+      "t": 1.9,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 18,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.9,
+          "exposure_s": 1.9,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            5.694562849502498e-05,
+            -0.9999999981690917,
+            -2.046979335629516e-05,
+            0.9999143940329356
+          ],
+          [
+            0.999999998234339,
+            5.6945280779015514e-05,
+            1.698696798477036e-05,
+            1.0599937541133233
+          ],
+          [
+            -1.6985802295538613e-05,
+            -2.0470760653720558e-05,
+            0.9999999996462154,
+            1.000085539407306
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02476768761415869,
+        "reprojection_px": 0.028767968472146063,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9999143940329356,
+          1.0599937541133233,
+          1.000085539407306
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5705445491693644,
+      "clearance_m": 0.2897676876141587,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000523062507578,
+        1.069995788670663,
+        1.000046705156272
+      ],
+      "mock_velocity_m_s": [
+        5.0355522980855076e-05,
+        0.19999998733145993,
+        -5.0316370903526666e-05
+      ]
+    },
+    {
+      "t": 1.9500000000000002,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 19,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 1.9500000000000002,
+          "exposure_s": 1.9500000000000002,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0007283184944913237,
+            -0.9999997272943735,
+            -0.00012232476765390126,
+            1.0015247716189888
+          ],
+          [
+            0.9999995945334824,
+            -0.000728383171157953,
+            0.0005295194296821843,
+            1.069934178434797
+          ],
+          [
+            -0.0005296083845814314,
+            -0.00012193905926147377,
+            0.9999998523229013,
+            1.0010642509588619
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024705436887283702,
+        "reprojection_px": 0.018859604225911576,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0015247716189888,
+          1.069934178434797,
+          1.0010642509588619
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5754158925691923,
+      "clearance_m": 0.2897054368872837,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.000006110997449,
+        1.0799956299885025,
+        1.000014462070149
+      ],
+      "mock_velocity_m_s": [
+        -0.0009239050661791069,
+        0.19999682635678895,
+        -0.0006448617224594891
+      ]
+    },
+    {
+      "t": 2.0,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 20,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.0,
+          "exposure_s": 2.0,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -4.5447771994437384e-05,
+            -0.9999999980986408,
+            -4.167994905675937e-05,
+            1.0001118481740503
+          ],
+          [
+            0.9999999977684254,
+            -4.5445731008669764e-05,
+            -4.896768835780632e-05,
+            1.0802754039895932
+          ],
+          [
+            4.896579408894787e-05,
+            -4.1682174436083035e-05,
+            0.9999999979324735,
+            0.9999390542949824
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02471884104423671,
+        "reprojection_px": 0.029010811519816552,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0001118481740503,
+          1.0802754039895932,
+          0.9999390542949824
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5711461533984277,
+      "clearance_m": 0.28971884104423673,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000026127315487,
+        1.0899956291949306,
+        1.0000163682638215
+      ],
+      "mock_velocity_m_s": [
+        -6.99653180080657e-05,
+        0.19999998412856076,
+        3.812387344708056e-05
+      ]
+    },
+    {
+      "t": 2.05,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 21,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.05,
+          "exposure_s": 2.05,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0007852964369578375,
+            -0.999999687275598,
+            9.358532024492187e-05,
+            0.9983973146071384
+          ],
+          [
+            0.9999996367943289,
+            0.0007853273897678369,
+            0.00033116778357165314,
+            1.0895685818653573
+          ],
+          [
+            -0.00033124117512267463,
+            9.332522137372887e-05,
+            0.9999999407848417,
+            1.0006080086982811
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024726848637263283,
+        "reprojection_px": 0.03693981680521512,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9983973146071384,
+          1.0895685818653573,
+          1.0006080086982811
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5656336046603219,
+      "clearance_m": 0.2897268486372633,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000542396245322,
+        1.0999954767471234,
+        0.9999967826357631
+      ],
+      "mock_velocity_m_s": [
+        0.0010325378596692549,
+        0.19999695104385412,
+        -0.00039171256116747534
+      ]
+    },
+    {
+      "t": 2.1,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 22,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.1,
+          "exposure_s": 2.1,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0005317513554691269,
+            -0.9999998465222898,
+            -0.0001555502912731151,
+            1.0011322586555036
+          ],
+          [
+            0.9999996607764255,
+            -0.0005316533969182145,
+            -0.0006291197815315916,
+            1.1002912040242472
+          ],
+          [
+            0.0006290369861349811,
+            -0.0001558847738033711,
+            0.9999997900061818,
+            0.9987748508887652
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024658505551123908,
+        "reprojection_px": 0.025732342534653643,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0011322586555036,
+          1.1002912040242472,
+          0.9987748508887652
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5745741714365222,
+      "clearance_m": 0.28965850555112393,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000164615836105,
+        1.109995321839018,
+        1.0000376599856817
+      ],
+      "mock_velocity_m_s": [
+        -0.0007555608184358228,
+        0.1999969018378912,
+        0.0008175469983745033
+      ]
+    },
+    {
+      "t": 2.1500000000000004,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 23,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.1500000000000004,
+          "exposure_s": 2.1500000000000004,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -8.663029479810509e-05,
+            -0.999999993730064,
+            7.095818419174905e-05,
+            1.0001073897549122
+          ],
+          [
+            0.9999999941156228,
+            -8.662566090394806e-05,
+            6.530504665286713e-05,
+            1.1099904766708133
+          ],
+          [
+            -6.529889944380651e-05,
+            7.096384116964767e-05,
+            0.9999999953500933,
+            1.0001460466144179
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024677576200050594,
+        "reprojection_px": 0.03743294556298196,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0001073897549122,
+          1.1099904766708133,
+          1.0001460466144179
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.57116662411745,
+      "clearance_m": 0.28967757620005063,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.000012758610939,
+        1.119995319885391,
+        1.0000326240618882
+      ],
+      "mock_velocity_m_s": [
+        -7.405945342722614e-05,
+        0.19999996092746114,
+        -0.000100718475868825
+      ]
+    },
+    {
+      "t": 2.2,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 24,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.2,
+          "exposure_s": 2.2,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0007703665290812647,
+            -0.9999997012858596,
+            -6.29571460634461e-05,
+            1.0016181441799494
+          ],
+          [
+            0.9999996631293628,
+            -0.0007703486588986972,
+            -0.0002833797885837956,
+            1.1201211790707595
+          ],
+          [
+            0.0002833312049812076,
+            -6.317543115917532e-05,
+            0.9999999578661456,
+            0.9995664743980616
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02463310710652959,
+        "reprojection_px": 0.031958977779401064,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0016181441799494,
+          1.1201211790707595,
+          0.9995664743980616
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5765778509029482,
+      "clearance_m": 0.28963310710652956,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999549437613029,
+        1.1299951407597397,
+        1.0000481135453347
+      ],
+      "mock_velocity_m_s": [
+        -0.001156296992722824,
+        0.19999641748697813,
+        0.0003097896689313732
+      ]
+    },
+    {
+      "t": 2.25,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 25,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.25,
+          "exposure_s": 2.25,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.00015783696528527227,
+            -0.9999999824959257,
+            0.00010047706815651214,
+            0.9996165931458281
+          ],
+          [
+            0.9999999858950758,
+            0.0001578311945859078,
+            -5.7438337731530074e-05,
+            1.1299587894267533
+          ],
+          [
+            5.742247831042949e-05,
+            0.00010048613263220922,
+            0.9999999933025981,
+            0.9999338726112483
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024641287256383745,
+        "reprojection_px": 0.040890436784666084,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9996165931458281,
+          1.1299587894267533,
+          0.9999338726112483
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5693765190710043,
+      "clearance_m": 0.2896412872563837,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.999969141833346,
+        1.1399951303806442,
+        1.0000505623315765
+      ],
+      "mock_velocity_m_s": [
+        0.00028396144086037273,
+        0.19999979241808852,
+        4.897572483625316e-05
+      ]
+    },
+    {
+      "t": 2.3,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 26,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.3,
+          "exposure_s": 2.3,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0009207823257058379,
+            -0.9999995686226472,
+            -0.0001221246416395564,
+            1.0017526070567855
+          ],
+          [
+            0.9999984543114909,
+            -0.00092096420966522,
+            0.0014977314691273288,
+            1.1389414997031349
+          ],
+          [
+            -0.0014978432954639608,
+            -0.00012074536820747515,
+            0.9999988709423718,
+            1.0027237677977539
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02459876128915069,
+        "reprojection_px": 0.03549468139384681,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0017526070567855,
+          1.1389414997031349,
+          1.0027237677977539
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5775096907541175,
+      "clearance_m": 0.28959876128915074,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.999902012351591,
+        1.1499943608212568,
+        0.9999462348270306
+      ],
+      "mock_velocity_m_s": [
+        -0.001342589635098151,
+        0.1999846088122529,
+        -0.002086550090917521
+      ]
+    },
+    {
+      "t": 2.35,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 27,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.35,
+          "exposure_s": 2.35,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0001554203162797231,
+            -0.9999999870901515,
+            -4.079488391902025e-05,
+            0.9995545788497524
+          ],
+          [
+            0.9999999494191426,
+            0.00015543163074587495,
+            -0.00027749364033851075,
+            1.1500658581889964
+          ],
+          [
+            0.00027749997757144345,
+            -4.0751753706233035e-05,
+            0.9999999606665279,
+            0.9994611504437199
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024565038373884397,
+        "reprojection_px": 0.03368957081904622,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9995545788497524,
+          1.1500658581889964,
+          0.9994611504437199
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5690141746028927,
+      "clearance_m": 0.28956503837388436,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999198338226587,
+        1.1599943217001698,
+        0.9999677944044592
+      ],
+      "mock_velocity_m_s": [
+        0.0003564294213540904,
+        0.19999921757825964,
+        0.0004311915485716804
+      ]
+    },
+    {
+      "t": 2.4000000000000004,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 28,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.4000000000000004,
+          "exposure_s": 2.4000000000000004,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0001541000109871558,
+            -0.9999999843773852,
+            8.659339197066287e-05,
+            0.9996261569436967
+          ],
+          [
+            0.9999995050130175,
+            0.00015418505453293434,
+            0.0009829550796803834,
+            1.1594569939575052
+          ],
+          [
+            -0.0009829684157309183,
+            8.644187571948249e-05,
+            0.9999995131503292,
+            1.0018424140162423
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02452705798619298,
+        "reprojection_px": 0.02993310371620919,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9996261569436967,
+          1.1594569939575052,
+          1.0018424140162423
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5692421649780226,
+      "clearance_m": 0.28952705798619294,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999353749787073,
+        1.1699940163053495,
+        0.9998912027886735
+      ],
+      "mock_velocity_m_s": [
+        0.0003108231209715061,
+        0.19999389210359406,
+        -0.001531832315712464
+      ]
+    },
+    {
+      "t": 2.45,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 29,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.45,
+          "exposure_s": 2.45,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0012987659031979291,
+            -0.9999991514601356,
+            -0.0001014205961066267,
+            1.00241099270959
+          ],
+          [
+            0.9999986583221354,
+            -0.0012986640031403484,
+            -0.0009984116065292925,
+            1.17035236017794
+          ],
+          [
+            0.0009982790480599025,
+            -0.0001027171629847752,
+            0.9999994964439365,
+            0.9980135117252315
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02449433617296668,
+        "reprojection_px": 0.02743498686215621,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.00241099270959,
+          1.17035236017794,
+          0.9980135117252315
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.581294602047938,
+      "clearance_m": 0.2894943361729667,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998303980815444,
+        1.179993091198198,
+        0.9999776963622568
+      ],
+      "mock_velocity_m_s": [
+        -0.0020995379432579885,
+        0.19998149785696762,
+        0.0017298714716655979
+      ]
+    },
+    {
+      "t": 2.5,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 30,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.5,
+          "exposure_s": 2.5,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0006955757323480504,
+            -0.9999997181872191,
+            0.0002824887294750821,
+            0.9983215780807709
+          ],
+          [
+            0.9999997135966358,
+            0.0006956599392040387,
+            0.0002981004782486496,
+            1.1798481631324642
+          ],
+          [
+            -0.00029829691033249735,
+            0.00028228129711088874,
+            0.9999999156681075,
+            1.0005319615877695
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024483892596131093,
+        "reprojection_px": 0.031573988093248934,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9983215780807709,
+          1.1798481631324642,
+          1.0005319615877695
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5631725457480652,
+      "clearance_m": 0.28948389259613105,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.99990663493095,
+        1.1899927713986074,
+        0.9999535337396219
+      ],
+      "mock_velocity_m_s": [
+        0.0015247369881130485,
+        0.19999360400818833,
+        -0.0004832524526967635
+      ]
+    },
+    {
+      "t": 2.55,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 31,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.55,
+          "exposure_s": 2.55,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.00046439312808149247,
+            -0.9999998896652188,
+            7.07712680366243e-05,
+            0.9990424868366652
+          ],
+          [
+            0.9999991112924034,
+            0.0004644812072517237,
+            0.00124966860073753,
+            1.1893034472804218
+          ],
+          [
+            -0.001249701334779635,
+            7.019086763109913e-05,
+            0.9999992166596012,
+            1.002224746567367
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024433102556763744,
+        "reprojection_px": 0.024211721067401874,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9990424868366652,
+          1.1893034472804218,
+          1.002224746567367
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5662518453624923,
+      "clearance_m": 0.2894331025567637,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999520770557423,
+        1.1999921107378644,
+        0.9998479506364158
+      ],
+      "mock_velocity_m_s": [
+        0.000908842495845968,
+        0.19998678678513912,
+        -0.0021116620641209965
+      ]
+    },
+    {
+      "t": 2.6,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 32,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.6,
+          "exposure_s": 2.6,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.00036963492925724687,
+            -0.9999999091983911,
+            0.0002120689228094308,
+            0.9990985612403573
+          ],
+          [
+            0.9999999261653573,
+            0.00036965720057975063,
+            0.00010498968261471521,
+            1.2003023833645474
+          ],
+          [
+            -0.00010506806588581883,
+            0.00021203009929749177,
+            0.9999999720019687,
+            1.0000958533453734
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024375172770630508,
+        "reprojection_px": 0.015435229196666133,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9990985612403573,
+          1.2003023833645474,
+          1.0000958533453734
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5662823388353828,
+      "clearance_m": 0.2893751727706305,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999972167768421,
+        1.2099920077056725,
+        0.9998431507615154
+      ],
+      "mock_velocity_m_s": [
+        0.0009027944219956312,
+        0.19999793935616436,
+        -9.599749800758318e-05
+      ]
+    },
+    {
+      "t": 2.6500000000000004,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 33,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.6500000000000004,
+          "exposure_s": 2.6500000000000004,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0013657576871634574,
+            -0.9999990149536535,
+            -0.000323724671417608,
+            1.002621781304908
+          ],
+          [
+            0.9999987206806843,
+            -0.0013654875851031923,
+            -0.0008331150278153805,
+            1.2104366275746272
+          ],
+          [
+            0.0008326721651386536,
+            -0.0003248620905239132,
+            0.999999600560764,
+            0.998409982791499
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02439643277962534,
+        "reprojection_px": 0.027615920509764955,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.002621781304908,
+          1.2104366275746272,
+          0.998409982791499
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5846260773431642,
+      "clearance_m": 0.28939643277962535,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998589285434434,
+        1.219990699755514,
+        0.9999270176616362
+      ],
+      "mock_velocity_m_s": [
+        -0.0027657646679743663,
+        0.19997384099683402,
+        0.0016773380024149645
+      ]
+    },
+    {
+      "t": 2.7,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 34,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 2.7,
+          "exposure_s": 2.7,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0004148449783563144,
+            -0.9999999132801336,
+            3.6652006103232503e-05,
+            1.000658699392318
+          ],
+          [
+            0.99999890315602,
+            -0.00041479244595406565,
+            0.001421841757592809,
+            1.2190006316972468
+          ],
+          [
+            -0.001421826431315621,
+            3.7241809814854936e-05,
+            0.9999989885108119,
+            1.0024359968095453
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024406354242021113,
+        "reprojection_px": 0.03716142608016496,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.000658699392318,
+          1.2190006316972468,
+          1.0024359968095453
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5744355465920228,
+      "clearance_m": 0.2894063542420211,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        -0.0007277764442708081,
+        0.19998056505724662,
+        -0.0026914570090414637
+      ]
+    },
+    {
+      "t": 2.75,
+      "available": true,
+      "status": "No surveyed tags visible",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": null,
+      "pose_age_s": null,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 2.8,
+      "available": true,
+      "status": "No surveyed tags visible",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": null,
+      "pose_age_s": null,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 2.85,
+      "available": true,
+      "status": "No surveyed tags visible",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": null,
+      "pose_age_s": null,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 2.9000000000000004,
+      "available": true,
+      "status": "No surveyed tags visible",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": null,
+      "pose_age_s": null,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 2.95,
+      "available": true,
+      "status": "acquiring",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": null,
+      "pose_age_s": null,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 3.0,
+      "available": true,
+      "status": "acquiring",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": null,
+      "pose_age_s": null,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 3.0500000000000003,
+      "available": true,
+      "status": "valid; restore guidance deliberately",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 41,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.0500000000000003,
+          "exposure_s": 3.0500000000000003,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.000554093229677153,
+            -0.9999998454802861,
+            4.494548273033239e-05,
+            1.0008028186552216
+          ],
+          [
+            0.9999997248342158,
+            -0.0005541153318321414,
+            -0.0004932420211590051,
+            1.2306429161946586
+          ],
+          [
+            0.0004932668499244667,
+            4.4672168298356854e-05,
+            0.9999998773460985,
+            0.9989980734066429
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024370967123176938,
+        "reprojection_px": 0.034821465574961796,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 3.1,
+      "available": true,
+      "status": "valid; restore guidance deliberately",
+      "guidance_enabled": false,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 42,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.1,
+          "exposure_s": 3.1,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0003322762948772874,
+            -0.9999998988006156,
+            -0.00030330054690006674,
+            1.0005702832226786
+          ],
+          [
+            0.9999995214847213,
+            -0.0003325552121936383,
+            0.0009200203036366378,
+            1.2295871770256364
+          ],
+          [
+            -0.0009201210747088825,
+            -0.00030299470082841684,
+            0.9999995307855993,
+            1.0013171919204285
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02440086301276636,
+        "reprojection_px": 0.042947889637307494,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [],
+      "next_waypoint": null,
+      "bearing_rad": null,
+      "clearance_m": null,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998225397212298,
+        1.2299897280083765,
+        0.9997924448111841
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 3.15,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 43,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.15,
+          "exposure_s": 3.15,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0007805239624881827,
+            -0.9999996711965627,
+            0.00021997525018447922,
+            0.9983341725179673
+          ],
+          [
+            0.9999992377884638,
+            0.0007803131440377611,
+            -0.0009568353508879405,
+            1.2299153760181707
+          ],
+          [
+            0.0009566633866981062,
+            0.00022072191543632955,
+            0.9999995180383842,
+            0.9979041475042885
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02435968857439492,
+        "reprojection_px": 0.03088008054533618,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9983341725179673,
+          1.2299153760181707,
+          0.9979041475042885
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5610025301453427,
+      "clearance_m": 0.28935968857439487,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999204686881968,
+        1.2399884894066424,
+        0.999915653650055
+      ],
+      "mock_velocity_m_s": [
+        0.001958579339340932,
+        0.19997522796531864,
+        0.002464176777416238
+      ]
+    },
+    {
+      "t": 3.2,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 44,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.2,
+          "exposure_s": 3.2,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.0008228028967238619,
+            -0.9999996086876144,
+            0.0003249923255286216,
+            0.9983216931843685
+          ],
+          [
+            0.9999987161032454,
+            0.000822355191473387,
+            -0.001375326797490212,
+            1.2403768504440527
+          ],
+          [
+            0.0013750590001817141,
+            0.0003261235311449463,
+            0.9999990014275958,
+            0.9974578455133015
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024294118060879392,
+        "reprojection_px": 0.019398672622468013,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9983216931843685,
+          1.2403768504440527,
+          0.9974578455133015
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.560282532399134,
+      "clearance_m": 0.28929411806087935,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000255913660092,
+        1.2499866689801646,
+        1.0000748844203557
+      ],
+      "mock_velocity_m_s": [
+        0.002102453556245497,
+        0.19996359147044643,
+        0.003184615406017699
+      ]
+    },
+    {
+      "t": 3.25,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 45,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.25,
+          "exposure_s": 3.25,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.00025185634954198705,
+            -0.999999963925028,
+            9.33719569502817e-05,
+            0.9996016186154099
+          ],
+          [
+            0.9999999270918047,
+            0.00025182953775190737,
+            -0.0002870509873281423,
+            1.250358099250482
+          ],
+          [
+            0.00028702746315602815,
+            9.344424575650168e-05,
+            0.9999999544417033,
+            0.9997238082063167
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024277091888500215,
+        "reprojection_px": 0.022086902009257416,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9996016186154099,
+          1.250358099250482,
+          0.9997238082063167
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5681341015663621,
+      "clearance_m": 0.28927709188850026,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000522135415026,
+        1.259986616510431,
+        1.000093341172317
+      ],
+      "mock_velocity_m_s": [
+        0.000532443509870223,
+        0.199998950605326,
+        0.0003691350392222622
+      ]
+    },
+    {
+      "t": 3.3000000000000003,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 46,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.3000000000000003,
+          "exposure_s": 3.3000000000000003,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.00022067181599892585,
+            -0.9999999542281894,
+            0.00020699654205887514,
+            0.9994706249835787
+          ],
+          [
+            0.9999998962412427,
+            0.00022058930063424518,
+            -0.0003985697731872607,
+            1.2602594847407735
+          ],
+          [
+            0.0003985240937215541,
+            0.00020708447369682272,
+            0.9999998991472786,
+            0.9994110234134707
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024292443349615056,
+        "reprojection_px": 0.03341878446206549,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9994706249835787,
+          1.2602594847407735,
+          0.9994110234134707
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5670080733802931,
+      "clearance_m": 0.289292443349615,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.00009009564857,
+        1.2699864559371212,
+        1.0001354883712195
+      ],
+      "mock_velocity_m_s": [
+        0.0007576421413494851,
+        0.199996788533805,
+        0.0008429439780507335
+      ]
+    },
+    {
+      "t": 3.35,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 47,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.35,
+          "exposure_s": 3.35,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -9.874705236341193e-05,
+            -0.999999993005938,
+            -6.509334798474673e-05,
+            1.0002919429806436
+          ],
+          [
+            0.9999997850324914,
+            -9.870483685775614e-05,
+            -0.0006482224359638585,
+            1.2706113005392943
+          ],
+          [
+            0.0006482160064018571,
+            -6.515734404661913e-05,
+            0.9999997877852423,
+            0.9990697379651013
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02426760096693864,
+        "reprojection_px": 0.03356048359665487,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0002919429806436,
+          1.2706113005392943,
+          0.9990697379651013
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5730526481462541,
+      "clearance_m": 0.2892676009669386,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        1.0000675330373368,
+        1.2799861720374304,
+        1.0002073830288414
+      ],
+      "mock_velocity_m_s": [
+        -0.00045125222466599,
+        0.19999432200618072,
+        0.0014378931524398509
+      ]
+    },
+    {
+      "t": 3.4000000000000004,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 48,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.4000000000000004,
+          "exposure_s": 3.4000000000000004,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.0007936579431668293,
+            -0.9999996269537759,
+            -0.00034088029890665746,
+            1.001616903944608
+          ],
+          [
+            0.9999996797227387,
+            -0.0007936226953820086,
+            -0.00010352505642420438,
+            1.2799349665190085
+          ],
+          [
+            0.00010325448746295205,
+            -0.00034096235321379675,
+            0.9999999365415903,
+            0.9999627337438313
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02424818348221911,
+        "reprojection_px": 0.034592732492029835,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.001616903944608,
+          1.2799349665190085,
+          0.9999627337438313
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5842624139854828,
+      "clearance_m": 0.28924818348221915,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999328762416786,
+        1.2899852648920505,
+        1.0002104865865131
+      ],
+      "mock_velocity_m_s": [
+        -0.002693135913162485,
+        0.19998185709240013,
+        6.207115343606057e-05
+      ]
+    },
+    {
+      "t": 3.45,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 49,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.45,
+          "exposure_s": 3.45,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            4.4780444225721395e-05,
+            -0.9999999984857693,
+            -3.198708603446874e-05,
+            0.9999289530115955
+          ],
+          [
+            0.9999985365521198,
+            4.483508400381264e-05,
+            -0.0017102290589336947,
+            1.2907876878285216
+          ],
+          [
+            0.0017102304904877024,
+            -3.19104544060487e-05,
+            0.9999985370456261,
+            0.997240961366781
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02422189126319657,
+        "reprojection_px": 0.03434458359291072,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9999289530115955,
+          1.2907876878285216,
+          0.997240961366781
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5701457867873692,
+      "clearance_m": 0.28922189126319653,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999393795663417,
+        1.2999820731904033,
+        1.0004630366859995
+      ],
+      "mock_velocity_m_s": [
+        0.00013006649326137318,
+        0.19993616596705838,
+        0.005051001989726831
+      ]
+    },
+    {
+      "t": 3.5,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 50,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.5,
+          "exposure_s": 3.5,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.00019409807391148947,
+            -0.9999999811456735,
+            -5.881361330569096e-06,
+            0.9995787496762212
+          ],
+          [
+            0.9999998782625261,
+            0.0001941007220315408,
+            -0.00045365167555485756,
+            1.3002521864568657
+          ],
+          [
+            0.0004536528085780415,
+            -5.793307698135082e-06,
+            0.9999998970827781,
+            0.9996669952607512
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024205692420344142,
+        "reprojection_px": 0.03690673722752337,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9995787496762212,
+          1.3002521864568657,
+          0.9996669952607512
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5665731984424465,
+      "clearance_m": 0.2892056924203441,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999816104890006,
+        1.3099819282916323,
+        1.0004964208677898
+      ],
+      "mock_velocity_m_s": [
+        0.0008446184531779148,
+        0.19999710202458196,
+        0.0006676836358063261
+      ]
+    },
+    {
+      "t": 3.5500000000000003,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 51,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.5500000000000003,
+          "exposure_s": 3.5500000000000003,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.000551771102065272,
+            -0.9999998306746346,
+            -0.000184930670247828,
+            1.001027408186699
+          ],
+          [
+            0.9999998179495158,
+            -0.0005517259100526725,
+            -0.0002443347203243639,
+            1.310235596266091
+          ],
+          [
+            0.000244232647909959,
+            -0.00018506545341901616,
+            0.9999999530505947,
+            1.0001282814580075
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02417205950885538,
+        "reprojection_px": 0.034229589314168606,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.001027408186699,
+          1.310235596266091,
+          1.0001282814580075
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5822414351377718,
+      "clearance_m": 0.2891720595088554,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998671620210766,
+        1.3199812631367802,
+        1.000482130913201
+      ],
+      "mock_velocity_m_s": [
+        -0.0022889693584782567,
+        0.19998669690295676,
+        -0.00028579909177426824
+      ]
+    },
+    {
+      "t": 3.6,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 52,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.6,
+          "exposure_s": 3.6,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            6.930967920138856e-05,
+            -0.9999999970317152,
+            3.365617649808278e-05,
+            0.9997635662782146
+          ],
+          [
+            0.9999996865255268,
+            6.933620430484756e-05,
+            0.0007887593668306016,
+            1.319717445059601
+          ],
+          [
+            -0.0007887616980808688,
+            3.360149728904846e-05,
+            0.9999996883629129,
+            1.0018540404663647
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02411801341548552,
+        "reprojection_px": 0.02551351347545059,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9997635662782146,
+          1.319717445059601,
+          1.0018540404663647
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.56785131541075,
+      "clearance_m": 0.2891180134154855,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998966042422516,
+        1.3299785542219926,
+        1.0002512540777568
+      ],
+      "mock_velocity_m_s": [
+        0.0005888444234998388,
+        0.19994582170424827,
+        -0.00461753670888318
+      ]
+    },
+    {
+      "t": 3.6500000000000004,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 53,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.6500000000000004,
+          "exposure_s": 3.6500000000000004,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.00015403863546333053,
+            -0.9999999799479254,
+            -0.0001279697145061295,
+            1.0002572263273353
+          ],
+          [
+            0.9999999645400682,
+            -0.0001540108307959213,
+            -0.00021725682169157503,
+            1.3303646861616036
+          ],
+          [
+            0.00021723710861307723,
+            -0.0001280031759126906,
+            0.9999999682116124,
+            0.999924535847514
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024130217698412722,
+        "reprojection_px": 0.03672238217295691,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0002572263273353,
+          1.3303646861616036,
+          0.999924535847514
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5744902163348435,
+      "clearance_m": 0.28913021769841274,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9998596654525466,
+        1.339978480126011,
+        1.00026209104957
+      ],
+      "mock_velocity_m_s": [
+        -0.0007387757940992144,
+        0.19999851808036687,
+        0.0002167394362639983
+      ]
+    },
+    {
+      "t": 3.7,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 54,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.7,
+          "exposure_s": 3.7,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.00032738297683983827,
+            -0.9999999418031627,
+            -9.598988264171351e-05,
+            1.0004320470529
+          ],
+          [
+            0.9999997958390316,
+            -0.0003273302502086055,
+            -0.000548795774541644,
+            1.3402137787598423
+          ],
+          [
+            0.000548764322211163,
+            -9.61695294386727e-05,
+            0.999999844804558,
+            0.9993262730975406
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02407123907062725,
+        "reprojection_px": 0.026102857613042724,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0004320470529,
+          1.3402137787598423,
+          0.9993262730975406
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5780227332021952,
+      "clearance_m": 0.28907123907062726,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9997874066050702,
+        1.3499775841883739,
+        1.000374770280128
+      ],
+      "mock_velocity_m_s": [
+        -0.0014451769495285147,
+        0.19998208124725803,
+        0.0022535846111577744
+      ]
+    },
+    {
+      "t": 3.75,
+      "available": true,
+      "status": "advisory route",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 55,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.75,
+          "exposure_s": 3.75,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            0.00033987905049030694,
+            -0.999999940225384,
+            6.349377326268682e-05,
+            0.9991452697468444
+          ],
+          [
+            0.9999999367544069,
+            0.00033988569917171326,
+            0.00010473248603193944,
+            1.3499649030493681
+          ],
+          [
+            -0.00010475406039711375,
+            6.345817286907747e-05,
+            0.9999999924998234,
+            1.000569613648967
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.024041355629156092,
+        "reprojection_px": 0.02453292000359992,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          0.9991452697468444,
+          1.3499649030493681,
+          1.000569613648967
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5537153740525462,
+      "clearance_m": 0.2890413556291561,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999581967629716,
+        1.359975477766216,
+        1.0002609514411542
+      ],
+      "mock_velocity_m_s": [
+        0.0034158031580287587,
+        0.19995787155684439,
+        -0.0022763767794744673
+      ]
+    },
+    {
+      "t": 3.8000000000000003,
+      "available": true,
+      "status": "goal reached",
+      "guidance_enabled": true,
+      "control_authority": "advisory_only",
+      "authority_text": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "physical_output": false,
+      "pose": {
+        "sequence": 56,
+        "bundle_id": "EXAMPLE-corner-v1",
+        "map_id": "EXAMPLE-room",
+        "map_version": 1,
+        "frame_id": "example_world",
+        "calibration_id": "EXAMPLE-camera-v1",
+        "source": "synthetic_estimate",
+        "timing": {
+          "host_received_s": 3.8000000000000003,
+          "exposure_s": 3.8000000000000003,
+          "provenance": "synthetic",
+          "delay_bound_s": null
+        },
+        "map_from_aircraft": [
+          [
+            -0.00044520827258667426,
+            -0.999999887779394,
+            0.00016195923213945562,
+            1.0006827476830833
+          ],
+          [
+            0.9999996772363264,
+            -0.0004450998459841698,
+            0.0006688896544538797,
+            1.35934400874212
+          ],
+          [
+            -0.0006688174913613965,
+            0.00016225697507250942,
+            0.9999997631778905,
+            1.0012809794940172
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "uncertainty_m": 0.02402711378384137,
+        "reprojection_px": 0.027262422695002335,
+        "ambiguity_gap_px": 1000000.0,
+        "tag_ids": [
+          0,
+          1
+        ]
+      },
+      "pose_age_s": 0.0,
+      "route": [
+        [
+          1.0006827476830833,
+          1.35934400874212,
+          1.0012809794940172
+        ],
+        [
+          1.0,
+          1.4,
+          1.0
+        ]
+      ],
+      "next_waypoint": [
+        1.0,
+        1.4,
+        1.0
+      ],
+      "bearing_rad": 1.5875880342714201,
+      "clearance_m": 0.2890271137838414,
+      "map_id": "EXAMPLE-room",
+      "map_version": 1,
+      "example": true,
+      "simulation_truth_position_m": [
+        0.9999581967629716,
+        1.359975477766216,
+        1.0002609514411542
+      ],
+      "mock_velocity_m_s": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "source_bundle_sha256": "2f5e6e8b9af9be6e0c5c8a5053cf05fd3d031389aaabe5b424876b44b95e1302"
+}

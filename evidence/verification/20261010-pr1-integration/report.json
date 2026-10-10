@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "merge_base": "933388a784c2ab53628f9303afd2a4fd36ad065d",
+  "destination_sha": "c1a1d9ab23626530911cf93eabfe63ae0dd631c9",
+  "contributor_sha": "5927824a588272e800fcfa65d36a0f069ca1f12e",
+  "merged_tracked_files": 2374,
+  "destination_changes_preserved": 355,
+  "contributor_changes_preserved": 416,
+  "conflicts_resolved_retaining_both_histories": [
+    "docs/README.md",
+    "docs/decisions.md"
+  ],
+  "files_missing": [],
+  "unexpected_changes": [],
+  "limits": [
+    "Git object identity check; no physical CAD or device validation."
+  ],
+  "additional_documentation": "docs/15-verification.md: contributor text preserved exactly with a new integration verification section"
+}

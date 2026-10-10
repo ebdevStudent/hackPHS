@@ -1,0 +1,20 @@
+{
+  "environment": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    "offline local assets and synthetic preview",
+    "operator token and stable acquisition",
+    "sandbox source/settings/bridge isolation",
+    "local replay event timeline remains isolated",
+    "recorded badge and normal EOF disable",
+    "target loss visible and neutral",
+    "frozen input visible fault",
+    "bridge disconnect and recovery stays disabled",
+    "stream disconnect and browser reconnection stays disabled",
+    "server restart new MANUAL session",
+    "phone layout no horizontal overflow"
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "pass": true,
+  "offline_scope": "Browser external requests blocked; localhost remains accessible. Mac networking was not changed."
+}

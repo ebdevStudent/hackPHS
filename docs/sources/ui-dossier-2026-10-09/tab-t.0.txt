@@ -1,0 +1,646 @@
+Universal UI Reference Library and Design Principles Dossier
+A reusable corpus of shipping interfaces, interaction patterns, implementation ranges, and critical design lessons
+Research edition • 9 September 2026 • Companion index contains 33 filterable references
+Purpose
+This dossier answers a practical question: what does excellent interface design look like when it has to survive real data, real permissions, real latency, small windows, touch input, keyboard use, and irreversible actions? The references favor shipping products and official documentation. Marketing images are used only when they show a specific, plausible product state. Historical material is labeled rather than quietly presented as current.
+Use the document to choose patterns and rules. Use the companion index to filter by platform, interaction, component, evidence strength, or currentness, and to revisit the original screen, video, or documentation.
+Contents
+• A  Executive summary
+• B  Reference library by interaction category
+• C  Best-in-class shortlist
+• D  Reusable visual rules and implementation ranges
+• E  Motion rules
+• F  Desktop-specific lessons
+• G  Mobile-specific lessons
+• H  Google-esque design lessons
+• I  Vibecoded UI anti-pattern checklist
+• J  Reference index usage
+• K  Folder and tag structure
+• Appendix  Reference cards and sources
+A  Executive summary
+Excellent UI concentrates visual and behavioral emphasis at the current decision. Merely competent UI often has consistent components but gives too many things equal weight. The strongest references in this corpus repeatedly do seven things.
+1  They spend hierarchy, not decoration.  Raycast spends contrast on the query and selection; Linear spends it on priority and unread state; Stripe spends it on the order, fields, and final commitment. None needs a card around every section. [1][3][12]
+2  They make interaction state local.  Notion anchors block actions to the block, Superhuman attaches a follow-up chooser to sending, and Google Photos keeps edit history beside the edited image. The control appears where its consequence is visible. [9][11][21]
+3  They keep a stable spatial model.  VS Code overlays commands without replacing the editor, GitHub keeps the repository behind its palette, and Google Maps lets a sheet expand over persistent geography. Context survives transient work. [5][10][20]
+4  They distinguish input modes.  Figma exposes keyboard focus in place, Things adds direct-manipulation gestures without removing tap paths, and iPadOS changes navigation presentation as width and pointer precision change. [8][16][29]
+5  They show the real status of work.  GNOME uses determinate progress only when progress can be measured; Pixel Recorder shows elapsed time, live output, and unambiguous Pause and Stop; Live Activities carry meaningful background state outside the app. [14][22][30]
+6  They reserve interruption for consequence.  GNOME names the file and destructive verb; Android’s system prompt offers a one-time permission; Stripe keeps the order visible through payment. Confirmation is proportional to risk. [13][28][12]
+7  They treat restraint as active editing.  Bear, iA Writer, and Things remove chrome only after investing in measure, baseline, focus, hit areas, shortcuts, and state feedback. Minimalism without those details is merely missing UI. [17][19][15]
+The practical standard
+• One dominant task per surface; one obvious primary action per decision.
+• Stable alignment rails across rows, forms, and panels.
+• Contextual controls that appear through hover, focus, selection, gesture, or direct manipulation.
+• Keyboard paths that mirror pointer paths and expose shortcuts while the user works.
+• Real empty, loading, success, failure, permission, and recovery states—not decorative placeholders.
+• Motion that explains origin, destination, continuity, or status and disappears under reduced motion.
+• System conventions preserved where they buy trust, accessibility, or learned behavior.
+B  Reference library by interaction category
+B1  Contextual and transient UI
+The best transient surfaces are small because the underlying context does most of the explanatory work. Raycast’s Action Panel binds commands to the selected object, keeps the primary action first, groups the rest, and aligns shortcuts to a right rail. Notion offers three context-sensitive paths into the same block model: hover handles for pointer users, slash insertion for keyboard flow, and a toolbar above the mobile keyboard. Superhuman’s reminder chooser appears at send time and offers presets before custom scheduling. Google Maps preserves the map beneath its planning sheet. [2][9][11][20]
+• Popover: use for a reversible local choice anchored to a control or selected object.
+• Compact inspector: use when values must remain visible while the user manipulates the object.
+• Sheet: use when context should remain visible but the task needs more vertical room or several detents.
+• Modal: use when proceeding elsewhere would create ambiguity or risk.
+• Toast with undo: use for completed, low-risk, reversible actions.
+• Inline confirmation: use when the action can be resolved in the same row without blocking unrelated work.
+Do not let transient UI become a second application. If a popover gains deep navigation, a form with several validation states, or a long-lived draft, promote it to a panel or page. If dismissing would lose entered work, warn or preserve the draft.
+B2  Command palettes and keyboard-first interfaces
+Raycast is the strongest general-purpose reference because query, ranking, primary action, alternate actions, and shortcuts share one consistent shell. VS Code is stronger for mode-rich professional software: the palette, Quick Open, symbols, and settings use related behavior while retaining the editor. GitHub adds explicit repository scope and visible entity prefixes. Figma filters commands by canvas selection so a global surface remains context-aware. Things shows the opposite extreme: type-to-navigate without a visible launcher until input begins. [1][2][5][7][10][15]
+Observed implementation envelope  Compact desktop command surfaces in this set commonly fit a 560–720 px-wide window, a 44–52 px query row, 36–44 px result rows, 16–20 px icons, 12–16 px horizontal row padding, and 6–10 visible results before scrolling. These are measured design ranges, not vendor specifications.
+• Focus the query immediately and keep the active scope legible.
+• Use one selected row with a flat fill; avoid a card around every result.
+• Place icon, primary label, metadata, and shortcut on fixed rails.
+• Keep Enter, arrows, Escape, and alternate-open behavior identical across modes.
+• Show recent or frequent actions before an empty list.
+• Flatten groups when filtering, but preserve enough metadata to disambiguate.
+• Teach advanced grammar through the empty state and placeholder, not a separate manual.
+Failure mode: a command palette with weak ranking turns recognition into recall. If users must know the exact feature name, the surface is a search box over the organization chart, not a useful command system.
+B3  Typography-led interfaces
+Bear, iA Writer, Craft, Things, and Linear show five different ways type can carry an interface. Bear uses a writing-first measure and syntax color. iA Writer uses focus attenuation and a stable reading column. Craft uses editorial spacing and restrained metadata within documents. Things uses friendly type and spatial grouping to keep tasks from feeling like database rows. Linear uses compact type, muted metadata, and exact baselines to make dense operational data calm. [3][15][17][18][19]
+• Use 60–75 characters per line for sustained reading and writing.
+• On compact desktop product surfaces, 13–15 px body text with 18–22 px line height is a sound starting range.
+• Use 11–13 px labels only for genuinely secondary metadata, with strong contrast and short line length.
+• Use weight and space before adding a container. A 16 px gap between groups often communicates more cleanly than a border.
+• Keep authored content darker or more saturated than the editor chrome.
+• Limit routine interface typography to three or four roles: body, secondary, label, and heading. Add display sizes only when content warrants them.
+B4  Forms and settings
+Stripe Checkout, Google Calendar, macOS System Settings, Raycast Settings, and GNOME illustrate a common rule: fields should read as a decision sequence, not a gallery of components. Stripe separates order from payment; Calendar keeps the day nearby; macOS aligns app names and permission toggles; GNOME keeps confirmation language specific. [12][13][23][31]
+• Place labels above fields or in a stable leading column; do not rely on placeholder-only labels.
+• Group fields by intent and consequence. Use 20–32 px between groups and 8–12 px between label, field, and help text.
+• Keep a consistent trailing rail for toggles, values, and status.
+• Use help text before risky choices and validation beside the affected field.
+• Separate destructive account actions from ordinary preferences with space, heading, and consequence text—not a theatrical red card.
+• Keep the commit action visible after validation errors and preserve all entered values.
+B5  Navigation systems
+Dia, Superhuman, Google Maps, Google Keep, iPadOS, and Google Chat cover persistent sidebars, multi-pane workspaces, sheet-based navigation, content grids, and adaptive tab/sidebar behavior. The shared quality is continuity: selection, route, and content remain recognizable while the presentation changes. [6][11][20][25][29][32]
+• Use a sidebar when labels, nesting, and frequent switching matter.
+• Use tabs for a small set of peer destinations, not an arbitrarily growing hierarchy.
+• Use bottom navigation for three to five high-frequency mobile destinations.
+• Use breadcrumbs when the path itself helps orientation or supports jumping upward.
+• Use search-first navigation when the item set is large, users know names, and ranking can be good.
+• At responsive breakpoints, change presentation without changing route identity or resetting work.
+B6  Loading and progress
+Loading treatment should respond to elapsed time and certainty. The thresholds below are implementation heuristics synthesized from platform guidance and the reference behavior; they are not universal constants. GNOME, Android progress guidance, Pixel Recorder, and Apple Live Activities provide the clearest models. [14][22][30][39]
+Under 300 ms  Do not flash a spinner. Use immediate pressed feedback and complete the transition.
+300 ms to 1 s  Preserve layout. Use an inline busy mark, content placeholder, or delayed spinner only if the user needs reassurance.
+1 to 3 s  Show an indeterminate indicator with a concrete status phrase. Avoid blocking the whole screen unless the result is prerequisite.
+3 to 10 s  Use determinate progress when the denominator is credible; otherwise show the active phase. Offer Cancel when safe.
+Over 10 s  Support backgrounding, notification on completion, persistence across navigation, and a recoverable failure state. Show elapsed or estimated time only when it is trustworthy.
+Skeletons are useful only when the final structure is stable. A shimmering fake layout that then jumps to different geometry creates two loading events. Reserve skeleton motion for the region still resolving, not the entire application.
+B7  Confirmations and permissions
+The most polished confirmation is often undo. Use a modal when the action is consequential, difficult to reverse, affects another person or account, or requires a clear consent boundary. GNOME’s Replace File dialog, Gmail’s unsubscribe confirmation, Android’s one-time permission, Calendar’s invitation effects, and Stripe’s final payment action show different levels of friction. [12][13][23][24][28]
+• Low risk and reversible: perform, then offer Undo.
+• Meaningful but local: inline confirmation or two-step control.
+• Irreversible or remote: modal with named object and specific verb.
+• Permission: explain the benefit in context, then invoke the genuine system prompt.
+• Payment or send: keep amount, recipient, or audience visible at commitment.
+• Failure: explain what succeeded, what did not, and whether retry duplicates work.
+B8  Mobile interface references
+The strongest mobile references do not scale down desktop layouts. Google Maps layers a draggable sheet over geography; Google Photos enters an immersive edit mode; Pixel Recorder uses the screen for current status and reachable transport controls; Calendar preserves temporal context around a compact form; Apple Journal separates source selection from publishing; Niagara turns edge motion into alphabetic navigation; Things lets users drag creation to an exact list position. [16][20][21][22][23][26][27]
+B9  Desktop interface references
+Desktop quality comes from precision, continuity, and alternate input paths. Raycast, VS Code, Figma, Linear, Dia, Bear, macOS Settings, and GNOME exploit hover, pointer precision, keyboard focus, multi-pane layouts, toolbars, context menus, and transient windows. Their density works because baselines and rails are stable and because secondary commands do not occupy permanent space. [1][3][5][6][8][13][17][31]
+B10  Motion and micro-interactions
+Things uses motion to explain insertion and reordering. Apple Live Activities morph between compact and expanded states while preserving essential values. Linear shows revisions in place rather than replacing the document. Notion uses insertion guides and object-local menus to connect cause and destination. These patterns move state, not decoration. [4][9][16][30]
+C  Best-in-class shortlist
+The following 20 references are the strongest overall. Rank reflects transferability, interaction evidence, implementation realism, and distinctiveness rather than fame.
+• 1  Raycast Action Panel — complete contextual action model and shortcut teaching. [2]
+• 2  Linear Priority Inbox — exceptional dense hierarchy without card inflation. [3]
+• 3  VS Code Command Palette — durable multimode keyboard shell. [5]
+• 4  Google Maps sheets and navigation — context-preserving mobile layering. [20]
+• 5  Stripe Checkout — calm, trustworthy form hierarchy under real consequence. [12]
+• 6  Notion block interactions — several input paths converging on one object model. [9]
+• 7  Figma keyboard and canvas focus — professional spatial interaction without a mouse. [8]
+• 8  Pixel Recorder live state — honest indefinite progress and unmistakable controls. [22]
+• 9  GNOME alert dialog — consequence-specific confirmation with restraint. [13]
+• 10  Things Magic Plus and Jump Start — direct manipulation and parsed natural language. [16]
+• 11  GitHub Command Palette — strong scope and entity-mode teaching. [10]
+• 12  Google Photos focused editor — artifact-first editing with reversible commitment. [21]
+• 13  iPadOS adaptive tab/sidebar navigation — width-driven adaptation with continuity. [29]
+• 14  Superhuman Split Inbox — readable density and three-pane triage. [11]
+• 15  Bear editor and search — typography-led, system-native writing. [17]
+• 16  Niagara Wave Alphabet — distinctive, ergonomic mobile navigation. [27]
+• 17  Apple Live Activities — background status that changes size with information. [30]
+• 18  Linear agent-assisted editing — reviewable AI changes bound to source context. [4]
+• 19  Google Calendar event creation — form sequence that preserves schedule context. [23]
+• 20  macOS permission settings — durable, inspectable user control. [31]
+D  Reusable visual rules
+D1  Spacing system
+Use a 4 px base with an 8 px default rhythm. Carbon’s published scale—2, 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, and 160 px—is a useful completeness check, but most products should expose fewer tokens. [34]
+• 2–4 px: optical correction, icon/text tuning, hairline separation.
+• 6–8 px: icon-to-label, tight inline metadata, compact control internals.
+• 10–12 px: compact row vertical padding or control inset.
+• 16 px: default mobile edge inset and common desktop panel padding.
+• 20–24 px: form groups, panel sections, dialog interior.
+• 32–48 px: separation between major page sections.
+• 48–80 px: reading-canvas or marketing-scale whitespace, not routine application rows.
+• Desktop outer padding: 16–24 px for dense utilities; 24–40 px for standard product pages; 48–64 px for focused reading canvases.
+• Mobile horizontal padding: usually 16–20 pt/dp; maintain safe-area spacing independently.
+• Do not use equal gaps everywhere. Smaller gaps bind label to value; larger gaps separate groups.
+D2  Density and row geometry
+• Compact desktop menu or result row: 32–40 px; use 36–44 px when subtitles or mixed icons appear.
+• Standard desktop list row: 40–52 px; 52–64 px for two-line content.
+• Touch list row: 48–60 dp/pt minimum in practice; preserve at least a 44 pt iOS or 48 dp Android hit area. [36][37]
+• Command search field: 44–52 px tall; persistent app search can be 40–48 px desktop or 48–56 dp mobile.
+• Desktop icon: 16–20 px; mobile icon: 20–24 dp/pt. Keep the hit target larger than the glyph.
+• Avatar: 24–32 px compact desktop, 32–40 px standard lists, 40–48 dp touch-first identity rows.
+• Use one density per region. A compact sidebar can sit beside a spacious reading canvas, but do not alternate row heights arbitrarily inside a list.
+D3  Typography
+Carbon’s productive type set starts at 14 px and its expressive set at 16 px. The reference corpus supports a similar split between dense tools and reading surfaces. [35]
+• Desktop productive body: 13–15 px with 18–22 px line height.
+• Mobile body: about 16–17 pt/sp with 21–24 pt/sp line height.
+• Helper or metadata: 11–13 px desktop, 12–14 pt/sp mobile; never let secondary mean illegible.
+• Compact section heading: body size or +1 px, medium or semibold, with additional space above.
+• Page heading: 24–32 px desktop; 22–28 pt mobile. Use size jumps sparingly.
+• Long-form measure: 60–75 characters. Form and setting text can run wider because it is scanned in chunks.
+• Prefer sentence case. Use all caps only for very short, rare, highly structural labels.
+• Tabular numbers for times, counters, and changing metrics prevent jitter.
+D4  Surfaces, borders, radius, and elevation
+• Default page background plus one raised surface is usually enough. Do not create a new surface for every group.
+• Use 1 px low-contrast dividers where scanning needs a rail. Replace unnecessary dividers with 8–24 px of space.
+• Choose two or three radii: 4–6 px for compact controls, 8–12 px for popovers and cards, 16–24 px for mobile sheets or large modals.
+• Nested radii should look concentric: inner radius is approximately outer radius minus the inset.
+• Use shadows to establish overlap, not to make every component look premium. A border plus subtle shadow often beats a large blur.
+• Dim backgrounds only for true modality. Popovers normally need local elevation without a full-screen scrim.
+D5  Interaction states
+• Hover: modest fill or tint change; do not move geometry.
+• Focus: visible 2 px outline or equivalent high-contrast treatment, outside the control when possible.
+• Pressed: immediate tonal or scale feedback; return within roughly 70–120 ms.
+• Selected: persistent fill, marker, or type treatment that survives pointer departure.
+• Disabled: lower emphasis but retain legibility; explain unavailable consequential actions.
+• Loading: preserve label and width where possible; a spinner should not erase the action’s meaning.
+• Error: show local message and recovery action; do not rely on a red border alone.
+• Success: confirm completion at the scale of the task; avoid celebratory animation for routine saves.
+D6  Modal, popover, panel, or page decision
+• Popover when the task is anchored, brief, reversible, and dismissible.
+• Panel when the user must compare the transient task with persistent content.
+• Modal when leaving the decision unresolved creates risk or ambiguity.
+• Page when the task has deep navigation, long-lived state, extensive validation, or a shareable URL.
+• Bottom sheet when mobile context should remain visible and the task benefits from drag, detents, or reachability. [38]
+D7  Hierarchy heuristic
+At any pause point, blur the screen mentally. The dominant mass should correspond to the next decision or the content being manipulated. If five colored cards, several equal headings, and multiple primary buttons survive the blur, the hierarchy is unresolved. Reduce channels in this order: decorative color, shadow, borders, containers, icon backgrounds, duplicated labels. Then strengthen the one primary element with position, size, or contrast.
+E  Motion rules
+Carbon provides a useful implementation baseline: 70 ms for button and toggle micro-interactions, 110 ms for fades, 150 ms for small expansion or short travel, 240 ms for expansion and toasts, 400 ms for large expansion or important notification, and 700 ms for background dimming. Carbon also recommends roughly 90–120 ms for common micro-interactions and longer duration for larger distance or size change. [33]
+• Pressed and hover feedback: 70–120 ms.
+• Small menu, tooltip, or local popover: 120–180 ms.
+• Sheet, inspector, or medium panel: 180–280 ms.
+• Large layout morph or full-screen navigation: 240–420 ms.
+• Background scrim: may trail content and take 300–500 ms; avoid delaying interactivity.
+• Use entrance easing for arriving elements, exit easing for elements leaving permanently, and standard easing when an element remains conceptually nearby.
+• Productive standard curve: cubic-bezier(0.2, 0, 0.38, 0.9). Productive entrance: cubic-bezier(0, 0, 0.38, 0.9). Productive exit: cubic-bezier(0.2, 0, 1, 0.9). [33]
+• Animate opacity and transform when possible. Animate height only when the changing boundary itself carries meaning.
+• Preserve at least one continuous element across a large transition: title, selected object, image, route, or position.
+• For list reordering, animate the moved row and use restrained fades for displaced content; avoid crossing paths that obscure identity.
+• Success and failure should update the element that caused them. Do not launch unrelated confetti or full-screen animation for routine work.
+• Reduced motion: remove travel, parallax, spring overshoot, and repeated shimmer; use fades, instant state changes, and static status text.
+E1  Motion audit
+• What state changed?
+• Which object caused the change?
+• Where did the new element come from and where will it go?
+• Does motion preserve identity or merely attract attention?
+• Can the task be understood on the first and last frame?
+• Does reduced motion preserve the same information and controls?
+• Does the transition remain smooth under slow devices and interrupted input?
+F  Desktop-specific lessons
+• Exploit hover for preview and discovery, but reveal the same action on focus and in context menus.
+• Keep keyboard focus visible across sidebars, canvas, toolbars, lists, and transient windows.
+• Use menu bars and context menus for breadth; use toolbars for frequent visible actions; use command palettes for search and recall.
+• Allow pointer-dense visual controls to remain 28–36 px tall while maintaining accessible focus and hit behavior.
+• Use multi-pane layouts when simultaneous comparison matters. Preserve selection and scroll as panes collapse.
+• Treat window resize as a first-class state. Test narrow, standard, wide, maximized, and multi-window arrangements.
+• Place inspectors beside the object when persistent adjustment matters; use popovers for brief local choices.
+• Restore window, route, selection, and unfinished work when reopening a professional tool.
+• Do not apply mobile-sized whitespace to every desktop row. Density is a productivity feature when alignment and contrast are precise.
+• Honor platform-native shortcuts, menu placement, text selection, drag-and-drop, and permission flows.
+G  Mobile-specific lessons
+• Keep touch targets at least 44 pt on Apple platforms and 48 dp on Android, even when glyphs are smaller. [36][37]
+• Put high-frequency actions in reachable lower regions, but keep destructive or rare actions separated.
+• Use sheets to preserve context, not as a default container. Define collapsed, intermediate, expanded, dismissed, keyboard-open, and rotated states.
+• Provide a visible alternative for every gesture. Teach unusual gestures at the moment they become useful.
+• Use edge and system inset awareness for navigation, drag handles, floating buttons, and maps.
+• Preserve content position when the keyboard opens; do not hide the active field or commit action.
+• Bottom navigation suits three to five durable destinations. More destinations need hierarchy, search, or an overflow strategy.
+• Use haptics for a semantic boundary such as selection, commit, threshold, or error, synchronized with visible feedback. Do not use haptics as decoration.
+• Pull-to-refresh is appropriate when the list has a meaningful remote refresh. Show the updated state and avoid erasing locally cached content.
+• Test long labels, dynamic type, screen readers, reduced motion, dark mode, poor networks, denial, and one-handed reach.
+H  Google-esque design lessons
+High-quality Google interfaces are polished because several systems reinforce each other: readable type, familiar icons, strong baseline alignment, content-preserving surfaces, restrained brand color, and adaptive components. Calling this Material 3 is incomplete. Google Maps works because map, sheet, route, and controls form one spatial model. Calendar works because the form follows the sequence of scheduling decisions. Photos works because the artifact dominates during editing. Recorder works because status is redundant and honest. [20][21][22][23]
+What is genuinely good
+• Search is treated as navigation infrastructure rather than a decorative header field.
+• Primary information often sits on a neutral or content-colored plane; brand colors mark action, identity, or state.
+• Iconography uses consistent stroke, optical size, and familiar placement.
+• Surface hierarchy is shallow: background, working surface, transient surface, modal scrim.
+• Transitions preserve the source object or spatial context, especially in sheets and focused editors.
+• Components adapt by width and input model rather than merely scaling.
+• Forms use plain rows and grouping; settings use stable leading labels and trailing values.
+• Contextual actions appear beside the selected content and recede afterward.
+What becomes generic when copied mechanically
+• Large rounded search bars on screens where search is not the primary route.
+• Pastel surface containers around every content group.
+• Filled tonal buttons used at several equal levels.
+• Multicolor icons with no semantic relationship to the content.
+• Floating action buttons added because the kit provides one, not because creation deserves constant reach.
+• Bottom sheets used as general-purpose pages with too much hierarchy.
+• Material defaults shipped without density, type, color, and motion decisions specific to the product.
+How to capture the quality without cloning Google
+• Adopt the behavioral discipline: context preservation, honest state, strong rails, narrow surface hierarchy, and adaptive components.
+• Choose a product-specific type voice, radius set, and accent strategy.
+• Use your domain’s visual material—maps, code, documents, media, data—as the dominant texture.
+• Keep one family of icons and tune optical size rather than surrounding each icon with a colored chip.
+• Use motion to connect state and location, not to imitate a branded easing demo.
+• Prototype the ugly states early: denial, error, empty, slow, narrow, keyboard-open, and offline.
+I  Vibecoded UI anti-pattern checklist
+Generated interfaces usually look amateur because they assemble individually fashionable components without an information model. The following checklist compares common symptoms with the stronger references in this corpus.
+Card inflation
+Symptom  Every section sits in a rounded rectangle with shadow.
+Strong comparison  Linear and Bear use spacing, type, and rows until a real surface boundary is needed.
+Repair  Remove containers from related content. Add back only those that establish overlap, selection, or independent behavior.
+Pill inflation
+Symptom  Tabs, filters, statuses, labels, and buttons all become capsules.
+Strong comparison  Raycast and VS Code reserve compact chips for scope or shortcuts; most actions remain plain rows.
+Repair  Limit pills to a specific semantic class. Use text, rows, or checkmarks elsewhere.
+Arbitrary gradient
+Symptom  A purple-blue wash attempts to supply identity.
+Strong comparison  Stripe and Google use neutral structure and sparse semantic color.
+Repair  Start in grayscale. Add one accent role and one status palette only after hierarchy works.
+Radius drift
+Symptom  Inputs, cards, dialogs, and buttons each have unrelated curvature.
+Strong comparison  GNOME and Apple system surfaces use a small, coherent radius family.
+Repair  Choose two or three radii and verify nested concentric geometry.
+Shadow roulette
+Symptom  Every surface casts a different blur and opacity.
+Strong comparison  Strong transient UI uses elevation only where planes overlap.
+Repair  Define two elevations: transient and modal. Prefer border or contrast for static grouping.
+Equal visual weight
+Symptom  Several headings, cards, and CTAs compete.
+Strong comparison  Stripe keeps order, form, and final action clearly unequal.
+Repair  Name the next decision. Reduce contrast everywhere else before enlarging the primary.
+Weak baseline alignment
+Symptom  Icons, labels, values, and badges look individually centered but not optically aligned.
+Strong comparison  Linear and Superhuman use stable rails across dense rows.
+Repair  Overlay guides and align repeated roles; tune icon optical bounds separately.
+Cramped whitespace
+Symptom  Small gaps occur everywhere, including between unrelated groups.
+Strong comparison  Carbon’s scale and the typography-led products use proximity to encode relationships. [34]
+Repair  Use 4/8-based tokens and deliberately jump a step between groups.
+Inconsistent density
+Symptom  A huge header sits above tiny table rows; touch and pointer controls mix arbitrarily.
+Strong comparison  VS Code and Maps use density appropriate to input and task.
+Repair  Set density by region and platform. Document exceptions.
+Generic icon placement
+Symptom  Each heading begins with an icon inside a colored rounded square.
+Strong comparison  Bear and iA Writer let content headings stand alone; Figma uses icons inside action systems.
+Repair  Use icons for recognition or action, not to decorate every noun.
+Fake glass
+Symptom  Blurred translucent panels reduce contrast over arbitrary backgrounds.
+Strong comparison  Maps uses an opaque sheet when readability matters.
+Repair  Use transparency only when the underlying context must remain visually active and contrast can be guaranteed.
+Unmotivated accent colors
+Symptom  Many colors mark categories that do not change behavior.
+Strong comparison  Linear uses tiny state colors and otherwise remains neutral.
+Repair  Assign every color a named semantic role; delete colors with no behavior or meaning.
+Placeholder-only form labels
+Symptom  Labels disappear as soon as users type.
+Strong comparison  Stripe keeps labels and validation readable.
+Repair  Use persistent labels, explicit errors, autofill semantics, and input-specific keyboards.
+Decoration-first motion
+Symptom  Cards float, bounce, or parallax without clarifying state.
+Strong comparison  Things and Live Activities animate insertion, continuity, and status.
+Repair  Write the state-change sentence before animating. If no sentence exists, remove the motion.
+Happy-path mockup
+Symptom  Only the populated desktop state is designed.
+Strong comparison  GNOME, Android permissions, Recorder, and Calendar show consequence and progress states.
+Repair  Before polish, design empty, loading, error, denial, narrow, keyboard, and recovery states.
+Pre-ship anti-vibe audit
+• Can the screen be redrawn without most cards?
+• Is there exactly one primary action at the current decision?
+• Do repeated rows share baselines and rails?
+• Are radii, shadows, icon sizes, and spacing drawn from small named sets?
+• Does every accent color have a semantic role?
+• Are hover, focus, pressed, selected, disabled, loading, error, and success distinguishable?
+• Does the mobile layout change structure rather than merely shrink?
+• Can keyboard users reach and escape every transient surface?
+• Do permissions and destructive actions name the object and consequence?
+• Is motion still intelligible and complete under reduced motion?
+J  How to use the companion reference index
+The companion spreadsheet is the durable lookup layer. Filter Best use category for a quick pattern search, Category tags for mixed queries, Platform for implementation constraints, and Evidence strength or Currentness to exclude weaker or historical material. Source page is the authoritative context; Screenshot or video is the fastest visual entry point. The five analysis columns preserve why the reference is useful and where copying would fail.
+Suggested hackathon workflow
+• Choose one platform and one density.
+• Filter the index to the two or three interaction categories central to the prototype.
+• Select one Tier 1 reference for layout, one for interaction, and one for state handling.
+• Write down the three lessons being borrowed and the three details intentionally not copied.
+• Create the empty, loading, error, and confirmation states before adding decorative polish.
+• Run the anti-vibe audit, then tune typography and alignment at final size.
+K  Recommended folder and tag structure
+Use folders for the few dimensions people browse visually. Use tags for cross-cutting attributes. A file should have one canonical home and many tags, not duplicate copies across several folders.
+• 00_Inbox — uncatalogued captures awaiting source, state, and currentness metadata.
+• 01_Platform — web, macOS, Windows, Linux, iOS, Android, iPadOS, responsive.
+• 02_Interaction — command-palette, contextual-menu, popover, sheet, dialog, drag-drop, search, editor, onboarding.
+• 03_Component — sidebar, list-row, toolbar, inspector, form, toggle, progress, empty-state, toast, tab-bar.
+• 04_Style — type-led, monochrome, system-native, editorial, dense, spacious, dark, map-led.
+• 05_Motion — entrance, exit, morph, reorder, progress, gesture, reduced-motion.
+• 90_Historical — high-value patterns whose visible UI is dated.
+• 99_Rejects — instructive failures, labeled with the reason for rejection.
+Controlled metadata
+• Platform
+• Interaction type
+• Component type
+• Visual style
+• Motion purpose
+• Density: compact, standard, spacious, touch-first
+• Navigation topology
+• State: default, hover, focus, pressed, selected, disabled, loading, success, error, empty, destructive
+• Inspiration strength: S, A, B, historical
+• Source URL, media URL, captured date, product version, and reuse notes
+Filename convention
+S__raycast__macos__action-panel__selected__2026-09.png
+Use <strength>__<product>__<platform>__<interaction>__<state>__<yyyy-mm>.<ext>. Keep the source URL and critique in the index rather than the filename.
+Appendix  Reference cards
+Raycast Root Search
+State  Search field plus live-ranked Root Search and Compact Mode.
+Platform and use  macOS and Windows • command palette, search
+Why it looks and feels good  A near-complete launcher model: focus, ranking, mode, keyboard path, actions, permissions, and escape behavior.
+Transferable lesson  Use one query, one selected row, one primary Enter action, and secondary actions behind Command-K.
+What not to copy  Do not copy the dark floating shell into a product that cannot deliver fast, well-ranked results.
+Source [1]
+Raycast Action Panel
+State  Grouped actions for the currently selected item.
+Platform and use  macOS and Windows • contextual UI
+Why it looks and feels good  Primary action first; quiet groups; right-aligned shortcuts; fuzzy search; submenus; red destructive actions.
+Transferable lesson  Give every selected object a coherent action model and keep Escape behavior consistent.
+What not to copy  Do not make the panel a dumping ground for every command.
+Source [2]
+Linear Priority Inbox
+State  Priority and Other partitions over a compact notification list.
+Platform and use  Web and desktop • density, navigation
+Why it looks and feels good  Excellent hierarchy with almost no color or containers; disciplined rails make dense rows calm.
+Transferable lesson  Use one high-signal partition before filters and keep unread, urgent, and selected states distinct.
+What not to copy  Do not hide ranking mistakes behind subtle styling.
+Source [3]
+Linear agent-assisted editing
+State  Document remains visible beside an assistant and highlighted revisions.
+Platform and use  Web and desktop • editing, confirmation
+Why it looks and feels good  The delta is local and reviewable; restore exists beside the result.
+Transferable lesson  Bind AI work to a target, show what changed, and keep approval reversible.
+What not to copy  Do not accept invisible edits or let chat replace the editor.
+Source [4]
+VS Code Command Palette
+State  Broad shallow palette over the active editor.
+Platform and use  Desktop • command palette
+Why it looks and feels good  Underlying context survives; one shell supports related modes and expert shortcuts.
+Transferable lesson  Reuse behavior across commands, files, symbols, and settings; show scope.
+What not to copy  Do not require users to memorize prefixes before they can succeed.
+Source [5]
+Dia grouped tabs
+State  Vertical collections mixing tabs, pages, and app destinations.
+Platform and use  macOS • navigation
+Why it looks and feels good  Labels, nesting, and soft boundaries use width better than a horizontal strip.
+Transferable lesson  Use vertical tabs when names and hierarchy matter; preserve active content dominance.
+What not to copy  Do not create decorative project buckets without persistence rules.
+Source [6]
+Figma Actions
+State  Search-first menu filtered by current selection and mode.
+Platform and use  Web and desktop • command palette
+Why it looks and feels good  Many occasional commands become reachable without permanent chrome.
+Transferable lesson  Filter by object and mode; teach shortcuts in context.
+What not to copy  Do not mix experimental AI and ordinary local actions without clear labels.
+Source [7][8]
+Notion block interactions
+State  Block handles, slash insertion, selection toolbar, and mobile keyboard toolbar.
+Platform and use  Web, desktop, mobile • contextual UI
+Why it looks and feels good  Pointer, keyboard, and touch paths converge on one object model.
+Transferable lesson  Anchor transient controls to content and preview insertion position.
+What not to copy  Do not let the slash taxonomy replace simple formatting.
+Source [9]
+GitHub Command Palette
+State  Repository scope and entity prefixes inside a modal palette.
+Platform and use  Web • search, navigation
+Why it looks and feels good  Scope and result type remain legible while the repository stays visible.
+Transferable lesson  Teach compact grammar in the empty state and preserve alternate-open behavior.
+What not to copy  Do not use unexplained symbols or treat a preview IA as final.
+Source [10]
+Superhuman Split Inbox
+State  Three-pane mail with categorized queue and selected message.
+Platform and use  Web and desktop • density
+Why it looks and feels good  Strong pane proportions, restrained tags, and fast scanning.
+Transferable lesson  Give content the largest region and preserve selection when collapsing panes.
+What not to copy  Do not force three panes onto low-volume or narrow layouts.
+Source [11]
+Stripe Checkout
+State  Order summary beside express and manual payment.
+Platform and use  Responsive web • forms, payment
+Why it looks and feels good  Consequence stays visible; fields follow intent; validation is local.
+Transferable lesson  Use persistent labels, autofill, explicit commitment language, and recovery.
+What not to copy  Do not imitate only the visual shell of a payment flow.
+Source [12]
+GNOME alert dialog
+State  Replace File confirmation.
+Platform and use  Linux desktop • confirmation
+Why it looks and feels good  Small, specific, and semantically colored; the safe exit is obvious.
+Transferable lesson  Name the object and consequence; use the destructive verb on the button.
+What not to copy  Do not confirm reversible routine actions.
+Source [13]
+GNOME progress
+State  Determinate bar with related status.
+Platform and use  Linux desktop • loading
+Why it looks and feels good  One saturated progress signal, credible advancement, cancel guidance.
+Transferable lesson  Use percent only with a real denominator; add concrete status.
+What not to copy  Do not fake progress or reset between hidden phases.
+Source [14]
+Things Quick Find and Magic Plus
+State  Type-to-navigate search and drag-to-position creation.
+Platform and use  macOS and iOS • search, motion
+Why it looks and feels good  Interaction emerges in place with minimal chrome; motion explains location.
+Transferable lesson  Create at destination when order matters and show parsed dates.
+What not to copy  Do not rely on gestures without a visible alternative; label historical imagery.
+Source [15][16]
+Bear
+State  Low-chrome editor and persistent cross-pane highlighting.
+Platform and use  Apple platforms • typography, search
+Why it looks and feels good  Typography, measure, and native interaction carry the experience.
+Transferable lesson  Keep authored content visually stronger than chrome; retain search context.
+What not to copy  Do not equate minimal chrome with missing structure.
+Source [17]
+Craft
+State  Editorial documents with embedded tasks and metadata.
+Platform and use  Cross-platform • typography, editing
+Why it looks and feels good  Blocks feel like authored content rather than dashboard widgets.
+Transferable lesson  Treat measure and paragraph rhythm as design tokens.
+What not to copy  Do not let block styling become a page-builder tax.
+Source [18]
+iA Writer
+State  Plain-text canvas and Focus Mode.
+Platform and use  Cross-platform • typography
+Why it looks and feels good  Attenuation guides attention without another container.
+Transferable lesson  Use 60–75-character measure and generous leading for sustained writing.
+What not to copy  Do not apply extreme minimalism to dense, collaborative work.
+Source [19]
+Google Maps
+State  Conversational planning or live guidance over the map.
+Platform and use  Android and iOS • sheets, navigation
+Why it looks and feels good  Opaque readable sheet preserves manipulable geography and supports detents.
+Transferable lesson  Keep immediate decisions above details and test every sheet height.
+What not to copy  Do not let chips and floating controls cover the working surface.
+Source [20]
+Google Photos
+State  Immersive Magic Eraser with history and commit controls.
+Platform and use  Android and iOS • editing
+Why it looks and feels good  The artifact owns the screen; reversible history and commitment remain stable.
+Transferable lesson  Preview locally, separate cancel from confirm, and keep undo visible.
+What not to copy  Do not enter immersive mode for trivial edits or hide background processing.
+Source [21]
+Pixel Recorder
+State  Live waveform, transcript, elapsed time, Pause, and Stop.
+Platform and use  Android • indefinite progress
+Why it looks and feels good  Status is redundant and output appears during the task.
+Transferable lesson  Show elapsed time and current output when percent is meaningless.
+What not to copy  Do not animate a fake waveform during paused or denied states.
+Source [22]
+Google Calendar
+State  Event form beside temporal context.
+Platform and use  Android and iOS • forms
+Why it looks and feels good  Plain rows and grouping avoid card inflation; optional details remain available.
+Transferable lesson  Group by decision sequence and disclose invitation effects.
+What not to copy  Do not hide labels behind icons or surprise users after Save.
+Source [23]
+Gmail confirmation
+State  Unsubscribe dialog over inbox.
+Platform and use  Android • confirmation
+Why it looks and feels good  Small modal uses preserved context, direct language, and only two actions.
+Transferable lesson  Match trigger and commit vocabulary and disclose delayed processing.
+What not to copy  Do not ask a generic question with no named consequence.
+Source [24]
+Google Keep
+State  Pinned masonry notes with search and quick capture.
+Platform and use  Cross-platform • content grid
+Why it looks and feels good  Heterogeneous content remains scannable through steady gutters.
+Transferable lesson  Use masonry only when item height carries meaning and order is weak.
+What not to copy  Do not use masonry for chronology, tables, or keyboard-heavy work.
+Source [25]
+Apple Journal
+State  Suggestion source selection before entry completion.
+Platform and use  iPhone • onboarding, selection
+Why it looks and feels good  Progressive disclosure separates source choice from publishing.
+Transferable lesson  Make every completion boundary explicit and preserve selected state.
+What not to copy  Do not request sensitive access before the benefit is understood.
+Source [26]
+Niagara Launcher
+State  Wave Alphabet navigation from the screen edge.
+Platform and use  Android • gesture navigation
+Why it looks and feels good  Continuous feedback maps one-handed movement to a long index.
+Transferable lesson  Show target beside the finger and support both handedness and fallbacks.
+What not to copy  Do not replace familiar navigation without accessible alternatives.
+Source [27]
+Android permission prompt
+State  One-time camera, microphone, or location access.
+Platform and use  Android • permission
+Why it looks and feels good  System identity and choices transfer trust; temporary access is a useful middle ground.
+Transferable lesson  Ask in context, request narrow scope, and design denial recovery.
+What not to copy  Never draw a fake system prompt or bundle unrelated permissions.
+Source [28]
+iPadOS adaptive navigation
+State  Tab bar morphs into a sidebar as width changes.
+Platform and use  iPadOS • responsive navigation
+Why it looks and feels good  Route and selection survive a topology change; pointer capabilities emerge appropriately.
+Transferable lesson  Base adaptation on actual width and preserve scroll and task state.
+What not to copy  Do not use coarse device labels or ignore intermediate windows.
+Source [29]
+Apple Live Activities
+State  Timer and ride states across Lock Screen and Dynamic Island.
+Platform and use  iOS • motion, background progress
+Why it looks and feels good  Compact and expanded states share identity; motion explains changed content.
+Transferable lesson  Keep urgent values stable and remove finished activity after relevance ends.
+What not to copy  Do not turn live status into an advertisement or miniature full app.
+Source [30]
+macOS System Settings
+State  Privacy list with per-app trailing toggles.
+Platform and use  macOS • settings, permissions
+Why it looks and feels good  A durable, revocable state model uses familiar sidebar and row geometry.
+Transferable lesson  Group by user concept, keep help near risk, and align values to a trailing rail.
+What not to copy  Do not build a deep settings IA for a product with few preferences.
+Source [31]
+Google Chat
+State  Unified conversation list with contextual smart actions.
+Platform and use  Web • navigation, Google-esque design
+Why it looks and feels good  Neutral shell and sparse blue let content lead; actions appear near their target.
+Transferable lesson  Borrow rails, icon discipline, and contextual behavior rather than the theme.
+What not to copy  Do not reproduce Material containers and tonal buttons mechanically.
+Source [32]
+Sources
+[1] Raycast Search Bar — https://manual.raycast.com/search-bar
+[2] Raycast Action Panel — https://manual.raycast.com/action-panel
+[3] Linear Priority Inbox — https://linear.app/changelog/2026-09-03-priority-inbox
+[4] Linear agent-assisted editing — https://linear.app/changelog/2026-07-23-agent-assisted-editing
+[5] Visual Studio Code user interface — https://code.visualstudio.com/docs/editing/getting-started/userinterface
+[6] Dia official product page — https://www.diabrowser.com/
+[7] Figma Actions menu — https://help.figma.com/hc/en-us/articles/23570416033943-Use-the-actions-menu-in-Figma-Design
+[8] Figma keyboard usage — https://help.figma.com/hc/en-us/articles/360040328653-Use-Figma-products-with-a-keyboard
+[9] Notion writing and editing basics — https://www.notion.com/help/writing-and-editing-basics
+[10] GitHub Command Palette — https://docs.github.com/en/get-started/accessibility/github-command-palette
+[11] Superhuman Mail — https://superhuman.com/mail
+[12] Stripe Checkout — https://docs.stripe.com/payments/checkout
+[13] GNOME dialogs — https://developer.gnome.org/hig/patterns/feedback/dialogs.html
+[14] GNOME progress bars — https://developer.gnome.org/hig/patterns/feedback/progress-bars.html
+[15] Things features archive — https://culturedcode.com/things/features/
+[16] Things gesture guide — https://culturedcode.com/things/support/articles/2803582/
+[17] Bear search guide — https://bear.app/faq/how-to-search-notes-in-bear/
+[18] Craft — https://www.craft.do/
+[19] iA Writer — https://ia.net/writer
+[20] Google Maps Play listing — https://play.google.com/store/apps/details?hl=en_US&id=com.google.android.apps.maps
+[21] Google Photos Play listing — https://play.google.com/store/apps/details?hl=en_US&id=com.google.android.apps.photos
+[22] Pixel Recorder Play listing — https://play.google.com/store/apps/details?hl=en_US&id=com.google.android.apps.recorder
+[23] Google Calendar Play listing — https://play.google.com/store/apps/details?hl=en_US&id=com.google.android.calendar
+[24] Gmail Play listing — https://play.google.com/store/apps/details?hl=en_US&id=com.google.android.gm
+[25] Google Keep Play listing — https://play.google.com/store/apps/details?hl=en_US&id=com.google.android.keep
+[26] Apple Journal announcement — https://www.apple.com/newsroom/2023/12/apple-launches-journal-app-a-new-app-for-reflecting-on-everyday-moments/
+[27] Niagara Launcher Play listing — https://play.google.com/store/apps/details?hl=en_US&id=bitpit.launcher
+[28] Android runtime permissions — https://developer.android.com/training/permissions/requesting
+[29] Apple iPadOS 26 design — https://developer.apple.com/videos/play/wwdc2025/208/
+[30] Apple Live Activities design — https://developer.apple.com/videos/play/wwdc2023/10194/
+[31] Apple macOS camera access — https://support.apple.com/guide/mac-help/control-access-to-your-camera-mchlf6d108da/mac
+[32] Google Chat product announcement — https://workspace.google.com/blog/product-announcements/welcome-new-google-chat
+[33] IBM Carbon motion — https://carbondesignsystem.com/elements/motion/overview/
+[34] IBM Carbon spacing — https://carbondesignsystem.com/elements/spacing/overview/
+[35] IBM Carbon typography — https://carbondesignsystem.com/elements/typography/type-sets/
+[36] Android Compose accessibility defaults — https://developer.android.com/develop/ui/compose/accessibility/api-defaults
+[37] Apple touch target guidance — https://developer.apple.com/videos/play/meet-with-apple/243/
+[38] Android Compose bottom sheets — https://developer.android.com/develop/ui/compose/components/bottom-sheets
+[39] Android Compose progress indicators — https://developer.android.com/develop/ui/compose/components/progress
+Source policy and reuse note
+Product screenshots and videos remain the property of their respective owners. This dossier links to official media for study and attribution. Download dated local copies only where terms permit, record the source and capture date, and do not rely on third-party hotlinks as permanent archives. Historical entries are valuable interaction references but should not be used as evidence of a current product interface.
+
+Selected visual plates
+The companion index links every reference to its official screen, video, or documentation. These plates show the range from dense desktop work to transient confirmation.
+
+Figure 1  Visual Studio Code Command Palette — a broad, shallow overlay that preserves editor context.
+
+Source: https://code.visualstudio.com/assets/docs/editing/userinterface/commands.png
+
+Figure 2  GNOME Replace File — consequence-specific confirmation with restrained modality.
+
+Source: https://developer.gnome.org/hig/_images/alert-dialog.png
+
+Figure 3  Stripe Checkout — persistent order context beside a calm payment sequence.
+
+Source: https://b.stripecdn.com/docs-statics-srv/assets/checkout-hosted-hover.6ee5a154986ffc216c034a47b7b0d65e.png
+
+Figure 4  Things Quick Find — type-to-navigate search with very little chrome. Historical 2017 reference.
+
+Source: https://static.culturedcode.com/things/videos/2017-05-18-website-videos/7-quickfind-mac.png
+
+Figure 5  Notion block menu — object-local controls revealed through editing context.
+
+Source: https://images.ctfassets.net/spoqsaf9291f/7iZetywx1jnTCDBuDgH1vG/d599277643dbf9d948d135bd2e2e41e9/block_menu.gif
+
+Figure 6  Google Maps Ask Maps — a touch-first planning sheet over persistent geography.
+
+Source: https://play-lh.googleusercontent.com/w8eQoFZhXJFssrIx0PqXNnrTHrgvKq54EjVv6Nly8xLDsAHXRGFGhAWRCSfrPEz1lGHqEIDtm6tqmwRoGYJc5A=w526-h296
+
+Figure 7  Pixel Recorder — honest indefinite progress with live output, elapsed time, Pause, and Stop.
+
+Source: https://play-lh.googleusercontent.com/piAU-uN1pYAlHwWCz31l9OVuKH890sr238T583yGHg1hBFLwf2lg0u5yLb-chUbYuDNGoMGD-y-K6cVztYh6JDw=w526-h296
+
+Figure 8  Apple Journal — progressive source selection before entry completion.
+
+Source: https://www.apple.com/newsroom/images/2023/12/apple-launches-journal-app-for-reflecting-on-everyday-moments/article/Apple-Journal-app-select-items_inline.jpg.large.jpg
+
+

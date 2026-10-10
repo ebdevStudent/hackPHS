@@ -1,0 +1,38 @@
+{
+  "scope": "Authorized navigation software completion; real hardware acceptance remains pending",
+  "tested_source_sha256": "cb6494447105b8172316f82edfabc5ceafa92c041709afd4b351471d48de57b9",
+  "current_sources_match": true,
+  "desktop": {
+    "tests": 4380,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "desktop_combined_coverage": 98.15040650406505,
+  "core": {
+    "tests": 3997,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "core_combined_coverage": 99.12612875036412,
+  "navigation_related_pytest_cases": 178,
+  "browser_pass": true,
+  "replay_and_map_pass": true,
+  "deliverables": {
+    "calibration_distortion": "calibration.py + image tests",
+    "tag_camera_aircraft_pose": "localization.py + independent projection and bitmap engine tests",
+    "versioned_import": "map_io.py + bundle/scan/station/recording schemas and strict import tests",
+    "pose_guard": "navigation_guard.py + freshness/outlier/loss/reacquisition tests",
+    "observed_space_planner": "navigation.py + 3D sweep/union/unknown/stopping/work budget tests",
+    "engine_api_ui_logging": "navigation_runtime.py, engine.py, api.py, static/navigation.js, desktop.py + integration tests",
+    "deterministic_record_replay": "navigation_replay.py + byte-identical artifacts/JSONL tests",
+    "autonomous_mock_demo": "nav-demo/nav-simulate + inferred vision mock goal completion through reconstructed depth map",
+    "repeatable_d435_mapping": "mapping.py + registered-station capture/schema/rebuild/fake SDK tests",
+    "maintained_docs": "docs/23 runbook, current plan/handoff/software/hardware/status/desktop/verification/index and decisions.md"
+  },
+  "pi_d435_device_test": "not performed",
+  "physical_test": "not performed",
+  "physical_output": false,
+  "remaining_hardware_gates": "docs/13-hardware-arrival.md and docs/23-navigation-software.md"
+}

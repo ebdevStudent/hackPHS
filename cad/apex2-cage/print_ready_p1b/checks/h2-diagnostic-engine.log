@@ -1,0 +1,201 @@
+load start!
+progress: 0.0109769
+load finished! 10226ms
+slice start!
+progress: 0.0160869
+progress: 0.0211022
+progress: 0.0219539
+slice finished! 46143ms
+sliceSlc start!
+progress: 0.0230516
+sliceSlc finished! 4ms
+dimension start!
+progress: 0.0230516
+dimension finished! 4ms
+partition start!
+progress: 0.0281615
+progress: 0.0332715
+progress: 0.0383815
+progress: 0.0434914
+progress: 0.0486014
+progress: 0.0537113
+progress: 0.0588213
+progress: 0.0639313
+progress: 0.0690412
+progress: 0.0741512
+progress: 0.0792611
+progress: 0.0843711
+progress: 0.089481
+progress: 0.094591
+progress: 0.099701
+progress: 0.104811
+progress: 0.109921
+progress: 0.115031
+progress: 0.120141
+progress: 0.121844
+partition finished! 355311ms
+separateTree start!
+progress: 0.121844
+separateTree finished! 4ms
+fullSupport start!
+progress: 0.121844
+fullSupport finished! 8ms
+lineSupport start!
+progress: 0.121844
+lineSupport finished! 6ms
+wall start!
+progress: 0.121844
+wall finished! 6ms
+brim start!
+progress: 0.176729
+brim finished! 15537ms
+raft start!
+progress: 0.176729
+raft finished! 4ms
+preExtrude start!
+progress: 0.182217
+preExtrude finished! 581ms
+calcArea start!
+progress: 0.183315
+calcArea finished! 134ms
+shell start!
+progress: 0.190128
+progress: 0.196942
+progress: 0.203755
+progress: 0.210568
+progress: 0.217381
+progress: 0.224195
+progress: 0.231008
+progress: 0.237821
+progress: 0.244635
+progress: 0.251448
+progress: 0.258261
+progress: 0.265074
+progress: 0.271888
+progress: 0.278701
+progress: 0.285514
+progress: 0.292327
+progress: 0.299141
+progress: 0.305954
+progress: 0.312767
+progress: 0.315038
+shell finished! 679165ms
+infill start!
+progress: 0.324806
+progress: 0.334574
+progress: 0.344341
+progress: 0.354109
+progress: 0.363877
+progress: 0.373644
+progress: 0.383412
+progress: 0.393179
+progress: 0.402947
+progress: 0.412715
+progress: 0.422482
+progress: 0.43225
+progress: 0.442018
+progress: 0.451785
+progress: 0.461553
+progress: 0.47132
+progress: 0.481088
+progress: 0.490856
+progress: 0.500623
+progress: 0.510391
+progress: 0.520159
+progress: 0.529926
+progress: 0.539694
+progress: 0.549461
+progress: 0.559229
+progress: 0.568997
+progress: 0.578764
+progress: 0.588532
+progress: 0.5983
+progress: 0.608067
+progress: 0.617835
+progress: 0.627602
+progress: 0.63737
+progress: 0.647138
+progress: 0.656905
+progress: 0.666673
+progress: 0.67644
+progress: 0.686208
+progress: 0.695976
+progress: 0.705743
+progress: 0.715511
+progress: 0.725279
+progress: 0.735046
+progress: 0.744814
+progress: 0.754581
+progress: 0.764349
+progress: 0.774117
+progress: 0.783884
+progress: 0.793652
+progress: 0.80342
+progress: 0.813187
+progress: 0.822955
+progress: 0.832722
+progress: 0.84249
+progress: 0.852258
+progress: 0.862025
+progress: 0.871793
+progress: 0.881561
+progress: 0.891328
+progress: 0.891328
+infill finished! 1020111ms
+pause start!
+progress: 0.891328
+pause finished! 15ms
+pathPlan start!
+progress: 0.892426
+pathPlan finished! 281ms
+spiralizeVase start!
+progress: 0.892426
+spiralizeVase finished! 6ms
+travel start!
+progress: 0.898104
+progress: 0.903781
+progress: 0.909459
+progress: 0.915137
+progress: 0.920815
+progress: 0.926492
+progress: 0.93217
+progress: 0.937848
+progress: 0.943525
+progress: 0.949203
+progress: 0.954881
+progress: 0.960559
+progress: 0.966236
+progress: 0.971914
+progress: 0.974753
+travel finished! 68999ms
+delay start!
+progress: 0.975851
+delay finished! 63ms
+lift start!
+progress: 0.975851
+lift finished! 4ms
+speed start!
+progress: 0.976948
+speed finished! 792ms
+fan start!
+progress: 0.976948
+fan finished! 8ms
+temperature start!
+progress: 0.976948
+temperature finished! 4ms
+setExtruder start!
+progress: 0.978046
+setExtruder finished! 56ms
+preSetExtruder start!
+progress: 0.978046
+preSetExtruder finished! 4ms
+percent start!
+progress: 0.978046
+percent finished! 20ms
+export start!
+progress: 0.983345
+progress: 0.988644
+progress: 0.993944
+progress: 0.999243
+progress: 1
+export finished! 34835ms

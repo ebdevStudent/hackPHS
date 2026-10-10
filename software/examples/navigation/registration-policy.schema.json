@@ -1,0 +1,81 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "min_tags": {
+      "default": 2,
+      "maximum": 587,
+      "minimum": 2,
+      "title": "Min Tags",
+      "type": "integer"
+    },
+    "stable_frames": {
+      "default": 3,
+      "maximum": 100,
+      "minimum": 2,
+      "title": "Stable Frames",
+      "type": "integer"
+    },
+    "min_pixel_span": {
+      "default": 30.0,
+      "exclusiveMinimum": 0,
+      "title": "Min Pixel Span",
+      "type": "number"
+    },
+    "max_reprojection_px": {
+      "default": 3.0,
+      "exclusiveMinimum": 0,
+      "title": "Max Reprojection Px",
+      "type": "number"
+    },
+    "min_ambiguity_gap_px": {
+      "default": 0.4,
+      "minimum": 0,
+      "title": "Min Ambiguity Gap Px",
+      "type": "number"
+    },
+    "max_translation_m": {
+      "default": 0.02,
+      "exclusiveMinimum": 0,
+      "title": "Max Translation M",
+      "type": "number"
+    },
+    "max_rotation_rad": {
+      "default": 0.05,
+      "exclusiveMinimum": 0,
+      "title": "Max Rotation Rad",
+      "type": "number"
+    },
+    "max_uncertainty_m": {
+      "default": 0.15,
+      "exclusiveMinimum": 0,
+      "title": "Max Uncertainty M",
+      "type": "number"
+    },
+    "survey_uncertainty_m": {
+      "default": 0.03,
+      "minimum": 0,
+      "title": "Survey Uncertainty M",
+      "type": "number"
+    },
+    "factory_uncertainty_m": {
+      "default": 0.005,
+      "minimum": 0,
+      "title": "Factory Uncertainty M",
+      "type": "number"
+    },
+    "depth_uncertainty_m": {
+      "default": 0.02,
+      "minimum": 0,
+      "title": "Depth Uncertainty M",
+      "type": "number"
+    }
+  },
+  "title": "RegistrationPolicy",
+  "type": "object"
+}

@@ -1,0 +1,121 @@
+125 INFO: PyInstaller: 6.22.3, contrib hooks: 2026.8
+125 INFO: Python: 3.13.12
+132 INFO: Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+133 INFO: Python environment: /Users/devk/Documents/HackPHS26/software/.venv
+133 INFO: wrote /Users/devk/Documents/HackPHS26/software/Ball Drone.spec
+136 INFO: Removing temporary files and cleaning cache in /Users/devk/Library/Application Support/pyinstaller
+189 INFO: Module search paths (PYTHONPATH):
+['/Users/devk/Documents/HackPHS26/software/desktop',
+ '/Library/Frameworks/Python.framework/Versions/3.13/lib/python313.zip',
+ '/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13',
+ '/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/lib-dynload',
+ '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages',
+ '/Users/devk/Documents/HackPHS26/software/desktop',
+ '/Users/devk/Documents/HackPHS26/software']
+326 INFO: Appending 'datas' from .spec
+327 INFO: checking Analysis
+327 INFO: Building Analysis because Analysis-00.toc is non existent
+327 INFO: Looking for Python shared library...
+330 INFO: Using Python shared library: /Library/Frameworks/Python.framework/Versions/3.13/Python
+330 INFO: Running Analysis Analysis-00.toc
+330 INFO: Target bytecode optimization level: 0
+330 INFO: Initializing module dependency graph...
+331 INFO: Initializing module graph hook caches...
+339 INFO: Analyzing modules for base_library.zip ...
+681 INFO: Processing standard module hook 'hook-encodings.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+906 INFO: Processing standard module hook 'hook-math.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+1563 INFO: Processing standard module hook 'hook-pickle.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2021 INFO: Processing standard module hook 'hook-heapq.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2243 INFO: Caching module dependency graph...
+2261 INFO: Analyzing /Users/devk/Documents/HackPHS26/software/desktop/launch.py
+2301 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2393 INFO: Processing standard module hook 'hook-xml.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2525 INFO: Processing standard module hook 'hook-sysconfig.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2532 INFO: Processing standard module hook 'hook-_osx_support.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2534 INFO: Processing standard module hook 'hook-_ctypes.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2545 INFO: Processing standard module hook 'hook-PySide6.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2635 INFO: Processing standard module hook 'hook-shiboken6.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+2722 INFO: Processing standard module hook 'hook-PySide6.QtNetwork.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+qt.network.ssl: No functional TLS backend was found
+3184 INFO: Processing standard module hook 'hook-PySide6.QtCore.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+3670 INFO: Processing standard module hook 'hook-PySide6.QtGui.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+4232 INFO: Processing standard module hook 'hook-PySide6.QtWidgets.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+4326 INFO: Processing standard module hook 'hook-cv2.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/_pyinstaller_hooks_contrib/stdhooks'
+4554 INFO: Processing standard module hook 'hook-numpy.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+4714 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+4715 INFO: SetuptoolsInfo: initializing cached setuptools info...
+5316 INFO: Processing standard module hook 'hook-platform.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+5480 INFO: Processing standard module hook 'hook-webbrowser.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+6099 INFO: Processing standard module hook 'hook-difflib.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+6589 INFO: Processing standard module hook 'hook-uvicorn.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/_pyinstaller_hooks_contrib/stdhooks'
+7294 INFO: Processing standard module hook 'hook-anyio.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/_pyinstaller_hooks_contrib/stdhooks'
+7700 INFO: Processing standard module hook 'hook-pydantic.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/_pyinstaller_hooks_contrib/stdhooks'
+8038 INFO: Processing standard module hook 'hook-zoneinfo.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/_pyinstaller_hooks_contrib/stdhooks'
+8629 INFO: Processing standard module hook 'hook-opentelemetry.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/_pyinstaller_hooks_contrib/stdhooks'
+8830 INFO: Analyzing hidden import 'uvicorn.loops.asyncio'
+8831 INFO: Analyzing hidden import 'uvicorn.lifespan.on'
+8834 INFO: Processing module hooks (post-graph stage)...
+8902 INFO: Processing pre-safe-import-module hook 'hook-tomli.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+8903 INFO: Setuptools: 'tomli' appears to be a setuptools-vendored copy - creating alias to 'setuptools._vendor.tomli'!
+8905 INFO: Processing standard module hook 'hook-setuptools.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+8911 INFO: Processing pre-safe-import-module hook 'hook-distutils.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+8925 INFO: Processing pre-safe-import-module hook 'hook-jaraco.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+8926 INFO: Setuptools: 'jaraco' appears to be a full setuptools-vendored copy - creating alias to 'setuptools._vendor.jaraco'!
+8931 INFO: Processing pre-safe-import-module hook 'hook-more_itertools.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+8932 INFO: Setuptools: 'more_itertools' appears to be a setuptools-vendored copy - creating alias to 'setuptools._vendor.more_itertools'!
+9004 INFO: Processing pre-safe-import-module hook 'hook-packaging.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+9134 INFO: Processing standard module hook 'hook-setuptools._vendor.jaraco.text.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+9135 INFO: Processing pre-safe-import-module hook 'hook-importlib_resources.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+9143 INFO: Processing pre-safe-import-module hook 'hook-backports.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+9143 INFO: Setuptools: 'backports' appears to be a full setuptools-vendored copy - creating alias to 'setuptools._vendor.backports'!
+9606 INFO: Processing pre-safe-import-module hook 'hook-wheel.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_safe_import_module'
+9606 INFO: Setuptools: 'wheel' appears to be a setuptools-vendored copy - creating alias to 'setuptools._vendor.wheel'!
+9977 INFO: Processing standard module hook 'hook-PySide6.QtDBus.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+10053 INFO: Performing binary vs. data reclassification (133 entries)
+10089 INFO: Looking for ctypes DLLs
+10117 INFO: Analyzing run-time hooks ...
+10120 INFO: Including run-time hook 'pyi_rth_inspect.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/rthooks'
+10121 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/rthooks'
+10122 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/rthooks'
+10123 INFO: Including run-time hook 'pyi_rth_setuptools.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/rthooks'
+10124 INFO: Including run-time hook 'pyi_rth_pyside6.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/rthooks'
+10125 INFO: Processing pre-find-module-path hook 'hook-_pyi_rth_utils.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks/pre_find_module_path'
+10125 INFO: Processing standard module hook 'hook-_pyi_rth_utils.py' from '/Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/hooks'
+10134 INFO: Creating base_library.zip...
+10142 INFO: Looking for dynamic libraries
+10550 INFO: Warnings written to /Users/devk/Documents/HackPHS26/software/build/Ball Drone/warn-Ball Drone.txt
+10571 INFO: Graph cross-reference written to /Users/devk/Documents/HackPHS26/software/build/Ball Drone/xref-Ball Drone.html
+10703 INFO: checking PYZ
+10703 INFO: Building PYZ because PYZ-00.toc is non existent
+10703 INFO: Building PYZ (ZlibArchive) /Users/devk/Documents/HackPHS26/software/build/Ball Drone/PYZ-00.pyz
+11207 INFO: Building PYZ (ZlibArchive) /Users/devk/Documents/HackPHS26/software/build/Ball Drone/PYZ-00.pyz completed successfully.
+11215 INFO: EXE target arch: arm64
+11215 INFO: Code signing identity: None
+11216 INFO: checking PKG
+11216 INFO: Building PKG because PKG-00.toc is non existent
+11216 INFO: Building PKG (CArchive) Ball Drone.pkg
+11225 INFO: Building PKG (CArchive) Ball Drone.pkg completed successfully.
+11225 INFO: Bootloader /Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/bootloader/Darwin-64bit/runw
+11225 INFO: checking EXE
+11225 INFO: Building EXE because EXE-00.toc is non existent
+11225 INFO: Building EXE from EXE-00.toc
+11225 INFO: Copying bootloader EXE to /Users/devk/Documents/HackPHS26/software/build/Ball Drone/Ball Drone
+11226 INFO: Converting EXE to target arch (arm64)
+11246 INFO: Removing signature(s) from EXE
+11258 INFO: Modifying Mach-O image UUID(s) in EXE
+11263 INFO: Appending PKG archive to EXE
+11265 INFO: Fixing EXE headers for code signing
+11268 INFO: Re-signing the EXE
+11286 INFO: Building EXE from EXE-00.toc completed successfully.
+11289 INFO: checking COLLECT
+11289 INFO: Building COLLECT because COLLECT-00.toc is non existent
+11289 INFO: Building COLLECT COLLECT-00.toc
+17806 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+17812 INFO: checking BUNDLE
+17812 INFO: Building BUNDLE because BUNDLE-00.toc is non existent
+17812 INFO: Building BUNDLE BUNDLE-00.toc
+22561 INFO: Signing the BUNDLE...
+22813 INFO: Building BUNDLE BUNDLE-00.toc completed successfully.
+22817 INFO: Build complete! The results are available in: /tmp/ball-drone-build-tphzvqlv
+/tmp/ball-drone-build-tphzvqlv/Ball Drone.app: replacing existing signature
+/Users/devk/Applications/Ball Drone.app

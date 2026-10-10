@@ -1,0 +1,20 @@
+# Recorded 2026-10-08 with tools/mega_avr_check.sh, including the forced-failure harness self-test.
+
+== toolchain
+avr-gcc (GCC) 7.3.0
+Version: 1.6+dfsg-3build2
+== Linux host ASan+UBSan
+LINE READER TESTS PASSED
+PASS: 10000 seeded arbitrary frames and full command-boundary sweep.
+PASS: portable C parsing, bounds, sequence, session, watchdog and clock rollover. No transmitter output.
+core tests passed
+== ATmega2560 build
+Program:    6568 bytes (2.5% Full)
+Data:        886 bytes (10.8% Full)
+== simavr run (UART0 output)
+[32mLINE READER TESTS PASSED.
+[0mLoaded 5844 .text at address 0x0
+Loaded 724 .data
+AVR SIMULATION PASSED
+== harness self-test: a forced failure must be reported by the simulator
+HARNESS DETECTS FAILURES

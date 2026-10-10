@@ -1,0 +1,19 @@
+
+==================================== ERRORS ====================================
+__________________ ERROR collecting cad/kit/tests/test_kit.py __________________
+ImportError while importing test module '/Users/devk/Documents/ChatGPT/HackPHS26/cad/kit/tests/test_kit.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cad/kit/tests/test_kit.py:15: in <module>
+    import analyse_bend, apply_measurements, cage_model, opening_probe, p1b_mass_options, test_pieces  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cad/kit/test_pieces.py:19: in <module>
+    import manifold3d as mf
+E   ModuleNotFoundError: No module named 'manifold3d'
+=========================== short test summary info ============================
+ERROR cad/kit/tests/test_kit.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.12s

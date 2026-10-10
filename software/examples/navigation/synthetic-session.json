@@ -1,0 +1,801 @@
+{
+  "schema_version": 1,
+  "label": "SYNTHETIC EXAMPLE / no room measurement",
+  "bundle": {
+    "schema_version": 1,
+    "bundle_id": "EXAMPLE-corner-v1",
+    "calibration": {
+      "schema_version": 1,
+      "calibration_id": "EXAMPLE-camera-v1",
+      "camera_frame": "camera_optical",
+      "aircraft_frame": "aircraft_flu",
+      "image_size": [
+        640,
+        480
+      ],
+      "intrinsics": [
+        [
+          500.0,
+          0.0,
+          320.0
+        ],
+        [
+          0.0,
+          500.0,
+          240.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distortion_model": "opencv_brown",
+      "distortion": [
+        -0.08,
+        0.01,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "aircraft_from_camera": [
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "reprojection_rms_px": 0.2,
+      "evidence": "INVENTED EXAMPLE; no hardware measurement",
+      "example": true
+    },
+    "survey": {
+      "schema_version": 1,
+      "survey_id": "EXAMPLE-tags-v1",
+      "map_id": "EXAMPLE-corner",
+      "map_version": 1,
+      "frame_id": "example_world",
+      "units": "m",
+      "family": "tag36h11",
+      "tags": [
+        {
+          "id": 0,
+          "size_m": 0.3,
+          "map_from_tag": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              1.5
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              3.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.4
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "id": 1,
+          "size_m": 0.3,
+          "map_from_tag": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              2.5
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              3.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.4
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "evidence": "INVENTED EXAMPLE; no tag survey",
+      "example": true
+    },
+    "map": {
+      "schema_version": 1,
+      "map_id": "EXAMPLE-corner",
+      "map_version": 1,
+      "frame_id": "example_world",
+      "axes": "right_handed_z_up",
+      "units": "m",
+      "permitted": {
+        "minimum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "maximum": [
+          4.0,
+          4.0,
+          3.0
+        ]
+      },
+      "observed_free": [
+        {
+          "minimum": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            4.0,
+            4.0,
+            3.0
+          ]
+        }
+      ],
+      "occupied": [],
+      "uncertainty_m": 0.03,
+      "acquired_utc": "2026-10-08T00:00:00Z",
+      "evidence": "INVENTED EXAMPLE; not a completed room map",
+      "example": true
+    },
+    "policy": {
+      "cage_radius_m": 0.125,
+      "flex_margin_m": 0.02,
+      "speed_m_s": 0.2,
+      "delay_bound_s": 0.25,
+      "deceleration_m_s2": 0.5,
+      "grid_m": 0.2,
+      "max_nodes": 20000,
+      "planner_timeout_s": 0.5,
+      "route_ttl_s": 1.0,
+      "pose_max_age_s": 0.25,
+      "max_uncertainty_m": 0.15,
+      "max_reprojection_px": 3.0,
+      "ambiguity_gap_px": 0.4,
+      "max_speed_m_s": 2.0,
+      "max_angular_speed_rad_s": 4.0,
+      "reacquire_frames": 3,
+      "host_delay_bound_s": null
+    }
+  },
+  "bundle_sha256": "943d2134f7897dba89db5275c7b37c594d7ab5b6f5bc22dee05f381ceddc0415",
+  "physical_output": false,
+  "events": [
+    {
+      "t": 1.0,
+      "kind": "goal",
+      "sequence": null,
+      "timing": null,
+      "observations": null,
+      "source": null,
+      "goal": [
+        2.2,
+        1.5,
+        1.3
+      ],
+      "reason": null
+    },
+    {
+      "t": 1.05,
+      "kind": "observations",
+      "sequence": 0,
+      "timing": {
+        "host_received_s": 1.05,
+        "exposure_s": 1.05,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.1,
+      "kind": "observations",
+      "sequence": 1,
+      "timing": {
+        "host_received_s": 1.1,
+        "exposure_s": 1.1,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.15,
+      "kind": "observations",
+      "sequence": 2,
+      "timing": {
+        "host_received_s": 1.15,
+        "exposure_s": 1.15,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.16,
+      "kind": "resume",
+      "sequence": null,
+      "timing": null,
+      "observations": null,
+      "source": null,
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.2,
+      "kind": "observations",
+      "sequence": 3,
+      "timing": {
+        "host_received_s": 1.2,
+        "exposure_s": 1.2,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.25,
+      "kind": "observations",
+      "sequence": 4,
+      "timing": {
+        "host_received_s": 1.25,
+        "exposure_s": 1.25,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.3,
+      "kind": "loss",
+      "sequence": null,
+      "timing": null,
+      "observations": null,
+      "source": null,
+      "goal": null,
+      "reason": "EXAMPLE tag occlusion"
+    },
+    {
+      "t": 1.4,
+      "kind": "observations",
+      "sequence": 5,
+      "timing": {
+        "host_received_s": 1.4,
+        "exposure_s": 1.4,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.45,
+      "kind": "observations",
+      "sequence": 6,
+      "timing": {
+        "host_received_s": 1.45,
+        "exposure_s": 1.45,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.5,
+      "kind": "observations",
+      "sequence": 7,
+      "timing": {
+        "host_received_s": 1.5,
+        "exposure_s": 1.5,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.51,
+      "kind": "resume",
+      "sequence": null,
+      "timing": null,
+      "observations": null,
+      "source": null,
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.55,
+      "kind": "observations",
+      "sequence": 8,
+      "timing": {
+        "host_received_s": 1.55,
+        "exposure_s": 1.55,
+        "provenance": "synthetic",
+        "delay_bound_s": null
+      },
+      "observations": [
+        {
+          "id": 0,
+          "corners": [
+            [
+              240.77463342842483,
+              160.77463342842483
+            ],
+            [
+              308.65976642783187,
+              160.61836499482308
+            ],
+            [
+              308.63730265859107,
+              228.63730265859107
+            ],
+            [
+              240.61836499482308,
+              228.65976642783187
+            ]
+          ],
+          "pixel_space": "distorted"
+        },
+        {
+          "id": 1,
+          "corners": [
+            [
+              466.4152374723302,
+              161.1610259764376
+            ],
+            [
+              532.3479609865431,
+              161.76654068916835
+            ],
+            [
+              532.7548643121977,
+              228.80237556251592
+            ],
+            [
+              466.7009097904158,
+              228.7153146315065
+            ]
+          ],
+          "pixel_space": "distorted"
+        }
+      ],
+      "source": "synthetic_estimate",
+      "goal": null,
+      "reason": null
+    },
+    {
+      "t": 1.81,
+      "kind": "tick",
+      "sequence": null,
+      "timing": null,
+      "observations": null,
+      "source": null,
+      "goal": null,
+      "reason": null
+    }
+  ]
+}

@@ -1,0 +1,1041 @@
+{
+  "$defs": {
+    "ArrivalPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "radius_m": {
+          "default": 0.1,
+          "exclusiveMinimum": 0,
+          "title": "Radius M",
+          "type": "number"
+        },
+        "max_uncertainty_m": {
+          "default": 0.05,
+          "minimum": 0,
+          "title": "Max Uncertainty M",
+          "type": "number"
+        },
+        "heading_tolerance_rad": {
+          "default": 0.15,
+          "exclusiveMinimum": 0,
+          "title": "Heading Tolerance Rad",
+          "type": "number"
+        },
+        "angular_uncertainty_rad": {
+          "default": 0.05,
+          "minimum": 0,
+          "title": "Angular Uncertainty Rad",
+          "type": "number"
+        },
+        "dwell_s": {
+          "default": 0.15,
+          "minimum": 0,
+          "title": "Dwell S",
+          "type": "number"
+        },
+        "min_distinct_frames": {
+          "default": 3,
+          "maximum": 100,
+          "minimum": 2,
+          "title": "Min Distinct Frames",
+          "type": "integer"
+        },
+        "pose_max_age_s": {
+          "default": 0.25,
+          "exclusiveMinimum": 0,
+          "title": "Pose Max Age S",
+          "type": "number"
+        }
+      },
+      "title": "ArrivalPolicy",
+      "type": "object"
+    },
+    "Box": {
+      "additionalProperties": false,
+      "properties": {
+        "minimum": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Minimum",
+          "type": "array"
+        },
+        "maximum": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Maximum",
+          "type": "array"
+        }
+      },
+      "required": [
+        "minimum",
+        "maximum"
+      ],
+      "title": "Box",
+      "type": "object"
+    },
+    "Bundle": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "bundle_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Bundle Id",
+          "type": "string"
+        },
+        "calibration": {
+          "$ref": "#/$defs/Calibration"
+        },
+        "survey": {
+          "$ref": "#/$defs/Survey"
+        },
+        "map": {
+          "$ref": "#/$defs/Map"
+        },
+        "policy": {
+          "$ref": "#/$defs/Policy"
+        }
+      },
+      "required": [
+        "schema_version",
+        "bundle_id",
+        "calibration",
+        "survey",
+        "map",
+        "policy"
+      ],
+      "title": "Bundle",
+      "type": "object"
+    },
+    "Calibration": {
+      "additionalProperties": false,
+      "properties": {
+        "image_size": {
+          "items": {
+            "maximum": 4096,
+            "minimum": 16,
+            "type": "integer"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Image Size",
+          "type": "array"
+        },
+        "intrinsics": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 3,
+            "minItems": 3,
+            "type": "array"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Intrinsics",
+          "type": "array"
+        },
+        "distortion_model": {
+          "const": "opencv_brown",
+          "title": "Distortion Model",
+          "type": "string"
+        },
+        "distortion": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Distortion",
+          "type": "array"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "calibration_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Calibration Id",
+          "type": "string"
+        },
+        "camera_frame": {
+          "const": "camera_optical",
+          "title": "Camera Frame",
+          "type": "string"
+        },
+        "aircraft_frame": {
+          "const": "aircraft_flu",
+          "title": "Aircraft Frame",
+          "type": "string"
+        },
+        "aircraft_from_camera": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Aircraft From Camera",
+          "type": "array"
+        },
+        "reprojection_rms_px": {
+          "minimum": 0,
+          "title": "Reprojection Rms Px",
+          "type": "number"
+        },
+        "evidence": {
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        },
+        "example": {
+          "title": "Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "image_size",
+        "intrinsics",
+        "distortion_model",
+        "distortion",
+        "schema_version",
+        "calibration_id",
+        "camera_frame",
+        "aircraft_frame",
+        "aircraft_from_camera",
+        "reprojection_rms_px",
+        "evidence",
+        "example"
+      ],
+      "title": "Calibration",
+      "type": "object"
+    },
+    "Input": {
+      "additionalProperties": false,
+      "properties": {
+        "t": {
+          "minimum": 0,
+          "title": "T",
+          "type": "number"
+        },
+        "kind": {
+          "enum": [
+            "observations",
+            "loss",
+            "goal",
+            "resume",
+            "disable",
+            "tick",
+            "mission",
+            "mission_start",
+            "mission_advance",
+            "mission_abort",
+            "snapshot_saved"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "sequence": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sequence"
+        },
+        "timing": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Timing"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "observations": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Observation"
+              },
+              "maxItems": 587,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observations"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "enum": [
+                "vision_estimate",
+                "synthetic_estimate",
+                "recorded_estimate"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "goal": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Goal"
+        },
+        "heading_rad": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Heading Rad"
+        },
+        "tag_id": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 587,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tag Id"
+        },
+        "mission": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Mission"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "snapshot_sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snapshot Sha256"
+        },
+        "snapshot_source": {
+          "anyOf": [
+            {
+              "enum": [
+                "camera",
+                "recording",
+                "synthetic"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snapshot Source"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "t",
+        "kind"
+      ],
+      "title": "Input",
+      "type": "object"
+    },
+    "InspectionTarget": {
+      "additionalProperties": false,
+      "properties": {
+        "target_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Target Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "tag_id": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 587,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tag Id"
+        },
+        "viewing_position_m": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Viewing Position M",
+          "type": "array"
+        },
+        "heading_rad": {
+          "anyOf": [
+            {
+              "maximum": 3.141592653589793,
+              "minimum": -3.141592653589793,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Heading Rad"
+        },
+        "arrival": {
+          "$ref": "#/$defs/ArrivalPolicy"
+        },
+        "snapshot": {
+          "default": "image",
+          "enum": [
+            "none",
+            "image"
+          ],
+          "title": "Snapshot",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_id",
+        "name",
+        "viewing_position_m"
+      ],
+      "title": "InspectionTarget",
+      "type": "object"
+    },
+    "Map": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "map_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Map Id",
+          "type": "string"
+        },
+        "map_version": {
+          "minimum": 1,
+          "title": "Map Version",
+          "type": "integer"
+        },
+        "frame_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Frame Id",
+          "type": "string"
+        },
+        "axes": {
+          "const": "right_handed_z_up",
+          "title": "Axes",
+          "type": "string"
+        },
+        "units": {
+          "const": "m",
+          "title": "Units",
+          "type": "string"
+        },
+        "permitted": {
+          "$ref": "#/$defs/Box"
+        },
+        "observed_free": {
+          "items": {
+            "$ref": "#/$defs/Box"
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Observed Free",
+          "type": "array"
+        },
+        "occupied": {
+          "items": {
+            "$ref": "#/$defs/Box"
+          },
+          "maxItems": 1000,
+          "title": "Occupied",
+          "type": "array"
+        },
+        "uncertainty_m": {
+          "minimum": 0,
+          "title": "Uncertainty M",
+          "type": "number"
+        },
+        "acquired_utc": {
+          "minLength": 1,
+          "title": "Acquired Utc",
+          "type": "string"
+        },
+        "evidence": {
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        },
+        "example": {
+          "title": "Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "map_id",
+        "map_version",
+        "frame_id",
+        "axes",
+        "units",
+        "permitted",
+        "observed_free",
+        "occupied",
+        "uncertainty_m",
+        "acquired_utc",
+        "evidence",
+        "example"
+      ],
+      "title": "Map",
+      "type": "object"
+    },
+    "Mission": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "mission_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Mission Id",
+          "type": "string"
+        },
+        "map_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Map Id",
+          "type": "string"
+        },
+        "map_version": {
+          "minimum": 1,
+          "title": "Map Version",
+          "type": "integer"
+        },
+        "frame_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Frame Id",
+          "type": "string"
+        },
+        "survey_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Survey Id",
+          "type": "string"
+        },
+        "targets": {
+          "items": {
+            "$ref": "#/$defs/InspectionTarget"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Targets",
+          "type": "array"
+        },
+        "example": {
+          "title": "Example",
+          "type": "boolean"
+        },
+        "control_authority": {
+          "const": "advisory_only",
+          "default": "advisory_only",
+          "title": "Control Authority",
+          "type": "string"
+        },
+        "physical_output": {
+          "const": false,
+          "default": false,
+          "title": "Physical Output",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "mission_id",
+        "map_id",
+        "map_version",
+        "frame_id",
+        "survey_id",
+        "targets",
+        "example"
+      ],
+      "title": "Mission",
+      "type": "object"
+    },
+    "Observation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "exclusiveMaximum": 587,
+          "minimum": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "corners": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Corners",
+          "type": "array"
+        },
+        "pixel_space": {
+          "default": "distorted",
+          "enum": [
+            "distorted",
+            "undistorted"
+          ],
+          "title": "Pixel Space",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "corners"
+      ],
+      "title": "Observation",
+      "type": "object"
+    },
+    "Policy": {
+      "additionalProperties": false,
+      "properties": {
+        "cage_radius_m": {
+          "default": 0.125,
+          "exclusiveMinimum": 0,
+          "title": "Cage Radius M",
+          "type": "number"
+        },
+        "flex_margin_m": {
+          "default": 0.02,
+          "minimum": 0,
+          "title": "Flex Margin M",
+          "type": "number"
+        },
+        "speed_m_s": {
+          "default": 0.2,
+          "exclusiveMinimum": 0,
+          "title": "Speed M S",
+          "type": "number"
+        },
+        "delay_bound_s": {
+          "default": 0.25,
+          "minimum": 0,
+          "title": "Delay Bound S",
+          "type": "number"
+        },
+        "deceleration_m_s2": {
+          "default": 0.5,
+          "exclusiveMinimum": 0,
+          "title": "Deceleration M S2",
+          "type": "number"
+        },
+        "grid_m": {
+          "default": 0.2,
+          "exclusiveMinimum": 0,
+          "title": "Grid M",
+          "type": "number"
+        },
+        "max_nodes": {
+          "default": 20000,
+          "maximum": 200000,
+          "minimum": 1,
+          "title": "Max Nodes",
+          "type": "integer"
+        },
+        "planner_timeout_s": {
+          "default": 0.5,
+          "exclusiveMinimum": 0,
+          "title": "Planner Timeout S",
+          "type": "number"
+        },
+        "route_ttl_s": {
+          "default": 1.0,
+          "exclusiveMinimum": 0,
+          "title": "Route Ttl S",
+          "type": "number"
+        },
+        "pose_max_age_s": {
+          "default": 0.25,
+          "exclusiveMinimum": 0,
+          "title": "Pose Max Age S",
+          "type": "number"
+        },
+        "max_uncertainty_m": {
+          "default": 0.15,
+          "exclusiveMinimum": 0,
+          "title": "Max Uncertainty M",
+          "type": "number"
+        },
+        "max_reprojection_px": {
+          "default": 3.0,
+          "exclusiveMinimum": 0,
+          "title": "Max Reprojection Px",
+          "type": "number"
+        },
+        "ambiguity_gap_px": {
+          "default": 0.4,
+          "minimum": 0,
+          "title": "Ambiguity Gap Px",
+          "type": "number"
+        },
+        "max_speed_m_s": {
+          "default": 2.0,
+          "exclusiveMinimum": 0,
+          "title": "Max Speed M S",
+          "type": "number"
+        },
+        "max_angular_speed_rad_s": {
+          "default": 4.0,
+          "exclusiveMinimum": 0,
+          "title": "Max Angular Speed Rad S",
+          "type": "number"
+        },
+        "reacquire_frames": {
+          "default": 3,
+          "maximum": 30,
+          "minimum": 1,
+          "title": "Reacquire Frames",
+          "type": "integer"
+        },
+        "host_delay_bound_s": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Host Delay Bound S"
+        }
+      },
+      "title": "Policy",
+      "type": "object"
+    },
+    "Survey": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "survey_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Survey Id",
+          "type": "string"
+        },
+        "map_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Map Id",
+          "type": "string"
+        },
+        "map_version": {
+          "minimum": 1,
+          "title": "Map Version",
+          "type": "integer"
+        },
+        "frame_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Frame Id",
+          "type": "string"
+        },
+        "units": {
+          "const": "m",
+          "title": "Units",
+          "type": "string"
+        },
+        "family": {
+          "const": "tag36h11",
+          "title": "Family",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "$ref": "#/$defs/Tag"
+          },
+          "maxItems": 587,
+          "minItems": 1,
+          "title": "Tags",
+          "type": "array"
+        },
+        "evidence": {
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        },
+        "example": {
+          "title": "Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "survey_id",
+        "map_id",
+        "map_version",
+        "frame_id",
+        "units",
+        "family",
+        "tags",
+        "evidence",
+        "example"
+      ],
+      "title": "Survey",
+      "type": "object"
+    },
+    "Tag": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "exclusiveMaximum": 587,
+          "minimum": 0,
+          "title": "Id",
+          "type": "integer"
+        },
+        "size_m": {
+          "exclusiveMinimum": 0,
+          "title": "Size M",
+          "type": "number"
+        },
+        "map_from_tag": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Map From Tag",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "size_m",
+        "map_from_tag"
+      ],
+      "title": "Tag",
+      "type": "object"
+    },
+    "Timing": {
+      "additionalProperties": false,
+      "properties": {
+        "host_received_s": {
+          "minimum": 0,
+          "title": "Host Received S",
+          "type": "number"
+        },
+        "exposure_s": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exposure S"
+        },
+        "provenance": {
+          "enum": [
+            "exposure_monotonic",
+            "host_read",
+            "recorded_timeline",
+            "synthetic"
+          ],
+          "title": "Provenance",
+          "type": "string"
+        },
+        "delay_bound_s": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delay Bound S"
+        }
+      },
+      "required": [
+        "host_received_s",
+        "provenance"
+      ],
+      "title": "Timing",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "label": {
+      "title": "Label",
+      "type": "string"
+    },
+    "bundle": {
+      "$ref": "#/$defs/Bundle"
+    },
+    "bundle_sha256": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Bundle Sha256",
+      "type": "string"
+    },
+    "physical_output": {
+      "const": false,
+      "title": "Physical Output",
+      "type": "boolean"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/$defs/Input"
+      },
+      "maxItems": 100000,
+      "minItems": 1,
+      "title": "Events",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "label",
+    "bundle",
+    "bundle_sha256",
+    "physical_output",
+    "events"
+  ],
+  "title": "Recording",
+  "type": "object"
+}

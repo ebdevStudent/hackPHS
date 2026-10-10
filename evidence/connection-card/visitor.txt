@@ -1,0 +1,4 @@
+Ball Drone visitor access
+Network: Mac local preview (Pi address pending)
+URL: http://127.0.0.1:8080/
+No operator credentials required.

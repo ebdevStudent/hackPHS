@@ -1,0 +1,53 @@
+{
+  "pass": true,
+  "environment": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "rounds": [
+    {
+      "index": 1,
+      "pass": true,
+      "checks": [
+        "real calibrated pixel pose",
+        "follow lifecycle",
+        "exact-request idempotency",
+        "immediate stop/zero",
+        "late-start cancellation",
+        "JPEG transport",
+        "explicit simulated touchdown",
+        "bridge isolation"
+      ]
+    },
+    {
+      "index": 2,
+      "pass": true,
+      "checks": [
+        "real calibrated pixel pose",
+        "follow lifecycle",
+        "exact-request idempotency",
+        "immediate stop/zero",
+        "late-start cancellation",
+        "JPEG transport",
+        "explicit simulated touchdown",
+        "bridge isolation"
+      ]
+    },
+    {
+      "index": 3,
+      "pass": true,
+      "checks": [
+        "real calibrated pixel pose",
+        "follow lifecycle",
+        "exact-request idempotency",
+        "immediate stop/zero",
+        "late-start cancellation",
+        "JPEG transport",
+        "explicit simulated touchdown",
+        "bridge isolation"
+      ]
+    }
+  ],
+  "limits": [
+    "Generated AprilTag images, invented optics, mock missions and local HTTP only.",
+    "No Pi, camera, USB board, radio, physical flight or network-profile verification."
+  ],
+  "server_exit": -15
+}

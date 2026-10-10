@@ -1,0 +1,66 @@
+{
+  "environment": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "browser": "Playwright Chromium",
+  "checks": [
+    {
+      "name": "fallback screen shows the required status and indicator",
+      "pass": true,
+      "status": "Manual steering \u2014 computer steering unavailable",
+      "warning": "SYNTHETIC input \u2014 not live FPV",
+      "error": "Centre error +0.002"
+    },
+    {
+      "name": "fallback screen shows the server video with box",
+      "pass": true,
+      "natural_width": 640
+    },
+    {
+      "name": "monitor shows steering status",
+      "pass": true
+    },
+    {
+      "name": "monitor marks stale video separately from connection",
+      "pass": true
+    },
+    {
+      "name": "invalid replay is rejected without replacing playback",
+      "pass": true,
+      "message": "Invalid or unordered replay timestamp"
+    },
+    {
+      "name": "disable cannot be overtaken by an earlier enable",
+      "pass": true,
+      "state": "MANUAL"
+    },
+    {
+      "name": "lock disables assistance first",
+      "pass": true
+    },
+    {
+      "name": "click-to-pick sets a hue range around the target from the video",
+      "pass": true,
+      "settings": {
+        "hue_low": 40,
+        "hue_high": 60,
+        "saturation_min": 157,
+        "value_min": 180
+      }
+    },
+    {
+      "name": "closing the operator page lapses the lease to neutral",
+      "pass": true
+    },
+    {
+      "name": "no page errors",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "name": "no external requests",
+      "pass": true,
+      "requests": []
+    }
+  ],
+  "pass": true,
+  "scope": "Synthetic source and mock bridge on a local server; not live FPV, Pi or radio behaviour."
+}

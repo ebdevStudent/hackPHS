@@ -1,0 +1,140 @@
+{
+  "document": "Apex2 Ball Cage P1B Gimbal",
+  "modified": false,
+  "ring_splice_axes": [
+    {
+      "quarter": "outer_ring_quarter",
+      "junction": "outer_junction_Z_bearing",
+      "coaxial_error_mm": 3.552713678800501e-14,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "outer_ring_quarter",
+      "junction": "outer_junction_X_bearing",
+      "coaxial_error_mm": 0.0,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "outer_ring_quarter",
+      "junction": "outer_junction_X_bearing",
+      "coaxial_error_mm": 2.220446049250313e-15,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "outer_ring_quarter",
+      "junction": "outer_junction_Z_bearing",
+      "coaxial_error_mm": 0.0,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "outer_ring_quarter",
+      "junction": "outer_junction_Z_bearing",
+      "coaxial_error_mm": 2.4424906541753444e-14,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "outer_ring_quarter",
+      "junction": "outer_junction_X_bearing",
+      "coaxial_error_mm": 0.0,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "outer_ring_quarter",
+      "junction": "outer_junction_X_bearing",
+      "coaxial_error_mm": 8.881784197001252e-15,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "outer_ring_quarter",
+      "junction": "outer_junction_Z_bearing",
+      "coaxial_error_mm": 0.0,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "inner_ring_quarter",
+      "junction": "inner_junction_Y_bearing",
+      "coaxial_error_mm": 1.9984014443252818e-14,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "inner_ring_quarter",
+      "junction": "inner_junction_X_pin",
+      "coaxial_error_mm": 0.0,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "inner_ring_quarter",
+      "junction": "inner_junction_X_pin",
+      "coaxial_error_mm": 8.881784197001252e-15,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "inner_ring_quarter",
+      "junction": "inner_junction_Y_bearing",
+      "coaxial_error_mm": 0.0,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "inner_ring_quarter",
+      "junction": "inner_junction_Y_bearing",
+      "coaxial_error_mm": 8.881784197001252e-15,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "inner_ring_quarter",
+      "junction": "inner_junction_X_pin",
+      "coaxial_error_mm": 0.0,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "inner_ring_quarter",
+      "junction": "inner_junction_X_pin",
+      "coaxial_error_mm": 1.9984014443252818e-14,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    },
+    {
+      "quarter": "inner_ring_quarter",
+      "junction": "inner_junction_Y_bearing",
+      "coaxial_error_mm": 0.0,
+      "quarter_pilot_mm": 2.0,
+      "splice_clearance_mm": 2.3,
+      "joined_stack_mm": 5.0
+    }
+  ],
+  "sources": {
+    "build_p1a.py": "f39201dcf20063bd5afc9176cfb9290c1c1fa2525e1ffb7c1329a53b93145d53",
+    "build_p1b.py": "96bce59b6f832a11069721046adff3b8122077c5f756a44bc75bb2948889620c",
+    "fit_results.json": "0d048f94cee6753324051ea43f8c11c56e8bcf7ad227f97d79736a782901c7da"
+  },
+  "limitations": "Coaxial passages and stack only. Screw-head/washer envelopes, actual screw thread grip and loaded splice strength need physical checks."
+}

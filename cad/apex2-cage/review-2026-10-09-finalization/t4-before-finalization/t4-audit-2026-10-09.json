@@ -1,0 +1,477 @@
+{
+  "date": "2026-10-09",
+  "environment": "Mac, manifold3d; current exported STL geometry",
+  "status": "Mesh and alignment checks pass; foam relief required around arm nuts; physical fit and strength remain unverified",
+  "physical_measurements_present": {},
+  "source_sha256": {
+    "build_p1a.py": "fa9c22e3a93b7241ad00a885563a39545add8580e4a8b6b5bd3c35ea54d63eaa",
+    "build_p1b.py": "34a4138bbab8a1afce233cb1bd809c73c55f331a3945fbfd20f276d76fc67262",
+    "validation.py": "3f495136590ab032409955d79dea603a3029a7c9ee7cf103c260e79837e0f28e",
+    "vendor_specs.json": "a324caf1a4e81e26ff2fc18afbb49890d4c51ae427a5b69928f0012d66265986",
+    "measurements.json": "9f94d8cf92e8084bab96ead087fd812b770bc494945cef18a0ed8dbf0180e043"
+  },
+  "parts": [
+    {
+      "name": "carrier_plate",
+      "native_volume_mm3": 4820.828655734413,
+      "mesh_volume_mm3": 4821.1446,
+      "size_mm": [
+        48.0,
+        80.0,
+        2.5
+      ],
+      "watertight_consistently_wound": true,
+      "connected_bodies": 1
+    },
+    {
+      "name": "nut_shield_plate",
+      "native_volume_mm3": 1250.4800000000014,
+      "mesh_volume_mm3": 1250.48028,
+      "size_mm": [
+        24.5,
+        63.8,
+        0.8
+      ],
+      "watertight_consistently_wound": true,
+      "connected_bodies": 1
+    },
+    {
+      "name": "support_arm_p1b",
+      "native_volume_mm3": 1393.7182644795985,
+      "mesh_volume_mm3": 1394.00537,
+      "size_mm": [
+        43.5,
+        10.0,
+        16.0
+      ],
+      "watertight_consistently_wound": true,
+      "connected_bodies": 1
+    }
+  ],
+  "fusion_inspection": {
+    "file": "t4-fusion-inspection-2026-10-09.json",
+    "document": "Apex2 Ball Cage P1B Gimbal",
+    "model_modified": false,
+    "recorded_parameters_match": true,
+    "recorded_t4_native_volumes_match": true
+  },
+  "plate": {
+    "file": "plates_p1b/p1b_plate_carrier_arms.stl",
+    "sha256": "a2fb45c70c93978f239de21b7c8cd5654643162c165aec8c38655e9cba3bb5e6",
+    "matches_exported_parts": true,
+    "part_count": 4,
+    "all_bases_at_z0": true,
+    "size_mm": [
+      124.0,
+      94.0,
+      16.0
+    ],
+    "as_packed_min_mm": [
+      -70.0,
+      -70.0,
+      0.0
+    ],
+    "as_packed_max_mm": [
+      54.0,
+      24.0,
+      16.0
+    ],
+    "brim_mm": 5,
+    "center_in_slicer": true,
+    "centered_brim_edge_margin_xy_mm": [
+      8.0,
+      23.0
+    ]
+  },
+  "interfaces": {
+    "frame_pattern_mm": [
+      25.5,
+      25.5
+    ],
+    "m2_clearance_diameter_mm": 2.3,
+    "frame_screw_path_checks": [
+      {
+        "frame_shift_x_mm": -2.0,
+        "xy_mm": [
+          -14.75,
+          -12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": -2.0,
+        "xy_mm": [
+          -14.75,
+          12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": -2.0,
+        "xy_mm": [
+          10.75,
+          -12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": -2.0,
+        "xy_mm": [
+          10.75,
+          12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": 0,
+        "xy_mm": [
+          -12.75,
+          -12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": 0,
+        "xy_mm": [
+          -12.75,
+          12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": 0,
+        "xy_mm": [
+          12.75,
+          -12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": 0,
+        "xy_mm": [
+          12.75,
+          12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": 2.0,
+        "xy_mm": [
+          -10.75,
+          -12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": 2.0,
+        "xy_mm": [
+          -10.75,
+          12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": 2.0,
+        "xy_mm": [
+          14.75,
+          -12.75
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "frame_shift_x_mm": 2.0,
+        "xy_mm": [
+          14.75,
+          12.75
+        ],
+        "overlap_mm3": 0.0
+      }
+    ],
+    "arm_fastener_alignment_checks": [
+      {
+        "arm_side": -1,
+        "arm_shift_y_mm": -3.0,
+        "xy_mm": [
+          0,
+          -32.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_y_mm": -3.0,
+        "xy_mm": [
+          0,
+          -37.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_y_mm": 0,
+        "xy_mm": [
+          0,
+          -29.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_y_mm": 0,
+        "xy_mm": [
+          0,
+          -34.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_y_mm": 3.0,
+        "xy_mm": [
+          0,
+          -26.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_y_mm": 3.0,
+        "xy_mm": [
+          0,
+          -31.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_y_mm": -3.0,
+        "xy_mm": [
+          0,
+          26.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_y_mm": -3.0,
+        "xy_mm": [
+          0,
+          31.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_y_mm": 0,
+        "xy_mm": [
+          0,
+          29.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_y_mm": 0,
+        "xy_mm": [
+          0,
+          34.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_y_mm": 3.0,
+        "xy_mm": [
+          0,
+          32.0
+        ],
+        "overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_y_mm": 3.0,
+        "xy_mm": [
+          0,
+          37.0
+        ],
+        "overlap_mm3": 0.0
+      }
+    ],
+    "flange_screw_path_checks": [
+      {
+        "axis_z_mm": 2.5,
+        "overlap_mm3": 0.0
+      },
+      {
+        "axis_z_mm": 9.5,
+        "overlap_mm3": 0.0
+      }
+    ],
+    "strap_passage_checked_mm": [
+      12.5,
+      2
+    ],
+    "frame_lateral_travel_each_way_mm": 2.0,
+    "arm_travel_each_way_mm": 3.0,
+    "foam_pad_size_mm": [
+      15.881197846482994,
+      62.8,
+      3.0
+    ],
+    "shield_size_mm": [
+      24.5,
+      63.8,
+      0.8
+    ],
+    "nut_tail_protrusion_assumption_mm": 2.6,
+    "nut_to_shield_vertical_gap_mm": 0.3999999999999999,
+    "frame_nut_foam_shield_intersections_mm3": 0,
+    "arm_nut_clearance_checks": [
+      {
+        "arm_side": -1,
+        "arm_shift_mm": -3.0,
+        "xy_mm": [
+          0,
+          -32.0
+        ],
+        "foam_overlap_mm3": 14.62933,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_mm": -3.0,
+        "xy_mm": [
+          0,
+          -37.0
+        ],
+        "foam_overlap_mm3": 0.0,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_mm": 0,
+        "xy_mm": [
+          0,
+          -29.0
+        ],
+        "foam_overlap_mm3": 43.49347,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_mm": 0,
+        "xy_mm": [
+          0,
+          -34.0
+        ],
+        "foam_overlap_mm3": 0.0,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_mm": 3.0,
+        "xy_mm": [
+          0,
+          -26.0
+        ],
+        "foam_overlap_mm3": 43.49347,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": -1,
+        "arm_shift_mm": 3.0,
+        "xy_mm": [
+          0,
+          -31.0
+        ],
+        "foam_overlap_mm3": 26.52208,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_mm": -3.0,
+        "xy_mm": [
+          0,
+          26.0
+        ],
+        "foam_overlap_mm3": 43.49347,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_mm": -3.0,
+        "xy_mm": [
+          0,
+          31.0
+        ],
+        "foam_overlap_mm3": 26.52208,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_mm": 0,
+        "xy_mm": [
+          0,
+          29.0
+        ],
+        "foam_overlap_mm3": 43.49347,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_mm": 0,
+        "xy_mm": [
+          0,
+          34.0
+        ],
+        "foam_overlap_mm3": 0.0,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_mm": 3.0,
+        "xy_mm": [
+          0,
+          32.0
+        ],
+        "foam_overlap_mm3": 14.62933,
+        "shield_overlap_mm3": 0.0
+      },
+      {
+        "arm_side": 1,
+        "arm_shift_mm": 3.0,
+        "xy_mm": [
+          0,
+          37.0
+        ],
+        "foam_overlap_mm3": 0.0,
+        "shield_overlap_mm3": 0.0
+      }
+    ],
+    "foam_relief_required": true,
+    "foam_relief_slot_centres_xy_mm": [
+      [
+        0,
+        29.0
+      ],
+      [
+        0,
+        -29.0
+      ]
+    ],
+    "foam_relief_slot_size_xy_mm": [
+      5.618802153517006,
+      11.618802153517006
+    ],
+    "arm_nut_relieved_foam_intersections_mm3": 0,
+    "frame_carrier_stack_before_washers_nut_mm": 5.0,
+    "arm_carrier_stack_before_washers_nut_mm": 6.5
+  },
+  "remaining_checks": [
+    "Actual accessible frame mounting-hole pattern and bottom thickness",
+    "Printed M2 clearance, arm alignment and retention",
+    "Actual screw/washer/nut stack and underside protrusion",
+    "Actual strap and both battery dimensions, leads and access",
+    "Arm stiffness, cracks, loaded joint slip and final gimbal motion/prop clearance"
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "junctions": [
+    {
+      "junction": "Inner ring (Y to outer, X to aircraft):1+inner_junction_X_bearing:1",
+      "quarter_distances": [
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:1",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:2",
+          "distance_mm": 101.875259
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:3",
+          "distance_mm": 101.875259
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:4",
+          "distance_mm": 0.0
+        }
+      ],
+      "touching_quarter_count": 2
+    },
+    {
+      "junction": "Inner ring (Y to outer, X to aircraft):1+inner_junction_X_bearing:2",
+      "quarter_distances": [
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:1",
+          "distance_mm": 101.875259
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:2",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:3",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:4",
+          "distance_mm": 101.875259
+        }
+      ],
+      "touching_quarter_count": 2
+    },
+    {
+      "junction": "Inner ring (Y to outer, X to aircraft):1+inner_junction_Y_pin:1",
+      "quarter_distances": [
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:1",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:2",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:3",
+          "distance_mm": 101.875259
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:4",
+          "distance_mm": 101.875259
+        }
+      ],
+      "touching_quarter_count": 2
+    },
+    {
+      "junction": "Inner ring (Y to outer, X to aircraft):1+inner_junction_Y_pin:2",
+      "quarter_distances": [
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:1",
+          "distance_mm": 101.875259
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:2",
+          "distance_mm": 101.875259
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:3",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:4",
+          "distance_mm": 0.0
+        }
+      ],
+      "touching_quarter_count": 2
+    },
+    {
+      "junction": "Outer ring (Z to cage, Y to inner):1+outer_junction_Y_bearing:1",
+      "quarter_distances": [
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:1",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:2",
+          "distance_mm": 116.024836
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:3",
+          "distance_mm": 116.024836
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:4",
+          "distance_mm": 0.0
+        }
+      ],
+      "touching_quarter_count": 2
+    },
+    {
+      "junction": "Outer ring (Z to cage, Y to inner):1+outer_junction_Y_bearing:2",
+      "quarter_distances": [
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:1",
+          "distance_mm": 116.024836
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:2",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:3",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:4",
+          "distance_mm": 116.024836
+        }
+      ],
+      "touching_quarter_count": 2
+    },
+    {
+      "junction": "Outer ring (Z to cage, Y to inner):1+outer_junction_Z_bearing:1",
+      "quarter_distances": [
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:1",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:2",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:3",
+          "distance_mm": 116.024836
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:4",
+          "distance_mm": 116.024836
+        }
+      ],
+      "touching_quarter_count": 2
+    },
+    {
+      "junction": "Outer ring (Z to cage, Y to inner):1+outer_junction_Z_bearing:2",
+      "quarter_distances": [
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:1",
+          "distance_mm": 116.024836
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:2",
+          "distance_mm": 116.024836
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:3",
+          "distance_mm": 0.0
+        },
+        {
+          "quarter": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:4",
+          "distance_mm": 0.0
+        }
+      ],
+      "touching_quarter_count": 2
+    }
+  ],
+  "pivots": [
+    {
+      "index": 0,
+      "pin_press_part": "Aircraft side (rotates on X pivots):1+arm_pivot_block:1",
+      "pin_press_overlap_mm3": 1.8378317023499506,
+      "pin_to_bearing_mm": 0.0,
+      "bearing_seat": "Inner ring (Y to outer, X to aircraft):1+inner_junction_X_bearing:1",
+      "bearing_to_seat_contact_mm": 0.0
+    },
+    {
+      "index": 1,
+      "pin_press_part": "Aircraft side (rotates on X pivots):1+arm_pivot_block:2",
+      "pin_press_overlap_mm3": 1.8378317023499542,
+      "pin_to_bearing_mm": 0.0,
+      "bearing_seat": "Inner ring (Y to outer, X to aircraft):1+inner_junction_X_bearing:2",
+      "bearing_to_seat_contact_mm": 0.0
+    },
+    {
+      "index": 2,
+      "pin_press_part": "Inner ring (Y to outer, X to aircraft):1+inner_junction_Y_pin:1",
+      "pin_press_overlap_mm3": 1.837831702351564,
+      "pin_to_bearing_mm": 0.0,
+      "bearing_seat": "Outer ring (Z to cage, Y to inner):1+outer_junction_Y_bearing:1",
+      "bearing_to_seat_contact_mm": 0.0
+    },
+    {
+      "index": 3,
+      "pin_press_part": "Inner ring (Y to outer, X to aircraft):1+inner_junction_Y_pin:2",
+      "pin_press_overlap_mm3": 1.837831702351564,
+      "pin_to_bearing_mm": 0.0,
+      "bearing_seat": "Outer ring (Z to cage, Y to inner):1+outer_junction_Y_bearing:2",
+      "bearing_to_seat_contact_mm": 0.0
+    },
+    {
+      "index": 4,
+      "pin_press_part": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:1",
+      "pin_press_overlap_mm3": 1.8378317023489965,
+      "pin_to_bearing_mm": 0.0,
+      "bearing_seat": "Outer ring (Z to cage, Y to inner):1+outer_junction_Z_bearing:1",
+      "bearing_to_seat_contact_mm": 0.0
+    },
+    {
+      "index": 5,
+      "pin_press_part": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:2",
+      "pin_press_overlap_mm3": 1.8378317023484934,
+      "pin_to_bearing_mm": 0.0,
+      "bearing_seat": "Outer ring (Z to cage, Y to inner):1+outer_junction_Z_bearing:2",
+      "bearing_to_seat_contact_mm": 0.0
+    }
+  ],
+  "all_expected_geometric_contacts": true,
+  "note": "Use Boolean volume for press parts: MeasureManager returned uninitialized near-zero distances for overlapping solids in the initial pass; see connectivity-initial.json.",
+  "scope": "Geometric proximity/contact only; excludes fit retention, joint constraints, fastening strength and physical friction."
+}

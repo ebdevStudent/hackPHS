@@ -1,0 +1,23 @@
+Values applied: ['motor_diag=95 mm [vendor]', 'frame_t=2.5 mm [vendor]', 'frame_hole_pitch=25.5 mm [vendor]', 'motor_od=15.84 mm [vendor]', 'motor_h=8.9 mm [vendor]', 'prop_z=8.9 mm [vendor]', 'prop_dia=50.8 mm [vendor]', 'cam_size=14 mm [vendor]', 'cam_hfov=160 deg [vendor]', 'batt450_l=62.8 mm [vendor]', 'batt450_w=16.4 mm [vendor]', 'batt450_h=13.8 mm [vendor]', 'batt1100_l=56.56 mm [vendor]', 'batt1100_w=23.5 mm [vendor]', 'batt1100_h=18.4 mm [vendor]', 'stack_h=12 mm [vendor]', 'strap_w=12.5 mm [vendor]', 'rod_dia=1.0 mm [vendor]', 'stack_w=33 mm [vendor]', 'prop_disk_h=5.1 mm [vendor]', 'strap_slot_t=2.5 mm [vendor]', 'rod_bore_clear=(1.275 mm - rod_dia) / 2 [coupon-selected]', 'm2_tap=2.00 mm [coupon-selected]', 'bearing_seat_clear=5.30 mm - bearing_od [coupon-selected]', 'pin_press_horizontal_d=2.15 mm [coupon-selected]', 'pin_press_vertical_d=2.25 mm [coupon-selected]']
+CG: {'cg_450_below_frame_top_mm': 3.51, 'cg_1100_below_frame_top_mm': 7.14, 'aircraft_z_offset_mm': 3.51, '1100_needs_shift_mm': 3.63, 'within_cg_slot': True}
+Balancing travel each way (mm): {'across_X': 2.0, 'along_arms_Y': 3.0000000000000004, 'vertical_Z': 5.0}
+Radii (mm): {'aircraft_swept_r': 79.69, 'props_batteries_carrier_r': 79.69, 'arm_end_parts_r': 75.05, 'inner_ring': (84, 89.0), 'outer_ring': (94.0, 99.0), 'pole_boss_tip_r': 113.42, 'cage_inner_clear_to_outer_ring': 15.9}
+Camera centreline at nominal pose: inner ring clear, outer ring clear; a ring crosses it in 2% of sampled ring orientations (free gimbal; orientation varies in flight)
+Fusion joints: ['Z pole pivot (cage - outer ring)', 'X pivot (outer ring - inner ring)', 'Y pivot (inner ring - aircraft)']; rigid groups: 4; cage grounded
+Materials: {'Stainless Steel, 440C': 6, 'Stainless Steel AISI 304': 6, 'PETG (project)': 14, 'Carbon rod (project)': 2, 'Analysis envelope (massless)': 17}
+Pins: CAD models 10.5 mm pins; stock is 2 x 16 mm; cut/deeper-seat choice remains deferred (16 mm alternative not verified); past-bearing per pivot Y+,Y-,X+,X-,Z+,Z-: [1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+Cage: {'edge_rods': 90, 'edge_rod_cut_mm': 44.5, 'pole_rods': 10, 'pole_rod_cut_mm': 37.83, 'total_rod_mm': 4383.3}
+FAILED:
+Traceback (most recent call last):
+  File "/Users/devk/Documents/HackPHS26/cad/apex2-cage/build_p1b.py", line 723, in run
+    raise RuntimeError('Connectivity failed: ' + str(problems))
+RuntimeError: Connectivity failed: ['pin_0 not engaged in arm_pivot_block', 'pin_1 not engaged in arm_pivot_block', 'pin_2 not engaged in inner_junction_X_pin', 'pin_3 not engaged in inner_junction_X_pin', 'pin_4 not engaged in hub_pole_5way_pivot', 'pin_5 not engaged in hub_pole_5way_pivot']
+
+
+Traceback (most recent call last):
+  File "/Users/devk/Documents/HackPHS26/cad/kit/finalize_p1b_fusion.py", line 28, in run
+    with contextlib.redirect_stdout(log):scope['run'](context)
+                                         ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/devk/Documents/HackPHS26/cad/apex2-cage/build_p1b.py", line 723, in run
+    raise RuntimeError('Connectivity failed: ' + str(problems))
+RuntimeError: Connectivity failed: ['pin_0 not engaged in arm_pivot_block', 'pin_1 not engaged in arm_pivot_block', 'pin_2 not engaged in inner_junction_X_pin', 'pin_3 not engaged in inner_junction_X_pin', 'pin_4 not engaged in hub_pole_5way_pivot', 'pin_5 not engaged in hub_pole_5way_pivot']

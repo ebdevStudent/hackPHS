@@ -1,0 +1,173 @@
+{
+  "source": "cad/kit/t1_refinement.py",
+  "status": "Untested refinement coupon; main cage parameters unchanged",
+  "basis": "T1 snug socket tentatively identified as three dots; M2 screws would not start when turned",
+  "hardware": {
+    "rod_diameter_mm": 1.0,
+    "rod_status": "baseline, not measured",
+    "screw": "M2 x 4 mm socket head, hand-driven"
+  },
+  "socket_parameters": {
+    "hub_core_r": 2.5,
+    "hub_arm_od": 3.2,
+    "hub_arm_len": 7.0,
+    "socket_depth": 5.0
+  },
+  "socket_holes": [
+    {
+      "dots": 1,
+      "diameter_mm": 1.25,
+      "axis_mm": [
+        5,
+        2.5
+      ],
+      "mouth_y_mm": 7.0,
+      "depth_mm": 5.0
+    },
+    {
+      "dots": 2,
+      "diameter_mm": 1.275,
+      "axis_mm": [
+        13,
+        2.5
+      ],
+      "mouth_y_mm": 7.0,
+      "depth_mm": 5.0
+    },
+    {
+      "dots": 3,
+      "diameter_mm": 1.3,
+      "axis_mm": [
+        21,
+        2.5
+      ],
+      "mouth_y_mm": 7.0,
+      "depth_mm": 5.0
+    },
+    {
+      "dots": 4,
+      "diameter_mm": 1.325,
+      "axis_mm": [
+        29,
+        2.5
+      ],
+      "mouth_y_mm": 7.0,
+      "depth_mm": 5.0
+    },
+    {
+      "dots": 5,
+      "diameter_mm": 1.35,
+      "axis_mm": [
+        37,
+        2.5
+      ],
+      "mouth_y_mm": 7.0,
+      "depth_mm": 5.0
+    },
+    {
+      "dots": 6,
+      "diameter_mm": 1.375,
+      "axis_mm": [
+        45,
+        2.5
+      ],
+      "mouth_y_mm": 7.0,
+      "depth_mm": 5.0
+    },
+    {
+      "dots": 7,
+      "diameter_mm": 1.4,
+      "axis_mm": [
+        53,
+        2.5
+      ],
+      "mouth_y_mm": 7.0,
+      "depth_mm": 5.0
+    }
+  ],
+  "screw_pilots": [
+    {
+      "dots": 1,
+      "diameter_mm": 1.8,
+      "centre_mm": [
+        5,
+        15.5
+      ],
+      "depth_mm": 5
+    },
+    {
+      "dots": 2,
+      "diameter_mm": 1.85,
+      "centre_mm": [
+        13,
+        15.5
+      ],
+      "depth_mm": 5
+    },
+    {
+      "dots": 3,
+      "diameter_mm": 1.9,
+      "centre_mm": [
+        21,
+        15.5
+      ],
+      "depth_mm": 5
+    },
+    {
+      "dots": 4,
+      "diameter_mm": 1.95,
+      "centre_mm": [
+        29,
+        15.5
+      ],
+      "depth_mm": 5
+    },
+    {
+      "dots": 5,
+      "diameter_mm": 2.0,
+      "centre_mm": [
+        37,
+        15.5
+      ],
+      "depth_mm": 5
+    },
+    {
+      "dots": 6,
+      "diameter_mm": 2.1,
+      "centre_mm": [
+        45,
+        15.5
+      ],
+      "depth_mm": 5
+    },
+    {
+      "dots": 7,
+      "diameter_mm": 2.2,
+      "centre_mm": [
+        53,
+        15.5
+      ],
+      "depth_mm": 5
+    }
+  ],
+  "size_mm": [
+    58.0,
+    35.0,
+    7.0
+  ],
+  "volume_mm3": 7669.113,
+  "solid_petg_mass_g_estimate": 9.74,
+  "file": "T1B_socket_and_screw_refinement.stl",
+  "sha256": "d2cd506c206fdbaf5f1babc8be4163c7ed857cd8676b0174a0478f8bcc55f4e3",
+  "checks": {
+    "triangles": 19360,
+    "watertight": true,
+    "consistently_oriented": true,
+    "bodies": 2,
+    "all_bores_open": true,
+    "blind_floors_present": true,
+    "exported_bore_diameters_match": true,
+    "both_strips_flat_at_z0": true,
+    "fits_140mm_bed_with_5mm_brim": true
+  }
+}

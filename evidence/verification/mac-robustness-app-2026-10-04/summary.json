@@ -1,0 +1,42 @@
+{
+  "id": "20261004T215746Z-4cabfeab",
+  "software": "0.1.0",
+  "environment": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.12",
+  "started_utc": "2026-10-04T21:57:46.731390+00:00",
+  "source": {
+    "kind": "synthetic",
+    "scenario": "moving"
+  },
+  "settings": {
+    "width": 640,
+    "height": 480,
+    "processing_hz": 20,
+    "control_hz": 20,
+    "preview_hz": 10,
+    "acquire_frames": 3,
+    "stale_ms": 250,
+    "ack_ms": 250,
+    "watchdog_ms": 250,
+    "hue_low": 35,
+    "hue_high": 85,
+    "saturation_min": 100,
+    "value_min": 80,
+    "min_area": 100,
+    "max_area": 50000,
+    "gain": 700,
+    "smoothing": 0.35,
+    "deadband": 0.04,
+    "max_yaw": 650,
+    "slew_per_s": 1800,
+    "direction": 1
+  },
+  "physical_output": false,
+  "duration_s": 5.8342134169943165,
+  "control_samples": 103,
+  "frames": 102,
+  "processing_fps": 17.483076587991633,
+  "faults": 0,
+  "processing_ms_p95": 1.678,
+  "physical_measurements": null
+}

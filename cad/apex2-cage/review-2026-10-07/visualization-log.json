@@ -1,0 +1,40 @@
+{
+  "first": {
+    "overlaps": [
+      {
+        "prop": "PROP_DISK_FR_keepout",
+        "ring": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:1",
+        "volume_mm3": 49.013782
+      }
+    ],
+    "documentModifiedBefore": false,
+    "documentModifiedAfter": true,
+    "customGraphicsRemaining": 0,
+    "screenshots": [
+      "02-adjusted-prop-collision-overview.png",
+      "03-adjusted-prop-collision-detail.png",
+      "04-camera-centerline-obstruction.png"
+    ],
+    "note": "Diagnostic copies of current BRep geometry, temporarily drawn 400 mm away from the assembly; original model unchanged. Yellow camera ray is thickened to 0.6 mm only for legibility."
+  },
+  "isolated": {
+    "overlaps": [
+      {
+        "prop": "PROP_DISK_FR_keepout",
+        "ring": "Inner ring (Y to outer, X to aircraft):1+inner_ring_quarter:1",
+        "volume_mm3": 49.013782
+      }
+    ],
+    "documentModifiedBefore": true,
+    "documentModifiedAfter": true,
+    "customGraphicsRemaining": 0,
+    "screenshots": [
+      "02-adjusted-prop-collision-overview-isolated.png",
+      "03-adjusted-prop-collision-detail-isolated.png",
+      "04-camera-centerline-obstruction-isolated.png"
+    ],
+    "note": "Diagnostic copies of current BRep geometry, temporarily drawn 400 mm in X and Y away from the assembly; original model unchanged. Yellow camera ray is thickened to 0.6 mm only for legibility."
+  },
+  "inventoryUnchanged": true
+}
+

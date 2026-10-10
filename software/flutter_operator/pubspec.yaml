@@ -1,0 +1,26 @@
+name: ball_drone
+description: Flutter operator client for the HackPHS Ball Drone.
+publish_to: none
+version: 0.1.0+1
+environment:
+  sdk: ^3.13.1
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.9
+  http: ^1.6.0
+  flutter_webrtc: ^1.6.2+hotfix.4
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/fixtures/camera_test_card.png
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter.ttf

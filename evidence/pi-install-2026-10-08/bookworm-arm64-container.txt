@@ -1,0 +1,12 @@
+debconf: delaying package configuration, since apt-utils is not installed
+== installer
+WARN  Board model not readable; this does not look like a Raspberry Pi
+PASS  64-bit ARM (aarch64)
+FAIL  OS: bookworm ships Python 3.11; reflash with Raspberry Pi OS (64-bit) based on Trixie
+FAIL  Python none: 3.13 or newer is required by the locked dependencies
+PASS  Memory 3904 MB
+WARN  No /dev/video* yet: plug in the USB capture adapter, then run 'ball-demo cameras'
+WARN  No /dev/ttyACM*/ttyUSB* yet: the Arduino Mega appears as /dev/ttyACM0 when connected
+Preflight failed with 2 problem(s); nothing was installed.
+== stubbed systemctl calls
+cat: /tmp/systemctl.log: No such file or directory

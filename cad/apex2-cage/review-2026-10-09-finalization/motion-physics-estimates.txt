@@ -1,0 +1,66 @@
+== Cage contact geometry (hub centres at r = 121.4 mm, hub face 2.5 mm) ==
+  pole triangle  x10  centre 121.1 mm above floor  tip angle 4.0 deg (easiest direction) .. 12.1 deg (hardest)
+  pentagon       x10  centre 116.5 mm above floor  tip angle 16.1 deg (easiest direction) .. 19.7 deg (hardest)
+  hexagon        x20  centre 113.6 mm above floor  tip angle 20.5 deg (easiest direction) .. 23.3 deg (hardest)
+  rolling resistance once moving (slow, fully inelastic steps): C_rr 0.006-0.150 (mean 0.078)
+  P1A set down pole-first rests on a pole triangle tilted 12.3 deg
+
+== Hover and flight (thrust range 280-400 g, planning 350 g) ==
+  P1A + 450   117.08 g  T:W 2.39-3.42 (plan 2.99)  hover thrust 29.3 g/motor = 33 % of max  hover throttle ~43-58 % (range over thrust estimate 39-65 %; end of pack 49-63 %)
+              full-throttle climb 1.99 g (19.5 m/s^2)  max level-flight tilt 70 deg  max level accel 2.82 g   hover ~20-40 W, 2.6-5.4 A, ~4.0-8.2 min (80 % of pack)
+  P1A + 1100  139.08 g  T:W 2.01-2.88 (plan 2.52)  hover thrust 34.8 g/motor = 40 % of max  hover throttle ~49-63 % (range over thrust estimate 44-70 %; end of pack 56-68 %)
+              full-throttle climb 1.52 g (14.9 m/s^2)  max level-flight tilt 67 deg  max level accel 2.31 g   hover ~25-52 W, 3.4-7.0 A, ~7.5-15.4 min (80 % of pack)
+  P1B + 450   144.68 g  T:W 1.94-2.76 (plan 2.42)  hover thrust 36.2 g/motor = 41 % of max  hover throttle ~51-64 % (range over thrust estimate 46-72 %; end of pack 57-70 %)
+              full-throttle climb 1.42 g (13.9 m/s^2)  max level-flight tilt 66 deg  max level accel 2.20 g   hover ~27-55 W, 3.6-7.4 A, ~2.9-5.9 min (80 % of pack)
+  P1B + 1100  166.68 g  T:W 1.68-2.40 (plan 2.10)  hover thrust 41.7 g/motor = 48 % of max  hover throttle ~57-69 % (range over thrust estimate 51-77 %; end of pack 64-75 %)
+              full-throttle climb 1.10 g (10.8 m/s^2)  max level-flight tilt 62 deg  max level accel 1.85 g   hover ~33-68 W, 4.5-9.2 A, ~5.7-11.7 min (80 % of pack)
+
+== Speed in level flight (body drag + rotor ram drag; upper-bound style estimate) ==
+  P1A + 450   CdA 75.7-75.7 cm^2  10 deg: 2.4-2.4 m/s  20 deg: 4.4-4.4 m/s  30 deg: 6.4-6.4 m/s
+  P1A + 1100  CdA 77.7-77.7 cm^2  10 deg: 2.6-2.6 m/s  20 deg: 4.8-4.8 m/s  30 deg: 6.9-6.9 m/s
+  P1B + 450   CdA 87.0-102.3 cm^2  10 deg: 2.5-2.6 m/s  20 deg: 4.6-4.8 m/s  30 deg: 6.6-6.9 m/s
+  P1B + 1100  CdA 89.0-104.3 cm^2  10 deg: 2.7-2.8 m/s  20 deg: 5.0-5.1 m/s  30 deg: 7.1-7.4 m/s
+
+== P1B rolling on the ground (aircraft tilts inside the gimbal; cage stays on the floor) ==
+   Thrust needed to START moving, as % of all-up weight, and throttle at the planning thrust.
+   Must also stay below lift-off (T cos(tilt) < W).
+  P1B + 450 (144.7 g)
+    tilt 15 deg (lift-off at 104 % W = 150 g -> 52-65 %):  easiest: 22 % W = 31 g -> 16-30 % | hexagon typical: 62 % W = 90 g -> 35-51 % | any face, any direction: 64 % W = 92 g -> 36-51 % | smooth floor, skid start: 55 % W = 79 g -> 32-48 %
+    tilt 20 deg (lift-off at 106 % W = 154 g -> 53-66 %):  easiest: 17 % W = 25 g -> 13-27 % | hexagon typical: 56 % W = 81 g -> 32-48 % | any face, any direction: 58 % W = 84 g -> 33-49 % | smooth floor, skid start: 48 % W = 70 g -> 29-45 %
+    tilt 30 deg (lift-off at 115 % W = 167 g -> 57-69 %):  easiest: 13 % W = 18 g -> 10-23 % | hexagon typical: 47 % W = 69 g -> 29-44 % | any face, any direction: 49 % W = 71 g -> 29-45 % | smooth floor, skid start: 39 % W = 57 g -> 25-40 %
+    tilt 45 deg (lift-off at 141 % W = 205 g -> 66-76 %):  easiest: 9 % W = 14 g -> 8-20 % | hexagon typical: 41 % W = 59 g -> 25-41 % | any face, any direction: 43 % W = 62 g -> 26-42 % | smooth floor, skid start: 33 % W = 47 g -> 21-37 %
+    tilt 60 deg (lift-off at 200 % W = 289 g -> 86-91 %):  easiest: 8 % W = 11 g -> 7-18 % | hexagon typical: 38 % W = 55 g -> 24-39 % | any face, any direction: 40 % W = 58 g -> 25-41 % | smooth floor, skid start: 30 % W = 43 g -> 20-35 %
+    keep rolling once moving (mean C_rr): tilt 15: 23 % W = 34 g -> 16-31 %  tilt 30: 14 % W = 20 g -> 11-24 %  tilt 45: 10 % W = 15 g -> 9-21 %
+  P1B + 1100 (166.7 g)
+    tilt 15 deg (lift-off at 104 % W = 173 g -> 58-70 %):  easiest: 22 % W = 36 g -> 17-32 % | hexagon typical: 62 % W = 104 g -> 39-54 % | any face, any direction: 64 % W = 106 g -> 40-55 % | smooth floor, skid start: 55 % W = 91 g -> 36-51 %
+    tilt 20 deg (lift-off at 106 % W = 177 g -> 59-71 %):  easiest: 17 % W = 29 g -> 15-29 % | hexagon typical: 56 % W = 93 g -> 36-52 % | any face, any direction: 58 % W = 96 g -> 37-52 % | smooth floor, skid start: 48 % W = 80 g -> 32-48 %
+    tilt 30 deg (lift-off at 115 % W = 192 g -> 63-74 %):  easiest: 13 % W = 21 g -> 11-24 % | hexagon typical: 47 % W = 79 g -> 32-48 % | any face, any direction: 49 % W = 82 g -> 33-48 % | smooth floor, skid start: 39 % W = 66 g -> 28-43 %
+    tilt 45 deg (lift-off at 141 % W = 236 g -> 74-82 %):  easiest: 9 % W = 16 g -> 9-21 % | hexagon typical: 41 % W = 68 g -> 28-44 % | any face, any direction: 43 % W = 71 g -> 29-45 % | smooth floor, skid start: 33 % W = 54 g -> 24-39 %
+    tilt 60 deg (lift-off at 200 % W = 333 g -> 96-98 %):  easiest: 8 % W = 13 g -> 8-19 % | hexagon typical: 38 % W = 63 g -> 27-42 % | any face, any direction: 40 % W = 66 g -> 28-44 % | smooth floor, skid start: 30 % W = 49 g -> 22-37 %
+    keep rolling once moving (mean C_rr): tilt 15: 23 % W = 39 g -> 18-33 %  tilt 30: 14 % W = 23 g -> 12-26 %  tilt 45: 10 % W = 17 g -> 10-22 %
+   Friction: if tan(tip angle) > floor mu, the cage skids instead of tipping; skid start uses the friction angle:
+    smooth hard floor (tile, sealed wood)  mu 0.30 (friction angle 17 deg): skids first for the steeper tips
+    gym floor / matte                      mu 0.45 (friction angle 24 deg): tips/rolls before skidding for every face
+    low carpet                             mu 0.60 (friction angle 31 deg): tips/rolls before skidding for every face
+
+== P1B gimbal: torques on the aircraft ==
+  P1B + 450: roll/pitch control authority at hover ~48 N*mm; CG offset costs 0.88 N*mm per mm at 90 deg tilt (3.2 N*mm = 7 % if the 1100 pack is not re-balanced); all bearing friction ~0.3 N*mm (0.6 %)
+  P1B + 1100: roll/pitch control authority at hover ~55 N*mm; CG offset costs 1.09 N*mm per mm at 90 deg tilt (4.0 N*mm = 7 % if the 1100 pack is not re-balanced); all bearing friction ~0.3 N*mm (0.5 %)
+
+== Contacts ==
+  P1A + 450: 0.5 m/s = 15 mJ (same as a 1 cm drop)  1.0 m/s = 59 mJ (same as a 5 cm drop)  2.0 m/s = 234 mJ (same as a 20 cm drop)
+  P1B + 1100: 0.5 m/s = 21 mJ (same as a 1 cm drop)  1.0 m/s = 83 mJ (same as a 5 cm drop)  2.0 m/s = 333 mJ (same as a 20 cm drop)
+  Glancing 1 m/s wall hit with friction 0.3: angular impulse 6.5 mN*m*s. P1A (whole drone, I ~4.3 kg*cm^2) can be spun up to ~874 deg/s; With ~39 N*mm of control torque the FC needs ~74 deg of rotation to stop it. P1B passes only bearing friction to the aircraft. Rolling at 1 m/s turns the cage at 8.1 rad/s (77 rpm).
+
+== Impact survivability (assumed material properties; not tested) ==
+  1 mm rod: breaks at ~13-26 N side load; stores ~27-82 mJ to break; buckles springily at ~29 N end load
+  cage near a struck hub (3-9 rods): ~0.08-0.74 J before a rod breaks (if hubs/sockets hold)
+  0.50 m/s:   18 /   21 /   22 mJ (450 / 1100 / 180 g)  = drop from 1 cm
+  1.00 m/s:   72 /   83 /   90 mJ (450 / 1100 / 180 g)  = drop from 5 cm
+  2.00 m/s:  289 /  333 /  360 mJ (450 / 1100 / 180 g)  = drop from 20 cm
+  3.00 m/s:  651 /  750 /  810 mJ (450 / 1100 / 180 g)  = drop from 46 cm
+  4.43 m/s: 1420 / 1636 / 1766 mJ (450 / 1100 / 180 g)  = drop from 100 cm
+  5.00 m/s: 1808 / 2083 / 2250 mJ (450 / 1100 / 180 g)  = drop from 127 cm
+  inner ring at 10 g stop: 11 N through the pivots -> ~14 MPa side hit (in plane), ~42 MPa flat landing (out of plane); PETG yield ~50 MPa
+  inner ring at 20 g stop: 22 N through the pivots -> ~28 MPa side hit (in plane), ~84 MPa flat landing (out of plane); PETG yield ~50 MPa
+  inner ring at 40 g stop: 44 N through the pivots -> ~56 MPa side hit (in plane), ~168 MPa flat landing (out of plane); PETG yield ~50 MPa

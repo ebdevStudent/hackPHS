@@ -1,0 +1,63 @@
+{
+  "completed_utc": "2026-10-09T22:14:52.199515+00:00",
+  "host": "Linux x86_64",
+  "source": "UI fixtures except production/disconnected checks",
+  "unit_tests": 79,
+  "build_profile": "../20261009-flutter-05/report.json",
+  "android": {
+    "avd": "Pixel_10_Pro_XL",
+    "device": "emulator-5554",
+    "resolution": [
+      1344,
+      2992
+    ],
+    "density_dpi": 480,
+    "visible_window": true,
+    "integration_log": "android-integration-04.txt",
+    "pass": true
+  },
+  "browser": {
+    "engine": "Codex internal browser",
+    "pixel_scale": 1.2,
+    "screens": [
+      "desktop-complete.jpg",
+      "desktop-following.jpg",
+      "desktop-speech.jpg",
+      "desktop-system.jpg",
+      "web-stale.jpg",
+      "web-readonly.jpg",
+      "web-production-disconnected.jpg"
+    ],
+    "pass": true,
+    "notes": "Explicit pixel-scale clips avoid the browser screenshot surface clipping; a cross-port localhost connection lacks CORS and fails visibly."
+  },
+  "source_files": {
+    "integration_test/operator_test.dart": "3752f71e8696a520fc3307101c5e285f795f934cfbb67dcb9862bccc24a980c4",
+    "lib/application/operator_controller.dart": "9e06fa7b736b42e8e66f40bd921d6d1f7c1fa02dabf8aac3a0cd1981b8ebb389",
+    "lib/data/fixture_gateway.dart": "f3e053aad3e727ec14ef180ff8b39eaeee045111d45867cddac51b5d6a539563",
+    "lib/data/operator_gateway.dart": "1a0cef9954c03686362b776edd61ab169991ca99f38d788bca305927080b2eda",
+    "lib/data/rest_gateway.dart": "8c19d77fe5160eb3fad2eb65214b0ecd3a119e488a1fae5c7d692e00f30e9f48",
+    "lib/domain/landing_geometry.dart": "09b91df23d5bff8cb381d3d7dccd70ca2a199121e38898e283ee8fa2379a1a60",
+    "lib/domain/models.dart": "2ee3982b5af5c4375f2e0e6d0e86256fc8817adcc3c61a919784c93b4703e759",
+    "lib/main.dart": "262f67cc4923bdfcad9115b6f4a6597cc825926c79fd88afdca7de9817cbd332",
+    "lib/media/media_port.dart": "2a0589bf7975ecb9d1c613a089dee66b541a52bec6bd6cd33f8ff826f524be25",
+    "lib/ui/app.dart": "c688e3e8db98615d044b64aff4936efe95c3c667b0624ae502667f36523c8e6a",
+    "lib/ui/audio.dart": "48e8bb2ff49982600c0719f332c5193e06ae6d5af5bd42e579f838c5db8a325a",
+    "lib/ui/camera_view.dart": "afe4369c43031770bb8df15843cafc0572a7794b1f98b2ed294053a044bc412f",
+    "lib/ui/dialogs.dart": "4303dba922f1c587d2ad4480a72d3ff986ddf582ee69761d7e6491cb5fc8134b",
+    "lib/ui/operations.dart": "1da2063050dcb8fdf9c2e6a706c94e02e59252711cafc9ef3d41717d91626f3a",
+    "lib/ui/system.dart": "5f1f046f3fe8ce2fffc1d97626611d6d8088e8d795c22e72e013ac5cc64ce174",
+    "lib/ui/theme.dart": "ef69155e69835b480da1968eeb7dd9f156a64c4a146d93c2ce8bfff106fa27f3",
+    "lib/ui/widgets.dart": "07a94101b9446678649087c7e8a88cd7227344e0edac329f14ec2095dbb4b630",
+    "test/controller_test.dart": "38ef7989c4f3dcd780b7f1eb1f5b2f2c26335722fae0827e9adcc74bd8363d82",
+    "test/layout_test.dart": "ef6d8785f829d75a5944f25ef0ae3f96081cdd35759abaa13366c51329ab3040",
+    "test/protocol_test.dart": "892f729af0efd58a296897b974fce1b3b173905b4a3d8a2a03d92c8053ac4d6b",
+    "test/rest_gateway_test.dart": "aeb160efd4915004e72f395501f22aa0bdf74637a13c9a64a413d98ee5ed99ca",
+    "test_driver/integration_test.dart": "6afbcfe5b247cab0ea2a14a22435b670ef8b7771aea181436b0fcf57b2a0d191"
+  },
+  "limits": [
+    "No physical backend, Pi, camera, mic/speaker, ElevenLabs or aircraft integration.",
+    "Fixture media produces no actual audio or flight commands."
+  ],
+  "pass": true
+}

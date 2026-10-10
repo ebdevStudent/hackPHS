@@ -1,0 +1,425 @@
+{
+  "document": "Apex2 Ball Cage P1B Gimbal",
+  "version": 14,
+  "nuts_pad": [
+    {
+      "frame_offset_mm": [
+        -2.0,
+        0,
+        0
+      ],
+      "overlap_mm3": 24.529075597449655
+    },
+    {
+      "frame_offset_mm": [
+        0.0,
+        0,
+        0
+      ],
+      "overlap_mm3": 0.0
+    },
+    {
+      "frame_offset_mm": [
+        2.0,
+        0,
+        0
+      ],
+      "overlap_mm3": 24.529075597449648
+    }
+  ],
+  "joints": [
+    {
+      "name": "Z pole pivot (cage - outer ring)",
+      "one": "Cage (P1A cage, pivot pole hubs):1",
+      "two": "Outer ring (Z to cage, X to inner):1",
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "angle": 0.0,
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "X pivot (outer ring - inner ring)",
+      "one": "Outer ring (Z to cage, X to inner):1",
+      "two": "Inner ring (X to outer, Y to aircraft):1",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "angle": 0.0,
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "Y pivot (inner ring - aircraft)",
+      "one": "Inner ring (X to outer, Y to aircraft):1",
+      "two": "Aircraft side (rotates on Y pivots):1",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "angle": 0.0,
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "rigidGroups": [
+    {
+      "owner": "Outer ring (Z to cage, X to inner)",
+      "name": "Rigid Group 1",
+      "members": [
+        "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:1",
+        "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:2",
+        "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:3",
+        "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:4",
+        "Outer ring (Z to cage, X to inner):1+outer_junction_X_bearing:1",
+        "Outer ring (Z to cage, X to inner):1+outer_junction_X_bearing:2",
+        "Outer ring (Z to cage, X to inner):1+outer_junction_Z_bearing:1",
+        "Outer ring (Z to cage, X to inner):1+outer_junction_Z_bearing:2",
+        "Outer ring (Z to cage, X to inner):1+pivot_hardware (1):1"
+      ],
+      "suppressed": false
+    },
+    {
+      "owner": "Aircraft side (rotates on Y pivots)",
+      "name": "Rigid Group 1",
+      "members": [
+        "Aircraft side (rotates on Y pivots):1+aircraft_raised_to_cg:1",
+        "Aircraft side (rotates on Y pivots):1+aircraft_raised_to_cg:1+Aircraft envelope (PLACEHOLDER):1",
+        "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1",
+        "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+carrier_plate:1",
+        "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+support_arm_p1b:1",
+        "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+support_arm_p1b:2",
+        "Aircraft side (rotates on Y pivots):1+arm_pivot_block:1",
+        "Aircraft side (rotates on Y pivots):1+arm_pivot_block:2",
+        "Aircraft side (rotates on Y pivots):1+pivot_hardware (3):1"
+      ],
+      "suppressed": false
+    },
+    {
+      "owner": "Cage (P1A cage, pivot pole hubs)",
+      "name": "Rigid Group 1",
+      "members": [
+        "Cage (P1A cage, pivot pole hubs):1+Cage skeleton (scaled 408519):1",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:1",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:2",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:3",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:4",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:5",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:6",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:7",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:8",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:9",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:10",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:11",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:12",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:13",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:14",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:15",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:16",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:17",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:18",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:19",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:20",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:21",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:22",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:23",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:24",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:25",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:26",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:27",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:28",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:29",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:30",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:31",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:32",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:33",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:34",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:35",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:36",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:37",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:38",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:39",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:40",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:41",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:42",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:43",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:44",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:45",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:46",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:1",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:2",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:3",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:4",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:1",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:2",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:3",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:4",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:5",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:6",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:7",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:8",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:9",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:10",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:1",
+        "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:2",
+        "Cage (P1A cage, pivot pole hubs):1+pivot_hardware:1"
+      ],
+      "suppressed": false
+    },
+    {
+      "owner": "Inner ring (X to outer, Y to aircraft)",
+      "name": "Rigid Group 1",
+      "members": [
+        "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:1",
+        "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:2",
+        "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:3",
+        "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:4",
+        "Inner ring (X to outer, Y to aircraft):1+inner_junction_Y_bearing:1",
+        "Inner ring (X to outer, Y to aircraft):1+inner_junction_Y_bearing:2",
+        "Inner ring (X to outer, Y to aircraft):1+inner_junction_X_pin:1",
+        "Inner ring (X to outer, Y to aircraft):1+inner_junction_X_pin:2",
+        "Inner ring (X to outer, Y to aircraft):1+pivot_hardware (2):1"
+      ],
+      "suppressed": false
+    }
+  ],
+  "physical": [
+    {
+      "component": "Outer ring (Z to cage, X to inner)",
+      "native_mass_g": 15.335427275975622,
+      "meshes": []
+    },
+    {
+      "component": "pivot_hardware (3)",
+      "native_mass_g": 0.5277875658031083,
+      "meshes": []
+    },
+    {
+      "component": "carrier_plate",
+      "native_mass_g": 6.122452392782704,
+      "meshes": []
+    },
+    {
+      "component": "Aircraft envelope (PLACEHOLDER)",
+      "native_mass_g": 0.0016252619962257681,
+      "meshes": []
+    },
+    {
+      "component": "carrier_and_arms",
+      "native_mass_g": 9.662496784560883,
+      "meshes": []
+    },
+    {
+      "component": "arm_pivot_block",
+      "native_mass_g": 2.202400708004243,
+      "meshes": []
+    },
+    {
+      "component": "pivot_hardware",
+      "native_mass_g": 0.5277875658030613,
+      "meshes": []
+    },
+    {
+      "component": "outer_junction_Z_bearing",
+      "native_mass_g": 1.9975798262766067,
+      "meshes": []
+    },
+    {
+      "component": "hub_3way_mount_A",
+      "native_mass_g": 0.6584890059543228,
+      "meshes": []
+    },
+    {
+      "component": "hub_3way",
+      "native_mass_g": 0.26878946925894837,
+      "meshes": []
+    },
+    {
+      "component": "inner_junction_Y_bearing",
+      "native_mass_g": 0.9231877655786186,
+      "meshes": []
+    },
+    {
+      "component": "support_arm_p1b",
+      "native_mass_g": 1.7700221958890898,
+      "meshes": []
+    },
+    {
+      "component": "inner_junction_X_pin",
+      "native_mass_g": 1.2176771909716413,
+      "meshes": []
+    },
+    {
+      "component": "Aircraft side (rotates on Y pivots)",
+      "native_mass_g": 14.596711028368702,
+      "meshes": []
+    },
+    {
+      "component": "inner_ring_quarter",
+      "native_mass_g": 1.730286628638149,
+      "meshes": []
+    },
+    {
+      "component": "Gimbal test fixtures",
+      "native_mass_g": 11.088625277730632,
+      "meshes": []
+    },
+    {
+      "component": "pivot_hardware (2)",
+      "native_mass_g": 1.1669053212677623,
+      "meshes": []
+    },
+    {
+      "component": "pivot_hardware (1)",
+      "native_mass_g": 1.278235510929402,
+      "meshes": []
+    },
+    {
+      "component": "Hubs",
+      "native_mass_g": 19.44582343052547,
+      "meshes": []
+    },
+    {
+      "component": "Cage skeleton (scaled 408519)",
+      "native_mass_g": 5.339823799867981,
+      "meshes": []
+    },
+    {
+      "component": "Cage (P1A cage, pivot pole hubs)",
+      "native_mass_g": 25.313434796196507,
+      "meshes": []
+    },
+    {
+      "component": "hub_4way",
+      "native_mass_g": 0.32712795424838864,
+      "meshes": []
+    },
+    {
+      "component": "hub_pole_5way_pivot",
+      "native_mass_g": 0.5881361391563347,
+      "meshes": []
+    },
+    {
+      "component": "outer_junction_X_bearing",
+      "native_mass_g": 1.1986753964662895,
+      "meshes": []
+    },
+    {
+      "component": "outer_ring_quarter",
+      "native_mass_g": 1.9161703298901072,
+      "meshes": []
+    },
+    {
+      "component": "aircraft_raised_to_cg",
+      "native_mass_g": 0.0016252619962257681,
+      "meshes": []
+    },
+    {
+      "component": "Apex2 Ball Cage P1B Gimbal",
+      "native_mass_g": 78.70398012719232,
+      "meshes": []
+    },
+    {
+      "component": "Inner ring (X to outer, Y to aircraft)",
+      "native_mass_g": 12.369781748920879,
+      "meshes": []
+    }
+  ],
+  "static": [
+    {
+      "a": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:1/hub_pole_5way_pivot",
+      "b": "Cage (P1A cage, pivot pole hubs):1+pivot_hardware:1/pin_4",
+      "volume_mm3": 1.8378317023489446
+    },
+    {
+      "a": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:2/hub_pole_5way_pivot",
+      "b": "Cage (P1A cage, pivot pole hubs):1+pivot_hardware:1/pin_5",
+      "volume_mm3": 1.837831702348445
+    },
+    {
+      "a": "Inner ring (X to outer, Y to aircraft):1+inner_junction_X_pin:1/inner_junction_X_pin",
+      "b": "Inner ring (X to outer, Y to aircraft):1+pivot_hardware (2):1/pin_2",
+      "volume_mm3": 1.8378317023498916
+    },
+    {
+      "a": "Inner ring (X to outer, Y to aircraft):1+inner_junction_X_pin:2/inner_junction_X_pin",
+      "b": "Inner ring (X to outer, Y to aircraft):1+pivot_hardware (2):1/pin_3",
+      "volume_mm3": 1.8378317023498951
+    },
+    {
+      "a": "Aircraft side (rotates on Y pivots):1+arm_pivot_block:1/arm_pivot_block",
+      "b": "Aircraft side (rotates on Y pivots):1+pivot_hardware (3):1/pin_0",
+      "volume_mm3": 1.8378317023515673
+    },
+    {
+      "a": "Aircraft side (rotates on Y pivots):1+arm_pivot_block:2/arm_pivot_block",
+      "b": "Aircraft side (rotates on Y pivots):1+pivot_hardware (3):1/pin_1",
+      "volume_mm3": 1.8378317023515673
+    }
+  ],
+  "tested_bodies": 104,
+  "root_mass_g": 78.70398012719232,
+  "battery_450": {
+    "nuts_overlap_mm3": 0.0,
+    "nut_gap_mm": 2.2760236235221636
+  },
+  "battery_1100": {
+    "nuts_overlap_mm3": 0.0,
+    "nut_gap_mm": 0.40000000000000036
+  }
+}

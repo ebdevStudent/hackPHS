@@ -1,0 +1,116 @@
+{
+  "documentId": "1QrmGZfF8AJm1gQhVAsY_8FbZmaZgIQHXRB_zzldYWVA",
+  "title": "HackPHS 2026",
+  "revisionId": "ANLCKQnLVBOUgYbF9xiV7-InTsia-NHBAIK6uRHga-e4J5upeOn-tJgL1FVO9wv0_COaZWscwb-pNlIDnIFEctx2nWF87sQFyqftuH4YmVg",
+  "readDate": "2026-10-07",
+  "tabs": [
+    {
+      "tabId": "t.0",
+      "title": "Idea",
+      "index": 0,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "01-idea.md",
+      "adoption": "current source"
+    },
+    {
+      "tabId": "t.mtfkaop9vhud",
+      "title": "BOM",
+      "index": 1,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "02-bom.md",
+      "adoption": "current source"
+    },
+    {
+      "tabId": "t.ri12fpw0hdp1",
+      "title": "CAD",
+      "index": 2,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "03-cad.md",
+      "adoption": "current source"
+    },
+    {
+      "tabId": "t.4nvsq5osusve",
+      "title": "Software",
+      "index": 3,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "04-software.md",
+      "adoption": "current source"
+    },
+    {
+      "tabId": "t.y9xlzm2dw43q",
+      "title": "Hardware",
+      "index": 4,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "05-hardware.md",
+      "adoption": "current source"
+    },
+    {
+      "tabId": "t.5xh0imufqx1q",
+      "title": "Simulation",
+      "index": 5,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "06-simulation.md",
+      "adoption": "current source"
+    },
+    {
+      "tabId": "t.76sp9sduf57s",
+      "title": "refs",
+      "index": 6,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "07-refs.md",
+      "adoption": "current source"
+    },
+    {
+      "tabId": "t.9zl6mz9qzdr6",
+      "title": "future",
+      "index": 7,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "08-future.md",
+      "adoption": "current source"
+    },
+    {
+      "tabId": "t.pr5w6cacjtya",
+      "title": "toImplement",
+      "index": 8,
+      "parentTabId": null,
+      "nestingLevel": null,
+      "file": "09-to-implement.md",
+      "adoption": "deferred"
+    }
+  ],
+  "images": [
+    {
+      "id": "kix.3dfyzdb25a5",
+      "tab": "CAD",
+      "name": "cad-kix3dfyzdb25a5.png"
+    },
+    {
+      "id": "kix.29ebd543co4",
+      "tab": "CAD",
+      "name": "cad-kix29ebd543co4.png"
+    },
+    {
+      "id": "kix.vg7uothbxr5p",
+      "tab": "Software",
+      "name": "software-kixvg7uothbxr5p.png"
+    },
+    {
+      "id": "kix.gzway1y2gsry",
+      "tab": "refs",
+      "name": "refs-kixgzway1y2gsry.png"
+    },
+    {
+      "id": "kix.z7puvbubuxdz",
+      "tab": "refs",
+      "name": "refs-kixz7puvbubuxdz.png"
+    }
+  ]
+}

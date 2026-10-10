@@ -1,0 +1,5 @@
+{
+  "missing_p1b_export_before_selected_p1a": "/var/folders/h4/crl8fldd0p13dp5_tj4bwx7m0000gn/T/cad-plate-regression-6nvte2n4/p1a/carrier_plate.stl",
+  "missing_p1b_export_after_rejected": "Missing export for selected design: /var/folders/h4/crl8fldd0p13dp5_tj4bwx7m0000gn/T/cad-plate-regression-6nvte2n4/p1b/carrier_plate.stl",
+  "open_mesh_rejected": "Open/nonmanifold/inconsistently wound mesh: /var/folders/h4/crl8fldd0p13dp5_tj4bwx7m0000gn/T/cad-plate-regression-6nvte2n4/open.stl"
+}

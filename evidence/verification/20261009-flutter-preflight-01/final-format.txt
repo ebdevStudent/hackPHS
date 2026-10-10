@@ -1,0 +1,6 @@
+Formatted lib/application/operator_controller.dart
+Formatted lib/data/operator_gateway.dart
+Formatted lib/data/rest_gateway.dart
+Formatted test/protocol_test.dart
+Formatted test/rest_gateway_test.dart
+Formatted 22 files (5 changed) in 0.16 seconds.

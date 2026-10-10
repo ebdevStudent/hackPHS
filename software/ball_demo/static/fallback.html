@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ball Drone — Manual Fallback</title>
+  <link rel="stylesheet" href="/assets/fallback.css">
+</head>
+<body>
+  <header>
+    <p id="steering" class="steering" role="status">Manual steering — computer steering unavailable</p>
+  </header>
+  <main>
+    <div class="stage">
+      <img id="video" src="/api/preview" alt="Live FPV video with the colored-target box and centre line">
+      <p id="source-warning" class="source-warning hidden"></p>
+      <p id="stale" class="stale hidden">Video connection lost</p>
+    </div>
+    <section class="indicator" aria-label="Target centre error">
+      <div class="rail"><span class="centre"></span><i id="marker" class="hidden"></i></div>
+      <div class="readout">
+        <span id="target">Target not found</span>
+        <span id="error">Centre error —</span>
+        <span id="source">—</span>
+      </div>
+    </section>
+  </main>
+  <script src="/assets/fallback.js" defer></script>
+</body>
+</html>

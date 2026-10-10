@@ -1,0 +1,56 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "radius_m": {
+      "default": 0.1,
+      "exclusiveMinimum": 0,
+      "title": "Radius M",
+      "type": "number"
+    },
+    "max_uncertainty_m": {
+      "default": 0.05,
+      "minimum": 0,
+      "title": "Max Uncertainty M",
+      "type": "number"
+    },
+    "heading_tolerance_rad": {
+      "default": 0.15,
+      "exclusiveMinimum": 0,
+      "title": "Heading Tolerance Rad",
+      "type": "number"
+    },
+    "angular_uncertainty_rad": {
+      "default": 0.05,
+      "minimum": 0,
+      "title": "Angular Uncertainty Rad",
+      "type": "number"
+    },
+    "dwell_s": {
+      "default": 0.15,
+      "minimum": 0,
+      "title": "Dwell S",
+      "type": "number"
+    },
+    "min_distinct_frames": {
+      "default": 3,
+      "maximum": 100,
+      "minimum": 2,
+      "title": "Min Distinct Frames",
+      "type": "integer"
+    },
+    "pose_max_age_s": {
+      "default": 0.25,
+      "exclusiveMinimum": 0,
+      "title": "Pose Max Age S",
+      "type": "number"
+    }
+  },
+  "title": "ArrivalPolicy",
+  "type": "object"
+}

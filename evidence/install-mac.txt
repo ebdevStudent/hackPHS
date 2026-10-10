@@ -1,0 +1,22 @@
+Processing ./software
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: ball-drone-demo
+  Building wheel for ball-drone-demo (pyproject.toml): started
+  Building wheel for ball-drone-demo (pyproject.toml): finished with status 'done'
+  Created wheel for ball-drone-demo: filename=ball_drone_demo-0.1.0-py3-none-any.whl size=26150 sha256=138cc1ec8d2a23668cca005c70acd6a55a88dc4b2e59cebdd1dc745389a0cfca
+  Stored in directory: /private/var/folders/h4/crl8fldd0p13dp5_tj4bwx7m0000gn/T/pip-ephem-wheel-cache-8lk4ddvv/wheels/e7/38/af/84fb67cc84c29847dae2c0bf2b087eb8f76740ab5ee9105c31
+Successfully built ball-drone-demo
+Installing collected packages: ball-drone-demo
+  Attempting uninstall: ball-drone-demo
+    Found existing installation: ball-drone-demo 0.1.0
+    Uninstalling ball-drone-demo-0.1.0:
+      Successfully uninstalled ball-drone-demo-0.1.0
+Successfully installed ball-drone-demo-0.1.0
+
+[notice] A new release of pip is available: 25.3 -> 26.2.1
+[notice] To update, run: /Users/devk/Documents/HackPHS26/software/.venv/bin/python -m pip install --upgrade pip

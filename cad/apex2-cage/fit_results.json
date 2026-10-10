@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-09",
+  "source": "User-reported physical T1B fit results",
+  "coupon": "print_now/T1B_socket_and_screw_refinement.stl",
+  "rod_socket": {
+    "dots": 2,
+    "bore_diameter_mm": 1.275,
+    "rod_bore_clear_mm_per_side": 0.1375,
+    "rod_diameter_baseline_mm": 1.0,
+    "status": "Applied to all final cage sockets; T3 section strength remains pending"
+  },
+  "m2_pilot": {
+    "dots": 5,
+    "diameter_mm": 2.0,
+    "status": "Best fit reported; sustained thread retention not established; not used in T3"
+  },
+  "application": "Applied to final P1B generator inputs at user request; print compensation from physical coupons, not caliper-measured hardware. Full assembly strength, retention and flight acceptance pending.",
+  "parameters": {
+    "rod_bore_clear": "(1.275 mm - rod_dia) / 2",
+    "m2_tap": "2.00 mm",
+    "bearing_seat_clear": "5.30 mm - bearing_od",
+    "pin_press_horizontal_d": "2.15 mm",
+    "pin_press_vertical_d": "2.25 mm"
+  },
+  "t2": {
+    "source": "2026-10-09 user report: holds securely, no cracks, bearing spins freely",
+    "bearing_seat_dots": 4,
+    "bearing_seat_diameter_mm": 5.3,
+    "horizontal_pin_dots": 4,
+    "horizontal_pin_diameter_mm": 2.15,
+    "vertical_pin_dots": 5,
+    "vertical_pin_diameter_mm": 2.25,
+    "physical_status": "Coupon fit passed by user report; full assembly load retention pending"
+  }
+}

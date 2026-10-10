@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "scan_id": "EXAMPLE-station",
+  "map_id": "EXAMPLE-corner",
+  "map_version": 1,
+  "frame_id": "example_world",
+  "permitted": {
+    "minimum": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maximum": [
+      4.0,
+      4.0,
+      3.0
+    ]
+  },
+  "voxel_m": 0.1,
+  "uncertainty_m": 0.03,
+  "max_depth_m": 4.0,
+  "map_from_depth": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      1.7
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.8
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0,
+      1.2
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "registration_evidence": "EXAMPLE ONLY: replace with independently surveyed depth-camera station pose",
+  "example": true
+}

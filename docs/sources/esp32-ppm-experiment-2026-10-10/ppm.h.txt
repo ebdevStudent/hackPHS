@@ -1,0 +1,49 @@
+#ifndef BALL_PPM_ESP32_H
+#define BALL_PPM_ESP32_H
+/*
+ * CPPM trainer-signal generator for ESP32-S3 (Freenove board).
+ *
+ * Produces an 8-channel Combined PPM waveform on GPIO 4 using a hardware
+ * timer interrupt.  A safety jumper on GPIO 5 (bridged to GND) must be
+ * present to arm output; removing it holds the line idle so the radio
+ * ignores the trainer port.
+ *
+ * Only the yaw channel (RC channel 4, array index 3) is driven.
+ * Every other channel stays centered at 1500 us.
+ *
+ * The ESP32-S3 outputs 3.3 V logic, which matches the RadioMaster Pocket's
+ * trainer input directly — no voltage divider is needed.
+ */
+#include <stdbool.h>
+#include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define PPM_CHANNELS     8
+#define PPM_CH_YAW       3      /* RC channel 4 = rudder/yaw (0-indexed) */
+#define PPM_CENTER_US    1500
+#define PPM_MIN_US       1000
+#define PPM_MAX_US       2000
+#define PPM_FRAME_US     22500  /* 22.5 ms frame period, about 44 Hz       */
+#define PPM_SEP_US       300    /* LOW separator between channel pulses     */
+
+/* GPIO assignments — chosen to avoid camera, SD, USB, and boot pins
+ * on the Freenove ESP32-S3-WROOM board. */
+#define PPM_OUTPUT_PIN   4      /* PPM signal out — connect to 3.5mm tip   */
+#define PPM_SAFETY_PIN   5      /* safety jumper — bridge to any GND pin   */
+
+/* Call once in setup(), after Serial.begin(). */
+void ppm_init(void);
+
+/* Call on every loop() pass. */
+void ppm_update(bool enabled, int yaw);
+
+/* Returns true when the safety jumper bridges the safety pin to GND. */
+bool ppm_safety_ok(void);
+
+#ifdef __cplusplus
+}
+#endif
+#endif

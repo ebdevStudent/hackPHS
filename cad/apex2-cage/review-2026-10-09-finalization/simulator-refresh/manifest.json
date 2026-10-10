@@ -1,0 +1,20 @@
+{
+  "scope": "Snapshot of the local final-CAD simulator refresh; existing nested simulator repository index and unrelated changes preserved. Physical validation is not implied.",
+  "sources": [
+    {
+      "workspace_source": "simulation/tools/build_sim_model.py",
+      "snapshot": "tools/build_sim_model.py",
+      "sha256": "4e904cd7d252d4d0675db4080d67c8985cc40de165a6e28e8b62a9a8eb78fc0f"
+    },
+    {
+      "workspace_source": "simulation/static/assets/p1b.json",
+      "snapshot": "static/assets/p1b.json",
+      "sha256": "1816456debf7289d99d9d3e2c5a68b1ccf1461c5ec22c4eb24bf2f59da4a9f93"
+    },
+    {
+      "workspace_source": "simulation/tools/test/physics_test.mjs",
+      "snapshot": "tools/test/physics_test.mjs",
+      "sha256": "ee914ad5b49dca9da4151d28a1aa26a9e64ea16809fae920ad8148c4a91d2b10"
+    }
+  ]
+}

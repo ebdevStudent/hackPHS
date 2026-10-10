@@ -1,0 +1,66 @@
+{
+  "added_structure_g": 74.08,
+  "printed_g": 60.38,
+  "rods_g": 5.34,
+  "hardware_g": 8.36,
+  "bare_aircraft_g": 44.78,
+  "configurations": [
+    {
+      "pack": "450",
+      "accounted_g": 144.86,
+      "with_extras_g": [
+        152.86,
+        154.86
+      ],
+      "margin_after_extras_g": [
+        20.14,
+        22.14
+      ]
+    },
+    {
+      "pack": "1100",
+      "accounted_g": 166.86,
+      "with_extras_g": [
+        174.86,
+        176.86
+      ],
+      "margin_after_extras_g": [
+        -1.86,
+        0.14
+      ]
+    }
+  ],
+  "options": [
+    {
+      "option": "Fly P1B with the 450 mAh pack only (keep 1100 mAh for P1A)",
+      "saving_g": 22,
+      "cost": "Shorter endurance; no CAD change",
+      "risk": "none structural"
+    },
+    {
+      "option": "Nylon M2 screws for the 16 ring splices (steel kept at the carrier/arms)",
+      "saving_g": 2.56,
+      "cost": "Buy nylon M2 x 6 (within contingency)",
+      "risk": "Lower clamp force; check splice slip with the coupon"
+    },
+    {
+      "option": "Ring band thickness 3.0 -> 2.5 mm (ring_t)",
+      "saving_g": 2.43,
+      "cost": "Regenerate P1B, re-run sweep/validation",
+      "risk": "Out-of-plane ring stiffness falls ~42 % (t^3); load-test a quarter first"
+    },
+    {
+      "option": "Pocket the two arm pivot blocks and Z junction posts (~30 % of their volume)",
+      "saving_g": 2.53,
+      "cost": "Generator change",
+      "risk": "Pivot alignment; keep material around pins and bearing seats"
+    },
+    {
+      "option": "Larger carrier window (~20 % of carrier volume)",
+      "saving_g": 1.22,
+      "cost": "Generator change",
+      "risk": "Carrier twist with the 1100 mAh pack"
+    }
+  ],
+  "basis": "Native solid volumes x 1.27 g/cm3 PETG (thin parts print essentially solid), rods 1.55 g/cm3, hardware as in build_p1b.py, vendor component sums; estimates, not weighed parts."
+}

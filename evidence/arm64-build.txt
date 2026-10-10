@@ -1,0 +1,55 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  273.4kB
+Step 1/10 : FROM python:3.13-slim
+ ---> 3dd7cc108ec1
+Step 2/10 : WORKDIR /app
+ ---> Using cache
+ ---> 455419cbf4d5
+Step 3/10 : COPY requirements.lock .
+ ---> Using cache
+ ---> f798f8bc77cc
+Step 4/10 : RUN pip install --no-cache-dir -r requirements.lock
+ ---> Using cache
+ ---> efdf7df25125
+Step 5/10 : COPY pyproject.toml .
+ ---> Using cache
+ ---> a031a5e960f8
+Step 6/10 : COPY ball_demo ./ball_demo
+ ---> 65cc0992fd72
+Step 7/10 : RUN pip install --no-deps .
+ ---> Running in 9f54885d7ef8
+Processing ./.
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: ball-drone-demo
+  Building wheel for ball-drone-demo (pyproject.toml): started
+  Building wheel for ball-drone-demo (pyproject.toml): finished with status 'done'
+  Created wheel for ball-drone-demo: filename=ball_drone_demo-0.1.0-py3-none-any.whl size=26150 sha256=39d3b809f0f4f684c57e29eaaa7cac88748d414b7ae5f7cdb8fc2daf4457bead
+  Stored in directory: /tmp/pip-ephem-wheel-cache-mzm7z16z/wheels/19/62/e5/caf0138816cbbc0c92b8fb19626cf9ac282f22194a65231821
+Successfully built ball-drone-demo
+Installing collected packages: ball-drone-demo
+Successfully installed ball-drone-demo-0.1.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[0m ---> Removed intermediate container 9f54885d7ef8
+ ---> a577ac420e55
+Step 8/10 : ENV BALL_DATA_DIR=/data
+ ---> Running in d13988ea0ed8
+ ---> Removed intermediate container d13988ea0ed8
+ ---> c8d185212e3a
+Step 9/10 : EXPOSE 8080
+ ---> Running in 28f38c809ca0
+ ---> Removed intermediate container 28f38c809ca0
+ ---> be13bb411c56
+Step 10/10 : CMD ["python", "-m", "ball_demo.cli", "serve", "--host", "0.0.0.0", "--port", "8080"]
+ ---> Running in 5be5edde0994
+ ---> Removed intermediate container 5be5edde0994
+ ---> d5c8da1f58d0
+Successfully built d5c8da1f58d0
+Successfully tagged ball-drone-demo:arm64

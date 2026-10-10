@@ -1,0 +1,456 @@
+You are working on the mechanical CAD and 3D-printing portion of a small drone project. Focus ONLY on CAD, mechanical design, printability, PETG, assembly, dimensions, tolerances, and physical testing. Do not work on software, electronics, flight-control code, computer vision, radio control, simulation, or networking.
+
+## Hardware available for printing
+
+We have:
+
+- Monoprice Voxel 3D printer
+- Build volume: approximately 150 × 150 × 150 mm
+- 0.4 mm nozzle
+- 1.75 mm PETG filament
+- Heated bed
+- PETG is the intended material for essentially all prototype structural parts
+
+Because the printer is limited to a 150 mm build area, anything significantly larger must be split into printable modules.
+
+## What we are building
+
+The drone will use approximately 2-inch propellers.
+
+The planned protective cage is approximately:
+
+- 245–250 mm overall diameter/width
+- Significantly larger than the Voxel's print bed
+- Therefore it CANNOT be one print
+
+The immediate priority is a FIXED protective cage.
+
+A two-ring movable/gimbal-style cage may be developed later, but do not allow that design to compromise or delay the fixed cage.
+
+The fixed cage must remain a usable standalone configuration even if a later gimbal system is developed.
+
+## Primary mechanical goal
+
+Design a lightweight, modular PETG cage that:
+
+1. Protects the propellers during low-energy contact with walls, objects, or targets.
+2. Prevents the propellers from being the first point of contact.
+3. Can survive repeated light impacts.
+4. Is light enough for a small 2-inch drone.
+5. Can be printed entirely on the Monoprice Voxel.
+6. Can be repaired by replacing individual printed pieces instead of reprinting the entire cage.
+7. Can be assembled/disassembled repeatedly.
+8. Keeps expensive drone hardware protected.
+9. Uses simple hardware and printed components wherever practical.
+10. Is easy to modify as real-world measurements become available.
+
+## Required modular architecture
+
+Do NOT create a monolithic 245–250 mm cage.
+
+Design it as separate components.
+
+A reasonable starting architecture is:
+
+Fixed Cage Assembly
+- Front-left cage section
+- Front-right cage section
+- Rear-left cage section
+- Rear-right cage section
+- Replaceable cage-to-cage connectors
+- Drone-to-cage mounting brackets
+- Replaceable impact/contact pieces
+- Fastener retainers or clips where useful
+
+You may change the exact number of cage sections if another segmentation produces a stronger, lighter, or easier-to-print system.
+
+Every individual printed component must fit inside the Voxel's 150 × 150 × 150 mm build volume with reasonable margin.
+
+Do not design parts that technically fit only by using the absolute diagonal of the build volume unless necessary. Prefer easy, reliable print orientations.
+
+## Modularity
+
+Treat the following as separate CAD components whenever practical:
+
+### 1. Main cage sections
+These form the protective perimeter.
+
+Requirements:
+- individually printable
+- replaceable
+- lightweight
+- stiff enough to maintain prop clearance
+- rounded/smooth external contact geometry
+- avoid sharp impact points
+
+### 2. Cage connectors
+Use separate connectors between cage sections.
+
+These should:
+- be cheap and fast to print
+- be easy to replace
+- maintain alignment
+- resist twisting
+- preferably fail before expensive drone components are damaged in a severe impact
+
+Consider:
+- tongue-and-slot joints
+- keyed joints
+- dovetail-like joints where appropriate
+- bolted overlap joints
+- pinned joints
+- printed sleeves
+- combinations of mechanical alignment plus screws
+
+Do not rely purely on a small amount of PETG snap-fit flex unless testing demonstrates it is reliable.
+
+### 3. Drone-to-cage mounts
+Do not permanently integrate the drone mounting geometry into every cage section.
+
+Use separate mounting brackets/adapters.
+
+Goals:
+- allow mounting geometry to change without redesigning the complete cage
+- allow broken brackets to be replaced
+- reduce force transferred directly into the airframe
+- provide some sacrificial mechanical behavior
+
+### 4. Contact/bump pieces
+If there are obvious regions likely to contact walls or targets, consider small replaceable bump/contact components.
+
+These can be optimized specifically for:
+- impact
+- abrasion
+- quick replacement
+- low print time
+
+### 5. Camera/protective accessory mounts
+Any small protective mounts should remain independent from the primary structural cage where possible.
+
+Do not make the whole cage dependent on the dimensions of one accessory.
+
+## PETG-specific design requirements
+
+Design specifically for FDM PETG, not injection molding.
+
+Assume an initial printing profile around:
+
+- 0.20 mm layer height
+- 0.4 mm nozzle
+- 3–4 walls/perimeters for structural pieces
+- approximately 20–35% infill as a starting range
+- PETG nozzle temperature roughly 230–240°C as an initial range
+- bed roughly 55–70°C depending on filament/printer tuning
+
+These are starting points, not immutable values.
+
+Favor walls/perimeters and good geometry over extremely high infill.
+
+Do NOT make structural parts solid unless there is a clear reason.
+
+## Layer orientation
+
+Layer orientation is extremely important.
+
+For every structural part, explicitly determine the intended print orientation.
+
+Avoid arrangements where an impact loads the weakest inter-layer direction directly in tension.
+
+For long cage members:
+- prefer printing them lying down where practical
+- try to run extrusion paths along the length of the structural member
+- avoid making layer adhesion the primary thing resisting bending or impact
+
+For connectors:
+- consider load paths from multiple directions
+- orient the part so screw loads and impact loads do not simply split the layers
+
+Include recommended print orientation for every part.
+
+## Supports
+
+Minimize supports.
+
+Prefer:
+- chamfers instead of unsupported horizontal overhangs
+- 45-degree transitions
+- teardrop-shaped horizontal holes where useful
+- self-supporting geometry
+- splitting complicated components instead of filling them with supports
+
+Parts should ideally be printable repeatedly without difficult support removal.
+
+## Tolerances
+
+The Monoprice Voxel is an FDM printer, so do not CAD mating PETG components with zero clearance.
+
+Make fit dimensions parametric.
+
+Start with reasonable prototype clearances, for example:
+
+- approximately 0.2–0.3 mm per side for relatively close fits
+- approximately 0.3–0.5 mm per side for easier sliding/removable fits
+
+These should be adjustable parameters rather than hard-coded assumptions.
+
+Create tolerance test pieces before committing to all final joints if appropriate.
+
+## Fasteners
+
+Prefer commonly available small hardware.
+
+Use captured nuts, heat-set inserts, through-bolts, or self-tapping screws only where appropriate.
+
+For early prototypes, simple nuts and bolts may be preferable to heat-set inserts because they are easy to change.
+
+Avoid designs requiring obscure hardware.
+
+Where possible:
+- make screw sizes parametric
+- provide nut traps
+- provide tool access
+- prevent hardware from contacting propellers
+
+## Weight
+
+Weight matters significantly because this is going onto a small 2-inch drone.
+
+Do not overbuild the cage.
+
+Every structural element should have a reason to exist.
+
+Use:
+- ribs
+- curved sections
+- hollow/sectioned beams
+- thin walls with reinforcement features
+- local strengthening only where needed
+
+instead of simply making everything thick.
+
+Provide estimated printed volume/mass where possible.
+
+Assume PETG density around 1.25–1.30 g/cm³ for rough CAD estimates if exact filament density is unavailable.
+
+## Geometry constraints
+
+The cage should be around 245–250 mm overall.
+
+Treat that as the current design target, not an exact immutable dimension.
+
+The cage must maintain safe clearance around:
+- propellers
+- motors
+- airframe
+- wires
+- antennas
+- any mounting hardware
+
+Do not assume exact airframe hole spacing unless real measurements are available.
+
+Use parameters/placeholders for dimensions that still need physical measurement.
+
+Clearly label dimensions that must be measured once hardware is in hand.
+
+## Actual-part measurements
+
+All planned project hardware has already been ordered.
+
+Therefore:
+
+DO NOT redesign purchased hardware.
+
+Design printed components around the physical hardware.
+
+As parts become available, critical interfaces should be measured with calipers.
+
+Dimensions that should eventually come from real measurements include:
+- frame dimensions
+- mounting hole locations
+- motor locations
+- maximum propeller envelope
+- board/component clearance
+- battery clearance
+- camera dimensions
+- antenna clearance
+- screw diameters
+- standoff locations
+
+Make the CAD parametric enough that these measurements can be changed without reconstructing the entire cage.
+
+## Fixed cage comes first
+
+The fixed cage is the core mechanical design.
+
+Do not immediately optimize for a gimbal.
+
+The fixed cage should first prove that it can handle:
+
+- at least 10 consecutive low-energy contacts without cage damage causing failure
+- no prop strikes during those contacts
+- at least 3 minutes of usable flight with the cage attached
+- repeatable manual recovery following contact/disturbance
+
+The fixed cage should remain functional and available even after later designs are created.
+
+## Future two-ring gimbal
+
+Only after the fixed cage is mechanically successful should a two-ring/gimbal system become a major CAD task.
+
+If preparing for it now, only make interfaces modular enough that a gimbal can be attached later.
+
+Do not unnecessarily add gimbal complexity to the fixed cage.
+
+A future gimbal system should itself be modular:
+
+Two-Ring Gimbal Assembly
+- cage adapter
+- outer ring segments
+- inner ring segments
+- pivot components
+- bushings/bearing interfaces
+- retainers/stops
+- replaceable connectors
+
+Because a ~245–250 mm ring cannot fit on the Voxel, both future rings must also be segmented.
+
+Do not design the rings as impossible single-piece prints.
+
+## Sacrificial design
+
+Where reasonable, intentionally make cheap printed pieces easier to replace than expensive components.
+
+A hard hit should ideally damage:
+1. a small replaceable PETG connector or bumper
+
+before damaging:
+2. motors
+3. frame
+4. camera
+5. flight electronics
+
+However, sacrificial components should not be so weak that normal low-energy contacts cause constant failures.
+
+## Development sequence
+
+Use this mechanical development order:
+
+1. Establish all major CAD parameters.
+2. Create simple tolerance/joint test coupons.
+3. Test PETG mating clearances.
+4. Design one cage section.
+5. Design one connector.
+6. Print and mechanically test that section/connector.
+7. Adjust thickness, clearance, and joint geometry.
+8. Build the full fixed-cage CAD assembly.
+9. Print and assemble the fixed cage.
+10. Perform fit/clearance checks without propellers.
+11. Verify propeller envelope and hardware clearance.
+12. Perform low-energy mechanical/contact tests.
+13. Iterate weak areas only.
+14. Preserve the successful fixed-cage version.
+15. Only then begin detailed two-ring gimbal development.
+
+## CAD/code organization
+
+If this repository already contains a CAD system, mechanical files, OpenSCAD, CadQuery, FreeCAD scripts, or similar infrastructure, use the existing approach.
+
+If no CAD approach currently exists, prefer a parametric, code-based CAD system suitable for version control, such as:
+
+- CadQuery, or
+- OpenSCAD
+
+Prefer CadQuery if Python-based solid modeling and STEP export are useful.
+
+Structure the source so major dimensions live in one obvious parameter/configuration section.
+
+Examples of parameters:
+
+- cage_outer_diameter
+- cage_height
+- prop_diameter
+- prop_clearance
+- structural_member_width
+- structural_member_thickness
+- joint_clearance
+- screw_diameter
+- mount_spacing
+- connector_length
+- bumper_thickness
+- ring_segment_count
+
+Do not scatter important dimensions throughout the source.
+
+## Files/output requested
+
+Create or organize:
+
+1. Parametric source CAD files.
+2. A full fixed-cage assembly.
+3. Individual printable part files.
+4. STL exports if the available CAD tooling supports them.
+5. STEP exports where useful.
+6. A mechanical README covering:
+   - part names
+   - required quantity
+   - intended material
+   - print orientation
+   - supports
+   - wall/infill recommendation
+   - fasteners
+   - assembly order
+   - dimensions requiring physical measurement
+7. A print/BOM table containing only mechanical/printed components and required hardware.
+8. Small tolerance/joint calibration pieces where needed.
+
+## Naming
+
+Use clear names such as:
+
+- fixed_cage_segment_front_left
+- fixed_cage_segment_front_right
+- fixed_cage_segment_rear_left
+- fixed_cage_segment_rear_right
+- cage_connector
+- cage_airframe_mount
+- cage_bumper
+- tolerance_test
+- joint_test
+
+If the design becomes symmetric, use shared/reversible pieces rather than maintaining unnecessary unique parts.
+
+Reducing the number of unique printed components is desirable.
+
+## Priorities
+
+Prioritize in this order:
+
+1. Propeller protection
+2. Safe mechanical clearance
+3. Reliable assembly
+4. Low weight
+5. Impact tolerance
+6. Easy repair
+7. Printability on the Monoprice Voxel
+8. Low print time/material use
+9. Modularity
+10. Appearance
+
+Function matters more than aesthetics.
+
+## Important restrictions
+
+Do not work on:
+- flight-controller software
+- radio communication
+- computer vision
+- target tracking
+- autonomous steering
+- simulation
+- networking
+- embedded firmware
+- electrical wiring
+
+Stay entirely focused on the physical CAD and 3D-printed mechanical system.
+
+Start by inspecting the repository for any existing mechanical/CAD work. Preserve useful existing work rather than replacing it unnecessarily. Then establish a clean parametric architecture for the fixed cage and document any dimensions that still require physical measurements before final printing.

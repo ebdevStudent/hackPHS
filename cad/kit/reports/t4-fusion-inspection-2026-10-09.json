@@ -1,0 +1,446 @@
+{
+  "document": "Apex2 Ball Cage P1B Gimbal",
+  "modified": false,
+  "parameters": {
+    "gimbal_clear": {
+      "expression": "4 mm",
+      "value_mm": 4.0
+    },
+    "ring_w": {
+      "expression": "5 mm",
+      "value_mm": 5.0
+    },
+    "ring_t": {
+      "expression": "3 mm",
+      "value_mm": 3.0000000000000004
+    },
+    "ring_gap": {
+      "expression": "5 mm",
+      "value_mm": 5.0
+    },
+    "junction_len": {
+      "expression": "14 mm",
+      "value_mm": 14.000000000000002
+    },
+    "junction_t": {
+      "expression": "8 mm",
+      "value_mm": 8.0
+    },
+    "splice_len": {
+      "expression": "14 mm",
+      "value_mm": 14.000000000000002
+    },
+    "splice_t": {
+      "expression": "2 mm",
+      "value_mm": 2.0
+    },
+    "lighten_w": {
+      "expression": "2.6 mm",
+      "value_mm": 2.6
+    },
+    "bearing_od": {
+      "expression": "5 mm",
+      "value_mm": 5.0
+    },
+    "bearing_w": {
+      "expression": "2.5 mm",
+      "value_mm": 2.5
+    },
+    "bearing_seat_clear": {
+      "expression": "5.30 mm - bearing_od",
+      "value_mm": 0.30000000000000027
+    },
+    "pin_d": {
+      "expression": "2 mm",
+      "value_mm": 2.0
+    },
+    "pin_press_d": {
+      "expression": "1.9 mm",
+      "value_mm": 1.9
+    },
+    "pin_press_depth": {
+      "expression": "6 mm",
+      "value_mm": 6.000000000000001
+    },
+    "pin_len": {
+      "expression": "16 mm",
+      "value_mm": 16.0
+    },
+    "pivot_gap": {
+      "expression": "1 mm",
+      "value_mm": 1.0
+    },
+    "pole_boss_len": {
+      "expression": "8 mm",
+      "value_mm": 8.0
+    },
+    "pole_boss_od": {
+      "expression": "6 mm",
+      "value_mm": 6.000000000000001
+    },
+    "pivot_boss_od": {
+      "expression": "7 mm",
+      "value_mm": 7.000000000000001
+    },
+    "pivot_boss_len": {
+      "expression": "12 mm",
+      "value_mm": 12.000000000000002
+    },
+    "pivot_plate_t": {
+      "expression": "4 mm",
+      "value_mm": 4.0
+    },
+    "cg_slot": {
+      "expression": "5 mm",
+      "value_mm": 5.0
+    },
+    "cage_outer_dia": {
+      "expression": "2 * ( cage_vertex_r + hub_core_r )",
+      "value_mm": 247.84582859180003
+    },
+    "rod_dia": {
+      "expression": "1.0 mm",
+      "value_mm": 1.0
+    },
+    "rod_bore_clear": {
+      "expression": "( 1.275 mm - rod_dia ) / 2",
+      "value_mm": 0.13749999999999998
+    },
+    "hub_core_r": {
+      "expression": "2.5 mm",
+      "value_mm": 2.5
+    },
+    "hub_body_r": {
+      "expression": "2.2 mm",
+      "value_mm": 2.2
+    },
+    "hub_arm_len": {
+      "expression": "7 mm",
+      "value_mm": 7.000000000000001
+    },
+    "hub_arm_od": {
+      "expression": "3.2 mm",
+      "value_mm": 3.2000000000000006
+    },
+    "socket_depth": {
+      "expression": "5 mm",
+      "value_mm": 5.0
+    },
+    "rod_end_gap": {
+      "expression": "0.25 mm",
+      "value_mm": 0.25
+    },
+    "cage_vertex_r": {
+      "expression": "cage_edge * 2.4780186591",
+      "value_mm": 121.42291429590001
+    },
+    "cage_edge": {
+      "expression": "rod_cut_len + 2 * ( hub_arm_len - socket_depth ) + 2 * rod_end_gap",
+      "value_mm": 49.0
+    },
+    "rod_cut_len": {
+      "expression": "44.5 mm",
+      "value_mm": 44.5
+    },
+    "pent_r": {
+      "expression": "cage_edge / ( 2 * sin(36 deg) )",
+      "value_mm": 41.681889609249964
+    },
+    "pole_rise": {
+      "expression": "cage_vertex_r - sqrt(cage_vertex_r ^ 2 - pent_r ^ 2)",
+      "value_mm": 7.378430892660486
+    },
+    "pole_edge": {
+      "expression": "sqrt(pent_r ^ 2 + pole_rise ^ 2)",
+      "value_mm": 42.32990862068411
+    },
+    "pole_rod_cut_len": {
+      "expression": "pole_edge - 2 * ( hub_arm_len - socket_depth ) - 2 * rod_end_gap",
+      "value_mm": 37.8299086206841
+    },
+    "motor_diag": {
+      "expression": "95 mm",
+      "value_mm": 95.0
+    },
+    "prop_dia": {
+      "expression": "50.8 mm",
+      "value_mm": 50.8
+    },
+    "prop_z": {
+      "expression": "8.9 mm",
+      "value_mm": 8.900000000000002
+    },
+    "prop_disk_h": {
+      "expression": "5.1 mm",
+      "value_mm": 5.1
+    },
+    "motor_od": {
+      "expression": "15.84 mm",
+      "value_mm": 15.84
+    },
+    "motor_h": {
+      "expression": "8.9 mm",
+      "value_mm": 8.900000000000002
+    },
+    "frame_t": {
+      "expression": "2.5 mm",
+      "value_mm": 2.5
+    },
+    "arm_w": {
+      "expression": "8 mm",
+      "value_mm": 8.0
+    },
+    "stack_w": {
+      "expression": "33 mm",
+      "value_mm": 33.0
+    },
+    "stack_h": {
+      "expression": "12 mm",
+      "value_mm": 12.000000000000002
+    },
+    "frame_hole_pitch": {
+      "expression": "25.5 mm",
+      "value_mm": 25.500000000000004
+    },
+    "cam_size": {
+      "expression": "14 mm",
+      "value_mm": 14.000000000000002
+    },
+    "cam_y": {
+      "expression": "22 mm",
+      "value_mm": 22.0
+    },
+    "cam_z": {
+      "expression": "9 mm",
+      "value_mm": 9.0
+    },
+    "batt450_l": {
+      "expression": "62.8 mm",
+      "value_mm": 62.800000000000004
+    },
+    "batt450_w": {
+      "expression": "16.4 mm",
+      "value_mm": 16.4
+    },
+    "batt450_h": {
+      "expression": "13.8 mm",
+      "value_mm": 13.8
+    },
+    "batt1100_l": {
+      "expression": "56.56 mm",
+      "value_mm": 56.56
+    },
+    "batt1100_w": {
+      "expression": "23.5 mm",
+      "value_mm": 23.5
+    },
+    "batt1100_h": {
+      "expression": "18.4 mm",
+      "value_mm": 18.4
+    },
+    "carrier_t": {
+      "expression": "2.5 mm",
+      "value_mm": 2.5
+    },
+    "carrier_len": {
+      "expression": "40 mm",
+      "value_mm": 40.0
+    },
+    "carrier_core_w": {
+      "expression": "48 mm",
+      "value_mm": 48.00000000000001
+    },
+    "carrier_span": {
+      "expression": "80 mm",
+      "value_mm": 80.0
+    },
+    "carrier_bar_w": {
+      "expression": "12 mm",
+      "value_mm": 12.000000000000002
+    },
+    "adj_y": {
+      "expression": "2 mm",
+      "value_mm": 2.0
+    },
+    "adj_x": {
+      "expression": "3 mm",
+      "value_mm": 3.0000000000000004
+    },
+    "strap_w": {
+      "expression": "12.5 mm",
+      "value_mm": 12.5
+    },
+    "strap_slot_t": {
+      "expression": "2.5 mm",
+      "value_mm": 2.5
+    },
+    "support_w": {
+      "expression": "6 mm",
+      "value_mm": 6.000000000000001
+    },
+    "support_h": {
+      "expression": "4 mm",
+      "value_mm": 4.0
+    },
+    "flange_h": {
+      "expression": "16 mm",
+      "value_mm": 16.0
+    },
+    "flange_t": {
+      "expression": "3 mm",
+      "value_mm": 3.0000000000000004
+    },
+    "bracket_t": {
+      "expression": "3 mm",
+      "value_mm": 3.0000000000000004
+    },
+    "bracket_bar_w": {
+      "expression": "7 mm",
+      "value_mm": 7.000000000000001
+    },
+    "mount_boss_len": {
+      "expression": "6 mm",
+      "value_mm": 6.000000000000001
+    },
+    "mount_boss_od": {
+      "expression": "5 mm",
+      "value_mm": 5.0
+    },
+    "m2_clear": {
+      "expression": "2.3 mm",
+      "value_mm": 2.3
+    },
+    "m2_tap": {
+      "expression": "2.00 mm",
+      "value_mm": 2.0
+    },
+    "print_wall": {
+      "expression": "1.2 mm",
+      "value_mm": 1.2
+    },
+    "antenna_len": {
+      "expression": "30 mm",
+      "value_mm": 30.0
+    },
+    "antenna_d": {
+      "expression": "5 mm",
+      "value_mm": 5.0
+    },
+    "hub_keel_w": {
+      "expression": "1.6 mm",
+      "value_mm": 1.6000000000000003
+    },
+    "battery_gap": {
+      "expression": "3 mm",
+      "value_mm": 3.0000000000000004
+    },
+    "frame_column_h": {
+      "expression": "20 mm",
+      "value_mm": 20.0
+    },
+    "battery_shield_t": {
+      "expression": "0.8 mm",
+      "value_mm": 0.8000000000000002
+    },
+    "pin_press_horizontal_d": {
+      "expression": "2.15 mm",
+      "value_mm": 2.15
+    },
+    "pin_press_vertical_d": {
+      "expression": "2.25 mm",
+      "value_mm": 2.25
+    }
+  },
+  "bodies": [
+    {
+      "name": "carrier_plate",
+      "solid": true,
+      "volume_mm3": 4820.828655734413,
+      "min_mm": [
+        -24.000000000000004,
+        -40.0,
+        -1.49203841096054
+      ],
+      "max_mm": [
+        24.000000000000004,
+        40.0,
+        1.00796158903946
+      ]
+    },
+    {
+      "name": "nut_shield_plate",
+      "solid": true,
+      "volume_mm3": 1250.4800000000014,
+      "min_mm": [
+        -12.25,
+        -31.900000000000006,
+        -5.292038410960541
+      ],
+      "max_mm": [
+        12.25,
+        31.900000000000006,
+        -4.49203841096054
+      ]
+    },
+    {
+      "name": "support_arm_p1b",
+      "solid": true,
+      "volume_mm3": 1381.7182644795987,
+      "min_mm": [
+        -4.999999999999995,
+        24.0,
+        1.00796158903946
+      ],
+      "max_mm": [
+        5.000000000000014,
+        67.0,
+        17.00796158903946
+      ]
+    },
+    {
+      "name": "support_arm_p1b",
+      "solid": true,
+      "volume_mm3": 1381.7182644795987,
+      "min_mm": [
+        -4.999999999999995,
+        -67.0,
+        1.00796158903946
+      ],
+      "max_mm": [
+        5.000000000000014,
+        -24.000000000000004,
+        17.00796158903946
+      ]
+    },
+    {
+      "name": "arm_pivot_block",
+      "solid": true,
+      "volume_mm3": 1740.5504051379455,
+      "min_mm": [
+        -5.999999999999986,
+        67.0,
+        -9.0
+      ],
+      "max_mm": [
+        6.000000000000019,
+        83.0,
+        22.00796158903946
+      ]
+    },
+    {
+      "name": "arm_pivot_block",
+      "solid": true,
+      "volume_mm3": 1740.5504051379455,
+      "min_mm": [
+        -5.999999999999986,
+        -83.0,
+        -9.0
+      ],
+      "max_mm": [
+        6.000000000000019,
+        -67.0,
+        22.00796158903946
+      ]
+    }
+  ]
+}

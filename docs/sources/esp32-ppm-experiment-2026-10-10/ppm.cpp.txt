@@ -1,0 +1,150 @@
+/*
+ * CPPM generator for ESP32-S3 — uses a hardware timer interrupt.
+ *
+ * Timer runs at 2 MHz (0.5 us per tick), identical to the AVR version.
+ * The ISR toggles the output pin and reloads the alarm for the next
+ * pulse edge.  Auto-reload resets the counter to zero on each alarm,
+ * so the ISR just writes the new alarm value for the next period.
+ *
+ * Supports both Arduino-ESP32 v2 and v3 core APIs via compile-time
+ * version detection.
+ */
+#include "ppm.h"
+#include <Arduino.h>
+
+/* ── Timer constants (identical to AVR version) ──────────────────────
+ * 2 MHz tick rate → 0.5 us per tick.
+ */
+#define TICKS_PER_US 2
+#define SEP_TICKS (PPM_SEP_US * TICKS_PER_US)       /*    600 */
+#define FRAME_TICKS (PPM_FRAME_US * TICKS_PER_US)   /* 45 000 */
+#define CENTER_TICKS (PPM_CENTER_US * TICKS_PER_US) /*  3 000 */
+
+/* ── ISR state ───────────────────────────────────────────────────── */
+static volatile uint16_t isr_ch[PPM_CHANNELS];
+static volatile uint16_t isr_sync;
+static volatile uint8_t isr_index;
+static volatile bool isr_high;
+static volatile bool isr_armed;
+
+static hw_timer_t *ppm_timer = NULL;
+
+/* ── GPIO helpers ─────────────────────────────────────────────────── */
+/* digitalWrite is ~1-3 us on ESP32, negligible vs 300 us minimum pulse. */
+#define PPM_PIN_HIGH() digitalWrite(PPM_OUTPUT_PIN, HIGH)
+#define PPM_PIN_LOW() digitalWrite(PPM_OUTPUT_PIN, LOW)
+
+/* ── Timer alarm helper (handles v2 vs v3 API) ───────────────────── */
+static inline void set_alarm(uint16_t ticks) {
+#if ESP_ARDUINO_VERSION_MAJOR >= 3
+  timerAlarm(ppm_timer, ticks, true, 0);
+#else
+  timerAlarmWrite(ppm_timer, ticks, true);
+  timerAlarmEnable(ppm_timer);
+#endif
+}
+
+/* ── Timer ISR — generates the CPPM waveform ─────────────────────
+ *
+ * Same state machine as the AVR version:
+ *   isr_high = true  →  HIGH period just ended, pull LOW for separator
+ *   isr_high = false →  separator just ended, pull HIGH for channel/sync
+ *
+ * When disarmed: hold pin HIGH (idle), check again in one frame period.
+ */
+static void IRAM_ATTR ppm_isr() {
+  if (!isr_armed) {
+    PPM_PIN_HIGH();
+    set_alarm(FRAME_TICKS);
+    isr_index = 0;
+    isr_high = true;
+    return;
+  }
+
+  if (isr_high) {
+    /* HIGH period ended → pull LOW for separator. */
+    PPM_PIN_LOW();
+    set_alarm(SEP_TICKS);
+    isr_high = false;
+  } else {
+    /* Separator ended → pull HIGH for channel or sync gap. */
+    PPM_PIN_HIGH();
+
+    uint16_t ticks;
+    if (isr_index < PPM_CHANNELS) {
+      ticks = isr_ch[isr_index] - SEP_TICKS;
+      isr_index++;
+    } else {
+      ticks = isr_sync;
+      isr_index = 0;
+    }
+
+    set_alarm(ticks);
+    isr_high = true;
+  }
+}
+
+/* ── Public API ───────────────────────────────────────────────────── */
+
+void ppm_init() {
+  /* Output pin: push-pull output, initially HIGH (idle). */
+  pinMode(PPM_OUTPUT_PIN, OUTPUT);
+  digitalWrite(PPM_OUTPUT_PIN, HIGH);
+
+  /* Safety pin: input with internal pull-up.  Jumper to GND = armed. */
+  pinMode(PPM_SAFETY_PIN, INPUT_PULLUP);
+
+  /* All channels centered. */
+  for (int i = 0; i < PPM_CHANNELS; i++)
+    isr_ch[i] = CENTER_TICKS;
+
+  isr_sync = (uint16_t)(FRAME_TICKS
+                        - (uint32_t)PPM_CHANNELS * CENTER_TICKS
+                        - SEP_TICKS);
+  isr_index = 0;
+  isr_high = true; /* first armed ISR will pull LOW for separator */
+  isr_armed = false;
+
+  /* Configure hardware timer at 2 MHz. */
+#if ESP_ARDUINO_VERSION_MAJOR >= 3
+  ppm_timer = timerBegin(2000000);
+  timerAttachInterrupt(ppm_timer, &ppm_isr);
+  timerAlarm(ppm_timer, FRAME_TICKS, true, 0);
+#else
+  ppm_timer = timerBegin(0, 40, true); /* timer 0, 80 MHz / 40 = 2 MHz */
+  timerAttachInterrupt(ppm_timer, &ppm_isr, true);
+  timerAlarmWrite(ppm_timer, FRAME_TICKS, true);
+  timerAlarmEnable(ppm_timer);
+#endif
+}
+
+bool ppm_safety_ok() {
+  return digitalRead(PPM_SAFETY_PIN) == LOW;
+}
+
+void ppm_update(bool enabled, int yaw) {
+  bool arm = enabled && ppm_safety_ok();
+
+  uint16_t ch[PPM_CHANNELS];
+  for (int i = 0; i < PPM_CHANNELS; i++)
+    ch[i] = CENTER_TICKS;
+
+  if (arm) {
+    int us = PPM_CENTER_US + yaw;
+    if (us < PPM_MIN_US) us = PPM_MIN_US;
+    if (us > PPM_MAX_US) us = PPM_MAX_US;
+    ch[PPM_CH_YAW] = (uint16_t)(us * TICKS_PER_US);
+  }
+
+  uint32_t sum = 0;
+  for (int i = 0; i < PPM_CHANNELS; i++) sum += ch[i];
+  uint16_t sync = (uint16_t)(FRAME_TICKS - sum - SEP_TICKS);
+
+  /* Atomic copy — ESP32 ISRs and main code run on different cores,
+     * so disable interrupts briefly while updating shared state. */
+  portDISABLE_INTERRUPTS();
+  for (int i = 0; i < PPM_CHANNELS; i++) isr_ch[i] = ch[i];
+  isr_sync = sync;
+  isr_armed = arm;
+  portENABLE_INTERRUPTS();
+}

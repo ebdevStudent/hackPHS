@@ -1,0 +1,25 @@
+Reference meshes: loaded (hidden)
+Materials: {'Analysis envelope (massless)': 15, 'PETG (project)': 9, 'Carbon rod (project)': 2}
+Values applied (vendor specs, then measurements): ['motor_diag=95 mm [vendor]', 'frame_t=2.5 mm [vendor]', 'frame_hole_pitch=25.5 mm [vendor]', 'motor_od=15.84 mm [vendor]', 'motor_h=8.9 mm [vendor]', 'prop_z=8.9 mm [vendor]', 'prop_dia=50.8 mm [vendor]', 'cam_size=14 mm [vendor]', 'cam_hfov=160 deg [vendor]', 'batt450_l=62.8 mm [vendor]', 'batt450_w=16.4 mm [vendor]', 'batt450_h=13.8 mm [vendor]', 'batt1100_l=56.56 mm [vendor]', 'batt1100_w=23.5 mm [vendor]', 'batt1100_h=18.4 mm [vendor]', 'stack_h=12 mm [vendor]', 'strap_w=12.5 mm [vendor]', 'rod_dia=1.0 mm [vendor]', 'stack_w=33 mm [vendor]', 'prop_disk_h=5.1 mm [vendor]', 'strap_slot_t=2.5 mm [vendor]']
+Cage: {'edge_rods': 90, 'edge_rod_cut_mm': 44.53, 'pole_rods': 10, 'pole_rod_cut_mm': 37.86, 'total_rod_mm': 4386.4} | span 248.00 mm (target 245-250)
+Clearance (nominal, no flex): prop disks to cage 44.49 mm; prop disks to supports 9.04 mm
+Clearance: batteries (450 and 1100) to cage 78.09 mm; to support arms/brackets 13.43 mm
+Camera view: 16 of 62 hub nodes inside the 160 deg cone (rods also cross the view)
+Printed parts (PETG): solid upper bound / estimated at walls + infill:
+  socket_fit_strip: x1, 4.56 / 4.44 g each, print height 7.0 mm
+  rod_cutting_jig: x1, 7.53 / 5.84 g each, print height 5.0 mm
+  hub_3way: x46, 0.27 / 0.27 g each, print height 5.5 mm
+  hub_3way_mount_A: x4, 0.66 / 0.66 g each, print height 8.9 mm
+  hub_4way: x10, 0.33 / 0.33 g each, print height 5.5 mm
+  hub_pole_5way: x2, 0.38 / 0.38 g each, print height 5.3 mm
+  carrier_plate: x1, 4.61 / 4.61 g each
+  support_arm: x2, 3.07 / 3.07 g each
+  x_bracket: x2, 2.80 / 2.80 g each
+P1A added mass (test tools excluded): rods 5.3 g + printed 35.4 g solid / 35.4 g estimated + M2 hardware ~4 g
+  = 44.7 g upper bound / 44.7 g estimated printed
+Supports: {'mount_hub_x_mm': 119.0, 'bracket_face_x_mm': 113.0, 'mount_hubs_yz_mm': (12.89, 20.85), 'support_arm_len_mm': 86.0, 'fore_aft_travel_mm': '+-5.0', 'lateral_travel_mm': '+-4.0', 'm2_screws': '4 frame-carrier, 4 arm-carrier, 4 arm-bracket, 4 bracket-boss (16 total)'}
+Bare aircraft: 44.8 g vendor component sum (excludes antenna, wiring, XT30, screws; weigh it)
+With 450 mAh (26 g, vendor): all-up ~116 g estimated / 116 g upper bound; at 350 g planning thrust 3.03-3.03:1 (estimate range 2.42-3.46:1); within 175 g ceiling
+With 1100 mAh (48 g, vendor): all-up ~138 g estimated / 138 g upper bound; at 350 g planning thrust 2.55-2.55:1 (estimate range 2.04-2.91:1); within 175 g ceiling
+Thrust: measured value pending (only an estimate is recorded); measure static thrust
+STL exports: ['socket_fit_strip.stl', 'rod_cutting_jig.stl', 'hub_3way.stl', 'hub_3way_mount_A.stl', 'hub_4way.stl', 'hub_pole_5way.stl', 'carrier_plate.stl', 'support_arm.stl', 'x_bracket.stl']

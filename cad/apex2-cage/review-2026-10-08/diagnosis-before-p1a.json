@@ -1,0 +1,150 @@
+{
+  "document": "Apex2 Ball Cage P1A",
+  "version": 15,
+  "nuts_pad": [
+    {
+      "frame_offset_mm": [
+        0,
+        -5.0,
+        0
+      ],
+      "overlap_mm3": 0.0
+    },
+    {
+      "frame_offset_mm": [
+        0,
+        0.0,
+        0
+      ],
+      "overlap_mm3": 0.0
+    },
+    {
+      "frame_offset_mm": [
+        0,
+        5.0,
+        0
+      ],
+      "overlap_mm3": 0.0
+    }
+  ],
+  "joints": [],
+  "rigidGroups": [],
+  "physical": [
+    {
+      "component": "hub_4way",
+      "native_mass_g": 0.32712795424838864,
+      "meshes": []
+    },
+    {
+      "component": "Aircraft envelope (PLACEHOLDER)",
+      "native_mass_g": 0.0016252619962257681,
+      "meshes": []
+    },
+    {
+      "component": "Cage skeleton (scaled 408519)",
+      "native_mass_g": 5.339823799867981,
+      "meshes": []
+    },
+    {
+      "component": "Croisillon_toile5_Bouclier (original, 3 mm rod)",
+      "native_mass_g": 6.460309763859474,
+      "meshes": [
+        {
+          "name": "Croisillon_toile5_Bouclier",
+          "material": "Steel"
+        }
+      ]
+    },
+    {
+      "component": "Croisillon_Y3_Bouclier (original, 3 mm rod)",
+      "native_mass_g": 3.4183971304739065,
+      "meshes": [
+        {
+          "name": "Croisillon_Y3_Bouclier",
+          "material": "Steel"
+        }
+      ]
+    },
+    {
+      "component": "Carrier and supports (stage 5)",
+      "native_mass_g": 16.347929811510177,
+      "meshes": []
+    },
+    {
+      "component": "carrier_plate",
+      "native_mass_g": 4.607196764888587,
+      "meshes": []
+    },
+    {
+      "component": "Socket fit strip (print first)",
+      "native_mass_g": 4.559986128051289,
+      "meshes": []
+    },
+    {
+      "component": "hub_pole_5way",
+      "native_mass_g": 0.38495501171750196,
+      "meshes": []
+    },
+    {
+      "component": "Cage hubs (stage 4)",
+      "native_mass_g": 19.039461175647798,
+      "meshes": []
+    },
+    {
+      "component": "hub_3way_mount_A",
+      "native_mass_g": 0.6584890059543228,
+      "meshes": []
+    },
+    {
+      "component": "hub_3way",
+      "native_mass_g": 0.26878946925894837,
+      "meshes": []
+    },
+    {
+      "component": "Apex2 Ball Cage P1A",
+      "native_mass_g": 66.63992508788678,
+      "meshes": []
+    },
+    {
+      "component": "Croisillon_Y4_Bouclier (original, 3 mm rod)",
+      "native_mass_g": 3.9427108799607096,
+      "meshes": [
+        {
+          "name": "Croisillon_Y4_Bouclier",
+          "material": "Steel"
+        }
+      ]
+    },
+    {
+      "component": "REFERENCE Thingiverse 408519 hubs (kert, CC BY-NC)",
+      "native_mass_g": 13.82141777429409,
+      "meshes": []
+    },
+    {
+      "component": "Rod cutting jig",
+      "native_mass_g": 7.529681136519232,
+      "meshes": []
+    },
+    {
+      "component": "support_arm",
+      "native_mass_g": 3.0654526267126383,
+      "meshes": []
+    },
+    {
+      "component": "x_bracket",
+      "native_mass_g": 2.8049138965981553,
+      "meshes": []
+    }
+  ],
+  "static": [],
+  "tested_bodies": 77,
+  "root_mass_g": 66.63992508788678,
+  "battery_450": {
+    "nuts_overlap_mm3": 0.0,
+    "nut_gap_mm": 2.2760236235221636
+  },
+  "battery_1100": {
+    "nuts_overlap_mm3": 0.0,
+    "nut_gap_mm": 0.40000000000000036
+  }
+}

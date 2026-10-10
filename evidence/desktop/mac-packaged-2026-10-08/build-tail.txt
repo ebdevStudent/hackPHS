@@ -1,0 +1,25 @@
+15234 INFO: Building PKG (CArchive) Ball Drone.pkg completed successfully.
+15235 INFO: Bootloader /Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/PyInstaller/bootloader/Darwin-64bit/runw
+15235 INFO: checking EXE
+15235 INFO: Building EXE because EXE-00.toc is non existent
+15235 INFO: Building EXE from EXE-00.toc
+15235 INFO: Copying bootloader EXE to /Users/devk/Documents/HackPHS26/software/build/Ball Drone/Ball Drone
+15236 INFO: Converting EXE to target arch (arm64)
+15275 INFO: Removing signature(s) from EXE
+15292 INFO: Modifying Mach-O image UUID(s) in EXE
+15300 INFO: Appending PKG archive to EXE
+15302 INFO: Fixing EXE headers for code signing
+15306 INFO: Re-signing the EXE
+15330 INFO: Building EXE from EXE-00.toc completed successfully.
+15334 INFO: checking COLLECT
+15334 INFO: Building COLLECT because COLLECT-00.toc is non existent
+15334 INFO: Building COLLECT COLLECT-00.toc
+24364 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+24372 INFO: checking BUNDLE
+24372 INFO: Building BUNDLE because BUNDLE-00.toc is non existent
+24372 INFO: Building BUNDLE BUNDLE-00.toc
+31057 INFO: Signing the BUNDLE...
+31396 INFO: Building BUNDLE BUNDLE-00.toc completed successfully.
+31402 INFO: Build complete! The results are available in: /tmp/ball-drone-build-sw1ltnyg
+/tmp/ball-drone-build-sw1ltnyg/Ball Drone.app: replacing existing signature
+/Users/devk/Applications/Ball Drone.app

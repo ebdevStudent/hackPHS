@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "repository": "https://github.com/DeviDeviDeviKanumilli/HackPHS",
+  "branch": "main",
+  "package_commit": "19d215bd1069698a71056e0103654f49ade8a521",
+  "remote_main_verified_at_delivery": "19d215bd1069698a71056e0103654f49ade8a521",
+  "local_package_commit": "15194de",
+  "authoritative_cad_files_checked": 476,
+  "print_now_package_checksums_passed": 105,
+  "plate_count": 12,
+  "production_part_count": 84,
+  "zip_sha256": "26f558766c2dbb8f30d01d0c85e04501ded64420d077f0a05e24b4506e56897a",
+  "zip_crc": "PASS",
+  "guide_links": "PASS",
+  "scope": "Digital print package and GitHub delivery; physical fit, retention, strength and flight qualification remain pending",
+  "other_local_work": "Existing nested simulator checkout index and unrelated working files preserved"
+}

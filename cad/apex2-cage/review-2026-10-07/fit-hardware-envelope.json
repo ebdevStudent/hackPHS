@@ -1,0 +1,175 @@
+{
+  "nominal_m2_head_collision_test": [
+    {
+      "battery": "450",
+      "head_center_xy_mm": [
+        -12.750000000000002,
+        -12.750000000000002
+      ],
+      "head_diameter_mm": 3.8,
+      "head_height_mm": 2,
+      "overlap_mm3": 0
+    },
+    {
+      "battery": "450",
+      "head_center_xy_mm": [
+        -12.750000000000002,
+        12.750000000000002
+      ],
+      "head_diameter_mm": 3.8,
+      "head_height_mm": 2,
+      "overlap_mm3": 0
+    },
+    {
+      "battery": "450",
+      "head_center_xy_mm": [
+        12.750000000000002,
+        -12.750000000000002
+      ],
+      "head_diameter_mm": 3.8,
+      "head_height_mm": 2,
+      "overlap_mm3": 0
+    },
+    {
+      "battery": "450",
+      "head_center_xy_mm": [
+        12.750000000000002,
+        12.750000000000002
+      ],
+      "head_diameter_mm": 3.8,
+      "head_height_mm": 2,
+      "overlap_mm3": 0
+    },
+    {
+      "battery": "1100",
+      "head_center_xy_mm": [
+        -12.750000000000002,
+        -12.750000000000002
+      ],
+      "head_diameter_mm": 3.8,
+      "head_height_mm": 2,
+      "overlap_mm3": 4.10828
+    },
+    {
+      "battery": "1100",
+      "head_center_xy_mm": [
+        -12.750000000000002,
+        12.750000000000002
+      ],
+      "head_diameter_mm": 3.8,
+      "head_height_mm": 2,
+      "overlap_mm3": 4.10828
+    },
+    {
+      "battery": "1100",
+      "head_center_xy_mm": [
+        12.750000000000002,
+        -12.750000000000002
+      ],
+      "head_diameter_mm": 3.8,
+      "head_height_mm": 2,
+      "overlap_mm3": 4.10828
+    },
+    {
+      "battery": "1100",
+      "head_center_xy_mm": [
+        12.750000000000002,
+        12.750000000000002
+      ],
+      "head_diameter_mm": 3.8,
+      "head_height_mm": 2,
+      "overlap_mm3": 4.10828
+    }
+  ],
+  "assumption": "Nominal 3.8 mm diameter x 2 mm cap heads directly under carrier at centered frame screws; actual heads/nuts/washer layout is absent from the Fusion design.",
+  "cylindrical_feature_diameters_mm": {
+    "hub_3way": [
+      1.3,
+      3.2,
+      4.4
+    ],
+    "inner_junction_X_bearing": [
+      2.3,
+      2.4,
+      5.05,
+      158.0,
+      168.0
+    ],
+    "outer_junction_Y_bearing": [
+      2.3,
+      2.4,
+      5.05,
+      173.5,
+      178.0,
+      188.0
+    ],
+    "outer_junction_Z_bearing": [
+      2.3,
+      2.4,
+      5.05,
+      178.0,
+      188.0,
+      190.0
+    ],
+    "MR52ZZ_0": [
+      2.0,
+      5.0
+    ],
+    "inner_ring_quarter": [
+      1.7,
+      2.6,
+      158.0,
+      168.0
+    ],
+    "outer_ring_quarter": [
+      1.7,
+      2.6,
+      178.0,
+      188.0
+    ]
+  },
+  "pins": [
+    {
+      "name": "pin_0",
+      "modeled_length_mm": 10.5
+    },
+    {
+      "name": "pin_1",
+      "modeled_length_mm": 10.5
+    },
+    {
+      "name": "pin_2",
+      "modeled_length_mm": 10.5
+    },
+    {
+      "name": "pin_3",
+      "modeled_length_mm": 10.5
+    },
+    {
+      "name": "pin_4",
+      "modeled_length_mm": 10.5
+    },
+    {
+      "name": "pin_5",
+      "modeled_length_mm": 10.5
+    }
+  ],
+  "purchased_pin_parameter_mm": 16.0,
+  "nominal_prop_sweep_radius_mm": 74.68897453829688,
+  "full_xyz_adjustment_prop_only_sweep_radius_mm": 82.33184852669565,
+  "inner_radius_for_full_adjustment_plus_4mm_reserve": 86.33184852669565,
+  "candidate_rounded_inner_radius_mm": 87,
+  "fit_geometry": {
+    "rod_mm": 1.0,
+    "socket_mm": 1.3,
+    "rod_insertion_mm": 4.75,
+    "free_edge_span_mm": 35.03110779808574,
+    "bearing_mm": 5.0,
+    "bearing_seat_mm": 5.05,
+    "pin_mm": 2.0,
+    "pin_press_hole_mm": 1.9
+  },
+  "joints": 0,
+  "asBuiltJoints": 0,
+  "rigidGroups": 0
+}

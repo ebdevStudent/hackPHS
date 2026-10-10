@@ -1,0 +1,8 @@
+{
+  "old_pad_reconstruction_width_mm": 19.881197846482998,
+  "old_pad_overlap_mm3": 24.529075597449648,
+  "old_pad_rejected": "M2_nut_and_tail_x4_envelope /  at offset (2, 0, 0): 24.529076 mm3 intrusion",
+  "new_pad_overlap_mm3": 0,
+  "excess_travel_rejected": "M2_nut_and_tail_x4_envelope / BATTERY_PAD_foam at offset (3, 0, 0): 5.093650 mm3 intrusion",
+  "wrong_rod_size_rejected": "Rod diameter differs from the adopted 1 mm baseline"
+}

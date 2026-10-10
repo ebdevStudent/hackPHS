@@ -1,0 +1,7 @@
+{
+  "environment": "Mac node, current P1B asset",
+  "observed": "1 failed: reaches top speed toward -Z; all other assertions passed",
+  "failure": "v -0.12, 0.11, 0.78 after 3 seconds forward",
+  "cause": "The free-speed case used a world with a wall only 5 m ahead, so it measured a collision rebound rather than unobstructed speed",
+  "correction": "Create the wall in the later collision case; keep the speed and collision assertions unchanged"
+}

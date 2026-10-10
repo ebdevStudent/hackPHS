@@ -1,0 +1,28 @@
+{
+  "environment": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "browser": "Playwright Chromium, software WebGL",
+  "simulation_commit": "f472e4fcf0ed1e19141bcfb42f1afa4ac302e7e3",
+  "sessions": [
+    {
+      "state": "play",
+      "scenario": "industrial",
+      "time": 1.2500000000000004,
+      "targets": 5,
+      "camera": "fpv",
+      "mission": "a6cd1fae03ac",
+      "canvasWidth": 1280
+    },
+    {
+      "state": "play",
+      "scenario": "rescue",
+      "time": 1.0500000000000003,
+      "targets": 5,
+      "camera": "fpv",
+      "mission": "00e30380428d",
+      "canvasWidth": 1280
+    }
+  ],
+  "page_errors": [],
+  "pass": true,
+  "scope": "Short playable smoke only; not a full mission completion or physical model validation"
+}

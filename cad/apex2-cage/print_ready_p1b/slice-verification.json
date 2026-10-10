@@ -1,0 +1,173 @@
+{
+  "scope": "Offline generic-startup diagnostic; slice STLs in FlashPrint for Voxel jobs",
+  "plates": [
+    {
+      "plate": "H1-01",
+      "stl_sha256": "19fd835f0427057d21aef51112015ce7a6de51c9f837614f45f0b7095e62b3d0",
+      "first_layer_parts": 25,
+      "layers": 36,
+      "segments": 132012,
+      "min_path_edge_clearance_mm": 10.739999999999998,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "H1-02",
+      "stl_sha256": "bfea79dca5981ff630b3c2e4ec6f57b5f88f4d32a3b9d8e11c2ffb58130c2ab8",
+      "first_layer_parts": 11,
+      "layers": 36,
+      "segments": 58140,
+      "min_path_edge_clearance_mm": 13.48,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "H2",
+      "stl_sha256": "84fe793c971eda4d738f7921910c97ea73b000f3b0fafd73dd2e4f5789499a35",
+      "first_layer_parts": 24,
+      "layers": 58,
+      "segments": 146306,
+      "min_path_edge_clearance_mm": 7.590000000000001,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "G2",
+      "stl_sha256": "a4a75753586514f17202936407fd983a871faa426ad339e9c03dc0f2559b6b8e",
+      "first_layer_parts": 12,
+      "layers": 106,
+      "segments": 133699,
+      "min_path_edge_clearance_mm": 7.840000000000001,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "T4",
+      "stl_sha256": "d3af8bb269b5063023a764d6fcdc94ba7b56bb162a9b46fd2e9d064c56ebb6bb",
+      "first_layer_parts": 4,
+      "layers": 106,
+      "segments": 42610,
+      "min_path_edge_clearance_mm": 17.599999999999998,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "G1a",
+      "stl_sha256": "c4012066e638c9b93eb3ad7f38e14183fb922dea2b07af66fc98e6b53966b73c",
+      "first_layer_parts": 4,
+      "layers": 19,
+      "segments": 71551,
+      "min_path_edge_clearance_mm": 13.98,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "G1b",
+      "stl_sha256": "7d9aa4242cbc512ad28354d7f83b0278be600a50e90d52690c43bd090fa4df90",
+      "first_layer_parts": 4,
+      "layers": 19,
+      "segments": 78421,
+      "min_path_edge_clearance_mm": 8.969999999999995,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "T3",
+      "stl_sha256": "c3c23a82f67e390eeb91e2f8e0fb1ae51dbeeebf57d018e50b0376aca4308032",
+      "first_layer_parts": 10,
+      "layers": 36,
+      "segments": 51204,
+      "min_path_edge_clearance_mm": 13.48,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "KIT-bend_test_block",
+      "stl_sha256": "fa3e983760e69807f3d827f1b3b327ac46586acd2fa434203081907b39e6f4f7",
+      "first_layer_parts": 2,
+      "layers": 59,
+      "segments": 7193,
+      "min_path_edge_clearance_mm": 45.6,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "KIT-bend_test_jig",
+      "stl_sha256": "7f366fca60f384af46064c068e5d38af4abaf69c27f7bc81b48192aaea8a782d",
+      "first_layer_parts": 1,
+      "layers": 86,
+      "segments": 30863,
+      "min_path_edge_clearance_mm": 30.499999999999996,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "KIT-load_hook",
+      "stl_sha256": "197e5d98f9a327318efb28c467ba0c07d83cbc2cc88db1dae6c929520556daa9",
+      "first_layer_parts": 1,
+      "layers": 39,
+      "segments": 1009,
+      "min_path_edge_clearance_mm": 66.10000000000001,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    },
+    {
+      "plate": "KIT-pin_cut_gauge",
+      "stl_sha256": "f302a6caeaef2cba46238693a59208e771380fc5d21ce270003be471caf0765b",
+      "first_layer_parts": 1,
+      "layers": 119,
+      "segments": 20599,
+      "min_path_edge_clearance_mm": 56.6,
+      "checks": {
+        "engine_exit_success": true,
+        "all_expected_parts_on_first_layer": true,
+        "all_extrusion_paths_with_line_width_inside_bed": true,
+        "first_layer_and_brim_speed_at_most_10": true
+      }
+    }
+  ]
+}

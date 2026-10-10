@@ -1,0 +1,31 @@
+{
+  "p1a": {
+    "before_version": 15,
+    "saved_version": 18,
+    "before_occurrences": 77,
+    "after_occurrences": 77,
+    "value_changes": {},
+    "comment_changes": [],
+    "unhealthy_timeline": [],
+    "timeline_count": 101,
+    "native_root_mass_g": 40.728851329135374,
+    "joints": 0,
+    "rigid_groups": 0
+  },
+  "p1b": {
+    "before_version": 14,
+    "saved_version": 17,
+    "before_occurrences": 97,
+    "after_occurrences": 97,
+    "value_changes": {},
+    "comment_changes": [
+      "gimbal_clear",
+      "bearing_seat_clear"
+    ],
+    "unhealthy_timeline": [],
+    "timeline_count": 126,
+    "native_root_mass_g": 67.6153628270627,
+    "joints": 3,
+    "rigid_groups": 4
+  }
+}

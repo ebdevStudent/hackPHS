@@ -1,0 +1,109 @@
+{
+  "environment": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "browser": "Playwright Chromium, software WebGL",
+  "simulation_commit": "d31a7802c9066edfa13666451047809a38690cad",
+  "sessions": [
+    {
+      "level": "industrial",
+      "fps_hud": 22,
+      "moved_m": 2.33,
+      "time_s": 2.25
+    },
+    {
+      "level": "rescue",
+      "fps_hud": 20,
+      "moved_m": 2.2,
+      "time_s": 5.75
+    },
+    {
+      "level": "lab",
+      "fps_hud": 20,
+      "moved_m": 2.33,
+      "time_s": 9.2
+    }
+  ],
+  "checks": [
+    {
+      "name": "industrial: drone climbs and flies",
+      "pass": true,
+      "metres": 2.33
+    },
+    {
+      "name": "industrial: motor power toggles",
+      "pass": true
+    },
+    {
+      "name": "industrial: camera cycles chase/FPV/orbit",
+      "pass": true,
+      "cameras": [
+        "fpv",
+        "orbit",
+        "chase"
+      ]
+    },
+    {
+      "name": "rescue: drone climbs and flies",
+      "pass": true,
+      "metres": 2.2
+    },
+    {
+      "name": "rescue: motor power toggles",
+      "pass": true
+    },
+    {
+      "name": "rescue: camera cycles chase/FPV/orbit",
+      "pass": true,
+      "cameras": [
+        "fpv",
+        "orbit",
+        "chase"
+      ]
+    },
+    {
+      "name": "lab: drone climbs and flies",
+      "pass": true,
+      "metres": 2.33
+    },
+    {
+      "name": "lab: motor power toggles",
+      "pass": true
+    },
+    {
+      "name": "lab: camera cycles chase/FPV/orbit",
+      "pass": true,
+      "cameras": [
+        "fpv",
+        "orbit",
+        "chase"
+      ]
+    },
+    {
+      "name": "pause and resume",
+      "pass": true
+    },
+    {
+      "name": "telemetry is displayed as text",
+      "pass": true
+    },
+    {
+      "name": "failed level load returns to the previous level",
+      "pass": true,
+      "attempted": "rescue",
+      "colliders": 233,
+      "level": true,
+      "climbed": 0.39440083822932714
+    },
+    {
+      "name": "no page errors",
+      "pass": true,
+      "errors": []
+    },
+    {
+      "name": "no requests leave localhost",
+      "pass": true,
+      "requests": []
+    }
+  ],
+  "pass": true,
+  "scope": "Short free-flight smoke of the illustrative simulator; not a physical model validation."
+}

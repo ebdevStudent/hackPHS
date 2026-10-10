@@ -1,0 +1,10 @@
+{
+  "application": "/Users/devk/Applications/Ball Drone.app",
+  "executable_sha256": "ce09cbd472de78212a856d76e84994a5b038c0aaefccab9553098d66f06252b2",
+  "source_manifest_sha256": "4e2b485055f7c94c9c8ada3675e69b79a495be885df6056d6f0a0a5835cd2386",
+  "codesign_verify_exit": 0,
+  "frames": 97,
+  "faults": 0,
+  "physical_output": false,
+  "scope": "Rebuilt Apple Silicon app; ad hoc signature; six-second offscreen launch/preview/shutdown. No actual Pi/device/endurance result."
+}

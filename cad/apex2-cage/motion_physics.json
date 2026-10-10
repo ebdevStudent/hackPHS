@@ -1,0 +1,1000 @@
+{
+ "inputs": {
+  "thrust_total_g": {
+   "low": 280,
+   "plan": 350,
+   "high": 400
+  },
+  "sag_thrust_factor": 0.85,
+  "throttle_exponent": [
+   1.3,
+   2.0
+  ],
+  "mass_g": {
+   "P1A + 450": 117.08,
+   "P1A + 1100": 139.08,
+   "P1B + 450": 144.67836218657305,
+   "P1B + 1100": 166.67836218657305
+  },
+  "cage_mass_g": 25.326591716105998,
+  "ring_mass_g": 30.0106460568558,
+  "aircraft_inner_g": {
+   "P1B + 450": 89.34112441361127,
+   "P1B + 1100": 111.34112441361127
+  },
+  "cage_outer_r_mm": 123.923,
+  "hub_core_r_mm": 2.5,
+  "motor_diag_mm": 95.0,
+  "prop_dia_mm": 50.8,
+  "rod_dia_mm": 1.0,
+  "floor_mu": {
+   "smooth hard floor (tile, sealed wood)": 0.3,
+   "gym floor / matte": 0.45,
+   "low carpet": 0.6
+  },
+  "cd_rod": 1.1,
+  "cd_body": 1.0,
+  "hub_frontal_mm2": 40.0,
+  "aircraft_frontal_mm2": {
+   "450": 1400.0,
+   "1100": 1600.0
+  },
+  "figure_of_merit": [
+   0.4,
+   0.6
+  ],
+  "drive_efficiency": [
+   0.55,
+   0.75
+  ],
+  "pack": {
+   "450": 0.45,
+   "1100": 1.1
+  },
+  "usable_fraction": 0.8,
+  "pack_voltage_v": 7.4,
+  "bearing_friction_nmm": 0.05,
+  "cg_offset_1100_mm": 3.63,
+  "mass_basis": "Current native P1B volumes, PETG/carbon density scenarios and unchanged generator hardware allowances; unweighed extras excluded"
+ },
+ "geometry": {
+  "faces": {
+   "pole triangle": {
+    "count": 10,
+    "centre_height_mm": 121.11674714466281,
+    "alpha_easiest_deg": 4.045104700803337,
+    "alpha_hardest_deg": 12.094961500753097
+   },
+   "pentagon": {
+    "count": 10,
+    "centre_height_mm": 116.54456389921259,
+    "alpha_easiest_deg": 16.137442097378976,
+    "alpha_hardest_deg": 19.679483595291586
+   },
+   "hexagon": {
+    "count": 20,
+    "centre_height_mm": 113.59699158633362,
+    "alpha_easiest_deg": 20.48366931905536,
+    "alpha_hardest_deg": 23.33294020378038
+   }
+  },
+  "rolling_resistance": [
+   0.005930860907064068,
+   0.15033808581948951,
+   0.0775439677625827
+  ],
+  "p1a_pole_rest_tilt_deg": 12.342142216006607
+ },
+ "flight": {
+  "P1A + 450": {
+   "low": {
+    "tw": 2.3915271609156132,
+    "hover_frac": 0.41814285714285715,
+    "hover_throttle": [
+     51.134179797385634,
+     64.66396656120448
+    ],
+    "hover_throttle_end_of_pack": [
+     57.9434604536486,
+     70.13791935246181
+    ],
+    "climb_accel_g": 1.3915271609156135,
+    "max_level_tilt_deg": 65.2826062930228,
+    "max_level_accel_g": 2.1724185051221356
+   },
+   "plan": {
+    "tw": 2.989408951144516,
+    "hover_frac": 0.33451428571428576,
+    "hover_throttle": [
+     43.06903392883268,
+     57.837209970250626
+    ],
+    "hover_throttle_end_of_pack": [
+     48.804319813491134,
+     62.73326218900106
+    ],
+    "climb_accel_g": 1.9894089511445165,
+    "max_level_tilt_deg": 70.45699537612086,
+    "max_level_accel_g": 2.81719113252597
+   },
+   "high": {
+    "tw": 3.4164673727365904,
+    "hover_frac": 0.2927,
+    "hover_throttle": [
+     38.86475554031896,
+     54.101755978895916
+    ],
+    "hover_throttle_end_of_pack": [
+     44.04017889040882,
+     58.68159346647555
+    ],
+    "climb_accel_g": 2.4164673727365904,
+    "max_level_tilt_deg": 72.98032957455769,
+    "max_level_accel_g": 3.266840875979983
+   },
+   "hover_power_w": [
+    19.60969317323717,
+    40.11073603616693
+   ],
+   "hover_current_a": [
+    2.6499585369239416,
+    5.420369734617152
+   ],
+   "hover_minutes": [
+    3.984968010955371,
+    8.151070931499621
+   ],
+   "induced_velocity_ms": 7.6830134077683745
+  },
+  "P1A + 1100": {
+   "low": {
+    "tw": 2.013229795800978,
+    "hover_frac": 0.4967142857142857,
+    "hover_throttle": [
+     58.376208598145205,
+     70.47796008074337
+    ],
+    "hover_throttle_end_of_pack": [
+     66.1498736802562,
+     76.44408073220316
+    ],
+    "climb_accel_g": 1.0132297958009777,
+    "max_level_tilt_deg": 60.217144062323385,
+    "max_level_accel_g": 1.7473105650401266
+   },
+   "plan": {
+    "tw": 2.516537244751222,
+    "hover_frac": 0.39737142857142865,
+    "hover_throttle": [
+     49.16881269460931,
+     63.03740386242352
+    ],
+    "hover_throttle_end_of_pack": [
+     55.71637533274001,
+     68.37366439787529
+    ],
+    "climb_accel_g": 1.516537244751222,
+    "max_level_tilt_deg": 66.58604370367036,
+    "max_level_accel_g": 2.3093201822657834
+   },
+   "high": {
+    "tw": 2.876042565429968,
+    "hover_frac": 0.3477,
+    "hover_throttle": [
+     44.36909099798597,
+     58.966091951222275
+    ],
+    "hover_throttle_end_of_pack": [
+     50.27749892132972,
+     63.95770661377812
+    ],
+    "climb_accel_g": 1.8760425654299682,
+    "max_level_tilt_deg": 69.65329879121704,
+    "max_level_accel_g": 2.6965943035920312
+   },
+   "hover_power_w": [
+    25.388892154356597,
+    51.931824861183934
+   ],
+   "hover_current_a": [
+    3.4309313722103507,
+    7.017814170430261
+   ],
+   "hover_minutes": [
+    7.523710192052984,
+    15.389407211017463
+   ],
+   "induced_velocity_ms": 8.37379983085327
+  },
+  "P1B + 450": {
+   "low": {
+    "tw": 1.9353274101825957,
+    "hover_frac": 0.516708436380618,
+    "hover_throttle": [
+     60.17549281756669,
+     71.88243432025783
+    ],
+    "hover_throttle_end_of_pack": [
+     68.18875949843164,
+     77.96744693106507
+    ],
+    "climb_accel_g": 0.9353274101825956,
+    "max_level_tilt_deg": 58.888282230294905,
+    "max_level_accel_g": 1.656952680254953
+   },
+   "plan": {
+    "tw": 2.419159262728244,
+    "hover_frac": 0.4133667491044945,
+    "hover_throttle": [
+     50.684304551542134,
+     64.29360381130415
+    ],
+    "hover_throttle_end_of_pack": [
+     57.43367759177621,
+     69.73620454798754
+    ],
+    "climb_accel_g": 1.419159262728244,
+    "max_level_tilt_deg": 65.58349507020583,
+    "max_level_accel_g": 2.2028008394868253
+   },
+   "high": {
+    "tw": 2.7647534431179936,
+    "hover_frac": 0.36169590546643265,
+    "hover_throttle": [
+     45.73664478710423,
+     60.141159405720856
+    ],
+    "hover_throttle_end_of_pack": [
+     51.827162946684105,
+     65.23224621813904
+    ],
+    "climb_accel_g": 1.7647534431179939,
+    "max_level_tilt_deg": 68.79561603264598,
+    "max_level_accel_g": 2.577568932392071
+   },
+   "hover_power_w": [
+    26.937178454391987,
+    55.09877411125632
+   ],
+   "hover_current_a": [
+    3.6401592505935114,
+    7.445780285304908
+   ],
+   "hover_minutes": [
+    2.9009719831016305,
+    5.9338063290715155
+   ],
+   "induced_velocity_ms": 8.540671660511933
+  },
+  "P1B + 1100": {
+   "low": {
+    "tw": 1.6798821174315313,
+    "hover_frac": 0.5952798649520465,
+    "hover_throttle": [
+     67.0978508655926,
+     77.15438192040985
+    ],
+    "hover_throttle_end_of_pack": [
+     76.0329330314995,
+     83.68567696354978
+    ],
+    "climb_accel_g": 0.6798821174315313,
+    "max_level_tilt_deg": 53.467414391520876,
+    "max_level_accel_g": 1.3498162572980978
+   },
+   "plan": {
+    "tw": 2.099852646789414,
+    "hover_frac": 0.47622389196163734,
+    "hover_throttle": [
+     56.51483268007191,
+     69.00897709440687
+    ],
+    "hover_throttle_end_of_pack": [
+     64.04062772528796,
+     74.85074497343422
+    ],
+    "climb_accel_g": 1.0998526467894139,
+    "max_level_tilt_deg": 61.5609325390023,
+    "max_level_accel_g": 1.8464509574392998
+   },
+   "high": {
+    "tw": 2.399831596330759,
+    "hover_frac": 0.41669590546643265,
+    "hover_throttle": [
+     50.99801310014095,
+     64.5519872247503
+    ],
+    "hover_throttle_end_of_pack": [
+     57.78916112454691,
+     70.01646070884564
+    ],
+    "climb_accel_g": 1.399831596330759,
+    "max_level_tilt_deg": 65.3738387844555,
+    "max_level_accel_g": 2.1815571710930333
+   },
+   "hover_power_w": [
+    33.30930447175048,
+    68.13266823767141
+   ],
+   "hover_current_a": [
+    4.501257361047362,
+    9.207117329415055
+   ],
+   "hover_minutes": [
+    5.7346939450107435,
+    11.730055796612882
+   ],
+   "induced_velocity_ms": 9.167055197604153
+  }
+ },
+ "speed": {
+  "P1A + 450": {
+   "cda_m2": [
+    0.007570014671980327,
+    0.007570014671980327
+   ],
+   "rod_projected_mm2": 3354.558792709389,
+   "speed_ms_by_tilt": {
+    "10": [
+     2.3685486743433852,
+     2.3685486743433852
+    ],
+    "20": [
+     4.410651557486888,
+     4.410651557486888
+    ],
+    "30": [
+     6.390220869076542,
+     6.390220869076542
+    ]
+   }
+  },
+  "P1A + 1100": {
+   "cda_m2": [
+    0.007770014671980328,
+    0.007770014671980328
+   ],
+   "rod_projected_mm2": 3354.558792709389,
+   "speed_ms_by_tilt": {
+    "10": [
+     2.573926951936171,
+     2.573926951936171
+    ],
+    "20": [
+     4.785240804004738,
+     4.785240804004738
+    ],
+    "30": [
+     6.9249618137885,
+     6.9249618137885
+    ]
+   }
+  },
+  "P1B + 450": {
+   "cda_m2": [
+    0.008698014671980326,
+    0.010226160509480232
+   ],
+   "rod_projected_mm2": 3354.558792709389,
+   "speed_ms_by_tilt": {
+    "10": [
+     2.5367210741987654,
+     2.590432836585636
+    ],
+    "20": [
+     4.6324472553432035,
+     4.781261383183916
+    ],
+    "30": [
+     6.622913958284519,
+     6.8847727910460135
+    ]
+   }
+  },
+  "P1B + 1100": {
+   "cda_m2": [
+    0.008898014671980327,
+    0.010426160509480233
+   ],
+   "rod_projected_mm2": 3354.558792709389,
+   "speed_ms_by_tilt": {
+    "10": [
+     2.7155467421644883,
+     2.7726116326892223
+    ],
+    "20": [
+     4.952584678397268,
+     5.10995707191566
+    ],
+    "30": [
+     7.074562446494128,
+     7.350677260832687
+    ]
+   }
+  }
+ },
+ "rolling": {
+  "P1B + 450": {
+   "15": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.21617861329767393,
+     "thrust_g": 31.276367711671988,
+     "throttle": [
+      15.602384413651851,
+      29.89331875265393
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.6213152645729141,
+     "thrust_g": 89.89087487992653,
+     "throttle": [
+      35.146553221812184,
+      50.67850343937796
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.6385911615568387,
+     "thrust_g": 92.3903233608647,
+     "throttle": [
+      35.895909035703866,
+      51.37823979659224
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.5468497151894277,
+     "thrust_g": 79.11732115580034,
+     "throttle": [
+      31.859098625353354,
+      47.54466205754043
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     52.05413103576198,
+     65.4177918552311
+    ]
+   },
+   "20": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.17312744143136455,
+     "thrust_g": 25.047794675841672,
+     "throttle": [
+      13.152282105897891,
+      26.751659321481714
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.5586160768848719,
+     "thrust_g": 80.81965909479204,
+     "throttle": [
+      32.385108874501526,
+      48.05344022017631
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.5771674647241969,
+     "thrust_g": 83.50364350367349,
+     "throttle": [
+      33.20928489358062,
+      48.84483990985376
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.4808247648263958,
+     "thrust_g": 69.56493947382711,
+     "throttle": [
+      28.856787065823962,
+      44.582167951460185
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     53.16840511451583,
+     66.32463390608577
+    ]
+   },
+   "30": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.12600222090587684,
+     "thrust_g": 18.229794952533037,
+     "throttle": [
+      10.300462435362496,
+      22.822166513240738
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.4740923413188266,
+     "thrust_g": 68.5909034672056,
+     "throttle": [
+      28.545476145120702,
+      44.26895186316271
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.49378386333640983,
+     "thrust_g": 71.4398406216704,
+     "throttle": [
+      29.453210446992234,
+      45.17895863647476
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.3948367871747975,
+     "thrust_g": 57.12433969945821,
+     "throttle": [
+      24.798504957125765,
+      40.39955434671392
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     56.614392576714,
+     69.08797346420292
+    ]
+   },
+   "45": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.09340485819461468,
+     "thrust_g": 13.513661903865959,
+     "throttle": [
+      8.181821562252587,
+      19.649545181116576
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.4056213109058966,
+     "thrust_g": 58.684626929835865,
+     "throttle": [
+      25.317914325785768,
+      40.94757168095246
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.42618561421411305,
+     "thrust_g": 61.65983665197655,
+     "throttle": [
+      26.29962046629462,
+      41.972724698640924
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.3263569759322527,
+     "thrust_g": 47.216792766041166,
+     "throttle": [
+      21.418601336708637,
+      36.729432637693854
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     66.16895248232478,
+     76.45841110156897
+    ]
+   },
+   "60": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.0784548001550068,
+     "thrust_g": 11.350711992101282,
+     "throttle": [
+      7.15452516004629,
+      18.008499574289345
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.3768743993051587,
+     "thrust_g": 54.525570841518906,
+     "throttle": [
+      23.926044443772962,
+      39.46990565753643
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.39877012435511544,
+     "thrust_g": 57.69340848063417,
+     "throttle": [
+      24.98831896420889,
+      40.60028447494785
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.2952682077461603,
+     "thrust_g": 42.718920702479274,
+     "throttle": [
+      19.831148524128565,
+      34.936236080886104
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     86.38434149087954,
+     90.92488648378884
+    ]
+   },
+   "keep_rolling_frac": {
+    "15": 0.2323618294326854,
+    "30": 0.13672446063997332,
+    "45": 0.10177193151363725
+   }
+  },
+  "P1B + 1100": {
+   "15": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.21617861329767393,
+     "thrust_g": 36.03229720422081,
+     "throttle": [
+      17.397222914462727,
+      32.08573212246964
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.6213152645729141,
+     "thrust_g": 103.55981070053063,
+     "throttle": [
+      39.18967799177432,
+      54.395328239664806
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.6385911615568387,
+     "thrust_g": 106.43932891511515,
+     "throttle": [
+      40.02523682630191,
+      55.1463841361245
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.5468497151894277,
+     "thrust_g": 91.14801488996775,
+     "throttle": [
+      35.524047218972264,
+      51.03164701296855
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     58.042238752649865,
+     70.21561449493039
+    ]
+   },
+   "20": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.17312744143136455,
+     "thrust_g": 28.856598387331694,
+     "throttle": [
+      14.665270228183635,
+      28.713659460926404
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.5586160768848719,
+     "thrust_g": 93.10921278625922,
+     "throttle": [
+      36.11056767104597,
+      51.57773960212438
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.5771674647241969,
+     "thrust_g": 96.20132772760581,
+     "throttle": [
+      37.02955374038853,
+      52.4271815344472
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.4808247648263958,
+     "thrust_g": 80.14308430000781,
+     "throttle": [
+      32.17636124514772,
+      47.85187988545123
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     59.28469465053984,
+     71.1889654755247
+    ]
+   },
+   "30": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.12600222090587684,
+     "thrust_g": 21.001843812462326,
+     "throttle": [
+      11.485388153444937,
+      24.495972737494352
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.4740923413188266,
+     "thrust_g": 79.02093497621979,
+     "throttle": [
+      31.82923830934552,
+      47.51569213765664
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.49378386333640983,
+     "thrust_g": 82.30308561507141,
+     "throttle": [
+      32.841394886063725,
+      48.49243994540988
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.3948367871747975,
+     "thrust_g": 65.81074901730376,
+     "throttle": [
+      27.65122991759102,
+      43.362508169847686
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     63.12709530231775,
+     74.15497181154916
+    ]
+   },
+   "45": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.09340485819461468,
+     "thrust_g": 15.568568784147482,
+     "throttle": [
+      9.123026954797995,
+      21.090667390474923
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.4056213109058966,
+     "thrust_g": 67.60829576976559,
+     "throttle": [
+      28.23039014918561,
+      43.950717780508135
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.42618561421411305,
+     "thrust_g": 71.03592016468703,
+     "throttle": [
+      29.32502800133246,
+      45.051056802155685
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.3263569759322527,
+     "thrust_g": 54.39664623655072,
+     "throttle": [
+      23.882515139460924,
+      39.423215146318014
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     73.7807751579465,
+     82.06596655972845
+    ]
+   },
+   "60": {
+    "easiest": {
+     "thrust_frac_of_weight": 0.0784548001550068,
+     "thrust_g": 13.076717595511433,
+     "throttle": [
+      7.977554311990224,
+      19.329265447214958
+     ],
+     "lifts_off_first": false
+    },
+    "hexagon typical": {
+     "thrust_frac_of_weight": 0.3768743993051587,
+     "thrust_g": 62.816807626232396,
+     "throttle": [
+      26.67840489082239,
+      42.364677883563196
+     ],
+     "lifts_off_first": false
+    },
+    "any face, any direction": {
+     "thrust_frac_of_weight": 0.39877012435511544,
+     "thrust_g": 66.46635121644671,
+     "throttle": [
+      27.862879400513833,
+      43.5779600966382
+     ],
+     "lifts_off_first": false
+    },
+    "smooth floor, skid start": {
+     "thrust_frac_of_weight": 0.2952682077461603,
+     "thrust_g": 49.2148212728948,
+     "throttle": [
+      22.112447839844744,
+      37.4985033121875
+     ],
+     "lifts_off_first": false
+    },
+    "liftoff_throttle": [
+     96.32166503479647,
+     97.59343133240446
+    ]
+   },
+   "keep_rolling_frac": {
+    "15": 0.2323618294326854,
+    "30": 0.13672446063997332,
+    "45": 0.10177193151363725
+   }
+  }
+ },
+ "gimbal": {
+  "P1B + 450": {
+   "roll_pitch_authority_nmm": 47.67066418650474,
+   "pendulum_nmm_per_mm_offset": 0.8764364304975265,
+   "bearing_friction_total_nmm": 0.30000000000000004
+  },
+  "P1B + 1100": {
+   "roll_pitch_authority_nmm": 54.91953399849957,
+   "pendulum_nmm_per_mm_offset": 1.0922564304975266,
+   "bearing_friction_total_nmm": 0.30000000000000004
+  }
+ },
+ "contacts": {
+  "P1A + 450": {
+   "0.5": {
+    "energy_j": 0.014635,
+    "equivalent_drop_cm": 1.27420998980632
+   },
+   "1.0": {
+    "energy_j": 0.05854,
+    "equivalent_drop_cm": 5.09683995922528
+   },
+   "2.0": {
+    "energy_j": 0.23416,
+    "equivalent_drop_cm": 20.38735983690112
+   }
+  },
+  "P1B + 1100": {
+   "0.5": {
+    "energy_j": 0.020834795273321632,
+    "equivalent_drop_cm": 1.27420998980632
+   },
+   "1.0": {
+    "energy_j": 0.08333918109328653,
+    "equivalent_drop_cm": 5.09683995922528
+   },
+   "2.0": {
+    "energy_j": 0.3333567243731461,
+    "equivalent_drop_cm": 20.38735983690112
+   }
+  },
+  "glancing_1ms": {
+   "angular_impulse_nms": 0.006529007178000001,
+   "p1a_inertia_kgm2": 0.00042788901291685355,
+   "p1a_spin_deg_s": 874.2560440146455,
+   "p1a_authority_nmm": 38.57716716310704,
+   "p1a_knock_angle_deg": 73.98189663133596
+  }
+ },
+ "impact": {
+  "rod": {
+   "E_mpa": 120000.0,
+   "strength_mpa": 1500.0,
+   "break_strain": 0.0125,
+   "side_break_n": [
+    13.237047697709801,
+    26.474095395419603
+   ],
+   "energy_to_break_mj": [
+    27.304858024364407,
+    81.91457407309325
+   ],
+   "buckle_n": 29.35829757634751
+  },
+  "cage_capacity_j": [
+   0.08191457407309322,
+   0.7372311666578393
+  ],
+  "speeds": {
+   "0.5": {
+    "P1B + 450": 0.018084795273321633,
+    "P1B + 1100": 0.020834795273321632,
+    "realistic_1100_180g": 0.0225,
+    "drop_height_cm": 1.27420998980632,
+    "max_v_for_rod_capacity": [
+     0.9904609346919326,
+     2.9713828040757986
+    ]
+   },
+   "1.0": {
+    "P1B + 450": 0.07233918109328653,
+    "P1B + 1100": 0.08333918109328653,
+    "realistic_1100_180g": 0.09,
+    "drop_height_cm": 5.09683995922528,
+    "max_v_for_rod_capacity": [
+     0.9904609346919326,
+     2.9713828040757986
+    ]
+   },
+   "2.0": {
+    "P1B + 450": 0.28935672437314613,
+    "P1B + 1100": 0.3333567243731461,
+    "realistic_1100_180g": 0.36,
+    "drop_height_cm": 20.38735983690112,
+    "max_v_for_rod_capacity": [
+     0.9904609346919326,
+     2.9713828040757986
+    ]
+   },
+   "3.0": {
+    "P1B + 450": 0.6510526298395789,
+    "P1B + 1100": 0.7500526298395788,
+    "realistic_1100_180g": 0.81,
+    "drop_height_cm": 45.87155963302752,
+    "max_v_for_rod_capacity": [
+     0.9904609346919326,
+     2.9713828040757986
+    ]
+   },
+   "4.43": {
+    "P1B + 450": 1.4196491950376386,
+    "P1B + 1100": 1.6355230950376385,
+    "realistic_1100_180g": 1.7662409999999997,
+    "drop_height_cm": 100.0249745158002,
+    "max_v_for_rod_capacity": [
+     0.9904609346919326,
+     2.9713828040757986
+    ]
+   },
+   "5.0": {
+    "P1B + 450": 1.8084795273321632,
+    "P1B + 1100": 2.0834795273321634,
+    "realistic_1100_180g": 2.25,
+    "drop_height_cm": 127.42099898063199,
+    "max_v_for_rod_capacity": [
+     0.9904609346919326,
+     2.9713828040757986
+    ]
+   }
+  },
+  "inner_ring": {
+   "10": {
+    "pivot_force_n": 10.922564304975268,
+    "in_plane_mpa": 14.072115168012521,
+    "out_of_plane_mpa": 41.99119166134937
+   },
+   "20": {
+    "pivot_force_n": 21.845128609950535,
+    "in_plane_mpa": 28.144230336025043,
+    "out_of_plane_mpa": 83.98238332269874
+   },
+   "40": {
+    "pivot_force_n": 43.69025721990107,
+    "in_plane_mpa": 56.288460672050086,
+    "out_of_plane_mpa": 167.96476664539748
+   }
+  }
+ }
+}

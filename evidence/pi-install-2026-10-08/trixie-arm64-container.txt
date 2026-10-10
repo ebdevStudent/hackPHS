@@ -1,0 +1,40 @@
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/aarch64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 32.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+== installer
+WARN  Board model not readable; this does not look like a Raspberry Pi
+PASS  64-bit ARM (aarch64)
+PASS  OS: Debian/Raspberry Pi OS trixie
+WARN  python3 not installed yet; the installer adds Trixie's Python 3.13
+PASS  Memory 3904 MB
+WARN  No /dev/video* yet: plug in the USB capture adapter, then run 'ball-demo cameras'
+WARN  No /dev/ttyACM*/ttyUSB* yet: the Arduino Mega appears as /dev/ttyACM0 when connected
+Preflight passed.
+Check: systemctl status ball-demo; curl http://127.0.0.1:8080/api/health
+Recordings for the service: /var/lib/ball-drone/recordings (home directories are not readable by it).
+== stubbed systemctl calls
+systemctl daemon-reload
+systemctl enable --now ball-demo
+== service account groups
+uid=989(ball-demo) gid=989(ball-demo) groups=989(ball-demo),20(dialout),44(video)
+== service files
+-rw------- 1 root root  53 Oct  8 18:17 /etc/ball-drone/operator.env
+-rw-r--r-- 1 root root 655 Oct  8 18:17 /etc/systemd/system/ball-demo.service
+600 root
+SupplementaryGroups=video dialout
+ExecStart=/opt/ball-drone/software/.venv/bin/python -m ball_demo.cli serve --host 0.0.0.0 --port 8080
+== start service command as ball-demo
+{"ok":true,"workers_alive":[true,true],"control_tick_age_ms":45.7,"capture_tick_age_ms":47.2,"logging_errors":0,"service":"ball-demo","version":"0.1.0","state":"MANUAL","physical_output":false}
+health ok, MANUAL, no physical output
+Manual steering — computer steering unavailable
+[ WARN:0@0.010] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video0): can't open camera by index
+[ WARN:0@0.011] global cap_ffmpeg_impl.hpp:1246 open VIDEOIO/FFMPEG: OpenCV should be configured with libavdevice to open a camera device
+[ WARN:0@0.011] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video1): can't open camera by index
+No camera opened. Check the capture adapter, permissions and /dev/video* devices.
+PI CONTAINER CHECK PASSED

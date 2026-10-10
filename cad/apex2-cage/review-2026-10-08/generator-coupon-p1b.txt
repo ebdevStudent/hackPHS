@@ -1,0 +1,34 @@
+Values applied: ['motor_diag=95 mm [vendor]', 'frame_t=2.5 mm [vendor]', 'frame_hole_pitch=25.5 mm [vendor]', 'motor_od=15.84 mm [vendor]', 'motor_h=8.9 mm [vendor]', 'prop_z=8.9 mm [vendor]', 'prop_dia=50.8 mm [vendor]', 'cam_size=14 mm [vendor]', 'cam_hfov=160 deg [vendor]', 'batt450_l=62.8 mm [vendor]', 'batt450_w=16.4 mm [vendor]', 'batt450_h=13.8 mm [vendor]', 'batt1100_l=56.56 mm [vendor]', 'batt1100_w=23.5 mm [vendor]', 'batt1100_h=18.4 mm [vendor]', 'stack_h=12 mm [vendor]', 'strap_w=12.5 mm [vendor]', 'rod_dia=1.0 mm [vendor]', 'stack_w=33 mm [vendor]', 'prop_disk_h=5.1 mm [vendor]', 'strap_slot_t=2.5 mm [vendor]']
+CG: {'cg_450_below_frame_top_mm': 3.51, 'cg_1100_below_frame_top_mm': 7.14, 'aircraft_z_offset_mm': 3.51, '1100_needs_shift_mm': 3.63, 'within_cg_slot': True}
+Balancing travel each way (mm): {'across_X': 2.0, 'along_arms_Y': 3.0000000000000004, 'vertical_Z': 5.0}
+Radii (mm): {'aircraft_swept_r': 79.69, 'props_batteries_carrier_r': 79.69, 'arm_end_parts_r': 75.05, 'inner_ring': (84, 89.0), 'outer_ring': (94.0, 99.0), 'pole_boss_tip_r': 113.5, 'cage_inner_clear_to_outer_ring': 16.0}
+Camera centreline at nominal pose: inner ring clear, outer ring clear; a ring crosses it in 2% of sampled ring orientations (free gimbal; orientation varies in flight)
+Fusion joints: ['Z pole pivot (cage - outer ring)', 'X pivot (outer ring - inner ring)', 'Y pivot (inner ring - aircraft)']; rigid groups: 4; cage grounded
+Materials: {'PETG (project)': 14, 'Analysis envelope (massless)': 16, 'Stainless Steel, 440C': 6, 'Stainless Steel AISI 304': 6, 'Carbon rod (project)': 2}
+Pins: CAD models 10.5 mm pins; stock is 2 x 16 mm; cut/deeper-seat choice remains deferred (16 mm alternative not verified); past-bearing per pivot Y+,Y-,X+,X-,Z+,Z-: [1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+Cage: {'edge_rods': 90, 'edge_rod_cut_mm': 44.53, 'pole_rods': 10, 'pole_rod_cut_mm': 37.86, 'total_rod_mm': 4386.4}
+Material validation: {'analysis_native_mass_g': 0.0016285662867366552, 'fixtures_native_mass_g': 1.0118242672753781e-05, 'reference_meshes_massless': True}
+Automated validation: {'cage': {'outside_span_mm': [245.9911180470778, 243.2074835846241, 248.0], 'rod_solids': {'rods_edge_x90_cut_44.53mm': 90, 'rods_pole_x10_cut_37.86mm': 10}}, 'static': {'bodies_tested': 104, 'press_fits': [{'pin': 'pin_4', 'part': 'hub_pole_5way_pivot', 'volume_mm3': 1.8378317023489446}, {'pin': 'pin_5', 'part': 'hub_pole_5way_pivot', 'volume_mm3': 1.837831702348445}, {'pin': 'pin_2', 'part': 'inner_junction_X_pin', 'volume_mm3': 1.8378317023498916}, {'pin': 'pin_3', 'part': 'inner_junction_X_pin', 'volume_mm3': 1.8378317023498951}, {'pin': 'pin_0', 'part': 'arm_pivot_block', 'volume_mm3': 1.8378317023515673}, {'pin': 'pin_1', 'part': 'arm_pivot_block', 'volume_mm3': 1.8378317023515673}], 'unexpected_intersections': 0}, 'battery_hardware': [{'pack': '450', 'frame_offset_mm': (0, 0, 0), 'nut_gap_mm': 2.541708782459344, 'foam_gap_mm': 2.499999999999999}, {'pack': '1100', 'frame_offset_mm': (0, 0, 0), 'nut_gap_mm': 1.200000000000001, 'foam_gap_mm': 2.499999999999999}, {'pack': '450', 'frame_offset_mm': (-2.0, 0, 0), 'nut_gap_mm': 1.223882282682844, 'foam_gap_mm': 0.5000000000000004}, {'pack': '1100', 'frame_offset_mm': (-2.0, 0, 0), 'nut_gap_mm': 1.200000000000001, 'foam_gap_mm': 0.5000000000000004}, {'pack': '450', 'frame_offset_mm': (2.0, 0, 0), 'nut_gap_mm': 1.223882282682844, 'foam_gap_mm': 0.5000000000000004}, {'pack': '1100', 'frame_offset_mm': (2.0, 0, 0), 'nut_gap_mm': 1.200000000000001, 'foam_gap_mm': 0.5000000000000004}], 'prop_support_travel': {'tests': 128, 'minimum_sampled_support_gap_mm': 8.057333053389982, 'continuous_face_AABB_separation_min_mm': 2.5124278936389786, 'continuous_scope': 'Each support boundary face is outside every expanded prop box. Nominal props are outside supports, so no continuous translated prop can enter. Arms share vertical movement, pivot blocks do not.'}, 'continuous_radial_bounds_mm': {'cage': (113.50397570129428, 124.2399536145034), 'outer': (91.74999999999999, 113.14485759948765), 'inner': (84.0, 91.4291862369701)}, 'continuous_radial_clearances_mm': {'inner_to_outer_mm': 0.3208137630298893, 'outer_to_cage_mm': 0.3591181018066294, 'props_to_inner_mm': 4.3146938723128585}, 'scope': 'Origin-centred rigid CAD bodies, excluding coaxial pins/bearings; nominal material dimensions; no wires/flex.', 'physical_pending': 'Strap routing/closure, battery removal, wires, antenna retention, full aircraft fit, strength, mass and thrust require delivered parts.'}
+Connectivity: all junctions joined, all pins and bearings engaged
+Swept-motion checks: 612 poses, 0 collisions
+P1B printed parts (PETG): solid upper bound / estimated at walls + infill:
+  hub_3way: x46, 0.27 / 0.27 g each
+  hub_3way_mount_A: x4, 0.66 / 0.66 g each
+  hub_4way: x10, 0.33 / 0.33 g each
+  hub_pole_5way_pivot: x2, 0.59 / 0.59 g each
+  outer_ring_quarter: x4, 1.92 / 1.92 g each
+  outer_junction_X_bearing: x2, 1.20 / 1.20 g each
+  outer_junction_Z_bearing: x2, 2.00 / 2.00 g each
+  inner_ring_quarter: x4, 1.73 / 1.73 g each
+  inner_junction_Y_bearing: x2, 0.92 / 0.92 g each
+  inner_junction_X_pin: x2, 1.22 / 1.22 g each
+  carrier_plate: x1, 6.12 / 6.12 g each
+  nut_shield_plate: x1, 1.59 / 1.59 g each
+  support_arm_p1b: x2, 1.77 / 1.77 g each
+  arm_pivot_block: x2, 2.22 / 2.22 g each
+  gimbal_fit_coupon: x1, 12.85 / 8.30 g each
+P1B added mass: rods 5.3 g + printed 60.4 g solid / 60.4 g estimated + hardware ~8.4 g (28 M2 screws)
+  = 74.1 g solid-PETG scenario / 74.1 g infill scenario (hardware allowance unweighed)
+  with 450 mAh: accounted mass 144.87-144.87 g (unweighed extras excluded); at 350 g planning thrust 2.42-2.42:1 (estimate range 1.93-2.76:1); 30.13 g remaining to 175 g for excluded extras/tolerance
+  with 1100 mAh: accounted mass 166.87-166.87 g (unweighed extras excluded); at 350 g planning thrust 2.10-2.10:1 (estimate range 1.68-2.40:1); 8.13 g remaining to 175 g for excluded extras/tolerance
+STL exports: ['hub_3way.stl', 'hub_3way_mount_A.stl', 'hub_4way.stl', 'hub_pole_5way_pivot.stl', 'outer_ring_quarter.stl', 'outer_junction_X_bearing.stl', 'outer_junction_Z_bearing.stl', 'inner_ring_quarter.stl', 'inner_junction_Y_bearing.stl', 'inner_junction_X_pin.stl', 'carrier_plate.stl', 'nut_shield_plate.stl', 'support_arm_p1b.stl', 'arm_pivot_block.stl', 'gimbal_fit_coupon.stl']

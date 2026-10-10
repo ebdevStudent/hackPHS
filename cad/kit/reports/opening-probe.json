@@ -1,0 +1,227 @@
+{
+  "openings": {
+    "hexagon": {
+      "count": 20,
+      "clear_circle_diameter_mm": 83.87,
+      "vertex_to_vertex_mm": 98.0
+    },
+    "pentagon": {
+      "count": 10,
+      "clear_circle_diameter_mm": 66.44,
+      "vertex_to_vertex_mm": 79.28
+    },
+    "pole_triangle": {
+      "count": 10,
+      "clear_circle_diameter_mm": 22.01,
+      "vertex_to_vertex_mm": 49.0
+    }
+  },
+  "face_count": 40,
+  "p1b_swept_aircraft_radius_mm": 79.61,
+  "p1b_outer_ring_radius_mm": 99.0,
+  "rod_diameter_mm": 1.0,
+  "p1a_prop_travel_allowance_mm": 6.4,
+  "probes": [
+    {
+      "diameter_mm": 5,
+      "passes_through_openings": [
+        3,
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 10,
+      "passes_through_openings": [
+        3,
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 15,
+      "passes_through_openings": [
+        3,
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 20,
+      "passes_through_openings": [
+        3,
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 25,
+      "passes_through_openings": [
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 30,
+      "passes_through_openings": [
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 40,
+      "passes_through_openings": [
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 50,
+      "passes_through_openings": [
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 60,
+      "passes_through_openings": [
+        5,
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 70,
+      "passes_through_openings": [
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 80,
+      "passes_through_openings": [
+        6
+      ],
+      "max_intrusion_below_rod_plane_mm": null,
+      "p1a_min_prop_clearance_mm": null,
+      "p1b_min_swept_prop_clearance_mm": null,
+      "p1b_min_outer_ring_clearance_mm": null,
+      "p1a_reaches_prop": true,
+      "p1b_can_reach_prop": true,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 90,
+      "passes_through_openings": [],
+      "max_intrusion_below_rod_plane_mm": 28.58,
+      "p1a_min_prop_clearance_mm": 2.92,
+      "p1b_min_swept_prop_clearance_mm": 2.9,
+      "p1b_min_outer_ring_clearance_mm": -16.49,
+      "p1a_reaches_prop": false,
+      "p1b_can_reach_prop": false,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 100,
+      "passes_through_openings": [],
+      "max_intrusion_below_rod_plane_mm": 22.62,
+      "p1a_min_prop_clearance_mm": 8.84,
+      "p1b_min_swept_prop_clearance_mm": 8.86,
+      "p1b_min_outer_ring_clearance_mm": -10.53,
+      "p1a_reaches_prop": false,
+      "p1b_can_reach_prop": false,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 120,
+      "passes_through_openings": [],
+      "max_intrusion_below_rod_plane_mm": 16.88,
+      "p1a_min_prop_clearance_mm": 14.54,
+      "p1b_min_swept_prop_clearance_mm": 14.61,
+      "p1b_min_outer_ring_clearance_mm": -4.78,
+      "p1a_reaches_prop": false,
+      "p1b_can_reach_prop": false,
+      "p1b_can_touch_ring": true
+    },
+    {
+      "diameter_mm": 150,
+      "passes_through_openings": [],
+      "max_intrusion_below_rod_plane_mm": 12.55,
+      "p1a_min_prop_clearance_mm": 18.82,
+      "p1b_min_swept_prop_clearance_mm": 18.93,
+      "p1b_min_outer_ring_clearance_mm": -0.46,
+      "p1a_reaches_prop": false,
+      "p1b_can_reach_prop": false,
+      "p1b_can_touch_ring": true
+    }
+  ],
+  "scope": "Can an outside object get through a cage opening and reach a prop before the cage stops it?\n\nModel: a round object of diameter D (ball, pole end, a rounded corner) is pushed straight in through each\nopening of the truncated-icosahedron cage until it rests on the rods. Rods are cylinders of the measured\ndiameter between hub centres; hub bodies are ignored, which makes openings look larger, so results err\ntoward more intrusion. For every resting position on a lateral grid over the opening, the object's\nclearance to the props is computed:\n  P1A  four prop-disk cylinders, each grown by the full X/Y balancing travel;\n  P1B  the sphere swept by the free-turning aircraft (generator's own aircraft_radius), plus the outer\n       gimbal ring band, whose contact is a jam risk rather than a prop strike.\nOnly vendor/provisional dimensions until measurements.json is filled. Straight edges and flat walls\ncannot pass a convex opening; small corners and thin poles behave like small D."
+}

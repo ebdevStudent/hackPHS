@@ -1,0 +1,204 @@
+load start!
+progress: 0.0109769
+load finished! 454ms
+slice start!
+progress: 0.0160134
+progress: 0.0211237
+progress: 0.0219539
+slice finished! 3794ms
+sliceSlc start!
+progress: 0.0230516
+sliceSlc finished! 5ms
+dimension start!
+progress: 0.0230516
+dimension finished! 17ms
+partition start!
+progress: 0.0288629
+progress: 0.0346742
+progress: 0.0404856
+progress: 0.0462969
+progress: 0.0521082
+progress: 0.0579195
+progress: 0.0637309
+progress: 0.0695422
+progress: 0.0753535
+progress: 0.0811649
+progress: 0.0869762
+progress: 0.0927875
+progress: 0.0985988
+progress: 0.10441
+progress: 0.110221
+progress: 0.116033
+progress: 0.121844
+progress: 0.121844
+partition finished! 15526ms
+separateTree start!
+progress: 0.121844
+separateTree finished! 5ms
+fullSupport start!
+progress: 0.121844
+fullSupport finished! 6ms
+lineSupport start!
+progress: 0.121844
+lineSupport finished! 8ms
+wall start!
+progress: 0.121844
+wall finished! 6ms
+brim start!
+progress: 0.176729
+brim finished! 352ms
+raft start!
+progress: 0.176729
+raft finished! 6ms
+preExtrude start!
+progress: 0.182217
+preExtrude finished! 62ms
+calcArea start!
+progress: 0.183315
+calcArea finished! 15ms
+shell start!
+progress: 0.18885
+progress: 0.194384
+progress: 0.199919
+progress: 0.205453
+progress: 0.210988
+progress: 0.216523
+progress: 0.222057
+progress: 0.227592
+progress: 0.233126
+progress: 0.238661
+progress: 0.244196
+progress: 0.24973
+progress: 0.255265
+progress: 0.260799
+progress: 0.266334
+progress: 0.271869
+progress: 0.277403
+progress: 0.282938
+progress: 0.288472
+progress: 0.294007
+progress: 0.299542
+progress: 0.305076
+progress: 0.310611
+progress: 0.315038
+shell finished! 34478ms
+infill start!
+progress: 0.324643
+progress: 0.334248
+progress: 0.343853
+progress: 0.353458
+progress: 0.363063
+progress: 0.372667
+progress: 0.382272
+progress: 0.391877
+progress: 0.401482
+progress: 0.411087
+progress: 0.420692
+progress: 0.430296
+progress: 0.439901
+progress: 0.449506
+progress: 0.459111
+progress: 0.468716
+progress: 0.478321
+progress: 0.487925
+progress: 0.49753
+progress: 0.507135
+progress: 0.51674
+progress: 0.526345
+progress: 0.535949
+progress: 0.545554
+progress: 0.555159
+progress: 0.564764
+progress: 0.574369
+progress: 0.583974
+progress: 0.593578
+progress: 0.603183
+progress: 0.612788
+progress: 0.622393
+progress: 0.631998
+progress: 0.641603
+progress: 0.651207
+progress: 0.660812
+progress: 0.670417
+progress: 0.680022
+progress: 0.689627
+progress: 0.699232
+progress: 0.708836
+progress: 0.718441
+progress: 0.728046
+progress: 0.737651
+progress: 0.747256
+progress: 0.756861
+progress: 0.766465
+progress: 0.77607
+progress: 0.785675
+progress: 0.79528
+progress: 0.804885
+progress: 0.81449
+progress: 0.824094
+progress: 0.833699
+progress: 0.843304
+progress: 0.852909
+progress: 0.862514
+progress: 0.872119
+progress: 0.881723
+progress: 0.891328
+progress: 0.891328
+infill finished! 45350ms
+pause start!
+progress: 0.891328
+pause finished! 6ms
+pathPlan start!
+progress: 0.892426
+pathPlan finished! 30ms
+spiralizeVase start!
+progress: 0.892426
+spiralizeVase finished! 5ms
+travel start!
+progress: 0.89796
+progress: 0.903495
+progress: 0.90903
+progress: 0.914564
+progress: 0.920099
+progress: 0.925633
+progress: 0.931168
+progress: 0.936703
+progress: 0.942237
+progress: 0.947772
+progress: 0.953306
+progress: 0.958841
+progress: 0.964376
+progress: 0.96991
+progress: 0.974753
+travel finished! 4100ms
+delay start!
+progress: 0.975851
+delay finished! 4ms
+lift start!
+progress: 0.975851
+lift finished! 3ms
+speed start!
+progress: 0.976948
+speed finished! 99ms
+fan start!
+progress: 0.976948
+fan finished! 5ms
+temperature start!
+progress: 0.976948
+temperature finished! 4ms
+setExtruder start!
+progress: 0.978046
+setExtruder finished! 12ms
+preSetExtruder start!
+progress: 0.978046
+preSetExtruder finished! 4ms
+percent start!
+progress: 0.978046
+percent finished! 27ms
+export start!
+progress: 0.983212
+progress: 0.988377
+progress: 0.993543
+progress: 0.998709
+progress: 1
+export finished! 4683ms

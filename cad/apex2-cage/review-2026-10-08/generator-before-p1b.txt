@@ -1,0 +1,31 @@
+Values applied: ['motor_diag=95 mm [vendor]', 'frame_t=2.5 mm [vendor]', 'frame_hole_pitch=25.5 mm [vendor]', 'motor_od=15.84 mm [vendor]', 'motor_h=8.9 mm [vendor]', 'prop_z=8.9 mm [vendor]', 'prop_dia=50.8 mm [vendor]', 'cam_size=14 mm [vendor]', 'cam_hfov=160 deg [vendor]', 'batt450_l=62.8 mm [vendor]', 'batt450_w=16.4 mm [vendor]', 'batt450_h=13.8 mm [vendor]', 'batt1100_l=56.56 mm [vendor]', 'batt1100_w=23.5 mm [vendor]', 'batt1100_h=18.4 mm [vendor]', 'stack_h=12 mm [vendor]', 'strap_w=12.5 mm [vendor]', 'rod_dia=1.0 mm [vendor]', 'stack_w=33 mm [vendor]', 'prop_disk_h=5.1 mm [vendor]', 'strap_slot_t=2.5 mm [vendor]']
+CG: {'cg_450_below_frame_top_mm': 3.25, 'cg_1100_below_frame_top_mm': 6.82, 'aircraft_z_offset_mm': 3.25, '1100_needs_shift_mm': 3.58, 'within_cg_slot': True}
+Balancing travel each way (mm): {'across_X': 2.0, 'along_arms_Y': 3.0000000000000004, 'vertical_Z': 5.0}
+Radii (mm): {'aircraft_swept_r': 79.61, 'props_batteries_carrier_r': 79.61, 'arm_end_parts_r': 74.97, 'inner_ring': (84, 89.0), 'outer_ring': (94.0, 99.0), 'pole_boss_tip_r': 113.5, 'cage_inner_clear_to_outer_ring': 16.0}
+Camera centreline at nominal pose: inner ring clear, outer ring clear; a ring crosses it in 2% of sampled ring orientations (free gimbal; orientation varies in flight)
+Fusion joints: ['Z pole pivot (cage - outer ring)', 'X pivot (outer ring - inner ring)', 'Y pivot (inner ring - aircraft)']; rigid groups: 4; cage grounded
+Materials: {'Stainless Steel AISI 304': 6, 'PETG (project)': 14, 'Analysis envelope (massless)': 15, 'Stainless Steel, 440C': 6, 'Carbon rod (project)': 2}
+Pins: cut the 2 x 16 mm dowels to 10.5 mm (or press deeper); past-bearing per pivot X+,X-,Y+,Y-,Z+,Z-: [1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+Cage: {'edge_rods': 90, 'edge_rod_cut_mm': 44.53, 'pole_rods': 10, 'pole_rod_cut_mm': 37.86, 'total_rod_mm': 4386.4}
+Connectivity: all junctions joined, all pins and bearings engaged
+Swept-motion checks: 612 poses, 0 collisions
+P1B printed parts (PETG): solid upper bound / estimated at walls + infill:
+  hub_3way: x46, 0.27 / 0.27 g each
+  hub_3way_mount_A: x4, 0.66 / 0.66 g each
+  hub_4way: x10, 0.33 / 0.33 g each
+  hub_pole_5way_pivot: x2, 0.59 / 0.59 g each
+  outer_ring_quarter: x4, 1.92 / 1.92 g each
+  outer_junction_X_bearing: x2, 1.20 / 1.20 g each
+  outer_junction_Z_bearing: x2, 2.00 / 2.00 g each
+  inner_ring_quarter: x4, 1.73 / 1.73 g each
+  inner_junction_Y_bearing: x2, 0.92 / 0.92 g each
+  inner_junction_X_pin: x2, 1.22 / 1.22 g each
+  carrier_plate: x1, 6.12 / 6.12 g each
+  support_arm_p1b: x2, 1.77 / 1.77 g each
+  arm_pivot_block: x2, 2.20 / 2.20 g each
+  gimbal_fit_coupon: x1, 11.09 / 7.38 g each
+P1B added mass: rods 5.3 g + printed 58.8 g solid / 58.8 g estimated + hardware ~8.4 g (28 M2 screws)
+  = 72.5 g upper bound / 72.5 g estimated printed
+  with 450 mAh: all-up ~143 g estimated / 143 g upper bound; at 350 g planning thrust 2.44-2.44:1 (estimate range 1.95-2.79:1); within 175 g ceiling
+  with 1100 mAh: all-up ~165 g estimated / 165 g upper bound; at 350 g planning thrust 2.12-2.12:1 (estimate range 1.69-2.42:1); within 175 g ceiling
+STL exports: ['arm_pivot_block', 'carrier_plate', 'gimbal_fit_coupon', 'hub_3way', 'hub_3way_mount_A', 'hub_4way', 'hub_pole_5way_pivot', 'inner_junction_X_pin', 'inner_junction_Y_bearing', 'inner_ring_quarter', 'outer_junction_X_bearing', 'outer_junction_Z_bearing', 'outer_ring_quarter', 'support_arm_p1b']

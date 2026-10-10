@@ -1,0 +1,164 @@
+{
+  "scope": "Mac software only; invented synthetic depth/camera/survey/observations. No D435, Pi, radio or aircraft connected.",
+  "commands": [
+    [
+      "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+      "-m",
+      "ball_demo.cli",
+      "nav-map",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/synthetic-depth-scan.json",
+      "--output",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/map-rebuild-1"
+    ],
+    [
+      "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+      "-m",
+      "ball_demo.cli",
+      "nav-map",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/synthetic-depth-scan.json",
+      "--output",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/map-rebuild-2"
+    ],
+    [
+      "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+      "-m",
+      "ball_demo.cli",
+      "nav-replay",
+      "/Users/devk/Documents/HackPHS26/software/examples/navigation/synthetic-session.json",
+      "--output",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/replay-1.json"
+    ],
+    [
+      "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+      "-m",
+      "ball_demo.cli",
+      "nav-demo",
+      "/Users/devk/Documents/HackPHS26/software/examples/navigation/synthetic-session.json",
+      "--output",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/autonomous-example-1.json"
+    ],
+    [
+      "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+      "-m",
+      "ball_demo.cli",
+      "nav-simulate",
+      "--bundle",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/synthetic-depth-bundle.json",
+      "--start",
+      "1",
+      ".9",
+      "1",
+      "--goal",
+      "1",
+      "1.4",
+      "1",
+      "--yaw-deg",
+      "90",
+      "--output",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/autonomous-depth-map-1.json"
+    ],
+    [
+      "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+      "-m",
+      "ball_demo.cli",
+      "nav-replay",
+      "/Users/devk/Documents/HackPHS26/software/examples/navigation/synthetic-session.json",
+      "--output",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/replay-2.json"
+    ],
+    [
+      "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+      "-m",
+      "ball_demo.cli",
+      "nav-demo",
+      "/Users/devk/Documents/HackPHS26/software/examples/navigation/synthetic-session.json",
+      "--output",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/autonomous-example-2.json"
+    ],
+    [
+      "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+      "-m",
+      "ball_demo.cli",
+      "nav-simulate",
+      "--bundle",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/synthetic-depth-bundle.json",
+      "--start",
+      "1",
+      ".9",
+      "1",
+      "--goal",
+      "1",
+      "1.4",
+      "1",
+      "--yaw-deg",
+      "90",
+      "--output",
+      "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/autonomous-depth-map-2.json"
+    ]
+  ],
+  "recording": "software/examples/navigation/synthetic-session.json",
+  "map_rebuild_byte_identical": true,
+  "source_bundle_unchanged": true,
+  "mapping": {
+    "scan_id": "EXAMPLE-depth",
+    "scan_sha256": "fd1612184b77184bcd01db8655cf2c6b75436a5bdb24386f7ee1f1c32abe5b9f",
+    "map_sha256": "7072136b7a0815cdcf8257e542448b5c001580b24df25a5552149fbba63fd75b",
+    "voxel_m": 0.2,
+    "occupied_voxels": 100,
+    "observed_free_voxels": 556,
+    "unknown_voxels": 844,
+    "frames": 1,
+    "physical_acceptance": false,
+    "example": true,
+    "limitations": "Static surveyed stations; no SLAM, dynamic obstacle sensing or glass/reflectivity guarantee. Recheck controlled zone before use.",
+    "source_manifests": [
+      {
+        "path": "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/synthetic-depth-scan.json",
+        "sha256": "19f0044f28edb3f98275115e8e5b26e7498b42201280f03a8090cb9ea044eac5"
+      }
+    ]
+  },
+  "results": {
+    "replay": {
+      "byte_identical_rerun": true,
+      "samples": 14,
+      "statuses": {
+        "goal changed; guidance disabled": 1,
+        "acquiring": 4,
+        "valid; restore guidance deliberately": 2,
+        "advisory route": 5,
+        "EXAMPLE tag occlusion": 1,
+        "Stale localization": 1
+      },
+      "sha256": "dba93101a81e2c22a0e74f5d7f2b2444926b3a839434b7282ca044767088b1a1"
+    },
+    "autonomous-example": {
+      "byte_identical_rerun": true,
+      "samples": 93,
+      "statuses": {
+        "acquiring": 4,
+        "advisory route": 82,
+        "No surveyed tags visible": 4,
+        "valid; restore guidance deliberately": 2,
+        "goal reached": 1
+      },
+      "sha256": "ecf64b0c2864a1cf94df8b13c769c5f146e38d8c8a04dca35a903763efc15b9c",
+      "final_mock_goal_error_m": 0.046038992720090974
+    },
+    "autonomous-depth-map": {
+      "byte_identical_rerun": true,
+      "samples": 57,
+      "statuses": {
+        "acquiring": 4,
+        "advisory route": 46,
+        "No surveyed tags visible": 4,
+        "valid; restore guidance deliberately": 2,
+        "goal reached": 1
+      },
+      "sha256": "ee9817bc70c7602e85a60f823348e2666e5854a57ee37829b90fd4c8a38022dd",
+      "final_mock_goal_error_m": 0.040025394728945805
+    }
+  },
+  "pass": true,
+  "physical_acceptance": false
+}

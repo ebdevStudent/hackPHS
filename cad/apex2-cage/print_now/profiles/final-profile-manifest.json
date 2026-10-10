@@ -1,0 +1,38 @@
+{
+  "profiles": [
+    {
+      "name": "Voxel PETG T3 socket 2 FINAL",
+      "file": "9_Voxel PETG T3 socket 2 FINAL.profile",
+      "installed": "/Users/devk/.FlashPrint-MP/slice_profile/9_Voxel PETG T3 socket 2 FINAL.profile",
+      "sha256": "3e77bd3b68ca8ea56772f5b46ab4a3d702edab21e90e7e860c1faef7cca55da2",
+      "qt_readback": {
+        "machineId": 9,
+        "profileName": "Voxel PETG T3 socket 2 FINAL",
+        "layerHeight": 0.15000000596046448,
+        "firstHeight": 0.27000001072883606,
+        "baseSpeed": 35.0,
+        "firstMaxSpeed": 10.0,
+        "perimeterShellCnt": 3.0,
+        "infillTopSolidCnt": 5.0,
+        "infillBottomSolidCnt": 5.0,
+        "infillDensity": 25.0,
+        "infillPattern": 1,
+        "brimEnable": true,
+        "brimMargin": 5.0,
+        "brimLayerCnt": 1.0,
+        "brimSpeed": 25.0,
+        "travelSpeed": 100.0,
+        "rightTemp": 235.0,
+        "platTemp": 60.0,
+        "retractLen": 1.5,
+        "retractSpeed": 30.0,
+        "fanMode": 4,
+        "fanHeight": 0.6000000238418579,
+        "supportEnable": false,
+        "raftEnable": false,
+        "offsetEnable": false
+      }
+    }
+  ],
+  "scope": "Saved files and Qt readback; no physical job sent"
+}

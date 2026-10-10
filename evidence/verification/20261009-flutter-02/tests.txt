@@ -1,0 +1,75 @@
+00:00 +0: loading /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart
+00:00 +0: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/controller_test.dart: no automatic server connection or mission command
+00:00 +1: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/protocol_test.dart: checked-in backend example is accepted
+00:00 +2: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/controller_test.dart: selection is prepared-roster-only and follows exact identity
+00:00 +3: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/controller_test.dart: selection is prepared-roster-only and follows exact identity
+00:00 +4: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/controller_test.dart: selection is prepared-roster-only and follows exact identity
+00:00 +5: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +6: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +7: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +8: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +9: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +10: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +11: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +12: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +13: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +14: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +15: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +16: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +17: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +18: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +19: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +20: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +21: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +22: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +23: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +24: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +25: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +26: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +27: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +28: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +29: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +30: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +31: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +32: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +33: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +34: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +35: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +36: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +37: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +38: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +39: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +40: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +41: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +42: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +43: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +44: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:00 +45: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 360.0 has no overflow
+00:01 +46: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 1 at width 360.0 has no overflow
+00:01 +47: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 2 at width 360.0 has no overflow
+00:01 +48: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 390.0 has no overflow
+00:01 +49: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 1 at width 390.0 has no overflow
+00:01 +50: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 2 at width 390.0 has no overflow
+00:01 +51: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 430.0 has no overflow
+00:01 +52: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 1 at width 430.0 has no overflow
+00:01 +53: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 2 at width 430.0 has no overflow
+00:01 +54: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 600.0 has no overflow
+00:01 +55: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 1 at width 600.0 has no overflow
+00:01 +56: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 2 at width 600.0 has no overflow
+00:01 +57: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 800.0 has no overflow
+00:02 +58: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 1 at width 800.0 has no overflow
+00:02 +59: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 2 at width 800.0 has no overflow
+00:02 +60: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 1024.0 has no overflow
+00:02 +61: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 1 at width 1024.0 has no overflow
+00:02 +62: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 2 at width 1024.0 has no overflow
+00:02 +63: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 1280.0 has no overflow
+00:02 +64: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 1 at width 1280.0 has no overflow
+00:02 +65: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 2 at width 1280.0 has no overflow
+00:02 +66: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 0 at width 1440.0 has no overflow
+00:02 +67: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 1 at width 1440.0 has no overflow
+00:02 +68: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: destination 2 at width 1440.0 has no overflow
+00:02 +69: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: large text, landscape and keyboard retain reachable content
+00:02 +70: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: resize and destination changes preserve target and speech draft
+00:03 +71: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: connection sheet has persistent labels and keyboard-safe scroll
+00:03 +72: /home/chessdroid108/Documents/ChatGPT/hackPHS/software/flutter_operator/test/layout_test.dart: (tearDownAll)
+00:03 +72: All tests passed!

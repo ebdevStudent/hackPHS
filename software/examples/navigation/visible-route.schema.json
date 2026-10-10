@@ -1,0 +1,72 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "points_m": {
+      "items": {
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "maxItems": 200002,
+      "minItems": 2,
+      "title": "Points M",
+      "type": "array"
+    },
+    "headings_rad": {
+      "items": {
+        "maximum": 3.141592653589793,
+        "minimum": -3.141592653589793,
+        "type": "number"
+      },
+      "maxItems": 200002,
+      "minItems": 2,
+      "title": "Headings Rad",
+      "type": "array"
+    },
+    "visible_tag_ids": {
+      "items": {
+        "items": {
+          "type": "integer"
+        },
+        "type": "array"
+      },
+      "maxItems": 200002,
+      "minItems": 2,
+      "title": "Visible Tag Ids",
+      "type": "array"
+    },
+    "clearance_m": {
+      "minimum": 0,
+      "title": "Clearance M",
+      "type": "number"
+    },
+    "example": {
+      "title": "Example",
+      "type": "boolean"
+    },
+    "physical_output": {
+      "const": false,
+      "default": false,
+      "title": "Physical Output",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "points_m",
+    "headings_rad",
+    "visible_tag_ids",
+    "clearance_m",
+    "example"
+  ],
+  "title": "VisibleRoute",
+  "type": "object"
+}

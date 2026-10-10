@@ -1,0 +1,495 @@
+{
+  "configuration": "P1B",
+  "bed_used_mm": 140.0,
+  "plates": [
+    {
+      "name": "p1b_plate_T_cage_section_test",
+      "part_count": 10,
+      "contents": [
+        [
+          "hub_3way",
+          10
+        ]
+      ],
+      "extent_mm": [
+        132.0049605369568,
+        34.122995376586914,
+        5.4781129360198975
+      ],
+      "sha256": "a27b2d88205461ac47effe69113588d4e4cc35a3927018911ed0d1db80f7cd7e"
+    },
+    {
+      "name": "p1b_plate_hubs_3way_a",
+      "part_count": 36,
+      "contents": [
+        [
+          "hub_3way",
+          36
+        ]
+      ],
+      "extent_mm": [
+        132.0049605369568,
+        116.36898612976074,
+        5.4781129360198975
+      ],
+      "sha256": "f81da27d6b2ef7efb105c7aa4eef1fa41c74d9d8ddc03859a09f26d0e6368035"
+    },
+    {
+      "name": "p1b_plate_hubs_mixed",
+      "part_count": 24,
+      "contents": [
+        [
+          "hub_3way",
+          10
+        ],
+        [
+          "hub_3way_mount_A",
+          4
+        ],
+        [
+          "hub_4way",
+          10
+        ]
+      ],
+      "extent_mm": [
+        132.0049605369568,
+        75.24599075317383,
+        8.878450393676758
+      ],
+      "sha256": "42f9f2b058d000e71414cc529c996366e34dbab91ee9d21e0fb3c585d77eb970"
+    },
+    {
+      "name": "p1b_plate_inner_ring_4_quarters",
+      "part_count": 4,
+      "contents": [
+        [
+          "inner_ring_quarter",
+          4
+        ]
+      ],
+      "extent_mm": [
+        109.28519182909884,
+        109.28519182909884,
+        3.0
+      ],
+      "sha256": "094f541df3a5318d369f84eda6de4f8276d37309c144a16c031e3cae29a52385"
+    },
+    {
+      "name": "p1b_plate_outer_ring_4_quarters",
+      "part_count": 4,
+      "contents": [
+        [
+          "outer_ring_quarter",
+          4
+        ]
+      ],
+      "extent_mm": [
+        119.2947695802585,
+        119.2947695802585,
+        3.0
+      ],
+      "sha256": "74d36a294773f75435841cb3a08f9c2c75eda948d287e8cdf791000ee89c81f4"
+    },
+    {
+      "name": "p1b_plate_0_gimbal_fit_coupon_PRINT_FIRST",
+      "part_count": 1,
+      "contents": [
+        [
+          "gimbal_fit_coupon",
+          1
+        ]
+      ],
+      "extent_mm": [
+        47.0,
+        22.0,
+        13.0
+      ],
+      "sha256": "c11858bb4f9e91da5069b70742b3d51331d2401d34b77344d38a36415403c2ed"
+    },
+    {
+      "name": "p1b_plate_junctions_pivots",
+      "part_count": 12,
+      "contents": [
+        [
+          "outer_junction_Z_bearing",
+          2
+        ],
+        [
+          "outer_junction_X_bearing",
+          2
+        ],
+        [
+          "inner_junction_X_pin",
+          2
+        ],
+        [
+          "inner_junction_Y_bearing",
+          2
+        ],
+        [
+          "arm_pivot_block",
+          2
+        ],
+        [
+          "hub_pole_5way_pivot",
+          2
+        ]
+      ],
+      "extent_mm": [
+        135.74738883972168,
+        61.643394470214844,
+        16.0
+      ],
+      "sha256": "11ed8019833ef5af2452725323858afee085dbfc1aee481af71c550f61e44c30"
+    },
+    {
+      "name": "p1b_plate_carrier_arms",
+      "part_count": 4,
+      "contents": [
+        [
+          "carrier_plate",
+          1
+        ],
+        [
+          "nut_shield_plate",
+          1
+        ],
+        [
+          "support_arm_p1b",
+          2
+        ]
+      ],
+      "extent_mm": [
+        123.5,
+        94.0,
+        16.0
+      ],
+      "sha256": "b948a0123783ec968d761467dae4be8f66c6043df0d5084a87f5d179574594c0"
+    }
+  ],
+  "generator_sources": {
+    "build_p1a.py": "f39201dcf20063bd5afc9176cfb9290c1c1fa2525e1ffb7c1329a53b93145d53",
+    "build_p1b.py": "96bce59b6f832a11069721046adff3b8122077c5f756a44bc75bb2948889620c",
+    "validation.py": "265f53eafe55206088534479cd2d8f7856fbe5f5f6bba092e5189f0283ff3ca7",
+    "vendor_specs.json": "a324caf1a4e81e26ff2fc18afbb49890d4c51ae427a5b69928f0012d66265986",
+    "measurements.json": "9f94d8cf92e8084bab96ead087fd812b770bc494945cef18a0ed8dbf0180e043",
+    "fit_results.json": "0d048f94cee6753324051ea43f8c11c56e8bcf7ad227f97d79736a782901c7da"
+  },
+  "sources": {
+    "arm_pivot_block": {
+      "path": "exports_p1b/arm_pivot_block.stl",
+      "sha256": "070ee762ac9926e5ae250e3e4a249d7c1c48ba646ce399e544694f76424daade",
+      "rotation": [
+        [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "carrier_plate": {
+      "path": "exports_p1b/carrier_plate.stl",
+      "sha256": "cb6e4b41aa26f0b6824227968d3876b7f4f4105af5e5a9a92e4d81eed0672031",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "gimbal_fit_coupon": {
+      "path": "exports_p1b/gimbal_fit_coupon.stl",
+      "sha256": "b81259de0559f86bcdc11d07ff2edd4ed4d066ca590cb8a328dabb12bdbd6607",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "hub_3way": {
+      "path": "exports_p1b/hub_3way.stl",
+      "sha256": "654fdca63b895e65f7e2303a66767ad0a61cfc3a92be6b6b05d4981bd3c69958",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "hub_3way_mount_A": {
+      "path": "exports_p1b/hub_3way_mount_A.stl",
+      "sha256": "e17c47e96b272cef3cbc0ba533f6e01c088b5b82be0b895cc905fd652ebc69fd",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "hub_4way": {
+      "path": "exports_p1b/hub_4way.stl",
+      "sha256": "1de1291fd697c5f591029f98561cb769ec7182829c0ef5c71628708c61a6f463",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "hub_pole_5way_pivot": {
+      "path": "exports_p1b/hub_pole_5way_pivot.stl",
+      "sha256": "14a0e5d7fc530a1ef1869d558184adc09e032fda3dee6fb82ceead0a3c06dc36",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "inner_junction_X_pin": {
+      "path": "exports_p1b/inner_junction_X_pin.stl",
+      "sha256": "d1c792ffcc2353a578f984d18fea764e3d488b205bf59a28649bea9c506d305a",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ]
+    },
+    "inner_junction_Y_bearing": {
+      "path": "exports_p1b/inner_junction_Y_bearing.stl",
+      "sha256": "a6917e06d2ac998bf42a77885f445b0bcc7ce1912e0614319cf936cd13031955",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ]
+    },
+    "inner_ring_quarter": {
+      "path": "exports_p1b/inner_ring_quarter.stl",
+      "sha256": "4eaebf2648e2179bbfcf38b3806888547fafe674e3c393a30aa12973997be288",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "nut_shield_plate": {
+      "path": "exports_p1b/nut_shield_plate.stl",
+      "sha256": "37e8f4b0b09bbe63a054ee534f55d20c1f6e19ed0a7487044c0fd138c7166e1b",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "outer_junction_X_bearing": {
+      "path": "exports_p1b/outer_junction_X_bearing.stl",
+      "sha256": "0ea3947cac9dfc127ff0daba05f526498df7831b42ed743bf5dd039ad77d39fd",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ]
+    },
+    "outer_junction_Z_bearing": {
+      "path": "exports_p1b/outer_junction_Z_bearing.stl",
+      "sha256": "7e970517f5420b26ca5ea5046054f3054ec89cfbdee676a668dcaa26bd641735",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ]
+    },
+    "outer_ring_quarter": {
+      "path": "exports_p1b/outer_ring_quarter.stl",
+      "sha256": "a5472c885d3b5cf0066d48dd7a5892c8985428a0dc63df13bb282c33fc66b9e4",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "support_arm_p1b": {
+      "path": "exports_p1b/support_arm_p1b.stl",
+      "sha256": "9f44597288ff4e034c1c8869d731b7078f7fce6467d61d55aeb81035cd33d792",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  }
+}

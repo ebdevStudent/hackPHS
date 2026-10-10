@@ -1,0 +1,95 @@
+Analyzing flutter_operator...                                   
+
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:92:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:95:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:112:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:132:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:211:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:213:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:248:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:386:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:464:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:484:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:492:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:561:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/application/operator_controller.dart:575:7 • curly_braces_in_flow_control_structures
+   info • The import of 'dart:typed_data' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/services.dart'. Try removing the import directive • lib/data/fixture_gateway.dart:2:8 • unnecessary_import
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/data/fixture_gateway.dart:187:19 • prefer_interpolation_to_compose_strings
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/data/fixture_gateway.dart:208:7 • curly_braces_in_flow_control_structures
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/data/operator_gateway.dart:69:64 • prefer_interpolation_to_compose_strings
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/data/rest_gateway.dart:71:9 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/data/rest_gateway.dart:115:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/data/rest_gateway.dart:153:9 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/data/rest_gateway.dart:159:9 • curly_braces_in_flow_control_structures
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/data/rest_gateway.dart:181:19 • prefer_interpolation_to_compose_strings
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/data/rest_gateway.dart:184:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/data/rest_gateway.dart:202:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/domain/landing_geometry.dart:6:5 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/domain/models.dart:8:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/domain/models.dart:14:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/domain/models.dart:36:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/domain/models.dart:351:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/domain/models.dart:501:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/domain/models.dart:507:7 • curly_braces_in_flow_control_structures
+   info • Use the null-aware marker '?' rather than a null check via an 'if'. Try using '?' • lib/domain/models.dart:594:9 • use_null_aware_elements
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/media/media_port.dart:99:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/media/media_port.dart:166:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/audio.dart:42:17 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/audio.dart:44:17 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/audio.dart:356:7 • curly_braces_in_flow_control_structures
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/audio.dart:403:13 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/camera_view.dart:238:21 • prefer_interpolation_to_compose_strings
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/camera_view.dart:241:11 • curly_braces_in_flow_control_structures
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/camera_view.dart:241:18 • prefer_interpolation_to_compose_strings
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:172:31 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:270:9 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:361:23 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:363:23 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:365:23 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:367:23 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:369:23 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:371:23 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:373:23 • curly_braces_in_flow_control_structures
+  error • The name 'CustomSemanticsAction' isn't a class. Try correcting the name to match an existing class • lib/ui/dialogs.dart:380:35 • creation_with_non_type
+  error • The name 'CustomSemanticsAction' isn't a class. Try correcting the name to match an existing class • lib/ui/dialogs.dart:384:35 • creation_with_non_type
+  error • The name 'CustomSemanticsAction' isn't a class. Try correcting the name to match an existing class • lib/ui/dialogs.dart:388:35 • creation_with_non_type
+  error • The name 'CustomSemanticsAction' isn't a class. Try correcting the name to match an existing class • lib/ui/dialogs.dart:392:35 • creation_with_non_type
+  error • The name 'CustomSemanticsAction' isn't a class. Try correcting the name to match an existing class • lib/ui/dialogs.dart:396:35 • creation_with_non_type
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/dialogs.dart:455:31 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/dialogs.dart:455:61 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/dialogs.dart:485:19 • prefer_interpolation_to_compose_strings
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:509:29 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/dialogs.dart:511:29 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/operations.dart:31:7 • curly_braces_in_flow_control_structures
+  error • The name 'CustomSemanticsAction' isn't a class. Try correcting the name to match an existing class • lib/ui/operations.dart:141:13 • creation_with_non_type
+  error • The name 'CustomSemanticsAction' isn't a class. Try correcting the name to match an existing class • lib/ui/operations.dart:143:13 • creation_with_non_type
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/operations.dart:150:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/operations.dart:152:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/operations.dart:154:11 • curly_braces_in_flow_control_structures
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/operations.dart:241:23 • prefer_interpolation_to_compose_strings
+   info • The import of 'dart:ui' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart'. Try removing the import directive • lib/ui/theme.dart:1:8 • unnecessary_import
+   info • Use the null-aware marker '?' rather than a null check via an 'if'. Try using '?' • lib/ui/widgets.dart:57:7 • use_null_aware_elements
+   info • Use the null-aware marker '?' rather than a null check via an 'if'. Try using '?' • lib/ui/widgets.dart:81:5 • use_null_aware_elements
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/widgets.dart:87:25 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/widgets.dart:88:27 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/widgets.dart:89:10 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/widgets.dart:93:10 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/widgets.dart:93:47 • prefer_interpolation_to_compose_strings
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/widgets.dart:103:24 • curly_braces_in_flow_control_structures
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • lib/ui/widgets.dart:120:28 • prefer_interpolation_to_compose_strings
+  error • Expected an identifier • lib/ui/widgets.dart:125:7 • missing_identifier
+  error • Expected to find ')' • lib/ui/widgets.dart:125:7 • expected_token
+  error • Expected to find ',' • lib/ui/widgets.dart:125:7 • expected_token
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • lib/ui/widgets.dart:156:24 • curly_braces_in_flow_control_structures
+warning • Unused import: 'package:ball_drone/data/operator_gateway.dart'. Try removing the import directive • test/controller_test.dart:6:8 • unused_import
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • test/controller_test.dart:19:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • test/layout_test.dart:44:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block. Try wrapping the statement in a block • test/layout_test.dart:46:11 • curly_braces_in_flow_control_structures
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • test/protocol_test.dart:29:10 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • test/protocol_test.dart:53:10 • prefer_interpolation_to_compose_strings
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • test/protocol_test.dart:214:7 • prefer_interpolation_to_compose_strings
+   info • Statements in a for should be enclosed in a block. Try wrapping the statement in a block • test/protocol_test.dart:234:9 • curly_braces_in_flow_control_structures
+   info • Statements in a for should be enclosed in a block. Try wrapping the statement in a block • test/protocol_test.dart:246:13 • curly_braces_in_flow_control_structures
+   info • Use interpolation to compose strings and values. Try using string interpolation to build the composite string • test_driver/integration_test.dart:14:22 • prefer_interpolation_to_compose_strings
+
+91 issues found. (ran in 3.1s)

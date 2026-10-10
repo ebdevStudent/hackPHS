@@ -1,0 +1,38 @@
+{
+  "_instructions": "Stage 6: replace null with caliper/scale values including units (e.g. \"94.6 mm\"), then re-run build_p1a.py. Parameter names match Fusion's Change Parameters list; null keeps the placeholder.",
+  "parameters": {
+    "motor_diag": null,
+    "prop_dia": null,
+    "prop_z": null,
+    "motor_od": null,
+    "motor_h": null,
+    "frame_t": null,
+    "arm_w": null,
+    "stack_w": null,
+    "stack_h": null,
+    "frame_hole_pitch": null,
+    "cam_size": null,
+    "cam_y": null,
+    "cam_z": null,
+    "cam_tilt": null,
+    "cam_hfov": null,
+    "batt450_l": null,
+    "batt450_w": null,
+    "batt450_h": null,
+    "batt1100_l": null,
+    "batt1100_w": null,
+    "batt1100_h": null,
+    "rod_dia": null,
+    "strap_w": null,
+    "strap_slot_t": null,
+    "rod_bore_clear": null,
+    "socket_depth": null,
+    "m2_tap": null
+  },
+  "masses_g": {
+    "bare_aircraft_g": null,
+    "pack_450_g": null,
+    "pack_1100_g": null,
+    "thrust_total_g": null
+  }
+}

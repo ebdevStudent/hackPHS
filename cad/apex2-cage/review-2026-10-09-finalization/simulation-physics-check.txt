@@ -1,0 +1,28 @@
+P1B + 450 mAh: 144.68 g, T:W 2.42, hover ~4.1 min
+P1B + 1100 mAh: 166.68 g, T:W 2.10, hover ~8.2 min
+1. motors off: drops and settles on the cage
+  PASS rests on the hubs centre 113.6 mm
+  PASS never sinks into the floor lowest 113.6 mm
+  PASS comes to rest RESTING
+2. take off, then let go: holds height
+  PASS climbs height 1.43 m
+  PASS brakes and hovers after letting go drift 0.38 m, v 0.001 m/s
+3. forward: smooth, limited speed and tilt
+  PASS reaches top speed toward -Z v -0.00, 0.00, -1.94
+  PASS tilt within the limit, changes smoothly max 19.1 deg, max 0.74 deg per step
+  PASS stops when released 0.000 m/s
+4. turn
+  PASS turns left at about the set rate 77 deg in 1 s
+5. into the wall at full speed
+  PASS cage stops at the wall closest centre 118 mm (hexagon face 113.6 mm)
+  PASS impact recorded, cage spun, aircraft unaffected 3 impact(s), 7 mJ, cage 0.7 rad/s
+6. rolls along the floor
+  PASS moves forward, cage rolls, stays down moved 2.04 m, cage 11.7 rad/s, FREE
+7. battery
+  PASS hover draw and sag 5.1 A at 8.14 V fresh, 6.60 V nearly flat
+  PASS 450 mAh flat pack still holds height dy 0.00 m at 3.13 V/cell
+  PASS 1100 mAh flat pack still holds height dy 0.01 m at 3.17 V/cell
+8. cost per physics step
+  PASS under 20 us per step (240 Hz) 10.8 us
+
+ALL PASSED

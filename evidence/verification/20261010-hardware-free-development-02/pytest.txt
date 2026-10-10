@@ -1,0 +1,9 @@
+.............F.....                                                      [100%]
+=================================== FAILURES ===================================
+________ test_demo_scene_and_configuration_remain_explicitly_synthetic _________
+software/tests/test_portable_runtime.py:179: in test_demo_scene_and_configuration_remain_explicitly_synthetic
+    assert not source.read().truth['visible']
+E   assert not True
+=========================== short test summary info ============================
+FAILED software/tests/test_portable_runtime.py::test_demo_scene_and_configuration_remain_explicitly_synthetic
+1 failed, 18 passed in 2.58s

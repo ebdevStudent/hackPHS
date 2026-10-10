@@ -1,0 +1,302 @@
+{
+  "$defs": {
+    "Box": {
+      "additionalProperties": false,
+      "properties": {
+        "minimum": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Minimum",
+          "type": "array"
+        },
+        "maximum": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Maximum",
+          "type": "array"
+        }
+      },
+      "required": [
+        "minimum",
+        "maximum"
+      ],
+      "title": "Box",
+      "type": "object"
+    },
+    "DepthFrame": {
+      "additionalProperties": false,
+      "properties": {
+        "file": {
+          "pattern": "^[A-Za-z0-9_.-]+\\.npz$",
+          "title": "File",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "intrinsics": {
+          "$ref": "#/$defs/DepthIntrinsics"
+        },
+        "map_from_depth": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Map From Depth",
+          "type": "array"
+        },
+        "registration_evidence": {
+          "minLength": 1,
+          "title": "Registration Evidence",
+          "type": "string"
+        },
+        "hardware_timestamp_ms": {
+          "minimum": 0,
+          "title": "Hardware Timestamp Ms",
+          "type": "number"
+        },
+        "hardware_clock_domain": {
+          "minLength": 1,
+          "title": "Hardware Clock Domain",
+          "type": "string"
+        },
+        "host_received_s": {
+          "minimum": 0,
+          "title": "Host Received S",
+          "type": "number"
+        },
+        "color_hardware_timestamp_ms": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Color Hardware Timestamp Ms"
+        },
+        "color_hardware_clock_domain": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Color Hardware Clock Domain"
+        }
+      },
+      "required": [
+        "file",
+        "sha256",
+        "intrinsics",
+        "map_from_depth",
+        "registration_evidence",
+        "hardware_timestamp_ms",
+        "hardware_clock_domain",
+        "host_received_s"
+      ],
+      "title": "DepthFrame",
+      "type": "object"
+    },
+    "DepthIntrinsics": {
+      "additionalProperties": false,
+      "properties": {
+        "width": {
+          "maximum": 1920,
+          "minimum": 16,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "maximum": 1080,
+          "minimum": 16,
+          "title": "Height",
+          "type": "integer"
+        },
+        "fx": {
+          "exclusiveMinimum": 0,
+          "title": "Fx",
+          "type": "number"
+        },
+        "fy": {
+          "exclusiveMinimum": 0,
+          "title": "Fy",
+          "type": "number"
+        },
+        "cx": {
+          "minimum": 0,
+          "title": "Cx",
+          "type": "number"
+        },
+        "cy": {
+          "minimum": 0,
+          "title": "Cy",
+          "type": "number"
+        },
+        "model": {
+          "const": "rectified_pinhole",
+          "title": "Model",
+          "type": "string"
+        }
+      },
+      "required": [
+        "width",
+        "height",
+        "fx",
+        "fy",
+        "cx",
+        "cy",
+        "model"
+      ],
+      "title": "DepthIntrinsics",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "scan_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Scan Id",
+      "type": "string"
+    },
+    "camera_model": {
+      "const": "D435",
+      "title": "Camera Model",
+      "type": "string"
+    },
+    "serial": {
+      "minLength": 1,
+      "title": "Serial",
+      "type": "string"
+    },
+    "sdk_version": {
+      "minLength": 1,
+      "title": "Sdk Version",
+      "type": "string"
+    },
+    "map_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Map Id",
+      "type": "string"
+    },
+    "map_version": {
+      "minimum": 1,
+      "title": "Map Version",
+      "type": "integer"
+    },
+    "frame_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Frame Id",
+      "type": "string"
+    },
+    "units": {
+      "const": "m",
+      "title": "Units",
+      "type": "string"
+    },
+    "axes": {
+      "const": "right_handed_z_up",
+      "title": "Axes",
+      "type": "string"
+    },
+    "permitted": {
+      "$ref": "#/$defs/Box"
+    },
+    "voxel_m": {
+      "exclusiveMinimum": 0,
+      "title": "Voxel M",
+      "type": "number"
+    },
+    "uncertainty_m": {
+      "exclusiveMinimum": 0,
+      "title": "Uncertainty M",
+      "type": "number"
+    },
+    "max_depth_m": {
+      "default": 4.0,
+      "exclusiveMinimum": 0,
+      "title": "Max Depth M",
+      "type": "number"
+    },
+    "acquired_utc": {
+      "minLength": 1,
+      "title": "Acquired Utc",
+      "type": "string"
+    },
+    "evidence": {
+      "minLength": 1,
+      "title": "Evidence",
+      "type": "string"
+    },
+    "example": {
+      "title": "Example",
+      "type": "boolean"
+    },
+    "frames": {
+      "items": {
+        "$ref": "#/$defs/DepthFrame"
+      },
+      "maxItems": 1000,
+      "minItems": 1,
+      "title": "Frames",
+      "type": "array"
+    },
+    "camera_metadata": {
+      "additionalProperties": true,
+      "title": "Camera Metadata",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "scan_id",
+    "camera_model",
+    "serial",
+    "sdk_version",
+    "map_id",
+    "map_version",
+    "frame_id",
+    "units",
+    "axes",
+    "permitted",
+    "voxel_m",
+    "uncertainty_m",
+    "acquired_utc",
+    "evidence",
+    "example",
+    "frames"
+  ],
+  "title": "Scan",
+  "type": "object"
+}

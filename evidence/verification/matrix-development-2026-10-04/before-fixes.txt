@@ -1,0 +1,707 @@
+........................................................................ [  2%]
+........................................................................ [  4%]
+........................................................................ [  6%]
+........................................................................ [  8%]
+........................................................................ [ 10%]
+........................................................................ [ 12%]
+........................................................................ [ 14%]
+........................................................................ [ 16%]
+........................................................................ [ 18%]
+........................................................................ [ 20%]
+........................................................................ [ 22%]
+........................................................................ [ 24%]
+........................................................................ [ 26%]
+........................................................................ [ 28%]
+........................................................................ [ 30%]
+........................................................................ [ 32%]
+........................................................................ [ 34%]
+........................................................................ [ 36%]
+........................................................................ [ 38%]
+........................................................................ [ 40%]
+........................................................................ [ 42%]
+........................................................................ [ 44%]
+........................................................................ [ 46%]
+........................................................................ [ 48%]
+........................................................................ [ 50%]
+........................................................................ [ 52%]
+........................................................................ [ 54%]
+........................................................................ [ 56%]
+........................................................................ [ 58%]
+........................................................................ [ 60%]
+........................................................................ [ 62%]
+........................................................................ [ 64%]
+........................................................................ [ 66%]
+........................................................................ [ 68%]
+........................................................................ [ 70%]
+........................................................................ [ 72%]
+........................................................................ [ 74%]
+........................................................................ [ 76%]
+........................................................................ [ 78%]
+........................................................................ [ 80%]
+...........................................FFF.FFF.FFF.FFF.............. [ 82%]
+...................FFF.FFF.FFF.FFF.................................FFF.F [ 84%]
+FF.FFF.FFF.............................................................. [ 86%]
+..................FFFF....F.FF.....F.F....FFF.....F.FF....F.F.....FFF... [ 89%]
+..........FFF.....FFF.....F.F.............FF..FFFFFFFF...FFFFFFFFFFFFFFF [ 91%]
+FFFFFFFFF........................FFFFFFFFFFFFFFFF....................... [ 93%]
+........................................................................ [ 95%]
+........................................................................ [ 97%]
+........................................................................ [ 99%]
+...............................                                          [100%]
+=================================== FAILURES ===================================
+___ test_controller_matches_independent_discrete_reference[100-1--1-1-0.001] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (4 == 2)
+___ test_controller_matches_independent_discrete_reference[100-1--1-1-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (4 == 0)
+____ test_controller_matches_independent_discrete_reference[100-1--1-1-0.4] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (4 == 0)
+___ test_controller_matches_independent_discrete_reference[100-1--1-3-0.001] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (2 == 0)
+___ test_controller_matches_independent_discrete_reference[100-1--1-3-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (4 == 0)
+____ test_controller_matches_independent_discrete_reference[100-1--1-3-0.4] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (4 == 0)
+___ test_controller_matches_independent_discrete_reference[100-1-1-1-0.001] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-4 == -2)
+____ test_controller_matches_independent_discrete_reference[100-1-1-1-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-4 == 0)
+____ test_controller_matches_independent_discrete_reference[100-1-1-1-0.4] _____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-4 == 0)
+___ test_controller_matches_independent_discrete_reference[100-1-1-3-0.001] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-2 == 0)
+____ test_controller_matches_independent_discrete_reference[100-1-1-3-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-4 == 0)
+____ test_controller_matches_independent_discrete_reference[100-1-1-3-0.4] _____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-4 == 0)
+___ test_controller_matches_independent_discrete_reference[700-1--1-1-0.001] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (6 == 2)
+___ test_controller_matches_independent_discrete_reference[700-1--1-1-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (28 == 0)
+____ test_controller_matches_independent_discrete_reference[700-1--1-1-0.4] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (28 == 0)
+___ test_controller_matches_independent_discrete_reference[700-1--1-3-0.001] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (2 == 0)
+___ test_controller_matches_independent_discrete_reference[700-1--1-3-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (28 == 0)
+____ test_controller_matches_independent_discrete_reference[700-1--1-3-0.4] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (28 == 0)
+___ test_controller_matches_independent_discrete_reference[700-1-1-1-0.001] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-6 == -2)
+____ test_controller_matches_independent_discrete_reference[700-1-1-1-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-28 == 0)
+____ test_controller_matches_independent_discrete_reference[700-1-1-1-0.4] _____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-28 == 0)
+___ test_controller_matches_independent_discrete_reference[700-1-1-3-0.001] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-2 == 0)
+____ test_controller_matches_independent_discrete_reference[700-1-1-3-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-28 == 0)
+____ test_controller_matches_independent_discrete_reference[700-1-1-3-0.4] _____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-28 == 0)
+__ test_controller_matches_independent_discrete_reference[2000-1--1-1-0.001] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (6 == 2)
+___ test_controller_matches_independent_discrete_reference[2000-1--1-1-0.05] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (80 == 0)
+___ test_controller_matches_independent_discrete_reference[2000-1--1-1-0.4] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (80 == 0)
+__ test_controller_matches_independent_discrete_reference[2000-1--1-3-0.001] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (2 == 0)
+___ test_controller_matches_independent_discrete_reference[2000-1--1-3-0.05] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (80 == 0)
+___ test_controller_matches_independent_discrete_reference[2000-1--1-3-0.4] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (80 == 0)
+___ test_controller_matches_independent_discrete_reference[2000-1-1-1-0.001] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-6 == -2)
+___ test_controller_matches_independent_discrete_reference[2000-1-1-1-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-80 == 0)
+____ test_controller_matches_independent_discrete_reference[2000-1-1-1-0.4] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-80 == 0)
+___ test_controller_matches_independent_discrete_reference[2000-1-1-3-0.001] ___
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-2 == 0)
+___ test_controller_matches_independent_discrete_reference[2000-1-1-3-0.05] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-80 == 0)
+____ test_controller_matches_independent_discrete_reference[2000-1-1-3-0.4] ____
+software/tests/test_control_model.py:25: in test_controller_matches_independent_discrete_reference
+    assert actual==expected and c.filtered==pytest.approx(filtered,abs=1e-12)
+E   assert (-80 == 0)
+____ test_settings_reject_coercible_and_invalid_types_atomically[gain-True] ____
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+___ test_settings_reject_coercible_and_invalid_types_atomically[gain-False] ____
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_____ test_settings_reject_coercible_and_invalid_types_atomically[gain-1] ______
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____ test_settings_reject_coercible_and_invalid_types_atomically[gain-0.5] _____
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[smoothing-True] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+___ test_settings_reject_coercible_and_invalid_types_atomically[smoothing-1] ___
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+__ test_settings_reject_coercible_and_invalid_types_atomically[smoothing-0.5] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[deadband-False] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+__ test_settings_reject_coercible_and_invalid_types_atomically[deadband-0.5] ___
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+__ test_settings_reject_coercible_and_invalid_types_atomically[max_yaw-True] ___
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+__ test_settings_reject_coercible_and_invalid_types_atomically[max_yaw-False] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____ test_settings_reject_coercible_and_invalid_types_atomically[max_yaw-1] ____
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[slew_per_s-True] _
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+__ test_settings_reject_coercible_and_invalid_types_atomically[slew_per_s-1] ___
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[slew_per_s-0.5] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[direction-True] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+___ test_settings_reject_coercible_and_invalid_types_atomically[direction-1] ___
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+__ test_settings_reject_coercible_and_invalid_types_atomically[hue_low-True] ___
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+__ test_settings_reject_coercible_and_invalid_types_atomically[hue_low-False] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____ test_settings_reject_coercible_and_invalid_types_atomically[hue_low-1] ____
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[saturation_min-True] _
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[saturation_min-False] _
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[saturation_min-1] _
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[value_min-True] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_ test_settings_reject_coercible_and_invalid_types_atomically[value_min-False] _
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+___ test_settings_reject_coercible_and_invalid_types_atomically[value_min-1] ___
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+__ test_settings_reject_coercible_and_invalid_types_atomically[min_area-True] __
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+___ test_settings_reject_coercible_and_invalid_types_atomically[min_area-1] ____
+software/tests/test_api_matrix.py:30: in test_settings_reject_coercible_and_invalid_types_atomically
+    assert reply.status_code==422 and e.settings.dict()==before and e.generation==generation
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____________ test_enable_requires_boolean_not_truthy_coercion[0_0] _____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____________ test_enable_requires_boolean_not_truthy_coercion[1_0] _____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____________ test_enable_requires_boolean_not_truthy_coercion[true] ____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+___________ test_enable_requires_boolean_not_truthy_coercion[false] ____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____________ test_enable_requires_boolean_not_truthy_coercion[yes] _____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_____________ test_enable_requires_boolean_not_truthy_coercion[no] _____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____________ test_enable_requires_boolean_not_truthy_coercion[1_1] _____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____________ test_enable_requires_boolean_not_truthy_coercion[0_1] _____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+_____________ test_enable_requires_boolean_not_truthy_coercion[on] _____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+____________ test_enable_requires_boolean_not_truthy_coercion[off] _____________
+software/tests/test_api_matrix.py:41: in test_enable_requires_boolean_not_truthy_coercion
+    assert reply.status_code==422 and not e.controller.enabled and e.controller.yaw==0
+E   assert (200 == 422)
+E    +  where 200 = <Response [200 OK]>.status_code
+________ test_unknown_operator_fields_are_rejected[enable-assist-body0] ________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+________ test_unknown_operator_fields_are_rejected[enable-source-body1] ________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_______ test_unknown_operator_fields_are_rejected[enable-settings-body2] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+________ test_unknown_operator_fields_are_rejected[enable-fault-body3] _________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_________ test_unknown_operator_fields_are_rejected[yaw-assist-body0] __________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_________ test_unknown_operator_fields_are_rejected[yaw-source-body1] __________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+________ test_unknown_operator_fields_are_rejected[yaw-settings-body2] _________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+__________ test_unknown_operator_fields_are_rejected[yaw-fault-body3] __________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_________ test_unknown_operator_fields_are_rejected[port-assist-body0] _________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_________ test_unknown_operator_fields_are_rejected[port-source-body1] _________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+________ test_unknown_operator_fields_are_rejected[port-settings-body2] ________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_________ test_unknown_operator_fields_are_rejected[port-fault-body3] __________
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+______ test_unknown_operator_fields_are_rejected[transport-assist-body0] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+______ test_unknown_operator_fields_are_rejected[transport-source-body1] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_____ test_unknown_operator_fields_are_rejected[transport-settings-body2] ______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_______ test_unknown_operator_fields_are_rejected[transport-fault-body3] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+______ test_unknown_operator_fields_are_rejected[gain_typo-assist-body0] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+______ test_unknown_operator_fields_are_rejected[gain_typo-source-body1] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_____ test_unknown_operator_fields_are_rejected[gain_typo-settings-body2] ______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_______ test_unknown_operator_fields_are_rejected[gain_typo-fault-body3] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+______ test_unknown_operator_fields_are_rejected[__proto__-assist-body0] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+______ test_unknown_operator_fields_are_rejected[__proto__-source-body1] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_____ test_unknown_operator_fields_are_rejected[__proto__-settings-body2] ______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_______ test_unknown_operator_fields_are_rejected[__proto__-fault-body3] _______
+software/tests/test_api_matrix.py:51: in test_unknown_operator_fields_are_rejected
+    assert reply.status_code==422
+E   assert 200 == 422
+E    +  where 200 = <Response [200 OK]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[0] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[1] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[2] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[3] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[4] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[5] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[6] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[7] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[8] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[9] ________
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[10] _______
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[11] _______
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[12] _______
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[13] _______
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[14] _______
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+_______ test_seeded_api_mutation_sequences_remain_neutral_and_atomic[15] _______
+software/tests/test_api_matrix.py:76: in test_seeded_api_mutation_sequences_remain_neutral_and_atomic
+    assert reply.status_code==(200 if good else 422)
+E   assert 409 == 422
+E    +  where 409 = <Response [409 Conflict]>.status_code
+=============================== warnings summary ===============================
+software/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1
+  /Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1--1-1-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1--1-1-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1--1-1-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1--1-3-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1--1-3-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1--1-3-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1-1-1-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1-1-1-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1-1-1-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1-1-3-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1-1-3-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[100-1-1-3-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1--1-1-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1--1-1-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1--1-1-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1--1-3-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1--1-3-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1--1-3-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1-1-1-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1-1-1-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1-1-1-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1-1-3-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1-1-3-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[700-1-1-3-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1--1-1-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1--1-1-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1--1-1-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1--1-3-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1--1-3-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1--1-3-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1-1-1-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1-1-1-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1-1-1-0.4]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1-1-3-0.001]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1-1-3-0.05]
+FAILED software/tests/test_control_model.py::test_controller_matches_independent_discrete_reference[2000-1-1-3-0.4]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[gain-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[gain-False]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[gain-1]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[gain-0.5]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[smoothing-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[smoothing-1]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[smoothing-0.5]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[deadband-False]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[deadband-0.5]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[max_yaw-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[max_yaw-False]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[max_yaw-1]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[slew_per_s-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[slew_per_s-1]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[slew_per_s-0.5]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[direction-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[direction-1]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[hue_low-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[hue_low-False]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[hue_low-1]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[saturation_min-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[saturation_min-False]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[saturation_min-1]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[value_min-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[value_min-False]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[value_min-1]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[min_area-True]
+FAILED software/tests/test_api_matrix.py::test_settings_reject_coercible_and_invalid_types_atomically[min_area-1]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[0_0]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[1_0]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[true]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[false]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[yes]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[no]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[1_1]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[0_1]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[on]
+FAILED software/tests/test_api_matrix.py::test_enable_requires_boolean_not_truthy_coercion[off]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[enable-assist-body0]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[enable-source-body1]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[enable-settings-body2]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[enable-fault-body3]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[yaw-assist-body0]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[yaw-source-body1]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[yaw-settings-body2]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[yaw-fault-body3]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[port-assist-body0]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[port-source-body1]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[port-settings-body2]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[port-fault-body3]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[transport-assist-body0]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[transport-source-body1]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[transport-settings-body2]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[transport-fault-body3]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[gain_typo-assist-body0]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[gain_typo-source-body1]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[gain_typo-settings-body2]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[gain_typo-fault-body3]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[__proto__-assist-body0]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[__proto__-source-body1]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[__proto__-settings-body2]
+FAILED software/tests/test_api_matrix.py::test_unknown_operator_fields_are_rejected[__proto__-fault-body3]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[0]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[1]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[2]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[3]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[4]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[5]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[6]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[7]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[8]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[9]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[10]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[11]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[12]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[13]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[14]
+FAILED software/tests/test_api_matrix.py::test_seeded_api_mutation_sequences_remain_neutral_and_atomic[15]
+114 failed, 3445 passed, 1 warning in 3.49s

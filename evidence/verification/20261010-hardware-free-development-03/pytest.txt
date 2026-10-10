@@ -1,0 +1,13 @@
+........................................................................ [ 77%]
+.....................                                                    [100%]
+=============================== warnings summary ===============================
+../../../../Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1
+  /Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.13.12-final-0 _______________
+
+Coverage JSON written to file evidence/verification/20261010-hardware-free-development-03/coverage.json
+93 passed, 1 warning in 2.29s

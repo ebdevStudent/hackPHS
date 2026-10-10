@@ -1,0 +1,216 @@
+{
+  "document": "Apex2 Ball Cage P1B Gimbal",
+  "modified": false,
+  "parameters": {
+    "bearing_seat_clear": {
+      "expression": "0.05 mm",
+      "value_mm": 0.05000000000000001
+    },
+    "pin_press_d": {
+      "expression": "1.9 mm",
+      "value_mm": 1.9
+    },
+    "cg_slot": {
+      "expression": "5 mm",
+      "value_mm": 5
+    },
+    "frame_t": {
+      "expression": "2.5 mm",
+      "value_mm": 2.5
+    },
+    "frame_hole_pitch": {
+      "expression": "25.5 mm",
+      "value_mm": 25.500000000000004
+    },
+    "carrier_t": {
+      "expression": "2.5 mm",
+      "value_mm": 2.5
+    },
+    "carrier_len": {
+      "expression": "40 mm",
+      "value_mm": 40
+    },
+    "carrier_core_w": {
+      "expression": "48 mm",
+      "value_mm": 48.00000000000001
+    },
+    "carrier_span": {
+      "expression": "80 mm",
+      "value_mm": 80
+    },
+    "adj_y": {
+      "expression": "2 mm",
+      "value_mm": 2
+    },
+    "adj_x": {
+      "expression": "3 mm",
+      "value_mm": 3.0000000000000004
+    },
+    "strap_w": {
+      "expression": "12.5 mm",
+      "value_mm": 12.5
+    },
+    "strap_slot_t": {
+      "expression": "2.5 mm",
+      "value_mm": 2.5
+    },
+    "support_w": {
+      "expression": "6 mm",
+      "value_mm": 6.000000000000001
+    },
+    "support_h": {
+      "expression": "4 mm",
+      "value_mm": 4
+    },
+    "flange_h": {
+      "expression": "16 mm",
+      "value_mm": 16
+    },
+    "flange_t": {
+      "expression": "3 mm",
+      "value_mm": 3.0000000000000004
+    },
+    "m2_clear": {
+      "expression": "2.3 mm",
+      "value_mm": 2.3
+    },
+    "battery_gap": {
+      "expression": "3 mm",
+      "value_mm": 3.0000000000000004
+    },
+    "battery_shield_t": {
+      "expression": "0.8 mm",
+      "value_mm": 0.8000000000000002
+    }
+  },
+  "bodies": [
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+aircraft_raised_to_cg:1+Aircraft envelope (PLACEHOLDER):1",
+      "name": "M2_nut_and_tail_x4_envelope",
+      "solid": true,
+      "volume_mm3": 174.25367251912132,
+      "min_mm": [
+        -15.059401076758505,
+        -15.059401076758505,
+        -4.09203841096054
+      ],
+      "max_mm": [
+        15.059401076758505,
+        15.059401076758505,
+        -1.49203841096054
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+aircraft_raised_to_cg:1+Aircraft envelope (PLACEHOLDER):1",
+      "name": "BATTERY_PAD_foam",
+      "solid": true,
+      "volume_mm3": 2992.017674277397,
+      "min_mm": [
+        -7.940598923241499,
+        -31.400000000000002,
+        -4.49203841096054
+      ],
+      "max_mm": [
+        7.940598923241499,
+        31.400000000000002,
+        -1.49203841096054
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+carrier_plate:1",
+      "name": "carrier_plate",
+      "solid": true,
+      "volume_mm3": 4820.828655734413,
+      "min_mm": [
+        -24.000000000000004,
+        -40,
+        -1.49203841096054
+      ],
+      "max_mm": [
+        24.000000000000004,
+        40,
+        1.00796158903946
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+nut_shield_plate:1",
+      "name": "nut_shield_plate",
+      "solid": true,
+      "volume_mm3": 1250.4800000000014,
+      "min_mm": [
+        -12.25,
+        -31.900000000000006,
+        -5.292038410960541
+      ],
+      "max_mm": [
+        12.25,
+        31.900000000000006,
+        -4.49203841096054
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+support_arm_p1b:1",
+      "name": "support_arm_p1b",
+      "solid": true,
+      "volume_mm3": 1393.7182644795985,
+      "min_mm": [
+        -4.999999999999995,
+        24.000000000000004,
+        1.00796158903946
+      ],
+      "max_mm": [
+        5.000000000000014,
+        67.5,
+        17.00796158903946
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+support_arm_p1b:2",
+      "name": "support_arm_p1b",
+      "solid": true,
+      "volume_mm3": 1393.7182644795985,
+      "min_mm": [
+        -4.999999999999995,
+        -67.5,
+        1.00796158903946
+      ],
+      "max_mm": [
+        5.000000000000014,
+        -24.000000000000004,
+        17.00796158903946
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+arm_pivot_block:1",
+      "name": "arm_pivot_block",
+      "solid": true,
+      "volume_mm3": 1747.3951501319536,
+      "min_mm": [
+        -5.999999999999986,
+        67.5,
+        -9
+      ],
+      "max_mm": [
+        6.000000000000019,
+        83.5,
+        22.00796158903946
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+arm_pivot_block:2",
+      "name": "arm_pivot_block",
+      "solid": true,
+      "volume_mm3": 1747.3951501319536,
+      "min_mm": [
+        -5.999999999999986,
+        -83.5,
+        -9
+      ],
+      "max_mm": [
+        6.000000000000019,
+        -67.5,
+        22.00796158903946
+      ]
+    }
+  ]
+}

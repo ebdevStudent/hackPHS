@@ -1,0 +1,61 @@
+Visitor URL: http://127.0.0.1:8080/
+Operator token saved to /tmp/tmpsup6_o8b/operator-token (local, private). Startup: MANUAL.
+{
+  "environment": "Linux-6.8.0-117-generic-aarch64-with-glibc2.41",
+  "machine": "aarch64",
+  "python": "3.13.16",
+  "opencv": "5.0.0",
+  "numpy": "2.5.3",
+  "pyserial": "3.5",
+  "health": {
+    "ok": true,
+    "service": "ball-demo",
+    "version": "0.1.0",
+    "state": "MANUAL",
+    "physical_output": false
+  },
+  "summary": {
+    "id": "20261004T135800Z-16850981",
+    "software": "0.1.0",
+    "environment": "Linux-6.8.0-117-generic-aarch64-with-glibc2.41",
+    "python": "3.13.16",
+    "started_utc": "2026-10-04T13:58:00.925772+00:00",
+    "source": {
+      "kind": "synthetic",
+      "scenario": "moving"
+    },
+    "settings": {
+      "width": 640,
+      "height": 480,
+      "processing_hz": 20,
+      "control_hz": 20,
+      "preview_hz": 10,
+      "acquire_frames": 3,
+      "stale_ms": 250,
+      "ack_ms": 250,
+      "watchdog_ms": 250,
+      "hue_low": 35,
+      "hue_high": 85,
+      "saturation_min": 100,
+      "value_min": 80,
+      "min_area": 100,
+      "max_area": 50000,
+      "gain": 700,
+      "smoothing": 0.35,
+      "deadband": 0.04,
+      "max_yaw": 650,
+      "slew_per_s": 1800,
+      "direction": 1
+    },
+    "physical_output": false,
+    "duration_s": 1.2600038719999702,
+    "control_samples": 22,
+    "frames": 22,
+    "processing_fps": 17.460263804650054,
+    "faults": 0,
+    "processing_ms_p95": 1.09,
+    "physical_measurements": null
+  },
+  "pass": true,
+  "scope": "Linux ARM64 container; not a Raspberry Pi performance or USB test"
+}

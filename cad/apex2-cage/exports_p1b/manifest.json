@@ -1,0 +1,119 @@
+{
+  "document": "Apex2 Ball Cage P1B Gimbal",
+  "status": "vendor/provisional CAD; physical validation pending",
+  "sources": {
+    "build_p1a.py": "f39201dcf20063bd5afc9176cfb9290c1c1fa2525e1ffb7c1329a53b93145d53",
+    "build_p1b.py": "96bce59b6f832a11069721046adff3b8122077c5f756a44bc75bb2948889620c",
+    "validation.py": "265f53eafe55206088534479cd2d8f7856fbe5f5f6bba092e5189f0283ff3ca7",
+    "vendor_specs.json": "a324caf1a4e81e26ff2fc18afbb49890d4c51ae427a5b69928f0012d66265986",
+    "measurements.json": "9f94d8cf92e8084bab96ead087fd812b770bc494945cef18a0ed8dbf0180e043",
+    "fit_results.json": "0d048f94cee6753324051ea43f8c11c56e8bcf7ad227f97d79736a782901c7da"
+  },
+  "parts": [
+    {
+      "name": "hub_3way",
+      "qty": 46,
+      "native_volume_mm3": 212.40358769888337,
+      "native_lumps": 1,
+      "sha256": "654fdca63b895e65f7e2303a66767ad0a61cfc3a92be6b6b05d4981bd3c69958"
+    },
+    {
+      "name": "hub_3way_mount_A",
+      "qty": 4,
+      "native_volume_mm3": 514.8958082171762,
+      "native_lumps": 1,
+      "sha256": "e17c47e96b272cef3cbc0ba533f6e01c088b5b82be0b895cc905fd652ebc69fd"
+    },
+    {
+      "name": "hub_4way",
+      "qty": 10,
+      "native_volume_mm3": 258.5922660035172,
+      "native_lumps": 1,
+      "sha256": "1de1291fd697c5f591029f98561cb769ec7182829c0ef5c71628708c61a6f463"
+    },
+    {
+      "name": "hub_pole_5way_pivot",
+      "qty": 2,
+      "native_volume_mm3": 457.5186252688427,
+      "native_lumps": 1,
+      "sha256": "14a0e5d7fc530a1ef1869d558184adc09e032fda3dee6fb82ceead0a3c06dc36"
+    },
+    {
+      "name": "outer_ring_quarter",
+      "qty": 4,
+      "native_volume_mm3": 1503.5647835783147,
+      "native_lumps": 1,
+      "sha256": "a5472c885d3b5cf0066d48dd7a5892c8985428a0dc63df13bb282c33fc66b9e4"
+    },
+    {
+      "name": "outer_junction_X_bearing",
+      "qty": 2,
+      "native_volume_mm3": 914.8718523187645,
+      "native_lumps": 1,
+      "sha256": "0ea3947cac9dfc127ff0daba05f526498df7831b42ed743bf5dd039ad77d39fd"
+    },
+    {
+      "name": "outer_junction_Z_bearing",
+      "qty": 2,
+      "native_volume_mm3": 1534.945409052071,
+      "native_lumps": 1,
+      "sha256": "7e970517f5420b26ca5ea5046054f3054ec89cfbdee676a668dcaa26bd641735"
+    },
+    {
+      "name": "inner_ring_quarter",
+      "qty": 4,
+      "native_volume_mm3": 1357.1996644822839,
+      "native_lumps": 1,
+      "sha256": "4eaebf2648e2179bbfcf38b3806888547fafe674e3c393a30aa12973997be288"
+    },
+    {
+      "name": "inner_junction_Y_bearing",
+      "qty": 2,
+      "native_volume_mm3": 721.8314814438236,
+      "native_lumps": 1,
+      "sha256": "a6917e06d2ac998bf42a77885f445b0bcc7ce1912e0614319cf936cd13031955"
+    },
+    {
+      "name": "inner_junction_X_pin",
+      "qty": 2,
+      "native_volume_mm3": 985.0294700624913,
+      "native_lumps": 1,
+      "sha256": "d1c792ffcc2353a578f984d18fea764e3d488b205bf59a28649bea9c506d305a"
+    },
+    {
+      "name": "carrier_plate",
+      "qty": 1,
+      "native_volume_mm3": 4820.828655734413,
+      "native_lumps": 1,
+      "sha256": "cb6e4b41aa26f0b6824227968d3876b7f4f4105af5e5a9a92e4d81eed0672031"
+    },
+    {
+      "name": "nut_shield_plate",
+      "qty": 1,
+      "native_volume_mm3": 1250.4800000000014,
+      "native_lumps": 1,
+      "sha256": "37e8f4b0b09bbe63a054ee534f55d20c1f6e19ed0a7487044c0fd138c7166e1b"
+    },
+    {
+      "name": "support_arm_p1b",
+      "qty": 2,
+      "native_volume_mm3": 1381.7182644795987,
+      "native_lumps": 1,
+      "sha256": "9f44597288ff4e034c1c8869d731b7078f7fce6467d61d55aeb81035cd33d792"
+    },
+    {
+      "name": "arm_pivot_block",
+      "qty": 2,
+      "native_volume_mm3": 1740.5504051379455,
+      "native_lumps": 1,
+      "sha256": "070ee762ac9926e5ae250e3e4a249d7c1c48ba646ce399e544694f76424daade"
+    },
+    {
+      "name": "gimbal_fit_coupon",
+      "qty": 1,
+      "native_volume_mm3": 10074.373276589513,
+      "native_lumps": 1,
+      "sha256": "b81259de0559f86bcdc11d07ff2edd4ed4d066ca590cb8a328dabb12bdbd6607"
+    }
+  ]
+}

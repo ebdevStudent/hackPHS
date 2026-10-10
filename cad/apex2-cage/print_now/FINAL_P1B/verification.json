@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "scope": "Digital source, STL placement, bed-path, quantity and native Qt profile checks; no physical certification",
+  "plates": [
+    "H1-01",
+    "H1-02",
+    "H2",
+    "G2",
+    "T4",
+    "G1a",
+    "G1b",
+    "T3",
+    "KIT-bend_test_block",
+    "KIT-bend_test_jig",
+    "KIT-load_hook",
+    "KIT-pin_cut_gauge"
+  ],
+  "production_plates": 7,
+  "production_parts": 84,
+  "unique_production_parts": 14,
+  "min_path_edge_clearance_mm": 7.590000000000001,
+  "all_plate_parts_equal_sources_after_rigid_placement": true,
+  "profiles_installed_and_backups_match": true
+}

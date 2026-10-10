@@ -1,0 +1,35 @@
+# Raspberry Pi 5 install and capture check - 2026-10-08
+
+## Scope
+
+Checks on the actual Raspberry Pi over SSH after correcting the transferred deployment scripts' line endings. These results cover platform preflight, app installation/service health, and a V4L2/OpenCV capture read. They do not verify a live RC832 picture, Mega, trainer output, radio, or aircraft.
+
+## Observed device
+
+- Hostname: `raspberrypi`
+- Board: Raspberry Pi 5 Model B Rev 1.0
+- Architecture: `aarch64`
+- OS: Raspberry Pi OS / Debian Trixie
+- Python: 3.13
+- Memory: 4045 MB
+- Video nodes: `/dev/video0`, `/dev/video1`, `/dev/video19` through `/dev/video35`
+- Mega serial node: none (`/dev/ttyACM*` and `/dev/ttyUSB*` absent)
+- Root filesystem: 58 GB total, 44 GB available before installation
+
+## Script issue and correction
+
+The Pi copy at `/home/hackphs/software/deploy/pi-preflight.sh` had CRLF line endings. `bash -n` reproduced the reported syntax error at `case "$model" in` (`$'in\r'`). The script was backed up as `/home/hackphs/software/deploy/pi-preflight.sh.bak-20261008-231429`; trailing carriage returns were removed from the working copy. The other five Pi deployment scripts also had CRLF; they were backed up with suffix `.bak-crlf-20261008-232038` and normalized. All Pi deployment `.sh` files passed `bash -n`. The repository now has `.gitattributes` rule `*.sh text eol=lf`, and all six current Windows working copies under `software/deploy/` are LF (`git ls-files --eol` reports `w/lf`).
+
+## Result
+
+After the line-ending correction, `bash -n /home/hackphs/software/deploy/pi-preflight.sh` passed and `bash /home/hackphs/software/deploy/pi-preflight.sh` reported `Preflight passed.` Board, architecture, OS, Python, and memory checks passed. The script warned that no Mega serial device was connected.
+
+## App installation and service
+
+`bash /home/hackphs/software/deploy/install-pi.sh` completed successfully. It installed the locked Python dependencies and `ball-drone-demo` 0.1.0, created/enabled/started `ball-demo.service`, and left its configured startup synthetic/mock. `systemctl is-active` returned `active`; `systemctl is-enabled` returned `enabled`. `/api/health` returned `ok:true`, both workers alive, `MANUAL`, and `physical_output:false`. The root and `/fallback` routes returned HTTP 200.
+
+## V4L2/OpenCV capture probe
+
+The restricted `ball-demo` account opened camera index `0` with OpenCV's V4L2 backend and read 30 frames at 640x480. The final frame had mean 0.0 and standard deviation 0.0: the adapter returns a uniformly black image, not a verified live camera picture. The app source was changed to camera index `0` using its authenticated operator API. Its subsequent state was `FAULT`, disabled, yaw 0, with fault `stale frame`; video-health readings were difference 0.0, contrast 0.0, and blank duration about 5.6 s. Physical output remained false and the bridge remained mock.
+
+The USB device is accessible and the software's safe fault state was observed, but the live RC832/VTX/composite picture is still not verified. Receiver power/tuning, VTX/camera operation, cabling and live image need physical inspection. No Mega was attached. The running service remains on the camera source and disabled; service restarts use the documented synthetic/mock default.

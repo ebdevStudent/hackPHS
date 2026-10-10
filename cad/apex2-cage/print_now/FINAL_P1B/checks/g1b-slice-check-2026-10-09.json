@@ -1,0 +1,75 @@
+{
+  "stl_sha256": "7d9aa4242cbc512ad28354d7f83b0278be600a50e90d52690c43bd090fa4df90",
+  "engine": "FlashPrint bundled ffslicer 1.14.1",
+  "scope": "Offline diagnostic bed-fit slicing; not a Voxel print-ready job",
+  "config_overrides": {
+    "global": {
+      "layerHeight": ".15",
+      "firstLayerHeight": ".27",
+      "baseSpeed": "35",
+      "travelSpeed": "100",
+      "rightTemp": "235",
+      "leftTemp": "235",
+      "platTemp": "60"
+    },
+    "shell": {
+      "count": "3"
+    },
+    "infill": {
+      "topSolidCnt": "5",
+      "bottomSolidCnt": "5",
+      "density": ".25"
+    },
+    "preExtrude": {
+      "length": "60"
+    },
+    "retract": {
+      "length": "1.5",
+      "speed": "30"
+    },
+    "brim": {
+      "enable": "true",
+      "extruderId": "0",
+      "margin": "5",
+      "layerCnt": "1",
+      "speed": "8.75"
+    },
+    "speed": {
+      "firstLayerMax": "10"
+    },
+    "fan": {
+      "state": "toPresetHeight",
+      "turnOnHeight": ".6"
+    }
+  },
+  "extrusion_centerline_bounds_xy_mm": [
+    -64.25,
+    -64.82,
+    65.23,
+    64.25
+  ],
+  "conservative_line_halfwidth_mm": 0.8,
+  "edge_margins_left_right_front_back_mm": [
+    9.95,
+    8.969999999999995,
+    9.380000000000006,
+    9.95
+  ],
+  "first_layer_part_count": 4,
+  "first_layer_part_extrusion_segment_counts": [
+    914,
+    915,
+    915,
+    914
+  ],
+  "extrusion_segment_count": 78421,
+  "layer_count": 19,
+  "brim_first_layer_only": true,
+  "max_first_layer_speed_mm_s": 10.0,
+  "checks": {
+    "engine_exit_success": true,
+    "all_expected_parts_on_first_layer": true,
+    "all_extrusion_paths_with_line_width_inside_bed": true,
+    "first_layer_and_brim_speed_at_most_10": true
+  }
+}

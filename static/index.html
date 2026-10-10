@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ball Drone Flight Sim</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="icon.png">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }</script>
+</head>
+<body>
+<canvas id="view"></canvas>
+<canvas id="overlay"></canvas>
+
+<div id="hud" class="hidden">
+  <section id="level">
+    <div id="l-title" class="title">Industrial plant</div>
+    <div id="l-sub" class="sub"></div>
+  </section>
+
+  <div id="strip">
+    <button id="s-pwr" class="pwr on" title="Motor power (P)"><span class="dot"></span>PWR <b id="s-pwr-state">ON</b></button>
+    <div><span>SPD</span><b id="s-spd">0.0</b><i>m/s</i></div>
+    <div><span>ALT</span><b id="s-alt">0.0</b><i>m</i></div>
+    <div><span>BAT</span><b id="s-volt">8.7</b><i>V</i><b id="s-bat">100</b><i>%</i></div>
+    <div><span>CAGE</span><b id="s-cage" class="state free">FREE</b></div>
+    <div><span>SPIN</span><b id="s-spin">0</b><i>rpm</i></div>
+    <div><span>LED</span><b id="s-led">OFF</b></div>
+    <div class="fps"><span>FPS</span><b id="s-fps">60</b></div>
+  </div>
+
+  <section id="telemetry" class="panel hidden">
+    <div class="grp">Flight</div>
+    <div class="row"><span>Motors</span><b id="t-motors">ARMED</b><i></i></div>
+    <div class="row"><span>Ground speed</span><b id="t-speed">0.0</b><i>m/s</i></div>
+    <div class="row"><span>Vertical speed</span><b id="t-vs">0.0</b><i>m/s</i></div>
+    <div class="row"><span>Altitude AGL</span><b id="t-agl">0.00</b><i>m</i></div>
+    <div class="row"><span>Heading</span><b id="t-hdg">000°</b><i></i></div>
+    <div class="row"><span>Roll / pitch</span><b id="t-att">0° / 0°</b><i></i></div>
+    <div class="row"><span>Thrust</span><b id="t-thrust">0 N</b><i></i></div>
+    <div class="row"><span>Power</span><b id="t-power">0 W</b><i></i></div>
+    <div class="row"><span>Battery</span><b id="t-batt">100%</b><i></i></div>
+    <div class="row"><span>Pack · current</span><b id="t-va">8.7 V · 0 A</b><i></i></div>
+    <div class="row"><span>Used</span><b id="t-mah">0 mAh</b><i></i></div>
+    <div class="batt"><div id="t-batt-bar"></div></div>
+    <div class="grp">Cage contact</div>
+    <div class="row"><span>State</span><b id="t-contact" class="state free">FREE</b><i></i></div>
+    <div class="row"><span>Cage spin</span><b id="t-spin">0 rpm</b><i></i></div>
+    <div class="row"><span>Normal force</span><b id="t-normal">—</b><i></i></div>
+    <div class="row"><span>Last impact</span><b id="t-impact">—</b><i></i></div>
+    <div class="row"><span>Impacts</span><b id="t-hits">0</b><i></i></div>
+    <div class="grp">Airframe (HackPHS V1 spec)</div>
+    <div class="row"><span>All-up weight</span><b id="t-auw">—</b><i>g</i></div>
+    <div class="row"><span>Thrust : weight now</span><b id="t-tw">—</b><i></i></div>
+    <div class="row"><span>Quad · cage · pack</span><b id="t-split">—</b><i>g</i></div>
+    <div class="row"><span>Pack</span><b id="t-pack" class="small">—</b><i></i></div>
+    <div class="grp">View</div>
+    <div class="row"><span>Camera · render</span><b id="m-cam">CHASE</b><i></i></div>
+    <div class="row"><span>Frame rate</span><b id="m-fps">60</b><i>fps</i></div>
+  </section>
+
+  <canvas id="minimap" class="hidden" width="260" height="200"></canvas>
+  <div id="pip-frame"><span id="pip-label">ONBOARD</span></div>
+  <div id="link" class="panel hidden"><div class="grp">Physical drone link</div><div id="link-body"></div></div>
+  <div id="help">
+    <b>W S</b> fwd/back · <b>A D</b> yaw · <b>Q E</b> strafe · <b>Space Shift</b> up/down · <b>P</b> power · <b>L</b> LEDs · <b>B</b> battery · <b>V</b> FPV ⇄ normal view · <b>C</b> cameras ·
+    <b>I</b> telemetry · <b>T</b> vectors · <b>N</b> map · <b>R</b> reset · <b>Esc</b> menu
+  </div>
+  <div id="toasts"></div>
+  <div id="warn" class="hidden">LOW BATTERY — LAND</div>
+</div>
+
+<div id="loading" class="hidden"><div class="spinner"></div><div id="loading-text">Loading…</div></div>
+
+<div id="menu" class="screen">
+  <div class="menu-inner">
+    <div class="eyebrow">Contact-tolerant drone · flight simulator</div>
+    <h1>Ball Drone</h1>
+    <p class="lead">The HackPHS V1 build: an 85 mm Meteor85 whoop (1103 11000KV, Gemfan 2015, 2S LiHV) on a two-ring gimbal
+      inside a 225 mm icosahedral cage of 1 mm carbon rods and TPU hubs — simulated as a rigid body with real part masses,
+      motor data and battery sag. The cage bumps, tips and rolls over its hubs and rods.</p>
+    <div class="cards">
+      <button class="card" data-level="industrial">
+        <span class="key">1</span>
+        <h2>Industrial plant</h2>
+        <p>A compact production bay: a pallet-racking aisle, CNC machines, a roller conveyor to fly under and a pipe run with a steam leak.</p>
+      </button>
+      <button class="card" data-level="rescue">
+        <span class="key">2</span>
+        <h2>Collapsed building</h2>
+        <p>Night. A small brick building after a roof collapse: a void under the fallen slab, a sealed room behind rubble and a fire.</p>
+      </button>
+    </div>
+    <div class="controls">
+      <div><kbd>W</kbd><kbd>S</kbd> forward / back</div><div><kbd>A</kbd><kbd>D</kbd> yaw</div>
+      <div><kbd>Q</kbd><kbd>E</kbd> strafe</div><div><kbd>Space</kbd><kbd>Shift</kbd> climb / descend</div>
+      <div><kbd>V</kbd> FPV ⇄ normal view · <kbd>C</kbd> all cameras</div><div><kbd>P</kbd> motor power · <kbd>L</kbd> inspection LEDs</div><div><kbd>I</kbd> telemetry · <kbd>T</kbd> vectors</div>
+      <div><kbd>R</kbd> reset · <kbd>1</kbd><kbd>2</kbd> environment</div><div><kbd>F11</kbd> fullscreen · <kbd>Esc</kbd> pause</div>
+    </div>
+    <div class="battery-pick"><span>Battery (2S LiHV test set)</span>
+      <button data-mah="450">450 mAh</button><button data-mah="550" class="on">550 mAh</button><button data-mah="650">650 mAh</button><button data-mah="850">850 mAh</button>
+      <em id="bat-spec"></em></div>
+    <div class="foot"><span id="backend-state">Backend: checking…</span><span>Assets: Poly Haven (CC0) · drone model from the project CAD</span></div>
+  </div>
+</div>
+
+<div id="pause" class="screen hidden">
+  <div class="menu-inner narrow">
+    <h1>Paused</h1>
+    <p class="lead">Esc to resume · R to reset the drone · 1 / 2 to switch environment</p>
+    <div class="row"><button class="btn" id="b-resume">Resume</button><button class="btn ghost" id="b-menu">Main menu</button></div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

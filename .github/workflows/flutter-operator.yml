@@ -1,0 +1,83 @@
+name: Flutter operator app
+on:
+  push:
+    branches: [main]
+    paths:
+      - software/flutter_operator/**
+      - software/ball_demo/**
+      - tools/portable_checks.py
+      - .github/workflows/flutter-operator.yml
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - software/flutter_operator/**
+      - software/ball_demo/**
+      - tools/portable_checks.py
+      - .github/workflows/flutter-operator.yml
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: software/flutter_operator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.1'
+          channel: stable
+          cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r ../requirements-dev.lock
+      - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed lib test integration_test test_driver
+      - run: flutter analyze
+      - run: flutter test
+      - run: python ../../tools/portable_checks.py --flutter "$(command -v flutter)" --rounds 3 --output ../../evidence/verification/ci-flutter-contract
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: python-flutter-contract
+          path: evidence/verification/ci-flutter-contract
+      - run: flutter build web --release --no-web-resources-cdn --base-href /hackphs-operator-web/
+      - run: mkdir -p build/site && cp -a build/web/. build/site/
+      - run: flutter build web --release --no-web-resources-cdn --dart-define=UI_PREVIEW=true --base-href /hackphs-operator-web/preview/
+      - run: mkdir -p build/site/preview && cp -a build/web/. build/site/preview/
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: flutter build apk --debug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: operator-web-site
+          path: software/flutter_operator/build/site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: operator-android
+          path: software/flutter_operator/build/app/outputs/flutter-apk/app-debug.apk
+  macos:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: software/flutter_operator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.1'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter build macos --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: operator-macos
+          path: software/flutter_operator/build/macos/Build/Products/Release/Ball Drone.app

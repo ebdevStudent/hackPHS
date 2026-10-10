@@ -1,0 +1,74 @@
+{
+  "document": "Apex2 Ball Cage P1B Gimbal",
+  "version": 7,
+  "visible_checked_bodies": 107,
+  "bbox_candidate_pairs": 233,
+  "static_interferences": [
+    {
+      "a": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:1/hub_pole_5way_pivot",
+      "b": "Pivot hardware (MR52ZZ + 2 mm pins):1/pin_4",
+      "mm3": 1.837832
+    },
+    {
+      "a": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:2/hub_pole_5way_pivot",
+      "b": "Pivot hardware (MR52ZZ + 2 mm pins):1/pin_5",
+      "mm3": 1.837832
+    },
+    {
+      "a": "Inner ring (Y to outer, X to aircraft):1+inner_junction_Y_pin:1/inner_junction_Y_pin",
+      "b": "Pivot hardware (MR52ZZ + 2 mm pins):1/pin_2",
+      "mm3": 1.837832
+    },
+    {
+      "a": "Inner ring (Y to outer, X to aircraft):1+inner_junction_Y_pin:2/inner_junction_Y_pin",
+      "b": "Pivot hardware (MR52ZZ + 2 mm pins):1/pin_3",
+      "mm3": 1.837832
+    },
+    {
+      "a": "Aircraft side (rotates on X pivots):1+arm_pivot_block:1/arm_pivot_block",
+      "b": "Pivot hardware (MR52ZZ + 2 mm pins):1/pin_0",
+      "mm3": 1.837832
+    },
+    {
+      "a": "Aircraft side (rotates on X pivots):1+arm_pivot_block:2/arm_pivot_block",
+      "b": "Pivot hardware (MR52ZZ + 2 mm pins):1/pin_1",
+      "mm3": 1.837832
+    }
+  ],
+  "optical_axis_origin_mm": [
+    0.0,
+    29.000000000000004,
+    11.249089746270647
+  ],
+  "optical_axis_direction": [
+    0.0,
+    0.9396926207859084,
+    0.3420201433256687
+  ],
+  "optical_axis_occluders": [
+    {
+      "path": "Outer ring (Z to cage, Y to inner):1+outer_ring_quarter:1",
+      "body": "outer_ring_quarter",
+      "ray_overlap_mm3": 0.00075649,
+      "centerline_inside_mm_from_lens": [
+        57.9,
+        62.8
+      ]
+    }
+  ],
+  "assembly_outside_span_mm": [
+    245.9911,
+    243.2075,
+    248.0
+  ],
+  "printed_volume_cm3": 44.5222071524405,
+  "carbon_rod_volume_cm3": 3.445044994824174,
+  "printed_solid_mass_at_1_27_g_cm3": 56.54320308359944,
+  "rod_mass_at_1_55_g_cm3": 5.33981974197747,
+  "fusion_total_mass_kg": 261.7631653041477,
+  "fusion_total_volume_cm3": 33345.6261533946,
+  "materials": [
+    "Steel"
+  ],
+  "documentModified": false
+}

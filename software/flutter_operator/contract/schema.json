@@ -1,0 +1,684 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ball Drone operator snapshot v1",
+  "type": "object",
+  "properties": {
+    "api_version": {
+      "const": 1
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "operator_authorized": {
+      "type": "boolean"
+    },
+    "source": {
+      "enum": [
+        "live",
+        "mock"
+      ]
+    },
+    "server_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "follow": {
+          "$ref": "#/$defs/Capability"
+        },
+        "land_current": {
+          "$ref": "#/$defs/Capability"
+        },
+        "land_point": {
+          "$ref": "#/$defs/Capability"
+        },
+        "land_tag": {
+          "$ref": "#/$defs/Capability"
+        },
+        "audio_receive": {
+          "$ref": "#/$defs/Capability"
+        },
+        "audio_transmit": {
+          "$ref": "#/$defs/Capability"
+        },
+        "tts": {
+          "$ref": "#/$defs/Capability"
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "roster": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Person"
+      },
+      "maxItems": 100
+    },
+    "camera": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "enum": [
+            "live",
+            "offline",
+            "stale",
+            "reconnecting",
+            "unsupported"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transport": {
+          "enum": [
+            "webrtc",
+            "jpeg",
+            "none"
+          ]
+        },
+        "frame": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Frame"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "state",
+        "name",
+        "transport",
+        "frame"
+      ],
+      "additionalProperties": true
+    },
+    "mission": {
+      "$ref": "#/$defs/Mission"
+    },
+    "audio": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "enum": [
+            "ready",
+            "unavailable",
+            "connecting",
+            "degraded"
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_text_length": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2000
+        },
+        "voices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "voice_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "voice_id",
+              "name"
+            ],
+            "additionalProperties": true
+          },
+          "maxItems": 30
+        },
+        "speech": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Speech"
+          },
+          "maxItems": 30
+        }
+      },
+      "required": [
+        "state",
+        "max_text_length",
+        "voices",
+        "speech"
+      ],
+      "additionalProperties": true
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Component"
+      },
+      "maxItems": 30
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Event"
+      },
+      "maxItems": 100
+    }
+  },
+  "required": [
+    "api_version",
+    "sequence",
+    "observed_at",
+    "operator_authorized",
+    "source",
+    "server_name",
+    "capabilities",
+    "roster",
+    "camera",
+    "mission",
+    "audio",
+    "components",
+    "events"
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "Capability": {
+      "type": "object",
+      "properties": {
+        "supported": {
+          "type": "boolean"
+        },
+        "ready": {
+          "type": "boolean"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "supported",
+        "ready"
+      ],
+      "additionalProperties": true
+    },
+    "Tag": {
+      "type": "object",
+      "properties": {
+        "tag_id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "tag_family": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "bounds": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "person_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "tag_id",
+        "tag_family",
+        "bounds"
+      ],
+      "additionalProperties": true
+    },
+    "Frame": {
+      "type": "object",
+      "properties": {
+        "frame_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "camera_session_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "valid_for_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 15000
+        },
+        "rotation": {
+          "enum": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        "mirrored": {
+          "type": "boolean"
+        },
+        "crop": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "image_path": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^/[^/?#]",
+              "maxLength": 300
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Tag"
+          },
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "frame_id",
+        "camera_session_id",
+        "width",
+        "height",
+        "captured_at",
+        "valid_for_ms",
+        "rotation",
+        "mirrored",
+        "crop",
+        "image_path",
+        "tags"
+      ],
+      "additionalProperties": true
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "person_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "tag_id": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tag_family": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "detection_state": {
+          "enum": [
+            "visible",
+            "lost",
+            "unassigned",
+            "unavailable",
+            "reacquiring"
+          ]
+        },
+        "available": {
+          "type": "boolean"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "person_id",
+        "display_name",
+        "detection_state",
+        "available"
+      ],
+      "additionalProperties": true
+    },
+    "Mission": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "none",
+            "follow",
+            "landing"
+          ]
+        },
+        "phase": {
+          "enum": [
+            "idle",
+            "accepted",
+            "active",
+            "landing",
+            "stopping",
+            "stopped",
+            "abort_pending",
+            "aborted",
+            "completed",
+            "failed",
+            "landed",
+            "lost",
+            "reacquiring"
+          ]
+        },
+        "mission_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "person_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "request_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "abort_summary": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "progress": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "phase"
+      ],
+      "additionalProperties": true
+    },
+    "Speech": {
+      "type": "object",
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "state": {
+          "enum": [
+            "queued",
+            "playing",
+            "completed",
+            "rejected",
+            "failed"
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "request_id",
+        "text",
+        "state"
+      ],
+      "additionalProperties": true
+    },
+    "Component": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "state": {
+          "enum": [
+            "ready",
+            "degraded",
+            "fault",
+            "offline",
+            "unknown",
+            "mock"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "state",
+        "observed_at"
+      ],
+      "additionalProperties": true
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "event_id",
+        "message",
+        "severity",
+        "observed_at"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

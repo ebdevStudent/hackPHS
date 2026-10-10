@@ -1,0 +1,7 @@
+{
+  "source-race-before-fix.txt": "3e81ca443be8b3538ccfb9287c4778a00e1ac330d0837328155b527e360325bb",
+  "README.md": "05095ccb197d3f61f0a93eccb1bd9782e728edf3cdf9c58a11ed87971fada862",
+  "serial-and-harness-targeted-after-fix.txt": "65d8a7f431d729f4f7887c83a2395ca869ffd1d6236d1a205d62cd6130cfccde",
+  "source-race-targeted-after-fix.txt": "32057292960b6a4c59227cfaafd89bdd33cb981c2484d924f7289943ab83b763",
+  "serial-framing-before-fix.txt": "34165ed8f39fbf08d5ffc93071269fcf2e3714f4fbf2419ab118ba5c87985bc0"
+}

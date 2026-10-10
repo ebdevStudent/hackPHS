@@ -1,0 +1,194 @@
+.............FFFFF..FF........................................           [100%]
+=================================== FAILURES ===================================
+_____ test_duplicate_pose_cannot_hold_tracking_past_its_exposure_deadline ______
+
+setup_target = (Calibration(image_size=[640, 480], intrinsics=[[500.0, 0.0, 320.0], [0.0, 500.0, 240.0], [0.0, 0.0, 1.0]], distortion...714721724, bearing_rad=-0.11065722117389476, reprojection_px=9.517029667593545e-13, ambiguity_gap_px=1.70652195694835))
+
+    def test_duplicate_pose_cannot_hold_tracking_past_its_exposure_deadline(setup_target):
+        calibration, person, _, _, observation, pose = setup_target
+        target = RelativeTargetTracker(person, reacquire_frames=1, max_age_s=.1)
+        target.update(pose, now_s=10.)
+        lost = target.update(pose, now_s=10.101)
+        assert lost.state == 'lost' and lost.loss_event and lost.pose is None
+>       site = LandingSite(site_id='pad', display_name='Pad', tag_id=7, tag_size_m=.2,
+                           width_m=.5, length_m=.5, approach_tolerance_rad=3.14)
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for LandingSite
+E       tag_family
+E         Field required [type=missing, input_value={'site_id': 'pad', 'displ...ch_tolerance_rad': 3.14}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.13/v/missing
+
+software/tests/test_portable_targets.py:352: ValidationError
+____ test_pose_contracts_reject_inconsistent_aircraft_geometry[bearing_rad] ____
+
+setup_target = (Calibration(image_size=[640, 480], intrinsics=[[500.0, 0.0, 320.0], [0.0, 500.0, 240.0], [0.0, 0.0, 1.0]], distortion...714721724, bearing_rad=-0.11065722117389476, reprojection_px=9.517029667593545e-13, ambiguity_gap_px=1.70652195694835))
+field = 'bearing_rad'
+
+    @pytest.mark.parametrize('field', ['bearing_rad', 'aircraft_from_pad', 'range_m', 'pad_heading_rad'])
+    def test_pose_contracts_reject_inconsistent_aircraft_geometry(setup_target, field):
+        calibration, person, _, _, observation, pose = setup_target
+        if field == 'bearing_rad':
+            with pytest.raises(ValidationError, match='bearing_rad'):
+                TargetPose.model_validate({**pose.model_dump(), 'bearing_rad': pose.bearing_rad + .1})
+>       site = LandingSite(site_id='pad', display_name='Pad', tag_id=7, tag_size_m=.2, width_m=.5, length_m=.5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for LandingSite
+E       tag_family
+E         Field required [type=missing, input_value={'site_id': 'pad', 'displ...': 0.5, 'length_m': 0.5}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.13/v/missing
+
+software/tests/test_portable_targets.py:367: ValidationError
+_ test_pose_contracts_reject_inconsistent_aircraft_geometry[aircraft_from_pad] _
+
+setup_target = (Calibration(image_size=[640, 480], intrinsics=[[500.0, 0.0, 320.0], [0.0, 500.0, 240.0], [0.0, 0.0, 1.0]], distortion...714721724, bearing_rad=-0.11065722117389476, reprojection_px=9.517029667593545e-13, ambiguity_gap_px=1.70652195694835))
+field = 'aircraft_from_pad'
+
+    @pytest.mark.parametrize('field', ['bearing_rad', 'aircraft_from_pad', 'range_m', 'pad_heading_rad'])
+    def test_pose_contracts_reject_inconsistent_aircraft_geometry(setup_target, field):
+        calibration, person, _, _, observation, pose = setup_target
+        if field == 'bearing_rad':
+            with pytest.raises(ValidationError, match='bearing_rad'):
+                TargetPose.model_validate({**pose.model_dump(), 'bearing_rad': pose.bearing_rad + .1})
+>       site = LandingSite(site_id='pad', display_name='Pad', tag_id=7, tag_size_m=.2, width_m=.5, length_m=.5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for LandingSite
+E       tag_family
+E         Field required [type=missing, input_value={'site_id': 'pad', 'displ...': 0.5, 'length_m': 0.5}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.13/v/missing
+
+software/tests/test_portable_targets.py:367: ValidationError
+______ test_pose_contracts_reject_inconsistent_aircraft_geometry[range_m] ______
+
+setup_target = (Calibration(image_size=[640, 480], intrinsics=[[500.0, 0.0, 320.0], [0.0, 500.0, 240.0], [0.0, 0.0, 1.0]], distortion...714721724, bearing_rad=-0.11065722117389476, reprojection_px=9.517029667593545e-13, ambiguity_gap_px=1.70652195694835))
+field = 'range_m'
+
+    @pytest.mark.parametrize('field', ['bearing_rad', 'aircraft_from_pad', 'range_m', 'pad_heading_rad'])
+    def test_pose_contracts_reject_inconsistent_aircraft_geometry(setup_target, field):
+        calibration, person, _, _, observation, pose = setup_target
+        if field == 'bearing_rad':
+            with pytest.raises(ValidationError, match='bearing_rad'):
+                TargetPose.model_validate({**pose.model_dump(), 'bearing_rad': pose.bearing_rad + .1})
+>       site = LandingSite(site_id='pad', display_name='Pad', tag_id=7, tag_size_m=.2, width_m=.5, length_m=.5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for LandingSite
+E       tag_family
+E         Field required [type=missing, input_value={'site_id': 'pad', 'displ...': 0.5, 'length_m': 0.5}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.13/v/missing
+
+software/tests/test_portable_targets.py:367: ValidationError
+__ test_pose_contracts_reject_inconsistent_aircraft_geometry[pad_heading_rad] __
+
+setup_target = (Calibration(image_size=[640, 480], intrinsics=[[500.0, 0.0, 320.0], [0.0, 500.0, 240.0], [0.0, 0.0, 1.0]], distortion...714721724, bearing_rad=-0.11065722117389476, reprojection_px=9.517029667593545e-13, ambiguity_gap_px=1.70652195694835))
+field = 'pad_heading_rad'
+
+    @pytest.mark.parametrize('field', ['bearing_rad', 'aircraft_from_pad', 'range_m', 'pad_heading_rad'])
+    def test_pose_contracts_reject_inconsistent_aircraft_geometry(setup_target, field):
+        calibration, person, _, _, observation, pose = setup_target
+        if field == 'bearing_rad':
+            with pytest.raises(ValidationError, match='bearing_rad'):
+                TargetPose.model_validate({**pose.model_dump(), 'bearing_rad': pose.bearing_rad + .1})
+>       site = LandingSite(site_id='pad', display_name='Pad', tag_id=7, tag_size_m=.2, width_m=.5, length_m=.5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for LandingSite
+E       tag_family
+E         Field required [type=missing, input_value={'site_id': 'pad', 'displ...': 0.5, 'length_m': 0.5}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.13/v/missing
+
+software/tests/test_portable_targets.py:367: ValidationError
+_ test_pose_failure_preserves_loss_event_and_constructor_rejects_unknown_delay[True] _
+
+setup_target = (Calibration(image_size=[640, 480], intrinsics=[[500.0, 0.0, 320.0], [0.0, 500.0, 240.0], [0.0, 0.0, 1.0]], distortion...714721724, bearing_rad=-0.11065722117389476, reprojection_px=9.517029667593545e-13, ambiguity_gap_px=1.70652195694835))
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1140256d0>
+landing = True
+
+    @pytest.mark.parametrize('landing', [False, True])
+    def test_pose_failure_preserves_loss_event_and_constructor_rejects_unknown_delay(setup_target, monkeypatch, landing):
+        import ball_demo.target_tracking as module
+        from ball_demo.portable_demo import render_tag
+        calibration, person, _, _, _, _ = setup_target
+>       selected = LandingSite(site_id='pad', display_name='Pad', tag_id=7, tag_size_m=.2,
+                               width_m=.5, length_m=.5, approach_tolerance_rad=3.14) if landing else person
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for LandingSite
+E       tag_family
+E         Field required [type=missing, input_value={'site_id': 'pad', 'displ...ch_tolerance_rad': 3.14}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.13/v/missing
+
+software/tests/test_portable_targets.py:401: ValidationError
+_ test_landing_estimator_rejects_sequence_source_and_pad_center_behind_aircraft _
+
+setup_target = (Calibration(image_size=[640, 480], intrinsics=[[500.0, 0.0, 320.0], [0.0, 500.0, 240.0], [0.0, 0.0, 1.0]], distortion...714721724, bearing_rad=-0.11065722117389476, reprojection_px=9.517029667593545e-13, ambiguity_gap_px=1.70652195694835))
+
+    def test_landing_estimator_rejects_sequence_source_and_pad_center_behind_aircraft(setup_target):
+        calibration, _, _, _, observation, pose = setup_target
+>       site = LandingSite(site_id='pad', display_name='Pad', tag_id=7, tag_size_m=.2, width_m=.5, length_m=.5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for LandingSite
+E       tag_family
+E         Field required [type=missing, input_value={'site_id': 'pad', 'displ...': 0.5, 'length_m': 0.5}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.13/v/missing
+
+software/tests/test_portable_targets.py:419: ValidationError
+=============================== warnings summary ===============================
+../../../../Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1
+  /Users/devk/Documents/HackPHS26/software/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.13.12-final-0 _______________
+
+Name                                          Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------------------------------------
+software/ball_demo/__init__.py                    1      0      0      0   100%
+software/ball_demo/api.py                       234    100     62      7    48%   36-39, 57-58, 86-92, 108-110, 121-127, 132-133, 135->exit, 137->exit, 140-142, 144->exit, 146->exit, 149-150, 153-155, 157->exit, 160-161, 164, 167-169, 172-177, 180-187, 191-193, 195->exit, 198-202, 205-213, 215->exit, 223-227, 231-233, 236-237, 240-243, 246-247, 250-255, 258-261, 264-267
+software/ball_demo/arrival.py                    85     56     28      0    26%   36-37, 40-48, 51, 55-99
+software/ball_demo/bridge.py                    105     60     32      3    36%   22->exit, 24->exit, 33->30, 53-63, 65-69, 71-75, 77-84, 86-116, 118-119
+software/ball_demo/calibration.py                35     24     12      1    26%   8-12, 16, 22->exit, 29-46
+software/ball_demo/cli.py                       291    291     60      0     0%   1-324
+software/ball_demo/color_pick.py                 25     19      6      0    19%   16-38
+software/ball_demo/config.py                     28      0      0      0   100%
+software/ball_demo/control.py                    50     24     10      2    47%   13, 28-31, 37-59
+software/ball_demo/desktop.py                  1224   1224    316      0     0%   2-1434
+software/ball_demo/desktop_backend.py            62     62     14      0     0%   2-77
+software/ball_demo/engine.py                    405    175    138     27    51%   69->72, 74, 77-90, 92-94, 96-98, 106->108, 114, 121-122, 125, 152-247, 253-267, 284, 293, 296->301, 298-300, 304-307, 309-318, 323->325, 335-342, 344-354, 360-363, 384-390, 393-396, 399-409, 410->468, 412-426, 429-430, 440-441, 448->466, 450-451, 454-456, 460-461, 479-480, 483->491, 484->491, 485->491, 487, 488->491, 490, 493-495, 515-519
+software/ball_demo/fixtures.py                   40     30     10      0    20%   14-27, 32-48
+software/ball_demo/follow_simulation.py         145    116     66      8    18%   23, 28, 30, 32, 35, 37, 40, 42, 47-49, 61-197
+software/ball_demo/landing_simulation.py         15      2      6      2    81%   13, 16
+software/ball_demo/latency.py                   110    110     24      0     0%   11-155
+software/ball_demo/localization.py              152     86     48      3    38%   21->exit, 34->exit, 60-62, 65->exit, 83-86, 91-95, 98-103, 106-180, 186-187, 190-193
+software/ball_demo/map_io.py                    150      6     36     13    89%   24->28, 25->exit, 27->exit, 33->exit, 46->exit, 62, 63->exit, 108->exit, 131, 157->exit, 172->exit, 173->exit, 176->exit, 181, 185-187
+software/ball_demo/mapping.py                   273    273    106      0     0%   7-325
+software/ball_demo/mission.py                   192    129     64      0    25%   24-25, 42-43, 46-66, 89-105, 111-120, 124, 128, 132-134, 137-164, 167-178, 181-185, 188-198, 201-203, 206-215, 218-223, 226-227
+software/ball_demo/mission_control.py           311     72    134     39    71%   36, 52, 63, 65, 69, 112, 129, 174, 181, 185, 199, 201, 205, 207, 236, 240-247, 260-262, 266-273, 276, 286, 288, 293-295, 306-309, 318->347, 319->336, 321-324, 326-335, 337, 345-346, 362, 366, 368-369, 378, 380, 382, 386, 388-389, 400, 404, 429
+software/ball_demo/navigation.py                297    242    124      1    13%   43-55, 59-62, 66-68, 73-83, 87->exit, 90-134, 137-185, 191-204, 207-211, 214-240, 243-251, 254-261, 264-268, 271-276, 279-284, 287-292, 295-298, 301-305, 308-311, 314-330, 333-345
+software/ball_demo/navigation_fixtures.py        83     58     18      0    27%   37-40, 44-56, 60-68, 73-80, 85-101, 105-128
+software/ball_demo/navigation_guard.py           48     48     30      0     0%   2-56
+software/ball_demo/navigation_replay.py         217    170     94      0    15%   34-47, 60-75, 79-88, 92-107, 112-115, 122-126, 129-132, 135-136, 142-148, 151-156, 159-189, 200-274
+software/ball_demo/navigation_runtime.py        202    202     80      0     0%   6-243
+software/ball_demo/navigation_visibility.py     261    261    120      0     0%   6-312
+software/ball_demo/portable_demo.py              40      0      2      0   100%
+software/ball_demo/portable_runtime.py          136      0     40      2    99%   82->84, 141->143
+software/ball_demo/protocol.py                   51      6     24     10    79%   18, 23, 24->exit, 26->exit, 27->exit, 29, 30->exit, 45, 49, 54->exit, 57
+software/ball_demo/registration.py              216    216     80      0     0%   6-270
+software/ball_demo/room_mapper.py               547    547    116      0     0%   6-650
+software/ball_demo/roster.py                     74     16     18      5    73%   21, 23, 45, 47, 66, 86-96
+software/ball_demo/serial_emulator.py            45     45     22      0     0%   2-52
+software/ball_demo/session.py                    59      2      6      0    97%   54, 77
+software/ball_demo/sources.py                   109     82     38      3    20%   22->exit, 27-55, 62-65, 67-79, 80->exit, 85-102, 104-126, 127->exit
+software/ball_demo/synthetic_navigation.py       96     96     34      0     0%   7-118
+software/ball_demo/tag_detector.py               29      3     14      3    86%   14, 18, 20
+software/ball_demo/target_tracking.py           354     13    124     12    95%   75, 78, 80, 83, 141->132, 150->154, 151->150, 194, 197, 204, 352, 429, 456-459
+software/ball_demo/ui_api.py                    343      1    132      5    99%   127->141, 134->129, 171->173, 363, 433->435
+software/ball_demo/video_health.py               37     27     12      0    20%   25-29, 32-46, 50-55, 58-60
+software/ball_demo/vision.py                     44     24     14      2    41%   20-27, 33-52
+-----------------------------------------------------------------------------------------
+TOTAL                                          7221   4918   2314    148    30%
+Coverage JSON written to file /tmp/hackphs-portable-cov.json
+=========================== short test summary info ============================
+FAILED software/tests/test_portable_targets.py::test_duplicate_pose_cannot_hold_tracking_past_its_exposure_deadline
+FAILED software/tests/test_portable_targets.py::test_pose_contracts_reject_inconsistent_aircraft_geometry[bearing_rad]
+FAILED software/tests/test_portable_targets.py::test_pose_contracts_reject_inconsistent_aircraft_geometry[aircraft_from_pad]
+FAILED software/tests/test_portable_targets.py::test_pose_contracts_reject_inconsistent_aircraft_geometry[range_m]
+FAILED software/tests/test_portable_targets.py::test_pose_contracts_reject_inconsistent_aircraft_geometry[pad_heading_rad]
+FAILED software/tests/test_portable_targets.py::test_pose_failure_preserves_loss_event_and_constructor_rejects_unknown_delay[True]
+FAILED software/tests/test_portable_targets.py::test_landing_estimator_rejects_sequence_source_and_pad_center_behind_aircraft
+7 failed, 55 passed, 1 warning in 2.10s

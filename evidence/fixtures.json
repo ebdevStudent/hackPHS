@@ -1,0 +1,211 @@
+{
+  "scope": "Deterministic synthetic image fixtures; not measured camera or flight accuracy",
+  "scenarios": [
+    {
+      "name": "centered",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": true,
+      "max_center_error_px": 0.0,
+      "max_yaw": 0,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "moving",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": true,
+      "max_center_error_px": 0.0,
+      "max_yaw": 420,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "approach",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": true,
+      "max_center_error_px": 0.0,
+      "max_yaw": 420,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "edges",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": true,
+      "max_center_error_px": 0.0,
+      "max_yaw": 637,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "brightness",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": 0.0,
+      "max_yaw": 420,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "distractions",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": 0.0,
+      "max_yaw": 420,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "small",
+      "visible_frames": 160,
+      "detected_frames": 0,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": null,
+      "max_yaw": 0,
+      "states": [
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "occlusion",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": 10.956797020484203,
+      "max_yaw": 442,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "blur",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": 0.027703306523676474,
+      "max_yaw": 420,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "noise",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": 0.07652778867522735,
+      "max_yaw": 420,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "loss",
+      "visible_frames": 120,
+      "detected_frames": 120,
+      "clear_accuracy_gate": true,
+      "max_center_error_px": 0.0,
+      "max_yaw": 418,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "absent",
+      "visible_frames": 0,
+      "detected_frames": 0,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": null,
+      "max_yaw": 0,
+      "states": [
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "reappear",
+      "visible_frames": 100,
+      "detected_frames": 100,
+      "clear_accuracy_gate": true,
+      "max_center_error_px": 0.0,
+      "max_yaw": 352,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "freeze",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": 0.0,
+      "max_yaw": 420,
+      "states": [
+        "FAULT",
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "delay",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": 0.0,
+      "max_yaw": 420,
+      "states": [
+        "FAULT",
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "stop",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": false,
+      "max_center_error_px": 0.0,
+      "max_yaw": 420,
+      "states": [
+        "FAULT",
+        "LOCKED",
+        "SEARCHING"
+      ]
+    },
+    {
+      "name": "response",
+      "visible_frames": 160,
+      "detected_frames": 160,
+      "clear_accuracy_gate": true,
+      "max_center_error_px": 0.0,
+      "max_yaw": 381,
+      "states": [
+        "LOCKED",
+        "SEARCHING"
+      ]
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "mission_id": "synthetic-inspection-v1",
+  "map_id": "EXAMPLE-corner",
+  "map_version": 1,
+  "frame_id": "example_world",
+  "survey_id": "EXAMPLE-tags-v1",
+  "targets": [
+    {
+      "target_id": "synthetic-target-a",
+      "name": "Synthetic inspection A",
+      "tag_id": 0,
+      "viewing_position_m": [
+        2.2,
+        1.5,
+        1.3
+      ],
+      "heading_rad": 1.5707963267948966,
+      "arrival": {
+        "schema_version": 1,
+        "radius_m": 0.1,
+        "max_uncertainty_m": 0.05,
+        "heading_tolerance_rad": 0.15,
+        "angular_uncertainty_rad": 0.05,
+        "dwell_s": 0.15,
+        "min_distinct_frames": 3,
+        "pose_max_age_s": 0.25
+      },
+      "snapshot": "image"
+    }
+  ],
+  "example": true,
+  "control_authority": "advisory_only",
+  "physical_output": false
+}

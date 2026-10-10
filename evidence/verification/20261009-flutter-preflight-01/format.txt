@@ -1,0 +1,39 @@
+Formatted lib/application/operator_controller.dart
+Formatted lib/data/fixture_gateway.dart
+Formatted lib/data/operator_gateway.dart
+Formatted lib/data/rest_gateway.dart
+Formatted lib/domain/landing_geometry.dart
+Formatted lib/domain/models.dart
+Formatted lib/main.dart
+Formatted lib/media/media_port.dart
+Formatted lib/ui/app.dart
+Formatted lib/ui/audio.dart
+Formatted lib/ui/camera_view.dart
+Formatted lib/ui/dialogs.dart
+Formatted lib/ui/operations.dart
+Formatted lib/ui/system.dart
+Formatted lib/ui/theme.dart
+Could not format because the source could not be parsed:
+
+line 125, column 7 of lib/ui/widgets.dart: Expected an identifier.
+    ╷
+125 │       if(model.rosterLocked) const Notice('Stop the current task to change person.'),
+    │       ^^
+    ╵
+line 125, column 7 of lib/ui/widgets.dart: Expected to find ','.
+    ╷
+125 │       if(model.rosterLocked) const Notice('Stop the current task to change person.'),
+    │       ^^
+    ╵
+line 125, column 7 of lib/ui/widgets.dart: Expected to find ')'.
+    ╷
+125 │       if(model.rosterLocked) const Notice('Stop the current task to change person.'),
+    │       ^
+    ╵
+Formatted test/controller_test.dart
+Formatted test/layout_test.dart
+Formatted test/protocol_test.dart
+Formatted test/rest_gateway_test.dart
+Formatted integration_test/operator_test.dart
+Formatted test_driver/integration_test.dart
+Formatted 21 files (21 changed) in 0.18 seconds.

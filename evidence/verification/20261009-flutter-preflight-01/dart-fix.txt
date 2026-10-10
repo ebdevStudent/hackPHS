@@ -1,0 +1,66 @@
+Computing fixes in flutter_operator...
+Applying fixes...
+
+lib/application/operator_controller.dart
+  curly_braces_in_flow_control_structures - 13 fixes
+
+lib/data/fixture_gateway.dart
+  curly_braces_in_flow_control_structures - 1 fix
+  prefer_interpolation_to_compose_strings - 1 fix
+  unnecessary_import - 1 fix
+
+lib/data/operator_gateway.dart
+  prefer_interpolation_to_compose_strings - 1 fix
+
+lib/data/rest_gateway.dart
+  curly_braces_in_flow_control_structures - 6 fixes
+  prefer_interpolation_to_compose_strings - 1 fix
+
+lib/domain/landing_geometry.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib/domain/models.dart
+  curly_braces_in_flow_control_structures - 6 fixes
+  use_null_aware_elements - 1 fix
+
+lib/media/media_port.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+lib/ui/audio.dart
+  curly_braces_in_flow_control_structures - 3 fixes
+  prefer_interpolation_to_compose_strings - 1 fix
+
+lib/ui/camera_view.dart
+  curly_braces_in_flow_control_structures - 1 fix
+  prefer_interpolation_to_compose_strings - 2 fixes
+
+lib/ui/dialogs.dart
+  curly_braces_in_flow_control_structures - 6 fixes
+  prefer_interpolation_to_compose_strings - 2 fixes
+
+lib/ui/operations.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+  prefer_interpolation_to_compose_strings - 1 fix
+
+lib/ui/theme.dart
+  unnecessary_import - 1 fix
+
+lib/ui/widgets.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+  prefer_interpolation_to_compose_strings - 5 fixes
+  use_null_aware_elements - 2 fixes
+
+test/controller_test.dart
+  curly_braces_in_flow_control_structures - 1 fix
+  unused_import - 1 fix
+
+test/layout_test.dart
+  curly_braces_in_flow_control_structures - 2 fixes
+
+test/protocol_test.dart
+  prefer_interpolation_to_compose_strings - 3 fixes
+
+test_driver/integration_test.dart
+  prefer_interpolation_to_compose_strings - 1 fix
+
+70 fixes made in 17 files.

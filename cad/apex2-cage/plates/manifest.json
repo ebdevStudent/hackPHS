@@ -1,0 +1,333 @@
+{
+  "configuration": "P1A",
+  "bed_used_mm": 140.0,
+  "plates": [
+    {
+      "name": "plate_1_fit_strip_and_rod_jig",
+      "part_count": 2,
+      "contents": [
+        [
+          "socket_fit_strip",
+          1
+        ],
+        [
+          "rod_cutting_jig",
+          1
+        ]
+      ],
+      "extent_mm": [
+        130.5,
+        20.0,
+        7.0
+      ],
+      "sha256": "a22b04bcca2d31d1bbee46e5a57bec72d11a6eb8c7b047506d4e8c979547f697"
+    },
+    {
+      "name": "plate_2_hubs_3way_a",
+      "part_count": 36,
+      "contents": [
+        [
+          "hub_3way",
+          36
+        ]
+      ],
+      "extent_mm": [
+        132.0049605369568,
+        116.36898612976074,
+        5.4781129360198975
+      ],
+      "sha256": "f07cb1ad77c5f277030ac7e1fa3bbbaedb660147de77ff475b3da0b330e027dc"
+    },
+    {
+      "name": "plate_3_hubs_mixed",
+      "part_count": 26,
+      "contents": [
+        [
+          "hub_3way",
+          10
+        ],
+        [
+          "hub_3way_mount_A",
+          4
+        ],
+        [
+          "hub_4way",
+          10
+        ],
+        [
+          "hub_pole_5way",
+          2
+        ]
+      ],
+      "extent_mm": [
+        136.63653421401978,
+        97.09876251220703,
+        8.878450393676758
+      ],
+      "sha256": "9d4deac109093fa791557eef014204c5505bb0ce04abfe97089378b109ef7095"
+    },
+    {
+      "name": "plate_4_carrier_supports",
+      "part_count": 6,
+      "contents": [
+        [
+          "carrier_plate",
+          1
+        ],
+        [
+          "nut_shield_plate",
+          1
+        ],
+        [
+          "support_arm",
+          2
+        ],
+        [
+          "x_bracket",
+          2
+        ]
+      ],
+      "extent_mm": [
+        108.5,
+        131.19549560546875,
+        16.0
+      ],
+      "sha256": "ee47999235eea99f60fe5045cf3dbe6a85ca6f16c719bc2211571d6267f00cd3"
+    },
+    {
+      "name": "plate_T_cage_section_test",
+      "part_count": 10,
+      "contents": [
+        [
+          "hub_3way",
+          10
+        ]
+      ],
+      "extent_mm": [
+        132.0049605369568,
+        34.122995376586914,
+        5.4781129360198975
+      ],
+      "sha256": "c9b2f8b11d54b82c1ea4303b87ad77f22be2bab834206374e070ac79c8d60a8f"
+    }
+  ],
+  "generator_sources": {
+    "build_p1a.py": "fa9c22e3a93b7241ad00a885563a39545add8580e4a8b6b5bd3c35ea54d63eaa",
+    "build_p1b.py": "34a4138bbab8a1afce233cb1bd809c73c55f331a3945fbfd20f276d76fc67262",
+    "validation.py": "3f495136590ab032409955d79dea603a3029a7c9ee7cf103c260e79837e0f28e",
+    "vendor_specs.json": "a324caf1a4e81e26ff2fc18afbb49890d4c51ae427a5b69928f0012d66265986",
+    "measurements.json": "9f94d8cf92e8084bab96ead087fd812b770bc494945cef18a0ed8dbf0180e043"
+  },
+  "sources": {
+    "carrier_plate": {
+      "path": "exports/carrier_plate.stl",
+      "sha256": "cb6590725e35985069afaeff1327abbe2c53e9b6dc58d6e341c7cc4450a2d41e",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "hub_3way": {
+      "path": "exports/hub_3way.stl",
+      "sha256": "c8bbd6bc5c94e5f763bc1c2705145a7490c85775825373ce20be203160734b6f",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "hub_3way_mount_A": {
+      "path": "exports/hub_3way_mount_A.stl",
+      "sha256": "30318ae75420ff7410b3c082e698dab4866ca11565208aa0c3e60f79250f4a3a",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "hub_4way": {
+      "path": "exports/hub_4way.stl",
+      "sha256": "c85392a1ce6ffd8b5b49e00981cbad5c96e0f1a3afdd7749be9ffa59477ce41e",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "hub_pole_5way": {
+      "path": "exports/hub_pole_5way.stl",
+      "sha256": "b931730da9d8f7a6d1c57dc182f26109137d7606fa2625a576bd51ef53339cae",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "nut_shield_plate": {
+      "path": "exports/nut_shield_plate.stl",
+      "sha256": "fecab26eb8f4a94e5b925fea51a520bb005ddd321dd3803ce993781540b2beac",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "rod_cutting_jig": {
+      "path": "exports/rod_cutting_jig.stl",
+      "sha256": "c154db4e8c4f1d1597a0a13e95f4b3a3b9e91f3f94da4af25886cd70bafa7795",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "socket_fit_strip": {
+      "path": "exports/socket_fit_strip.stl",
+      "sha256": "a7609e639ab90f9bb4ee1b108b8574aee41b02a7b077105476a2d10bcf7bf726",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "support_arm": {
+      "path": "exports/support_arm.stl",
+      "sha256": "25aafc95067f674042c827486cab546248eac67c6eb43dbcb74e6790eceb4131",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "x_bracket": {
+      "path": "exports/x_bracket.stl",
+      "sha256": "f6b8c7fc83151b1acf7264c9784b29a19ff4f2042cfbc3ee3f4bbbeb754f89c9",
+      "rotation": [
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

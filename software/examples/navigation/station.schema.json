@@ -1,0 +1,124 @@
+{
+  "$defs": {
+    "Box": {
+      "additionalProperties": false,
+      "properties": {
+        "minimum": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Minimum",
+          "type": "array"
+        },
+        "maximum": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Maximum",
+          "type": "array"
+        }
+      },
+      "required": [
+        "minimum",
+        "maximum"
+      ],
+      "title": "Box",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "scan_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Scan Id",
+      "type": "string"
+    },
+    "map_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Map Id",
+      "type": "string"
+    },
+    "map_version": {
+      "minimum": 1,
+      "title": "Map Version",
+      "type": "integer"
+    },
+    "frame_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Frame Id",
+      "type": "string"
+    },
+    "permitted": {
+      "$ref": "#/$defs/Box"
+    },
+    "voxel_m": {
+      "exclusiveMinimum": 0,
+      "title": "Voxel M",
+      "type": "number"
+    },
+    "uncertainty_m": {
+      "exclusiveMinimum": 0,
+      "title": "Uncertainty M",
+      "type": "number"
+    },
+    "max_depth_m": {
+      "exclusiveMinimum": 0,
+      "title": "Max Depth M",
+      "type": "number"
+    },
+    "map_from_depth": {
+      "items": {
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4,
+        "minItems": 4,
+        "type": "array"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "title": "Map From Depth",
+      "type": "array"
+    },
+    "registration_evidence": {
+      "minLength": 1,
+      "title": "Registration Evidence",
+      "type": "string"
+    },
+    "example": {
+      "title": "Example",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "scan_id",
+    "map_id",
+    "map_version",
+    "frame_id",
+    "permitted",
+    "voxel_m",
+    "uncertainty_m",
+    "max_depth_m",
+    "map_from_depth",
+    "registration_evidence",
+    "example"
+  ],
+  "title": "Station",
+  "type": "object"
+}

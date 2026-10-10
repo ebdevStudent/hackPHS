@@ -1,0 +1,363 @@
+{
+  "$defs": {
+    "Pose": {
+      "additionalProperties": false,
+      "properties": {
+        "sequence": {
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "bundle_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Bundle Id",
+          "type": "string"
+        },
+        "map_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Map Id",
+          "type": "string"
+        },
+        "map_version": {
+          "minimum": 1,
+          "title": "Map Version",
+          "type": "integer"
+        },
+        "frame_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Frame Id",
+          "type": "string"
+        },
+        "calibration_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "title": "Calibration Id",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "vision_estimate",
+            "synthetic_estimate",
+            "recorded_estimate"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "timing": {
+          "$ref": "#/$defs/Timing"
+        },
+        "map_from_aircraft": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Map From Aircraft",
+          "type": "array"
+        },
+        "uncertainty_m": {
+          "minimum": 0,
+          "title": "Uncertainty M",
+          "type": "number"
+        },
+        "reprojection_px": {
+          "minimum": 0,
+          "title": "Reprojection Px",
+          "type": "number"
+        },
+        "ambiguity_gap_px": {
+          "minimum": 0,
+          "title": "Ambiguity Gap Px",
+          "type": "number"
+        },
+        "tag_ids": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 587,
+          "minItems": 1,
+          "title": "Tag Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "sequence",
+        "bundle_id",
+        "map_id",
+        "map_version",
+        "frame_id",
+        "calibration_id",
+        "source",
+        "timing",
+        "map_from_aircraft",
+        "uncertainty_m",
+        "reprojection_px",
+        "ambiguity_gap_px",
+        "tag_ids"
+      ],
+      "title": "Pose",
+      "type": "object"
+    },
+    "Timing": {
+      "additionalProperties": false,
+      "properties": {
+        "host_received_s": {
+          "minimum": 0,
+          "title": "Host Received S",
+          "type": "number"
+        },
+        "exposure_s": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exposure S"
+        },
+        "provenance": {
+          "enum": [
+            "exposure_monotonic",
+            "host_read",
+            "recorded_timeline",
+            "synthetic"
+          ],
+          "title": "Provenance",
+          "type": "string"
+        },
+        "delay_bound_s": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delay Bound S"
+        }
+      },
+      "required": [
+        "host_received_s",
+        "provenance"
+      ],
+      "title": "Timing",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "available": {
+      "title": "Available",
+      "type": "boolean"
+    },
+    "status": {
+      "title": "Status",
+      "type": "string"
+    },
+    "guidance_enabled": {
+      "title": "Guidance Enabled",
+      "type": "boolean"
+    },
+    "control_authority": {
+      "const": "advisory_only",
+      "default": "advisory_only",
+      "title": "Control Authority",
+      "type": "string"
+    },
+    "authority_text": {
+      "default": "Advisory only; pilot owns roll, pitch, throttle, ARM/DISARM and independent takeover. Physical computer authority: yaw only; trainer output unverified.",
+      "title": "Authority Text",
+      "type": "string"
+    },
+    "physical_output": {
+      "const": false,
+      "default": false,
+      "title": "Physical Output",
+      "type": "boolean"
+    },
+    "pose": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Pose"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "pose_age_s": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Pose Age S"
+    },
+    "route": {
+      "items": {
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "maxItems": 200002,
+      "title": "Route",
+      "type": "array"
+    },
+    "route_headings_rad": {
+      "items": {
+        "maximum": 3.141592653589793,
+        "minimum": -3.141592653589793,
+        "type": "number"
+      },
+      "maxItems": 200002,
+      "title": "Route Headings Rad",
+      "type": "array"
+    },
+    "route_tag_ids": {
+      "items": {
+        "items": {
+          "type": "integer"
+        },
+        "type": "array"
+      },
+      "maxItems": 200002,
+      "title": "Route Tag Ids",
+      "type": "array"
+    },
+    "next_waypoint": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Next Waypoint"
+    },
+    "waypoint_heading_rad": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Waypoint Heading Rad"
+    },
+    "bearing_rad": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bearing Rad"
+    },
+    "clearance_m": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Clearance M"
+    },
+    "map_id": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Map Id"
+    },
+    "map_version": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Map Version"
+    },
+    "example": {
+      "default": false,
+      "title": "Example",
+      "type": "boolean"
+    },
+    "mission": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Mission"
+    }
+  },
+  "required": [
+    "available",
+    "status",
+    "guidance_enabled"
+  ],
+  "title": "NavigationState",
+  "type": "object"
+}

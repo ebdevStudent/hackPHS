@@ -1,0 +1,557 @@
+{
+  "scope": "Binary STL edge incidence, winding, bounds and approximate volume; excludes self-intersection, toolpath, overhang, layer adhesion and physical fit.",
+  "results": [
+    {
+      "file": "exports_p1b/arm_pivot_block.stl",
+      "sha256": "604b8ae453c2f3269f8029bb046c3f583bf8cc55acec7bc4a3fb4ee9a644a8b6",
+      "triangles": 578,
+      "min_mm": [
+        62.5,
+        -6.0,
+        -10.0
+      ],
+      "max_mm": [
+        78.5,
+        6.0,
+        21.74909019470215
+      ],
+      "size_mm": [
+        16.0,
+        12.0,
+        31.74909019470215
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 1758.532475719502,
+      "native_volume_mm3": 1759.374,
+      "relative_volume_error": 0.0004783089215244207,
+      "native_size_mm": [
+        16,
+        12,
+        31.7491
+      ],
+      "max_size_difference_mm": 9.805297850107308e-06
+    },
+    {
+      "file": "exports_p1b/carrier_plate.stl",
+      "sha256": "cb6590725e35985069afaeff1327abbe2c53e9b6dc58d6e341c7cc4450a2d41e",
+      "triangles": 1344,
+      "min_mm": [
+        -40.0,
+        -27.700000762939453,
+        -5.0
+      ],
+      "max_mm": [
+        40.0,
+        20.0,
+        3.5
+      ],
+      "size_mm": [
+        80.0,
+        47.70000076293945,
+        8.5
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 3627.3999147858303,
+      "native_volume_mm3": 3627.714,
+      "relative_volume_error": 8.657937592919637e-05,
+      "native_size_mm": [
+        80,
+        47.7,
+        8.5
+      ],
+      "max_size_difference_mm": 7.629394502828291e-07
+    },
+    {
+      "file": "exports_p1b/gimbal_fit_coupon.stl",
+      "sha256": "3f75c97a3ffbfb8e68b32b3f0d9d40395fa843093071b4d9a369391d38c9ef1a",
+      "triangles": 6792,
+      "min_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_mm": [
+        47.0,
+        22.0,
+        10.0
+      ],
+      "size_mm": [
+        47.0,
+        22.0,
+        10.0
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 8733.054400027087,
+      "native_volume_mm3": 8731.201000000001,
+      "relative_volume_error": 0.00021227320583806696,
+      "native_size_mm": [
+        47,
+        22,
+        10
+      ],
+      "max_size_difference_mm": 0.0
+    },
+    {
+      "file": "exports_p1b/hub_3way.stl",
+      "sha256": "c8bbd6bc5c94e5f763bc1c2705145a7490c85775825373ce20be203160734b6f",
+      "triangles": 1762,
+      "min_mm": [
+        -5.1959147453308105,
+        -6.7807488441467285,
+        -2.5
+      ],
+      "max_mm": [
+        7.6619367599487305,
+        6.7807488441467285,
+        2.9781129360198975
+      ],
+      "size_mm": [
+        12.857851505279541,
+        13.561497688293457,
+        5.4781129360198975
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 211.4450499660902,
+      "native_volume_mm3": 211.645,
+      "relative_volume_error": 0.0009447425354239438,
+      "native_size_mm": [
+        12.8601,
+        13.5615,
+        5.481
+      ],
+      "max_size_difference_mm": 0.002887063980102411
+    },
+    {
+      "file": "exports_p1b/hub_3way_mount_A.stl",
+      "sha256": "30318ae75420ff7410b3c082e698dab4866ca11565208aa0c3e60f79250f4a3a",
+      "triangles": 1966,
+      "min_mm": [
+        -11.004077911376953,
+        -6.7807488441467285,
+        -2.5
+      ],
+      "max_mm": [
+        7.6619367599487305,
+        6.7807488441467285,
+        6.378450393676758
+      ],
+      "size_mm": [
+        18.666014671325684,
+        13.561497688293457,
+        8.878450393676758
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 518.3560772283952,
+      "native_volume_mm3": 518.495,
+      "relative_volume_error": 0.0002679346408448015,
+      "native_size_mm": [
+        18.666,
+        13.5615,
+        8.8792
+      ],
+      "max_size_difference_mm": 0.0007496063232430572
+    },
+    {
+      "file": "exports_p1b/hub_4way.stl",
+      "sha256": "c85392a1ce6ffd8b5b49e00981cbad5c96e0f1a3afdd7749be9ffa59477ce41e",
+      "triangles": 2198,
+      "min_mm": [
+        -7.6619367599487305,
+        -6.7807488441467285,
+        -2.5
+      ],
+      "max_mm": [
+        7.550893306732178,
+        6.7807488441467285,
+        2.97782301902771
+      ],
+      "size_mm": [
+        15.212830066680908,
+        13.561497688293457,
+        5.47782301902771
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 257.37132198452406,
+      "native_volume_mm3": 257.581,
+      "relative_volume_error": 0.0008140274922294677,
+      "native_size_mm": [
+        15.2128,
+        13.5615,
+        5.481
+      ],
+      "max_size_difference_mm": 0.003176980972289911
+    },
+    {
+      "file": "exports_p1b/hub_pole_5way_pivot.stl",
+      "sha256": "f4b921587ec16a690acff813a52064e9691ff1efc48df69b8c4ca0dc53562eb3",
+      "triangles": 3108,
+      "min_mm": [
+        -6.579460620880127,
+        -7.426385879516602,
+        -2.5
+      ],
+      "max_mm": [
+        7.550893306732178,
+        7.426385879516602,
+        8.0
+      ],
+      "size_mm": [
+        14.130353927612305,
+        14.852771759033203,
+        10.5
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 462.72708188453413,
+      "native_volume_mm3": 463.099,
+      "relative_volume_error": 0.0008031071444029462,
+      "native_size_mm": [
+        14.1304,
+        14.8528,
+        10.5
+      ],
+      "max_size_difference_mm": 4.6072387695161865e-05
+    },
+    {
+      "file": "exports_p1b/inner_junction_X_bearing.stl",
+      "sha256": "da63b7a5d799fdfe4fafa07f77dbff339d8b7c2c147cbe79fde7f96fcd018288",
+      "triangles": 890,
+      "min_mm": [
+        76.3919448852539,
+        -21.40546226501465,
+        -4.0
+      ],
+      "max_mm": [
+        84.0,
+        21.40546226501465,
+        3.5
+      ],
+      "size_mm": [
+        7.608055114746094,
+        42.8109245300293,
+        7.5
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 726.9188306963486,
+      "native_volume_mm3": 726.6080000000001,
+      "relative_volume_error": 0.0004277832013251839,
+      "native_size_mm": [
+        7.6081,
+        42.8109,
+        7.5
+      ],
+      "max_size_difference_mm": 4.4885253906556954e-05
+    },
+    {
+      "file": "exports_p1b/inner_junction_Y_pin.stl",
+      "sha256": "66fcec144933e236a8003fa4b54a6aa3e4b29a8a769ea3fe88cff52729d6e66b",
+      "triangles": 702,
+      "min_mm": [
+        76.3919448852539,
+        -21.40546226501465,
+        -4.0
+      ],
+      "max_mm": [
+        86.25,
+        21.40546226501465,
+        3.5
+      ],
+      "size_mm": [
+        9.858055114746094,
+        42.8109245300293,
+        7.5
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 959.5187479699788,
+      "native_volume_mm3": 959.1370000000001,
+      "relative_volume_error": 0.00039801193153713463,
+      "native_size_mm": [
+        9.8581,
+        42.8109,
+        7.5
+      ],
+      "max_size_difference_mm": 4.4885253906556954e-05
+    },
+    {
+      "file": "exports_p1b/inner_ring_quarter.stl",
+      "sha256": "a022efa126269caa16d65d9d20d4539ce6e3a53932b5f5d40ee4392969a10082",
+      "triangles": 1356,
+      "min_mm": [
+        6.970066547393799,
+        6.970066547393799,
+        -1.5
+      ],
+      "max_mm": [
+        83.67242431640625,
+        83.67242431640625,
+        1.5
+      ],
+      "size_mm": [
+        76.70235776901245,
+        76.70235776901245,
+        3.0
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 1244.8715920692357,
+      "native_volume_mm3": 1244.643,
+      "relative_volume_error": 0.00018366075190691145,
+      "native_size_mm": [
+        76.7024,
+        76.7024,
+        3
+      ],
+      "max_size_difference_mm": 4.2230987546076904e-05
+    },
+    {
+      "file": "exports_p1b/outer_junction_Y_bearing.stl",
+      "sha256": "e33f074a6fdc087a88d8208ab6916cc58cd59341bdcc00933cf21b2dd00a1879",
+      "triangles": 894,
+      "min_mm": [
+        86.49626159667969,
+        -21.384872436523438,
+        -4.0
+      ],
+      "max_mm": [
+        94.0,
+        21.384872436523438,
+        3.5
+      ],
+      "size_mm": [
+        7.5037384033203125,
+        42.769744873046875,
+        7.5
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 943.6936988117715,
+      "native_volume_mm3": 943.303,
+      "relative_volume_error": 0.00041418166991038065,
+      "native_size_mm": [
+        7.5037,
+        42.7697,
+        7.5
+      ],
+      "max_size_difference_mm": 4.487304687472715e-05
+    },
+    {
+      "file": "exports_p1b/outer_junction_Z_bearing.stl",
+      "sha256": "e0102a8e559b524685dccd750d4e9c7c566712c79d2555a3855d938faf177e25",
+      "triangles": 1120,
+      "min_mm": [
+        86.66627502441406,
+        -21.384872436523438,
+        -4.0
+      ],
+      "max_mm": [
+        113.0,
+        21.384872436523438,
+        3.5
+      ],
+      "size_mm": [
+        26.333724975585938,
+        42.769744873046875,
+        7.5
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 1859.3495679645541,
+      "native_volume_mm3": 1857.9730000000002,
+      "relative_volume_error": 0.0007408977227085334,
+      "native_size_mm": [
+        26.3337,
+        42.7697,
+        7.5
+      ],
+      "max_size_difference_mm": 4.487304687472715e-05
+    },
+    {
+      "file": "exports_p1b/outer_ring_quarter.stl",
+      "sha256": "acc5476075af953e786391fe84cd12aad6f100c048f46f6c4f0047371a63b358",
+      "triangles": 1512,
+      "min_mm": [
+        6.996053695678711,
+        6.996053695678711,
+        -1.5
+      ],
+      "max_mm": [
+        93.7091293334961,
+        93.7091293334961,
+        1.5
+      ],
+      "size_mm": [
+        86.71307563781738,
+        86.71307563781738,
+        3.0
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 1391.3041876481875,
+      "native_volume_mm3": 1391.005,
+      "relative_volume_error": 0.0002150873995329986,
+      "native_size_mm": [
+        86.7131,
+        86.7131,
+        3
+      ],
+      "max_size_difference_mm": 2.4362182614368066e-05
+    },
+    {
+      "file": "exports_p1b/support_arm_p1b.stl",
+      "sha256": "44956cfe56073fdba424f7270b5d3c6a3d17b556800ae095c286c9d490e2d831",
+      "triangles": 626,
+      "min_mm": [
+        24.0,
+        -5.0,
+        -2.5
+      ],
+      "max_mm": [
+        62.5,
+        5.0,
+        13.5
+      ],
+      "size_mm": [
+        38.5,
+        10.0,
+        16.0
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 1274.005366251983,
+      "native_volume_mm3": 1273.7179999999998,
+      "relative_volume_error": 0.00022561214647453978,
+      "native_size_mm": [
+        38.5,
+        10,
+        16
+      ],
+      "max_size_difference_mm": 0.0
+    },
+    {
+      "file": "plates_p1b/p1b_plate_0_gimbal_fit_coupon_PRINT_FIRST.stl",
+      "sha256": "e832a81c6580c3523401f24dcefac1236a2cb31da18a2b654e0651bfe7327241",
+      "triangles": 6792,
+      "min_mm": [
+        -70.0,
+        -70.0,
+        0.0
+      ],
+      "max_mm": [
+        -23.0,
+        -48.0,
+        10.0
+      ],
+      "size_mm": [
+        47.0,
+        22.0,
+        10.0
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 8733.054365435773,
+      "within_140mm_xy": true,
+      "on_bed_z0": true
+    },
+    {
+      "file": "plates_p1b/p1b_plate_carrier_arms.stl",
+      "sha256": "3ee1f98ae45cccf76dff983b9682c78b18734b9e780d2f4e783ac16ea32ce7bc",
+      "triangles": 2596,
+      "min_mm": [
+        -70.0,
+        -70.0,
+        0.0
+      ],
+      "max_mm": [
+        52.5,
+        -8.299999237060547,
+        16.0
+      ],
+      "size_mm": [
+        122.5,
+        61.70000076293945,
+        16.0
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 6175.410474688251,
+      "within_140mm_xy": true,
+      "on_bed_z0": true
+    },
+    {
+      "file": "plates_p1b/p1b_plate_junctions_pivots.stl",
+      "sha256": "9f211ff8b7aff5dcefe0b6e5d88d2695e4b09186fad4db75d5d0ce62ce7572d3",
+      "triangles": 14584,
+      "min_mm": [
+        -70.0,
+        -70.0,
+        0.0
+      ],
+      "max_mm": [
+        60.607147216796875,
+        -8.3363037109375,
+        16.0
+      ],
+      "size_mm": [
+        130.60714721679688,
+        61.6636962890625,
+        16.0
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 13421.480195862585,
+      "within_140mm_xy": true,
+      "on_bed_z0": true
+    },
+    {
+      "file": "plates_p1b/p1b_plate_ring_quarters_PRINT_4X.stl",
+      "sha256": "47e27ea5100962f15dd1c6a22baa2e9f44f84f342b3f045cd3d11c7a8387de16",
+      "triangles": 2868,
+      "min_mm": [
+        -70.0,
+        -70.0,
+        0.0
+      ],
+      "max_mm": [
+        16.739063262939453,
+        16.739063262939453,
+        3.0
+      ],
+      "size_mm": [
+        86.73906326293945,
+        86.73906326293945,
+        3.0
+      ],
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "inconsistent_winding_edges": 0,
+      "signed_volume_mm3": 2636.1757639735206,
+      "within_140mm_xy": true,
+      "on_bed_z0": true
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "scan_id": "EXAMPLE-depth",
+  "camera_model": "D435",
+  "serial": "SYNTHETIC",
+  "sdk_version": "test",
+  "map_id": "EXAMPLE-room",
+  "map_version": 1,
+  "frame_id": "example_world",
+  "units": "m",
+  "axes": "right_handed_z_up",
+  "permitted": {
+    "minimum": [
+      0.0,
+      0.1,
+      0.0
+    ],
+    "maximum": [
+      2.0,
+      3.1,
+      2.0
+    ]
+  },
+  "voxel_m": 0.2,
+  "uncertainty_m": 0.03,
+  "max_depth_m": 4.0,
+  "acquired_utc": "2026-10-08T00:00:00Z",
+  "evidence": "INVENTED synthetic depth plane",
+  "example": true,
+  "frames": [
+    {
+      "file": "frame.npz",
+      "sha256": "8b2d13ebed15d09fa14c26bd0e1d952bfde711a61fbdb2491d299ecd0a241acf",
+      "intrinsics": {
+        "width": 64,
+        "height": 48,
+        "fx": 20.0,
+        "fy": 20.0,
+        "cx": 32.0,
+        "cy": 24.0,
+        "model": "rectified_pinhole"
+      },
+      "map_from_depth": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.1
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "registration_evidence": "INVENTED transform",
+      "hardware_timestamp_ms": 1000.0,
+      "hardware_clock_domain": "test-device-clock",
+      "host_received_s": 999.0,
+      "color_hardware_timestamp_ms": null,
+      "color_hardware_clock_domain": null
+    }
+  ],
+  "camera_metadata": {}
+}

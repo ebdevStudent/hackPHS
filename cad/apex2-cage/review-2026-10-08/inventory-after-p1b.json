@@ -1,0 +1,4873 @@
+{
+  "document": "Apex2 Ball Cage P1B Gimbal",
+  "modified": false,
+  "designType": 1,
+  "version": 17,
+  "root": "Apex2 Ball Cage P1B Gimbal",
+  "components": [
+    {
+      "name": "aircraft_raised_to_cg",
+      "bodies": 0,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.001624508396225768
+    },
+    {
+      "name": "hub_pole_5way_pivot",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "hub_pole_5way_pivot",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 54,
+          "volume_cm3": 0.463099,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              -6.5795,
+              -7.4264,
+              -2.5
+            ],
+            "max_mm": [
+              7.5509,
+              7.4264,
+              8.0
+            ],
+            "size_mm": [
+              14.1304,
+              14.8528,
+              10.5
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.5881361391563347
+    },
+    {
+      "name": "hub_4way",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "hub_4way",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 41,
+          "volume_cm3": 0.257581,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              -7.6619,
+              -6.7807,
+              -2.5
+            ],
+            "max_mm": [
+              7.5509,
+              6.7807,
+              2.981
+            ],
+            "size_mm": [
+              15.2128,
+              13.5615,
+              5.481
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.32712795424838864
+    },
+    {
+      "name": "Outer ring (Z to cage, X to inner)",
+      "bodies": 0,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 1,
+      "bodyData": [],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [
+        {
+          "name": "Rigid Group 1",
+          "members": [
+            "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:1",
+            "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:2",
+            "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:3",
+            "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:4",
+            "Outer ring (Z to cage, X to inner):1+outer_junction_X_bearing:1",
+            "Outer ring (Z to cage, X to inner):1+outer_junction_X_bearing:2",
+            "Outer ring (Z to cage, X to inner):1+outer_junction_Z_bearing:1",
+            "Outer ring (Z to cage, X to inner):1+outer_junction_Z_bearing:2",
+            "Outer ring (Z to cage, X to inner):1+pivot_hardware (1):1"
+          ],
+          "suppressed": false
+        }
+      ],
+      "meshData": [],
+      "native_mass_g": 15.335427275975622
+    },
+    {
+      "name": "Inner ring (X to outer, Y to aircraft)",
+      "bodies": 0,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 1,
+      "bodyData": [],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [
+        {
+          "name": "Rigid Group 1",
+          "members": [
+            "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:1",
+            "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:2",
+            "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:3",
+            "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:4",
+            "Inner ring (X to outer, Y to aircraft):1+inner_junction_Y_bearing:1",
+            "Inner ring (X to outer, Y to aircraft):1+inner_junction_Y_bearing:2",
+            "Inner ring (X to outer, Y to aircraft):1+inner_junction_X_pin:1",
+            "Inner ring (X to outer, Y to aircraft):1+inner_junction_X_pin:2",
+            "Inner ring (X to outer, Y to aircraft):1+pivot_hardware (2):1"
+          ],
+          "suppressed": false
+        }
+      ],
+      "meshData": [],
+      "native_mass_g": 12.369781748920879
+    },
+    {
+      "name": "inner_ring_quarter",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "inner_ring_quarter",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 28,
+          "volume_cm3": 1.36243,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              6.9838,
+              6.9838,
+              -1.5
+            ],
+            "max_mm": [
+              88.6919,
+              88.6919,
+              1.5
+            ],
+            "size_mm": [
+              81.708,
+              81.708,
+              3.0
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 1.730286628638149
+    },
+    {
+      "name": "inner_junction_X_pin",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "inner_junction_X_pin",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 20,
+          "volume_cm3": 0.958801,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              81.5367,
+              -21.3953,
+              -4.0
+            ],
+            "max_mm": [
+              91.25,
+              21.3953,
+              3.5
+            ],
+            "size_mm": [
+              9.7133,
+              42.7906,
+              7.5
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 1.2176771909716413
+    },
+    {
+      "name": "pivot_hardware (3)",
+      "bodies": 2,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "pin_0",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 0.032987,
+          "material": "Stainless Steel AISI 304",
+          "box": {
+            "min_mm": [
+              -1.0,
+              77.5,
+              -1.0
+            ],
+            "max_mm": [
+              1.0,
+              88.0,
+              1.0
+            ],
+            "size_mm": [
+              2.0,
+              10.5,
+              2.0
+            ]
+          }
+        },
+        {
+          "name": "pin_1",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 0.032987,
+          "material": "Stainless Steel AISI 304",
+          "box": {
+            "min_mm": [
+              -1.0,
+              -88.0,
+              -1.0
+            ],
+            "max_mm": [
+              1.0,
+              -77.5,
+              1.0
+            ],
+            "size_mm": [
+              2.0,
+              10.5,
+              2.0
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.5277875658031083
+    },
+    {
+      "name": "Aircraft side (rotates on Y pivots)",
+      "bodies": 0,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 1,
+      "bodyData": [],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [
+        {
+          "name": "Rigid Group 1",
+          "members": [
+            "Aircraft side (rotates on Y pivots):1+aircraft_raised_to_cg:1",
+            "Aircraft side (rotates on Y pivots):1+aircraft_raised_to_cg:1+Aircraft envelope (PLACEHOLDER):1",
+            "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1",
+            "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+carrier_plate:1",
+            "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+support_arm_p1b:1",
+            "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+support_arm_p1b:2",
+            "Aircraft side (rotates on Y pivots):1+arm_pivot_block:1",
+            "Aircraft side (rotates on Y pivots):1+arm_pivot_block:2",
+            "Aircraft side (rotates on Y pivots):1+pivot_hardware (3):1"
+          ],
+          "suppressed": false
+        }
+      ],
+      "meshData": [],
+      "native_mass_g": 14.596710274768704
+    },
+    {
+      "name": "Hubs",
+      "bodies": 0,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 19.44582343052547
+    },
+    {
+      "name": "hub_3way_mount_A",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "hub_3way_mount_A",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 44,
+          "volume_cm3": 0.518495,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              -11.0041,
+              -6.7807,
+              -2.5
+            ],
+            "max_mm": [
+              7.6619,
+              6.7807,
+              6.3792
+            ],
+            "size_mm": [
+              18.666,
+              13.5615,
+              8.8792
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.6584890059543228
+    },
+    {
+      "name": "outer_junction_X_bearing",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "outer_junction_X_bearing",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 17,
+          "volume_cm3": 0.943839,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              91.5087,
+              -21.3744,
+              -4.0
+            ],
+            "max_mm": [
+              99.0,
+              21.3744,
+              3.5
+            ],
+            "size_mm": [
+              7.4913,
+              42.7488,
+              7.5
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 1.1986753964662895
+    },
+    {
+      "name": "inner_junction_Y_bearing",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "inner_junction_Y_bearing",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 15,
+          "volume_cm3": 0.72692,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              81.5367,
+              -21.3953,
+              -4.0
+            ],
+            "max_mm": [
+              89.0,
+              21.3953,
+              3.5
+            ],
+            "size_mm": [
+              7.4633,
+              42.7906,
+              7.5
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.9231877655786186
+    },
+    {
+      "name": "outer_junction_Z_bearing",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "outer_junction_Z_bearing",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 21,
+          "volume_cm3": 1.572898,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              91.783,
+              -21.3744,
+              -4.0
+            ],
+            "max_mm": [
+              113.0,
+              21.3744,
+              3.5
+            ],
+            "size_mm": [
+              21.217,
+              42.7488,
+              7.5
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 1.9975798262766067
+    },
+    {
+      "name": "pivot_hardware (1)",
+      "bodies": 4,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "MR52ZZ_2",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 4,
+          "volume_cm3": 0.041233,
+          "material": "Stainless Steel, 440C",
+          "box": {
+            "min_mm": [
+              91.75,
+              -2.5,
+              -2.5
+            ],
+            "max_mm": [
+              94.25,
+              2.5,
+              2.5
+            ],
+            "size_mm": [
+              2.5,
+              5.0,
+              5.0
+            ]
+          }
+        },
+        {
+          "name": "MR52ZZ_3",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 4,
+          "volume_cm3": 0.041233,
+          "material": "Stainless Steel, 440C",
+          "box": {
+            "min_mm": [
+              -94.25,
+              -2.5,
+              -2.5
+            ],
+            "max_mm": [
+              -91.75,
+              2.5,
+              2.5
+            ],
+            "size_mm": [
+              2.5,
+              5.0,
+              5.0
+            ]
+          }
+        },
+        {
+          "name": "MR52ZZ_4",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 4,
+          "volume_cm3": 0.041233,
+          "material": "Stainless Steel, 440C",
+          "box": {
+            "min_mm": [
+              -2.5,
+              -2.5,
+              110.5
+            ],
+            "max_mm": [
+              2.5,
+              2.5,
+              113.0
+            ],
+            "size_mm": [
+              5.0,
+              5.0,
+              2.5
+            ]
+          }
+        },
+        {
+          "name": "MR52ZZ_5",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 4,
+          "volume_cm3": 0.041233,
+          "material": "Stainless Steel, 440C",
+          "box": {
+            "min_mm": [
+              -2.5,
+              -2.5,
+              -113.0
+            ],
+            "max_mm": [
+              2.5,
+              2.5,
+              -110.5
+            ],
+            "size_mm": [
+              5.0,
+              5.0,
+              2.5
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 1.278235510929402
+    },
+    {
+      "name": "carrier_plate",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "carrier_plate",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 50,
+          "volume_cm3": 4.820829,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              -24.0,
+              -40.0,
+              -5.0
+            ],
+            "max_mm": [
+              24.0,
+              40.0,
+              -2.5
+            ],
+            "size_mm": [
+              48.0,
+              80.0,
+              2.5
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 6.122452392782704
+    },
+    {
+      "name": "arm_pivot_block",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "arm_pivot_block",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 15,
+          "volume_cm3": 1.734174,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              67.5,
+              -6.0,
+              -9.0
+            ],
+            "max_mm": [
+              83.5,
+              6.0,
+              21.7451
+            ],
+            "size_mm": [
+              16.0,
+              12.0,
+              30.7451
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 2.202400708004243
+    },
+    {
+      "name": "pivot_hardware",
+      "bodies": 2,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "pin_4",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 0.032987,
+          "material": "Stainless Steel AISI 304",
+          "box": {
+            "min_mm": [
+              -1.0,
+              -1.0,
+              109.0
+            ],
+            "max_mm": [
+              1.0,
+              1.0,
+              119.5
+            ],
+            "size_mm": [
+              2.0,
+              2.0,
+              10.5
+            ]
+          }
+        },
+        {
+          "name": "pin_5",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 0.032987,
+          "material": "Stainless Steel AISI 304",
+          "box": {
+            "min_mm": [
+              -1.0,
+              -1.0,
+              -119.5
+            ],
+            "max_mm": [
+              1.0,
+              1.0,
+              -109.0
+            ],
+            "size_mm": [
+              2.0,
+              2.0,
+              10.5
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.5277875658030613
+    },
+    {
+      "name": "carrier_and_arms",
+      "bodies": 0,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 9.662496784560883
+    },
+    {
+      "name": "Gimbal test fixtures",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "gimbal_fit_coupon",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 90,
+          "volume_cm3": 8.731201,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max_mm": [
+              47.0,
+              22.0,
+              10.0
+            ],
+            "size_mm": [
+              47.0,
+              22.0,
+              10.0
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 8.731201006087112e-06
+    },
+    {
+      "name": "Aircraft envelope (PLACEHOLDER)",
+      "bodies": 14,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "frame_plate_PLACEHOLDER",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 18,
+          "volume_cm3": 5.135738,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -39.2444,
+              -39.2444,
+              -2.5
+            ],
+            "max_mm": [
+              39.2444,
+              39.2444,
+              0.0
+            ],
+            "size_mm": [
+              78.4889,
+              78.4889,
+              2.5
+            ]
+          }
+        },
+        {
+          "name": "motors_x4_PLACEHOLDER",
+          "solid": true,
+          "visible": true,
+          "lumps": 4,
+          "faces": 12,
+          "volume_cm3": 7.015364,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -41.5076,
+              -41.5076,
+              0.0
+            ],
+            "max_mm": [
+              41.5076,
+              41.5076,
+              8.9
+            ],
+            "size_mm": [
+              83.0151,
+              83.0151,
+              8.9
+            ]
+          }
+        },
+        {
+          "name": "PROP_DISK_FR_keepout",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 10.336833,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              8.1876,
+              8.1876,
+              8.9
+            ],
+            "max_mm": [
+              58.9876,
+              58.9876,
+              14.0
+            ],
+            "size_mm": [
+              50.8,
+              50.8,
+              5.1
+            ]
+          }
+        },
+        {
+          "name": "PROP_DISK_FL_keepout",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 10.336833,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -58.9876,
+              8.1876,
+              8.9
+            ],
+            "max_mm": [
+              -8.1876,
+              58.9876,
+              14.0
+            ],
+            "size_mm": [
+              50.8,
+              50.8,
+              5.1
+            ]
+          }
+        },
+        {
+          "name": "PROP_DISK_RL_keepout",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 10.336833,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -58.9876,
+              -58.9876,
+              8.9
+            ],
+            "max_mm": [
+              -8.1876,
+              -8.1876,
+              14.0
+            ],
+            "size_mm": [
+              50.8,
+              50.8,
+              5.1
+            ]
+          }
+        },
+        {
+          "name": "PROP_DISK_RR_keepout",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 10.336833,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              8.1876,
+              -58.9876,
+              8.9
+            ],
+            "max_mm": [
+              58.9876,
+              -8.1876,
+              14.0
+            ],
+            "size_mm": [
+              50.8,
+              50.8,
+              5.1
+            ]
+          }
+        },
+        {
+          "name": "stack_AIO_PLACEHOLDER",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 6,
+          "volume_cm3": 10.092,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -14.5,
+              -14.5,
+              0.0
+            ],
+            "max_mm": [
+              14.5,
+              14.5,
+              12.0
+            ],
+            "size_mm": [
+              29.0,
+              29.0,
+              12.0
+            ]
+          }
+        },
+        {
+          "name": "camera_PLACEHOLDER",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 6,
+          "volume_cm3": 2.744,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -7.0,
+              15.0,
+              2.0
+            ],
+            "max_mm": [
+              7.0,
+              29.0,
+              16.0
+            ],
+            "size_mm": [
+              14.0,
+              14.0,
+              14.0
+            ]
+          }
+        },
+        {
+          "name": "CAMERA_VIEW_cone",
+          "solid": true,
+          "visible": false,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 1515.749203,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -104.6889,
+              10.3022,
+              -81.8748
+            ],
+            "max_mm": [
+              104.6889,
+              115.5,
+              115.0396
+            ],
+            "size_mm": [
+              209.3778,
+              105.1978,
+              196.9144
+            ]
+          }
+        },
+        {
+          "name": "ANTENNA_element_PLACEHOLDER",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 0.589049,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -2.5,
+              -20.5,
+              20.0
+            ],
+            "max_mm": [
+              2.5,
+              -15.5,
+              50.0
+            ],
+            "size_mm": [
+              5.0,
+              5.0,
+              30.0
+            ]
+          }
+        },
+        {
+          "name": "M2_nut_and_tail_x4_envelope",
+          "solid": true,
+          "visible": true,
+          "lumps": 4,
+          "faces": 12,
+          "volume_cm3": 0.174254,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -15.0594,
+              -15.0594,
+              -7.6
+            ],
+            "max_mm": [
+              15.0594,
+              15.0594,
+              -5.0
+            ],
+            "size_mm": [
+              30.1188,
+              30.1188,
+              2.6
+            ]
+          }
+        },
+        {
+          "name": "BATTERY_PAD_foam",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 6,
+          "volume_cm3": 2.992018,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -7.9406,
+              -31.4,
+              -8.0
+            ],
+            "max_mm": [
+              7.9406,
+              31.4,
+              -5.0
+            ],
+            "size_mm": [
+              15.8812,
+              62.8,
+              3.0
+            ]
+          }
+        },
+        {
+          "name": "battery_450mAh_PLACEHOLDER",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 6,
+          "volume_cm3": 14.212896,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -8.2,
+              -31.4,
+              -21.8
+            ],
+            "max_mm": [
+              8.2,
+              31.4,
+              -8.0
+            ],
+            "size_mm": [
+              16.4,
+              62.8,
+              13.8
+            ]
+          }
+        },
+        {
+          "name": "battery_1100mAh_PLACEHOLDER",
+          "solid": true,
+          "visible": false,
+          "lumps": 1,
+          "faces": 6,
+          "volume_cm3": 24.456544,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -11.75,
+              -28.28,
+              -26.4
+            ],
+            "max_mm": [
+              11.75,
+              28.28,
+              -8.0
+            ],
+            "size_mm": [
+              23.5,
+              56.56,
+              18.4
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.001624508396225768
+    },
+    {
+      "name": "hub_3way",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "hub_3way",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 34,
+          "volume_cm3": 0.211645,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              -5.1981,
+              -6.7807,
+              -2.5
+            ],
+            "max_mm": [
+              7.6619,
+              6.7807,
+              2.981
+            ],
+            "size_mm": [
+              12.8601,
+              13.5615,
+              5.481
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 0.26878946925894837
+    },
+    {
+      "name": "support_arm_p1b",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "support_arm_p1b",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 15,
+          "volume_cm3": 1.393718,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              24.0,
+              -5.0,
+              -2.5
+            ],
+            "max_mm": [
+              67.5,
+              5.0,
+              13.5
+            ],
+            "size_mm": [
+              43.5,
+              10.0,
+              16.0
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 1.7700221958890898
+    },
+    {
+      "name": "pivot_hardware (2)",
+      "bodies": 4,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "MR52ZZ_0",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 4,
+          "volume_cm3": 0.041233,
+          "material": "Stainless Steel, 440C",
+          "box": {
+            "min_mm": [
+              -2.5,
+              84.0,
+              -2.5
+            ],
+            "max_mm": [
+              2.5,
+              86.5,
+              2.5
+            ],
+            "size_mm": [
+              5.0,
+              2.5,
+              5.0
+            ]
+          }
+        },
+        {
+          "name": "MR52ZZ_1",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 4,
+          "volume_cm3": 0.041233,
+          "material": "Stainless Steel, 440C",
+          "box": {
+            "min_mm": [
+              -2.5,
+              -86.5,
+              -2.5
+            ],
+            "max_mm": [
+              2.5,
+              -84.0,
+              2.5
+            ],
+            "size_mm": [
+              5.0,
+              2.5,
+              5.0
+            ]
+          }
+        },
+        {
+          "name": "pin_2",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 0.032987,
+          "material": "Stainless Steel AISI 304",
+          "box": {
+            "min_mm": [
+              85.25,
+              -1.0,
+              -1.0
+            ],
+            "max_mm": [
+              95.75,
+              1.0,
+              1.0
+            ],
+            "size_mm": [
+              10.5,
+              2.0,
+              2.0
+            ]
+          }
+        },
+        {
+          "name": "pin_3",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 3,
+          "volume_cm3": 0.032987,
+          "material": "Stainless Steel AISI 304",
+          "box": {
+            "min_mm": [
+              -95.75,
+              -1.0,
+              -1.0
+            ],
+            "max_mm": [
+              -85.25,
+              1.0,
+              1.0
+            ],
+            "size_mm": [
+              10.5,
+              2.0,
+              2.0
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 1.1669053212677623
+    },
+    {
+      "name": "Cage skeleton (scaled 408519)",
+      "bodies": 3,
+      "meshBodies": 0,
+      "sketches": 1,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "rods_edge_x90_cut_44.53mm",
+          "solid": true,
+          "visible": true,
+          "lumps": 90,
+          "faces": 270,
+          "volume_cm3": 3.147719,
+          "material": "Carbon rod (project)",
+          "box": {
+            "min_mm": [
+              -119.501,
+              -117.6595,
+              -114.6169
+            ],
+            "max_mm": [
+              119.501,
+              117.6595,
+              114.6169
+            ],
+            "size_mm": [
+              239.002,
+              235.3189,
+              229.2338
+            ]
+          }
+        },
+        {
+          "name": "rods_pole_x10_cut_37.86mm",
+          "solid": true,
+          "visible": true,
+          "lumps": 10,
+          "faces": 30,
+          "volume_cm3": 0.297326,
+          "material": "Carbon rod (project)",
+          "box": {
+            "min_mm": [
+              -37.7352,
+              -39.58,
+              -121.6002
+            ],
+            "max_mm": [
+              37.7352,
+              39.58,
+              121.6002
+            ],
+            "size_mm": [
+              75.4704,
+              79.1599,
+              243.2003
+            ]
+          }
+        },
+        {
+          "name": "HUB_ENVELOPE_spheres",
+          "solid": true,
+          "visible": false,
+          "lumps": 62,
+          "faces": 62,
+          "volume_cm3": 4.057891,
+          "material": "Analysis envelope (massless)",
+          "box": {
+            "min_mm": [
+              -121.501,
+              -119.6595,
+              -124.0
+            ],
+            "max_mm": [
+              121.501,
+              119.6595,
+              124.0
+            ],
+            "size_mm": [
+              243.002,
+              239.3189,
+              248.0
+            ]
+          }
+        }
+      ],
+      "sketchData": [
+        {
+          "name": "cage_wireframe (hub centre lines)",
+          "visible": false,
+          "fullyConstrained": false,
+          "curves": 100,
+          "profiles": 42
+        }
+      ],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 5.339823799867981
+    },
+    {
+      "name": "outer_ring_quarter",
+      "bodies": 1,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 0,
+      "bodyData": [
+        {
+          "name": "outer_ring_quarter",
+          "solid": true,
+          "visible": true,
+          "lumps": 1,
+          "faces": 32,
+          "volume_cm3": 1.508796,
+          "material": "PETG (project)",
+          "box": {
+            "min_mm": [
+              7.007,
+              7.007,
+              -1.5
+            ],
+            "max_mm": [
+              98.7246,
+              98.7246,
+              1.5
+            ],
+            "size_mm": [
+              91.7176,
+              91.7176,
+              3.0
+            ]
+          }
+        }
+      ],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 1.9161703298901072
+    },
+    {
+      "name": "Cage (P1A cage, pivot pole hubs)",
+      "bodies": 0,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 0,
+      "rigidGroups": 1,
+      "bodyData": [],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [],
+      "rigidGroupData": [
+        {
+          "name": "Rigid Group 1",
+          "members": [
+            "Cage (P1A cage, pivot pole hubs):1+Cage skeleton (scaled 408519):1",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:1",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:2",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:3",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:4",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:5",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:6",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:7",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:8",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:9",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:10",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:11",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:12",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:13",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:14",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:15",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:16",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:17",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:18",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:19",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:20",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:21",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:22",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:23",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:24",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:25",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:26",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:27",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:28",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:29",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:30",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:31",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:32",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:33",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:34",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:35",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:36",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:37",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:38",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:39",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:40",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:41",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:42",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:43",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:44",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:45",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:46",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:1",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:2",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:3",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:4",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:1",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:2",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:3",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:4",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:5",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:6",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:7",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:8",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:9",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:10",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:1",
+            "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:2",
+            "Cage (P1A cage, pivot pole hubs):1+pivot_hardware:1"
+          ],
+          "suppressed": false
+        }
+      ],
+      "meshData": [],
+      "native_mass_g": 25.313434796196507
+    },
+    {
+      "name": "Apex2 Ball Cage P1B Gimbal",
+      "bodies": 0,
+      "meshBodies": 0,
+      "sketches": 0,
+      "joints": 0,
+      "asBuiltJoints": 3,
+      "rigidGroups": 0,
+      "bodyData": [],
+      "sketchData": [],
+      "attributes": [],
+      "jointData": [
+        {
+          "name": "Z pole pivot (cage - outer ring)",
+          "one": "Cage (P1A cage, pivot pole hubs):1",
+          "two": "Outer ring (Z to cage, X to inner):1",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "angle": 0.0,
+          "transform": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "X pivot (outer ring - inner ring)",
+          "one": "Outer ring (Z to cage, X to inner):1",
+          "two": "Inner ring (X to outer, Y to aircraft):1",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "angle": 0.0,
+          "transform": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Y pivot (inner ring - aircraft)",
+          "one": "Inner ring (X to outer, Y to aircraft):1",
+          "two": "Aircraft side (rotates on Y pivots):1",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "angle": 0.0,
+          "transform": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "rigidGroupData": [],
+      "meshData": [],
+      "native_mass_g": 67.6153628270627
+    }
+  ],
+  "occurrences": [
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Cage skeleton (scaled 408519):1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "Cage skeleton (scaled 408519)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.4273644149126042,
+        -0.8090169943749475,
+        0.40354821233519766,
+        -4.903110779872651,
+        -0.5882166541384495,
+        -0.5877852522924731,
+        -0.5554364634966285,
+        6.748553031484034,
+        0.6865572260639132,
+        1.1102230246251565e-16,
+        -0.7270757700126066,
+        8.83397060565317,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.6914901489108058,
+        0.30901699437494745,
+        0.6529547236576095,
+        -7.933399892439956,
+        0.2246787691321464,
+        -0.9510565162951536,
+        0.21215785046467167,
+        -2.5777178831457626,
+        0.6865572260639132,
+        5.551115123125783e-17,
+        -0.7270757700126068,
+        8.833970605653173,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:3",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.6914901489108061,
+        0.30901699437494745,
+        -0.6529547236576094,
+        7.933399892439955,
+        0.22467876913214646,
+        0.9510565162951536,
+        0.2121578504646717,
+        -2.577717883145761,
+        0.6865572260639132,
+        -5.551115123125783e-17,
+        -0.7270757700126068,
+        8.833970605653171,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:4",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        5.551115123125783e-17,
+        1.0,
+        -1.3877787807814457e-17,
+        0.0,
+        0.7270757700126067,
+        0.0,
+        0.6865572260639132,
+        -8.341670296676545,
+        0.6865572260639133,
+        -5.551115123125783e-17,
+        -0.7270757700126067,
+        8.833970605653167,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:5",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.42736441491260435,
+        -0.8090169943749476,
+        -0.40354821233519766,
+        4.9031107798726525,
+        -0.5882166541384495,
+        0.5877852522924732,
+        -0.5554364634966285,
+        6.748553031484034,
+        0.6865572260639133,
+        0.0,
+        -0.7270757700126067,
+        8.833970605653167,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:6",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.46589984016580077,
+        -0.4999999999999999,
+        0.7300255741640025,
+        -8.869810726092627,
+        -0.8784558045542381,
+        0.1624598481164532,
+        -0.4493575382642926,
+        5.459694089911153,
+        0.10607892523233592,
+        -0.85065080835204,
+        -0.514917919547935,
+        6.256252722507407,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:7",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.13942247833699611,
+        0.5000000000000001,
+        0.8547288298252085,
+        -10.384955282376279,
+        0.9845347297865741,
+        -0.16245984811645325,
+        -0.06556038128364255,
+        0.7965586325962555,
+        0.10607892523233581,
+        0.8506508083520403,
+        -0.5149179195479351,
+        6.256252722507408,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:8",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.42736441491260413,
+        0.8090169943749473,
+        0.40354821233519766,
+        -4.903110779872651,
+        0.35101696633882873,
+        0.26286555605956674,
+        -0.8987150765285851,
+        10.919388179822304,
+        -0.8331546952449427,
+        0.5257311121191335,
+        -0.1716393065159783,
+        2.085417574169133,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:9",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.5520676705738101,
+        -0.8090169943749475,
+        0.20177410616759878,
+        -2.451555389936326,
+        0.03278019064182136,
+        -0.2628655560595668,
+        -0.9642754578122275,
+        11.715946812418562,
+        0.8331546952449426,
+        -0.5257311121191336,
+        0.1716393065159782,
+        -2.0854175741691403,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:10",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.9794320854864141,
+        0.0,
+        0.20177410616759894,
+        -2.4515553899363267,
+        0.17163930651597836,
+        -0.5257311121191336,
+        -0.8331546952449426,
+        10.12282954722605,
+        0.10607892523233586,
+        0.8506508083520401,
+        -0.514917919547935,
+        6.2562527225074085,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:11",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.9794320854864144,
+        5.551115123125783e-17,
+        -0.20177410616759867,
+        2.451555389936326,
+        0.17163930651597825,
+        0.5257311121191336,
+        -0.8331546952449427,
+        10.12282954722605,
+        0.10607892523233586,
+        -0.8506508083520401,
+        -0.514917919547935,
+        6.256252722507408,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:12",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.46589984016580044,
+        0.5,
+        0.7300255741640025,
+        -8.869810726092627,
+        -0.29797750372266096,
+        0.6881909602355867,
+        -0.6615153887289642,
+        8.037411973056914,
+        -0.8331546952449426,
+        -0.5257311121191336,
+        -0.17163930651597836,
+        2.085417574169133,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:13",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.13942247833699578,
+        -0.5000000000000001,
+        0.8547288298252084,
+        -10.384955282376279,
+        0.5351771915222816,
+        -0.6881909602355867,
+        -0.48987608221298606,
+        5.951994398887777,
+        0.8331546952449426,
+        0.5257311121191337,
+        0.17163930651597836,
+        -2.0854175741691368,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:14",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.13942247833699595,
+        -0.5000000000000001,
+        0.8547288298252083,
+        -10.384955282376279,
+        -0.5351771915222816,
+        0.6881909602355868,
+        0.48987608221298595,
+        -5.951994398887779,
+        -0.8331546952449426,
+        -0.5257311121191336,
+        -0.1716393065159784,
+        2.085417574169135,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:15",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.46589984016580055,
+        0.5000000000000001,
+        0.7300255741640026,
+        -8.869810726092627,
+        0.29797750372266096,
+        -0.6881909602355868,
+        0.6615153887289643,
+        -8.037411973056917,
+        0.8331546952449427,
+        0.5257311121191336,
+        0.17163930651597825,
+        -2.0854175741691368,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:16",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.691490148910806,
+        -0.3090169943749475,
+        0.6529547236576094,
+        -7.933399892439954,
+        -0.7145548513451323,
+        -0.42532540417601994,
+        0.5554364634966283,
+        -6.748553031484034,
+        0.1060789252323357,
+        -0.8506508083520399,
+        -0.514917919547935,
+        6.25625272250741,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:17",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.8932642550784048,
+        0.30901699437494745,
+        0.3264773618288049,
+        -3.966699946219977,
+        0.43683661959681824,
+        0.42532540417601994,
+        0.792636151296249,
+        -9.630529238249425,
+        0.10607892523233597,
+        0.8506508083520398,
+        -0.514917919547935,
+        6.256252722507407,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:18",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.5520676705738098,
+        -0.8090169943749476,
+        -0.20177410616759883,
+        2.451555389936326,
+        0.03278019064182139,
+        0.26286555605956685,
+        -0.9642754578122273,
+        11.715946812418562,
+        0.8331546952449427,
+        0.5257311121191337,
+        0.17163930651597836,
+        -2.0854175741691385,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:19",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.42736441491260424,
+        0.8090169943749477,
+        -0.4035482123351978,
+        4.903110779872651,
+        0.35101696633882873,
+        -0.2628655560595669,
+        -0.898715076528585,
+        10.919388179822306,
+        -0.8331546952449428,
+        -0.5257311121191336,
+        -0.17163930651597828,
+        2.085417574169135,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:20",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.8932642550784047,
+        0.30901699437494784,
+        0.3264773618288047,
+        -3.9666999462199772,
+        -0.4368366195968182,
+        -0.4253254041760198,
+        -0.7926361512962491,
+        9.630529238249427,
+        -0.10607892523233625,
+        -0.8506508083520401,
+        0.5149179195479348,
+        -6.256252722507412,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:21",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.691490148910806,
+        -0.30901699437494773,
+        0.6529547236576094,
+        -7.933399892439955,
+        0.7145548513451323,
+        0.4253254041760197,
+        -0.5554364634966283,
+        6.748553031484035,
+        -0.10607892523233552,
+        0.8506508083520401,
+        0.5149179195479349,
+        -6.256252722507412,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:22",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -5.551115123125783e-17,
+        1.0,
+        -2.0816681711721685e-17,
+        8.881784197001252e-16,
+        -0.7270757700126067,
+        0.0,
+        -0.6865572260639132,
+        8.341670296676543,
+        -0.6865572260639133,
+        -5.551115123125783e-17,
+        0.7270757700126067,
+        -8.833970605653173,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:23",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.8932642550784047,
+        0.3090169943749476,
+        -0.3264773618288048,
+        3.96669994621998,
+        -0.43683661959681824,
+        0.42532540417601966,
+        -0.7926361512962491,
+        9.630529238249425,
+        -0.10607892523233631,
+        0.85065080835204,
+        0.5149179195479348,
+        -6.25625272250741,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:24",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.6914901489108058,
+        -0.3090169943749478,
+        -0.6529547236576094,
+        7.933399892439955,
+        0.7145548513451323,
+        -0.4253254041760197,
+        -0.5554364634966283,
+        6.7485530314840325,
+        -0.10607892523233542,
+        -0.8506508083520401,
+        0.514917919547935,
+        -6.256252722507414,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:25",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.4273644149126041,
+        0.8090169943749473,
+        0.4035482123351978,
+        -4.903110779872652,
+        -0.3510169663388288,
+        -0.2628655560595669,
+        0.898715076528585,
+        -10.919388179822308,
+        0.8331546952449426,
+        -0.5257311121191336,
+        0.17163930651597828,
+        -2.0854175741691368,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:26",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.55206767057381,
+        -0.8090169943749476,
+        0.20177410616759894,
+        -2.451555389936326,
+        -0.032780190641821416,
+        0.26286555605956685,
+        0.9642754578122276,
+        -11.715946812418563,
+        -0.8331546952449426,
+        0.5257311121191337,
+        -0.17163930651597836,
+        2.085417574169136,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:27",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.4658998401658008,
+        -0.5,
+        0.7300255741640026,
+        -8.869810726092629,
+        0.8784558045542383,
+        -0.1624598481164531,
+        0.44935753826429264,
+        -5.459694089911158,
+        -0.10607892523233597,
+        0.85065080835204,
+        0.514917919547935,
+        -6.25625272250741,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:28",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.139422478336996,
+        0.5000000000000002,
+        0.8547288298252084,
+        -10.384955282376279,
+        -0.9845347297865742,
+        0.16245984811645314,
+        0.06556038128364247,
+        -0.7965586325962581,
+        -0.10607892523233575,
+        -0.8506508083520403,
+        0.514917919547935,
+        -6.25625272250741,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:29",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.42736441491260435,
+        -0.8090169943749476,
+        0.4035482123351978,
+        -4.9031107798726525,
+        0.5882166541384495,
+        0.5877852522924732,
+        0.5554364634966285,
+        -6.748553031484036,
+        -0.6865572260639133,
+        0.0,
+        0.7270757700126067,
+        -8.83397060565317,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:30",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.9794320854864143,
+        0.0,
+        0.20177410616759883,
+        -2.4515553899363267,
+        -0.1716393065159783,
+        0.5257311121191336,
+        0.8331546952449427,
+        -10.122829547226049,
+        -0.10607892523233586,
+        -0.8506508083520401,
+        0.5149179195479349,
+        -6.2562527225074085,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:31",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.9794320854864143,
+        -5.551115123125783e-17,
+        -0.20177410616759883,
+        2.451555389936326,
+        -0.17163930651597828,
+        -0.5257311121191336,
+        0.8331546952449427,
+        -10.122829547226052,
+        -0.10607892523233581,
+        0.8506508083520401,
+        0.514917919547935,
+        -6.256252722507412,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:32",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.691490148910806,
+        -0.30901699437494756,
+        -0.6529547236576094,
+        7.933399892439955,
+        -0.7145548513451322,
+        0.42532540417601994,
+        0.5554364634966283,
+        -6.748553031484038,
+        0.10607892523233578,
+        0.8506508083520401,
+        -0.5149179195479349,
+        6.25625272250741,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:33",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.8932642550784047,
+        0.3090169943749475,
+        -0.32647736182880477,
+        3.966699946219978,
+        0.4368366195968182,
+        -0.42532540417601994,
+        0.7926361512962491,
+        -9.630529238249425,
+        0.10607892523233589,
+        -0.8506508083520398,
+        -0.5149179195479349,
+        6.256252722507407,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:34",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.139422478336996,
+        0.5000000000000002,
+        -0.8547288298252084,
+        10.384955282376282,
+        0.9845347297865741,
+        0.16245984811645298,
+        -0.06556038128364239,
+        0.7965586325962546,
+        0.10607892523233564,
+        -0.8506508083520401,
+        -0.514917919547935,
+        6.256252722507408,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:35",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.46589984016580066,
+        -0.5000000000000002,
+        -0.7300255741640025,
+        8.86981072609263,
+        -0.8784558045542383,
+        -0.16245984811645303,
+        -0.44935753826429253,
+        5.459694089911153,
+        0.10607892523233597,
+        0.85065080835204,
+        -0.514917919547935,
+        6.256252722507407,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:36",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.13942247833699578,
+        -0.5000000000000002,
+        -0.8547288298252084,
+        10.384955282376282,
+        -0.5351771915222815,
+        -0.6881909602355869,
+        0.48987608221298606,
+        -5.951994398887782,
+        -0.8331546952449427,
+        0.5257311121191336,
+        -0.17163930651597836,
+        2.085417574169134,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:37",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.46589984016580044,
+        0.5000000000000002,
+        -0.7300255741640025,
+        8.869810726092627,
+        0.2979775037226609,
+        0.6881909602355869,
+        0.6615153887289642,
+        -8.037411973056917,
+        0.8331546952449427,
+        -0.5257311121191336,
+        0.17163930651597836,
+        -2.0854175741691368,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:38",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.55206767057381,
+        -0.8090169943749475,
+        -0.20177410616759872,
+        2.4515553899363276,
+        -0.03278019064182147,
+        -0.2628655560595668,
+        0.9642754578122273,
+        -11.715946812418563,
+        -0.8331546952449426,
+        -0.5257311121191336,
+        -0.17163930651597825,
+        2.085417574169136,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:39",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.4273644149126043,
+        0.8090169943749476,
+        -0.40354821233519766,
+        4.903110779872651,
+        -0.35101696633882873,
+        0.26286555605956685,
+        0.8987150765285851,
+        -10.919388179822308,
+        0.8331546952449428,
+        0.5257311121191336,
+        0.1716393065159783,
+        -2.0854175741691368,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:40",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.4658998401658006,
+        0.4999999999999999,
+        -0.7300255741640026,
+        8.869810726092627,
+        -0.297977503722661,
+        -0.6881909602355867,
+        -0.6615153887289642,
+        8.037411973056916,
+        -0.8331546952449426,
+        0.5257311121191336,
+        -0.17163930651597825,
+        2.085417574169133,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:41",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.13942247833699611,
+        -0.49999999999999994,
+        -0.8547288298252083,
+        10.384955282376279,
+        0.5351771915222817,
+        0.6881909602355866,
+        -0.48987608221298595,
+        5.951994398887777,
+        0.8331546952449427,
+        -0.5257311121191336,
+        0.17163930651597833,
+        -2.0854175741691385,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:42",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.6914901489108061,
+        0.3090169943749474,
+        0.6529547236576094,
+        -7.933399892439955,
+        -0.2246787691321463,
+        0.9510565162951536,
+        -0.2121578504646717,
+        2.577717883145761,
+        -0.6865572260639132,
+        5.551115123125783e-17,
+        0.7270757700126068,
+        -8.833970605653176,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:43",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.42736441491260424,
+        -0.8090169943749475,
+        -0.4035482123351976,
+        4.903110779872651,
+        0.5882166541384495,
+        -0.5877852522924731,
+        0.5554364634966285,
+        -6.748553031484038,
+        -0.6865572260639132,
+        1.0546062788938478e-16,
+        0.7270757700126066,
+        -8.833970605653173,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:44",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.6914901489108058,
+        0.30901699437494745,
+        -0.6529547236576095,
+        7.933399892439957,
+        -0.2246787691321464,
+        -0.9510565162951536,
+        -0.21215785046467167,
+        2.57771788314576,
+        -0.6865572260639132,
+        5.551115123125783e-17,
+        0.7270757700126068,
+        -8.833970605653176,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:45",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        0.46589984016580077,
+        -0.4999999999999999,
+        -0.7300255741640025,
+        8.869810726092627,
+        0.8784558045542381,
+        0.1624598481164532,
+        0.4493575382642926,
+        -5.459694089911155,
+        -0.10607892523233592,
+        -0.85065080835204,
+        0.514917919547935,
+        -6.2562527225074085,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way:46",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way",
+      "transform": [
+        -0.13942247833699611,
+        0.5000000000000001,
+        -0.8547288298252085,
+        10.384955282376279,
+        -0.9845347297865741,
+        -0.16245984811645325,
+        0.06556038128364255,
+        -0.7965586325962564,
+        -0.10607892523233581,
+        0.8506508083520403,
+        0.5149179195479351,
+        -6.25625272250741,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way_mount_A",
+      "transform": [
+        -0.20177410616759886,
+        0.0,
+        0.9794320854864141,
+        -11.90009983865993,
+        0.5149179195479349,
+        0.85065080835204,
+        0.10607892523233589,
+        -1.2888589415728808,
+        -0.8331546952449426,
+        0.5257311121191336,
+        -0.1716393065159783,
+        2.0854175741691363,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way_mount_A",
+      "transform": [
+        -0.2017741061675988,
+        1.3592350654545645e-17,
+        0.9794320854864141,
+        -11.90009983865993,
+        -0.5149179195479349,
+        -0.85065080835204,
+        -0.10607892523233585,
+        1.2888589415728813,
+        0.8331546952449427,
+        -0.5257311121191336,
+        0.1716393065159783,
+        -2.0854175741691363,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:3",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way_mount_A",
+      "transform": [
+        0.20177410616759886,
+        0.0,
+        -0.9794320854864141,
+        11.90009983865993,
+        0.5149179195479349,
+        -0.85065080835204,
+        0.10607892523233588,
+        -1.2888589415728813,
+        -0.8331546952449427,
+        -0.5257311121191336,
+        -0.17163930651597836,
+        2.085417574169137,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_3way_mount_A:4",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_3way_mount_A",
+      "transform": [
+        0.2017741061675988,
+        1.3592350654545645e-17,
+        -0.9794320854864141,
+        11.90009983865993,
+        -0.5149179195479349,
+        0.85065080835204,
+        -0.10607892523233588,
+        1.2888589415728808,
+        0.8331546952449426,
+        0.5257311121191336,
+        0.17163930651597828,
+        -2.0854175741691363,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        0.5520676705738098,
+        -0.8090169943749475,
+        0.20177410616759878,
+        -2.4515553899363254,
+        -0.7598559606544278,
+        -0.5877852522924729,
+        -0.2777182317483143,
+        3.374276515742019,
+        0.3432786130319566,
+        5.551115123125783e-17,
+        -0.9392336204772783,
+        11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        0.8932642550784049,
+        0.3090169943749474,
+        0.3264773618288047,
+        -3.966699946219978,
+        0.29023915041578874,
+        -0.9510565162951538,
+        0.10607892523233586,
+        -1.2888589415728813,
+        0.3432786130319565,
+        0.0,
+        -0.9392336204772783,
+        11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:3",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        -0.8932642550784049,
+        0.3090169943749472,
+        -0.3264773618288047,
+        3.966699946219977,
+        0.2902391504157885,
+        0.9510565162951538,
+        0.1060789252323357,
+        -1.2888589415728795,
+        0.3432786130319566,
+        -2.7755575615628914e-17,
+        -0.9392336204772783,
+        11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:4",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        0.0,
+        0.9999999999999998,
+        0.0,
+        -8.881784197001252e-16,
+        0.9392336204772787,
+        9.71445146547012e-17,
+        0.3432786130319565,
+        -4.170835148338273,
+        0.3432786130319565,
+        -2.7755575615628914e-17,
+        -0.9392336204772784,
+        11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:5",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        -0.5520676705738098,
+        -0.8090169943749475,
+        -0.20177410616759875,
+        2.4515553899363245,
+        -0.759855960654428,
+        0.5877852522924729,
+        -0.27771823174831434,
+        3.3742765157420194,
+        0.3432786130319566,
+        -5.551115123125783e-17,
+        -0.9392336204772784,
+        11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:6",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        0.0,
+        1.0,
+        -2.7755575615628914e-17,
+        -4.440892098500626e-16,
+        -0.9392336204772787,
+        9.020562075079397e-17,
+        -0.3432786130319565,
+        4.170835148338273,
+        -0.3432786130319565,
+        -2.7755575615628914e-17,
+        0.9392336204772784,
+        -11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:7",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        0.5520676705738098,
+        -0.8090169943749475,
+        0.20177410616759883,
+        -2.4515553899363263,
+        0.759855960654428,
+        0.5877852522924729,
+        0.2777182317483144,
+        -3.37427651574202,
+        -0.3432786130319566,
+        0.0,
+        0.9392336204772782,
+        -11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:8",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        0.8932642550784049,
+        0.3090169943749474,
+        0.3264773618288047,
+        -3.9666999462199786,
+        -0.29023915041578874,
+        0.9510565162951538,
+        -0.10607892523233586,
+        1.2888589415728813,
+        -0.34327861303195656,
+        0.0,
+        0.9392336204772783,
+        -11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:9",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        -0.5520676705738098,
+        -0.8090169943749473,
+        -0.2017741061675988,
+        2.4515553899363245,
+        0.7598559606544278,
+        -0.587785252292473,
+        0.27771823174831434,
+        -3.374276515742019,
+        -0.3432786130319566,
+        7.092697514576838e-17,
+        0.9392336204772783,
+        -11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_4way:10",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_4way",
+      "transform": [
+        -0.8932642550784049,
+        0.3090169943749474,
+        -0.3264773618288047,
+        3.9666999462199777,
+        -0.29023915041578874,
+        -0.9510565162951538,
+        -0.10607892523233586,
+        1.2888589415728804,
+        -0.3432786130319565,
+        0.0,
+        0.9392336204772783,
+        -11.411688488798934,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_pole_5way_pivot",
+      "transform": [
+        -0.5877852522924729,
+        0.8090169943749476,
+        0.0,
+        0.0,
+        0.8090169943749476,
+        0.5877852522924729,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        12.15,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1+hub_pole_5way_pivot:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "hub_pole_5way_pivot",
+      "transform": [
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        -12.15,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+Hubs:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "Hubs",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1+pivot_hardware:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "pivot_hardware",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Cage (P1A cage, pivot pole hubs):1",
+      "visible": true,
+      "grounded": true,
+      "referenced": false,
+      "component": "Cage (P1A cage, pivot pole hubs)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "outer_ring_quarter",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "outer_ring_quarter",
+      "transform": [
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:3",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "outer_ring_quarter",
+      "transform": [
+        -1.0,
+        -1.2246467991473532e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        1.2246467991473532e-16,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+outer_ring_quarter:4",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "outer_ring_quarter",
+      "transform": [
+        -2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        -1.0,
+        -2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+outer_junction_X_bearing:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "outer_junction_X_bearing",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+outer_junction_X_bearing:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "outer_junction_X_bearing",
+      "transform": [
+        -1.0,
+        -1.2246467991473532e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        1.2246467991473532e-16,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+outer_junction_Z_bearing:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "outer_junction_Z_bearing",
+      "transform": [
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+outer_junction_Z_bearing:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "outer_junction_Z_bearing",
+      "transform": [
+        -2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        -1.0,
+        -2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1+pivot_hardware (1):1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "pivot_hardware (1)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Outer ring (Z to cage, X to inner):1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "Outer ring (Z to cage, X to inner)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "inner_ring_quarter",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "inner_ring_quarter",
+      "transform": [
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:3",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "inner_ring_quarter",
+      "transform": [
+        -1.0,
+        -1.2246467991473532e-16,
+        0.0,
+        0.0,
+        1.2246467991473532e-16,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+inner_ring_quarter:4",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "inner_ring_quarter",
+      "transform": [
+        -2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        -2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+inner_junction_Y_bearing:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "inner_junction_Y_bearing",
+      "transform": [
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+inner_junction_Y_bearing:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "inner_junction_Y_bearing",
+      "transform": [
+        -2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        -2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+inner_junction_X_pin:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "inner_junction_X_pin",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+inner_junction_X_pin:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "inner_junction_X_pin",
+      "transform": [
+        -1.0,
+        -1.2246467991473532e-16,
+        0.0,
+        0.0,
+        1.2246467991473532e-16,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1+pivot_hardware (2):1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "pivot_hardware (2)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Inner ring (X to outer, Y to aircraft):1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "Inner ring (X to outer, Y to aircraft)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+aircraft_raised_to_cg:1+Aircraft envelope (PLACEHOLDER):1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "Aircraft envelope (PLACEHOLDER)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.32451114041122003,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+aircraft_raised_to_cg:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "aircraft_raised_to_cg",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.32451114041122003,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+carrier_plate:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "carrier_plate",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.32451114041122003,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+support_arm_p1b:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "support_arm_p1b",
+      "transform": [
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.32451114041122003,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1+support_arm_p1b:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "support_arm_p1b",
+      "transform": [
+        2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.32451114041122003,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+carrier_and_arms:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "carrier_and_arms",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.32451114041122003,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+arm_pivot_block:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "arm_pivot_block",
+      "transform": [
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+arm_pivot_block:2",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "arm_pivot_block",
+      "transform": [
+        2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1+pivot_hardware (3):1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "pivot_hardware (3)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Aircraft side (rotates on Y pivots):1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "Aircraft side (rotates on Y pivots)",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "path": "Gimbal test fixtures:1",
+      "visible": true,
+      "grounded": false,
+      "referenced": false,
+      "component": "Gimbal test fixtures",
+      "transform": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -20.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "name": "gimbal_clear",
+      "expression": "4 mm",
+      "value": 0.4,
+      "unit": "mm",
+      "comment": "DESIGN: aircraft-envelope reserve to inner ring; local pivot running gaps are reported separately"
+    },
+    {
+      "name": "ring_w",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm",
+      "comment": "DESIGN: ring band radial width"
+    },
+    {
+      "name": "ring_t",
+      "expression": "3 mm",
+      "value": 0.30000000000000004,
+      "unit": "mm",
+      "comment": "DESIGN: ring band thickness (axial)"
+    },
+    {
+      "name": "ring_gap",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm",
+      "comment": "DESIGN: radial gap between inner ring outside and outer ring inside"
+    },
+    {
+      "name": "junction_len",
+      "expression": "14 mm",
+      "value": 1.4000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: junction block length along the ring"
+    },
+    {
+      "name": "junction_t",
+      "expression": "8 mm",
+      "value": 0.8,
+      "unit": "mm",
+      "comment": "DESIGN: junction block thickness (holds the 5 mm bearing)"
+    },
+    {
+      "name": "splice_len",
+      "expression": "14 mm",
+      "value": 1.4000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: splice plate overlap onto each quarter end"
+    },
+    {
+      "name": "splice_t",
+      "expression": "2 mm",
+      "value": 0.2,
+      "unit": "mm",
+      "comment": "DESIGN: splice plate thickness"
+    },
+    {
+      "name": "lighten_w",
+      "expression": "2.6 mm",
+      "value": 0.26,
+      "unit": "mm",
+      "comment": "DESIGN: lightening slot width in ring quarters"
+    },
+    {
+      "name": "bearing_od",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm",
+      "comment": "MEASURE: MR52ZZ outer diameter"
+    },
+    {
+      "name": "bearing_w",
+      "expression": "2.5 mm",
+      "value": 0.25,
+      "unit": "mm",
+      "comment": "MEASURE: MR52ZZ width"
+    },
+    {
+      "name": "bearing_seat_clear",
+      "expression": "0.05 mm",
+      "value": 0.005000000000000001,
+      "unit": "mm",
+      "comment": "FIT COUPON: +0.05 mm diametral allowance is nominal clearance; qualify fit/retention physically"
+    },
+    {
+      "name": "pin_d",
+      "expression": "2 mm",
+      "value": 0.2,
+      "unit": "mm",
+      "comment": "MEASURE: dowel pin diameter (2 x 16 mm)"
+    },
+    {
+      "name": "pin_press_d",
+      "expression": "1.9 mm",
+      "value": 0.19,
+      "unit": "mm",
+      "comment": "FIT COUPON: pin press-fit hole diameter"
+    },
+    {
+      "name": "pin_press_depth",
+      "expression": "6 mm",
+      "value": 0.6000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: pin press depth"
+    },
+    {
+      "name": "pin_len",
+      "expression": "16 mm",
+      "value": 1.6,
+      "unit": "mm",
+      "comment": "MEASURE: dowel pin length"
+    },
+    {
+      "name": "pivot_gap",
+      "expression": "0.5 mm",
+      "value": 0.05,
+      "unit": "mm",
+      "comment": "DESIGN: axial running gap at each pivot"
+    },
+    {
+      "name": "pole_boss_len",
+      "expression": "8 mm",
+      "value": 0.8,
+      "unit": "mm",
+      "comment": "DESIGN: pole hub pin boss length (inward)"
+    },
+    {
+      "name": "pole_boss_od",
+      "expression": "6 mm",
+      "value": 0.6000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: pole hub pin boss OD"
+    },
+    {
+      "name": "pivot_boss_od",
+      "expression": "7 mm",
+      "value": 0.7000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: arm-end pivot boss OD"
+    },
+    {
+      "name": "pivot_boss_len",
+      "expression": "12 mm",
+      "value": 1.2000000000000002,
+      "unit": "mm",
+      "comment": "DESIGN: arm-end pivot boss length (keeps the slotted plate inboard of the ring sweep)"
+    },
+    {
+      "name": "pivot_plate_t",
+      "expression": "4 mm",
+      "value": 0.4,
+      "unit": "mm",
+      "comment": "DESIGN: arm-end pivot plate thickness"
+    },
+    {
+      "name": "cg_slot",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm",
+      "comment": "[P1B] DESIGN: vertical CG travel each way at the arm-end pivot plates"
+    },
+    {
+      "name": "cage_outer_dia",
+      "expression": "248 mm",
+      "value": 24.8,
+      "unit": "mm",
+      "comment": "TARGET 245-250: maximum assembled outside span including hubs"
+    },
+    {
+      "name": "rod_dia",
+      "expression": "1.0 mm",
+      "value": 0.1,
+      "unit": "mm",
+      "comment": "MEASURE: actual carbon rod diameter (1 mm prototype baseline)"
+    },
+    {
+      "name": "rod_bore_clear",
+      "expression": "0.15 mm",
+      "value": 0.015,
+      "unit": "mm",
+      "comment": "FIT COUPON: socket clearance per side (strip prints 0.05-0.30)"
+    },
+    {
+      "name": "hub_core_r",
+      "expression": "2.5 mm",
+      "value": 0.25,
+      "unit": "mm",
+      "comment": "DESIGN: hub centre to flat outer face (sets outer span; bed face when printing)"
+    },
+    {
+      "name": "hub_body_r",
+      "expression": "2.2 mm",
+      "value": 0.22000000000000003,
+      "unit": "mm",
+      "comment": "DESIGN: hub core cylinder radius"
+    },
+    {
+      "name": "hub_arm_len",
+      "expression": "7 mm",
+      "value": 0.7000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: hub centre to socket mouth (original ~10 mm for 3 mm rod)"
+    },
+    {
+      "name": "hub_arm_od",
+      "expression": "3.2 mm",
+      "value": 0.32000000000000006,
+      "unit": "mm",
+      "comment": "DESIGN: socket tube OD (original ~5 mm for 3 mm rod)"
+    },
+    {
+      "name": "socket_depth",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm",
+      "comment": "FIT COUPON: rod insertion depth (original ~7.8 mm)"
+    },
+    {
+      "name": "rod_end_gap",
+      "expression": "0.25 mm",
+      "value": 0.025,
+      "unit": "mm",
+      "comment": "DESIGN: gap between rod end and socket floor"
+    },
+    {
+      "name": "cage_vertex_r",
+      "expression": "cage_outer_dia / 2 - hub_core_r",
+      "value": 12.15,
+      "unit": "mm",
+      "comment": "DERIVED: hub centre radius"
+    },
+    {
+      "name": "cage_edge",
+      "expression": "cage_vertex_r / 2.4780186591",
+      "value": 4.903110779808575,
+      "unit": "mm",
+      "comment": "DERIVED: hub centre-to-centre distance"
+    },
+    {
+      "name": "rod_cut_len",
+      "expression": "cage_edge - 2 * ( hub_arm_len - socket_depth ) - 2 * rod_end_gap",
+      "value": 4.453110779808575,
+      "unit": "mm",
+      "comment": "DERIVED: cut length of the 90 edge rods"
+    },
+    {
+      "name": "pent_r",
+      "expression": "cage_edge / ( 2 * sin(36 deg) )",
+      "value": 4.170835148283765,
+      "unit": "mm",
+      "comment": "DERIVED: pentagon circumradius"
+    },
+    {
+      "name": "pole_rise",
+      "expression": "cage_vertex_r - sqrt(cage_vertex_r ^ 2 - pent_r ^ 2)",
+      "value": 0.7383115111811467,
+      "unit": "mm",
+      "comment": "DERIVED: pole hub height above its pentagon"
+    },
+    {
+      "name": "pole_edge",
+      "expression": "sqrt(pent_r ^ 2 + pole_rise ^ 2)",
+      "value": 4.2356781891099615,
+      "unit": "mm",
+      "comment": "DERIVED: pole hub to four-way hub distance"
+    },
+    {
+      "name": "pole_rod_cut_len",
+      "expression": "pole_edge - 2 * ( hub_arm_len - socket_depth ) - 2 * rod_end_gap",
+      "value": 3.7856781891099613,
+      "unit": "mm",
+      "comment": "DERIVED: cut length of the 10 pole rods"
+    },
+    {
+      "name": "motor_diag",
+      "expression": "95 mm",
+      "value": 9.5,
+      "unit": "mm",
+      "comment": "MEASURE: diagonal motor-centre distance (Apex-2 ~95)"
+    },
+    {
+      "name": "prop_dia",
+      "expression": "50.8 mm",
+      "value": 5.08,
+      "unit": "mm",
+      "comment": "MEASURE: actual prop diameter (Gemfan 2015)"
+    },
+    {
+      "name": "prop_z",
+      "expression": "8.9 mm",
+      "value": 0.8900000000000001,
+      "unit": "mm",
+      "comment": "MEASURE: prop disk bottom above frame top"
+    },
+    {
+      "name": "prop_disk_h",
+      "expression": "5.1 mm",
+      "value": 0.51,
+      "unit": "mm",
+      "comment": "DESIGN: prop swept-disk thickness"
+    },
+    {
+      "name": "motor_od",
+      "expression": "15.84 mm",
+      "value": 1.584,
+      "unit": "mm",
+      "comment": "MEASURE: motor bell OD"
+    },
+    {
+      "name": "motor_h",
+      "expression": "8.9 mm",
+      "value": 0.8900000000000001,
+      "unit": "mm",
+      "comment": "MEASURE: motor height above frame top"
+    },
+    {
+      "name": "frame_t",
+      "expression": "2.5 mm",
+      "value": 0.25,
+      "unit": "mm",
+      "comment": "MEASURE: frame plate thickness"
+    },
+    {
+      "name": "arm_w",
+      "expression": "8 mm",
+      "value": 0.8,
+      "unit": "mm",
+      "comment": "MEASURE: frame arm width"
+    },
+    {
+      "name": "stack_w",
+      "expression": "33 mm",
+      "value": 3.3000000000000003,
+      "unit": "mm",
+      "comment": "MEASURE: frame centre plate width"
+    },
+    {
+      "name": "stack_h",
+      "expression": "12 mm",
+      "value": 1.2000000000000002,
+      "unit": "mm",
+      "comment": "MEASURE: stack height above frame top"
+    },
+    {
+      "name": "frame_hole_pitch",
+      "expression": "25.5 mm",
+      "value": 2.5500000000000003,
+      "unit": "mm",
+      "comment": "MEASURE: frame/AIO square mounting-hole pitch"
+    },
+    {
+      "name": "cam_size",
+      "expression": "14 mm",
+      "value": 1.4000000000000001,
+      "unit": "mm",
+      "comment": "MEASURE: camera body (14 x 14 class)"
+    },
+    {
+      "name": "cam_y",
+      "expression": "22 mm",
+      "value": 2.2,
+      "unit": "mm",
+      "comment": "MEASURE: camera centre forward (+Y) of frame centre"
+    },
+    {
+      "name": "cam_z",
+      "expression": "9 mm",
+      "value": 0.9,
+      "unit": "mm",
+      "comment": "MEASURE: camera centre above frame top"
+    },
+    {
+      "name": "cam_tilt",
+      "expression": "20 deg",
+      "value": 0.3490658503988659,
+      "unit": "deg",
+      "comment": "SETUP: camera uptilt"
+    },
+    {
+      "name": "cam_hfov",
+      "expression": "160 deg",
+      "value": 2.792526803190927,
+      "unit": "deg",
+      "comment": "MEASURE: lens horizontal field of view (cone approximation)"
+    },
+    {
+      "name": "batt450_l",
+      "expression": "62.8 mm",
+      "value": 6.28,
+      "unit": "mm",
+      "comment": "MEASURE: OVONIC 450 mAh pack length"
+    },
+    {
+      "name": "batt450_w",
+      "expression": "16.4 mm",
+      "value": 1.64,
+      "unit": "mm",
+      "comment": "MEASURE: 450 mAh pack width"
+    },
+    {
+      "name": "batt450_h",
+      "expression": "13.8 mm",
+      "value": 1.3800000000000001,
+      "unit": "mm",
+      "comment": "MEASURE: 450 mAh pack height"
+    },
+    {
+      "name": "batt1100_l",
+      "expression": "56.56 mm",
+      "value": 5.656000000000001,
+      "unit": "mm",
+      "comment": "MEASURE: OVONIC 1100 mAh pack length"
+    },
+    {
+      "name": "batt1100_w",
+      "expression": "23.5 mm",
+      "value": 2.35,
+      "unit": "mm",
+      "comment": "MEASURE: 1100 mAh pack width"
+    },
+    {
+      "name": "batt1100_h",
+      "expression": "18.4 mm",
+      "value": 1.8399999999999999,
+      "unit": "mm",
+      "comment": "MEASURE: 1100 mAh pack height"
+    },
+    {
+      "name": "carrier_t",
+      "expression": "2.5 mm",
+      "value": 0.25,
+      "unit": "mm",
+      "comment": "DESIGN: carrier plate thickness"
+    },
+    {
+      "name": "carrier_len",
+      "expression": "40 mm",
+      "value": 4.0,
+      "unit": "mm",
+      "comment": "DESIGN: carrier centre length (Y)"
+    },
+    {
+      "name": "carrier_core_w",
+      "expression": "48 mm",
+      "value": 4.800000000000001,
+      "unit": "mm",
+      "comment": "[P1B] DESIGN: carrier centre width (strap slots clear the lateral frame slots)"
+    },
+    {
+      "name": "carrier_span",
+      "expression": "80 mm",
+      "value": 8.0,
+      "unit": "mm",
+      "comment": "DESIGN: carrier tip-to-tip span along X"
+    },
+    {
+      "name": "carrier_bar_w",
+      "expression": "12 mm",
+      "value": 1.2000000000000002,
+      "unit": "mm",
+      "comment": "DESIGN: carrier side-bar width"
+    },
+    {
+      "name": "adj_y",
+      "expression": "2 mm",
+      "value": 0.2,
+      "unit": "mm",
+      "comment": "[P1B] DESIGN: frame travel each way across the arms (lateral)"
+    },
+    {
+      "name": "adj_x",
+      "expression": "3 mm",
+      "value": 0.30000000000000004,
+      "unit": "mm",
+      "comment": "[P1B] DESIGN: carrier travel each way along the fore-aft arms (limited so the rings stay compact)"
+    },
+    {
+      "name": "strap_w",
+      "expression": "12.5 mm",
+      "value": 1.25,
+      "unit": "mm",
+      "comment": "MEASURE: battery strap width"
+    },
+    {
+      "name": "strap_slot_t",
+      "expression": "2.5 mm",
+      "value": 0.25,
+      "unit": "mm",
+      "comment": "MEASURE: battery strap thickness + clearance"
+    },
+    {
+      "name": "support_w",
+      "expression": "6 mm",
+      "value": 0.6000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: support arm width"
+    },
+    {
+      "name": "support_h",
+      "expression": "4 mm",
+      "value": 0.4,
+      "unit": "mm",
+      "comment": "DESIGN: support arm height"
+    },
+    {
+      "name": "flange_h",
+      "expression": "16 mm",
+      "value": 1.6,
+      "unit": "mm",
+      "comment": "DESIGN: support end flange height"
+    },
+    {
+      "name": "flange_t",
+      "expression": "3 mm",
+      "value": 0.30000000000000004,
+      "unit": "mm",
+      "comment": "DESIGN: support end flange thickness"
+    },
+    {
+      "name": "bracket_t",
+      "expression": "3 mm",
+      "value": 0.30000000000000004,
+      "unit": "mm",
+      "comment": "DESIGN: X bracket thickness"
+    },
+    {
+      "name": "bracket_bar_w",
+      "expression": "7 mm",
+      "value": 0.7000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: X bracket bar width"
+    },
+    {
+      "name": "mount_boss_len",
+      "expression": "6 mm",
+      "value": 0.6000000000000001,
+      "unit": "mm",
+      "comment": "DESIGN: boss length inward from mount-hub centre"
+    },
+    {
+      "name": "mount_boss_od",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm",
+      "comment": "DESIGN: mount boss OD"
+    },
+    {
+      "name": "m2_clear",
+      "expression": "2.3 mm",
+      "value": 0.22999999999999998,
+      "unit": "mm",
+      "comment": "DESIGN: M2 clearance hole / slot width"
+    },
+    {
+      "name": "m2_tap",
+      "expression": "1.7 mm",
+      "value": 0.17,
+      "unit": "mm",
+      "comment": "FIT COUPON: M2 self-tapping pilot (strip prints 1.6/1.7/1.8)"
+    },
+    {
+      "name": "rod_density",
+      "expression": "1.55",
+      "value": 1.55,
+      "unit": "",
+      "comment": "ASSUMED: carbon rod g/cm^3"
+    },
+    {
+      "name": "petg_density",
+      "expression": "1.27",
+      "value": 1.27,
+      "unit": "",
+      "comment": "ASSUMED: PETG g/cm^3 (solid volume; slicer infill lowers this)"
+    },
+    {
+      "name": "junction_screws_per_side",
+      "expression": "1",
+      "value": 1.0,
+      "unit": "",
+      "comment": "DESIGN: M2 screws through each splice into each quarter end (1 or 2)"
+    },
+    {
+      "name": "print_wall",
+      "expression": "1.2 mm",
+      "value": 0.12,
+      "unit": "mm",
+      "comment": "ASSUMED: slicer wall/skin thickness for the print-mass estimate (3 x 0.4 mm)"
+    },
+    {
+      "name": "print_infill",
+      "expression": "0.25",
+      "value": 0.25,
+      "unit": "",
+      "comment": "ASSUMED: slicer infill fraction for the print-mass estimate"
+    },
+    {
+      "name": "antenna_len",
+      "expression": "30 mm",
+      "value": 3.0,
+      "unit": "mm",
+      "comment": "MEASURE: exposed VTX antenna element (listing: 70 mm overall incl. coax)"
+    },
+    {
+      "name": "antenna_d",
+      "expression": "5 mm",
+      "value": 0.5,
+      "unit": "mm",
+      "comment": "MEASURE: VTX antenna element diameter"
+    },
+    {
+      "name": "hub_keel_w",
+      "expression": "1.6 mm",
+      "value": 0.16000000000000003,
+      "unit": "mm",
+      "comment": "DESIGN: keel width under each hub arm (support-free printing; narrower than the tube to save mass)"
+    },
+    {
+      "name": "battery_gap",
+      "expression": "3 mm",
+      "value": 0.30000000000000004,
+      "unit": "mm",
+      "comment": "DESIGN: foam pad between carrier underside and pack; clears the M2 nuts (1.6 mm) and screw tails"
+    },
+    {
+      "name": "frame_column_h",
+      "expression": "20 mm",
+      "value": 2.0,
+      "unit": "mm",
+      "comment": "MEASURE: Apex-2 column height (top plate underside above bottom plate top); listing 20 mm"
+    }
+  ],
+  "timeline": [],
+  "timelineCount": 126,
+  "timelineMarker": 126
+}

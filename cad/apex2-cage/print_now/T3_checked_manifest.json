@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-09",
+  "file": "T3_cage_section_socket_2_checked.stl",
+  "sha256": "c3c23a82f67e390eeb91e2f8e0fb1ae51dbeeebf57d018e50b0376aca4308032",
+  "source_hub_sha256": "c440b77acd85c7e1bf66b2fc36bf43019fbc15d76d5b260e98c30cde9345670d",
+  "source_hub_manifest": "T3_native_hub_manifest.json",
+  "part_count": 10,
+  "bore_mm": 1.275,
+  "socket_depth_mm": 5.0,
+  "fit_source": "User T1B rod socket #2",
+  "screw_holes": false,
+  "size_mm": [
+    112.30039978027344,
+    39.12299346923828,
+    5.481016159057617
+  ],
+  "layout_columns_rows": [
+    5,
+    2
+  ],
+  "part_gap_mm": 12.0,
+  "brim_mm": 5,
+  "extra_path_allowance_mm": 0.4,
+  "bed_margin_xy_mm": [
+    13.449800109863281,
+    50.03850326538086
+  ],
+  "base_contact_area_mm2_min": 41.657975681732104,
+  "socket_mesh_checks": [
+    {
+      "direction": [
+        -0.552,
+        -0.809,
+        0.202
+      ],
+      "open_probe_mm": 1.269,
+      "rim_probe_mm": 1.325,
+      "blind_floor_present": true
+    },
+    {
+      "direction": [
+        -0.552,
+        0.809,
+        0.202
+      ],
+      "open_probe_mm": 1.269,
+      "rim_probe_mm": 1.325,
+      "blind_floor_present": true
+    },
+    {
+      "direction": [
+        0.979,
+        0.0,
+        0.202
+      ],
+      "open_probe_mm": 1.269,
+      "rim_probe_mm": 1.325,
+      "blind_floor_present": true
+    }
+  ],
+  "checks": {
+    "native_generator_and_fit_sources_match": true,
+    "watertight_and_consistently_oriented": true,
+    "ten_separate_hubs_flat_at_z0": true,
+    "positive_base_contact": true,
+    "all_three_sockets_open_with_blind_floors": true,
+    "five_mm_brim_fits_bed": true,
+    "no_part_intersections": true
+  },
+  "physical_status": "T1B fit selected by user; actual T3 section strength and rod retention pending"
+}

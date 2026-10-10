@@ -1,0 +1,1 @@
+These custom-graphics screenshot attempts returned uniform-color frames. They are not evidence of geometry, collision, or clearance. See the valid native model captures and numerical BRep results in the parent report.

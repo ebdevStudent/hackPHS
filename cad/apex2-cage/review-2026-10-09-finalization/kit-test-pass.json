@@ -1,0 +1,6 @@
+{
+  "environment": "Mac cad/kit .venv",
+  "command": "cad/kit/.venv/bin/python -m pytest cad/kit/tests -q",
+  "result": "45 passed in 8.60s",
+  "scope": "Local source/fit and test-fixture suite; no physical acceptance"
+}

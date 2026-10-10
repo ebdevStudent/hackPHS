@@ -1,0 +1,88 @@
+{
+  "cage": {
+    "outside_span_mm": [
+      245.9911180470778,
+      243.2074835846241,
+      248.0
+    ],
+    "rod_solids": {
+      "rods_edge_x90_cut_44.53mm": 90,
+      "rods_pole_x10_cut_37.86mm": 10
+    }
+  },
+  "static": {
+    "bodies_tested": 75,
+    "press_fits": [],
+    "unexpected_intersections": 0
+  },
+  "battery_hardware": [
+    {
+      "pack": "450",
+      "frame_offset_mm": [
+        0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 2.2760236235221636,
+      "foam_gap_mm": 0.4999999999999982
+    },
+    {
+      "pack": "1100",
+      "frame_offset_mm": [
+        0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 0.40000000000000036,
+      "foam_gap_mm": 0.4999999999999982
+    },
+    {
+      "pack": "450",
+      "frame_offset_mm": [
+        0,
+        -5.0,
+        0
+      ],
+      "nut_gap_mm": 2.2760236235221636,
+      "foam_gap_mm": 0.4999999999999982
+    },
+    {
+      "pack": "1100",
+      "frame_offset_mm": [
+        0,
+        -5.0,
+        0
+      ],
+      "nut_gap_mm": 0.40000000000000036,
+      "foam_gap_mm": 0.4999999999999982
+    },
+    {
+      "pack": "450",
+      "frame_offset_mm": [
+        0,
+        5.0,
+        0
+      ],
+      "nut_gap_mm": 2.2760236235221636,
+      "foam_gap_mm": 0.4999999999999982
+    },
+    {
+      "pack": "1100",
+      "frame_offset_mm": [
+        0,
+        5.0,
+        0
+      ],
+      "nut_gap_mm": 0.40000000000000036,
+      "foam_gap_mm": 0.4999999999999982
+    }
+  ],
+  "prop_support_travel": {
+    "tests": 64,
+    "minimum_sampled_support_gap_mm": 7.402376867944833,
+    "continuous_face_AABB_separation_min_mm": 7.400000000000004,
+    "continuous_scope": "Each support boundary face is outside every expanded prop box. Nominal props are outside supports, so no continuous translated prop can enter. Arms share vertical movement, pivot blocks do not."
+  },
+  "continuous_prop_to_cage_lower_bound_mm": 34.63203721563403,
+  "physical_pending": "Strap routing/closure, battery removal, wires, antenna retention, material strength, mass and thrust require delivered parts."
+}

@@ -1,0 +1,31 @@
+{
+  "application": "/Users/devk/Applications/Ball Drone.app",
+  "executable_sha256": "2f8351d954520c98de1886419cc7c60b4beae829be0f83ed72481f3c817ba70a",
+  "codesign_verify_exit": 0,
+  "codesign_verify_output": "",
+  "source_matches_arm64_python_suite": true,
+  "scope": "Rebuilt Apple Silicon .app; offscreen launch/preview/state/shutdown smoke. Not a native endurance or physical-device result.",
+  "source_sha256_at_build": "c877113f30836ecb0a931521f83e1d1c899e0966cae3819b8c7e7e7be1279726",
+  "latest_verified_source_sha256": "b00fec6f322500547a5757ed3f122a840b0443c08cda81eb6cb6245bcc159c0d",
+  "latest_mac_arm64_source_match": true,
+  "runtime_sources_unchanged_since_build": true,
+  "runtime_source_files": {
+    "software/ball_demo/config.py": "1474918023bc8b124065c4420dff2e1949da618b7e77d07fe4e84bb572c122b2",
+    "software/ball_demo/vision.py": "952994f41b74090f8e162cae5ab11fae43c017d4f1d6ae62fd20b28a5905215d",
+    "software/ball_demo/protocol.py": "1592668e901bbf88bfb87b1e15fc7a3921c0398df1055b46dfd349360d9ee879",
+    "software/ball_demo/control.py": "24b0543bf030d1c5b3fb73165c89f391e16407e1d06eee0f79d39dad573e42fe",
+    "software/ball_demo/bridge.py": "7916979a8262ee4de5498a2e0b4edfdd7692299aa1795b064eb973c0400d60ed",
+    "software/ball_demo/session.py": "8fff31ab216b4aadaaca0cdc45aa787f4e6b135a6f8c62d8c32f058d29451da6",
+    "software/ball_demo/__init__.py": "91447944015cec709e8aa7655f7e9d64e1e4508e7023a57fe3746911c0fc6fed",
+    "software/ball_demo/api.py": "3b04e6a4ee1ec8ce9944bc76bd4aa06a996519ece9361e18c9cce918ca3d0593",
+    "software/ball_demo/sources.py": "38411ecde56698497e44345ee4287dd39a3d8534a4273259ffa06816615d2241",
+    "software/ball_demo/engine.py": "c90fefe7bfbb703643c41c67910a0567891ef339f3394204f81c5beb7012910b",
+    "software/ball_demo/cli.py": "098f26ed66079e70033c689303df2d6ea2202bb5d4a8324dee9ff27325b31840",
+    "software/ball_demo/desktop_backend.py": "2fea0ab4eef5e3755a4a56bc2801fddc7a91999d0a8bdc4aec4798fa6e7c4522",
+    "software/ball_demo/fixtures.py": "707d070d5f9cf6483aa6fc24e0204319caf4493a5076f5ebf54a6b8aee18a906",
+    "software/ball_demo/serial_emulator.py": "e83684771337b190f73d2becd106ecfa871ac42dd965241c97fcff24396f7400",
+    "software/ball_demo/desktop.py": "181117bf133bf40cabe4700a79578c054c92492a8b0cbb3e80e5f3faf64da205"
+  },
+  "latest_tests_added_after_build": "Seven verifier self-tests added after build; runtime sources unchanged.",
+  "executable_path": "/Users/devk/Applications/Ball Drone.app/Contents/MacOS/Ball Drone"
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FX test bench</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #07090c; color: #ddd; font: 13px "Segoe UI", sans-serif; overflow: hidden; }
+  canvas { display: block; }
+  #ui { position: fixed; top: 10px; left: 10px; display: flex; flex-wrap: wrap; gap: 6px; max-width: 760px; }
+  button { background: #1b2733; color: #dde; border: 1px solid #345; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+  button.on { background: #2a6b3d; }
+  label { display: flex; align-items: center; gap: 6px; background: #111a22; padding: 4px 8px; border-radius: 6px; }
+</style>
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }</script>
+</head>
+<body>
+<div id="ui">
+  <b style="width:100%">Particles</b>
+  <button data-t="fire">fire</button><button data-t="smoke">smoke</button><button data-t="motes">motes</button><button data-t="steam">steam</button><button data-t="heat">heat</button>
+  <button data-i="metal">impact metal</button><button data-i="concrete">impact concrete</button><button data-i="wood">impact wood</button><button data-i="brick">impact brick</button>
+  <button data-t="scrapeM">scrape metal</button><button data-t="scrapeC">scrape concrete</button>
+  <b style="width:100%">Sound</b>
+  <button id="ainit">init audio</button>
+  <label>thrust <input id="thr" type="range" min="0" max="1" step="0.01" value="0.45"></label>
+  <label>airspeed <input id="air" type="range" min="0" max="5" step="0.1" value="0"></label>
+  <button data-s="metal">clang</button><button data-s="concrete">thud</button><button data-s="wood">knock</button><button data-s="brick">brick</button>
+  <label>slip <input id="slip" type="range" min="0" max="2" step="0.05" value="0"></label>
+  <label>roll <input id="roll" type="range" min="0" max="3" step="0.05" value="0"></label>
+  <button data-a="industrial">amb industrial</button><button data-a="rescue">amb rescue</button><button data-a="">amb off</button>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { Particles } from "./js/fx.js";
+import { Sfx } from "./js/audio.js";
+
+const r = new THREE.WebGLRenderer({ antialias: true }); r.setPixelRatio(Math.min(devicePixelRatio, 2)); r.setSize(innerWidth, innerHeight);
+r.toneMapping = THREE.ACESFilmicToneMapping; document.body.appendChild(r.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x0a0c10); scene.fog = new THREE.Fog(0x0a0c10, 8, 30);
+const cam = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.05, 100); cam.position.set(0, 1.6, 4.5);
+scene.add(new THREE.HemisphereLight(0x8090a0, 0x201810, 0.6));
+const key = new THREE.SpotLight(0xffe6c0, 80, 20, 0.6, 0.5, 2); key.position.set(2, 5, 3); scene.add(key);
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), new THREE.MeshStandardMaterial({ color: 0x55524d, roughness: 0.95 })); floor.rotation.x = -Math.PI / 2; scene.add(floor);
+const wall = new THREE.Mesh(new THREE.BoxGeometry(6, 3, 0.2), new THREE.MeshStandardMaterial({ color: 0x6a6660, roughness: 0.9 })); wall.position.set(0, 1.5, -1.5); scene.add(wall);
+const fireLight = new THREE.PointLight(0xff7a2a, 0, 6, 2); fireLight.position.set(-1.5, 0.5, 0); scene.add(fireLight);
+
+const fx = new Particles(scene, 6000); const sfx = new Sfx();
+const on = new Set();
+document.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { const t = b.dataset.t; on.has(t) ? on.delete(t) : on.add(t); b.classList.toggle("on"); });
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+document.querySelectorAll("[data-i]").forEach(b => b.onclick = () => fx.impact(V(0.6, 0.9, -1.39), V(0, 0, 1), 3, b.dataset.i));
+document.getElementById("ainit").onclick = () => sfx.init();
+document.querySelectorAll("[data-s]").forEach(b => b.onclick = () => { sfx.init(); sfx.impact(3, b.dataset.s); });
+document.querySelectorAll("[data-a]").forEach(b => b.onclick = () => { sfx.init(); sfx.ambience(b.dataset.a || null); });
+const val = id => +document.getElementById(id).value;
+window.__fx = { fx, sfx, on, scene, cam };
+
+let last = performance.now(), t = 0;
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  step(dt);
+  requestAnimationFrame(frame);
+}
+function step(dt) {
+  t += dt;
+  if (window.__camFix) { cam.position.set(...window.__camFix[0]); cam.lookAt(...window.__camFix[1]); }
+  else { cam.position.set(Math.sin(t * 0.05) * 4.5, 1.6, Math.cos(t * 0.05) * 4.5); cam.lookAt(0, 0.9, -0.5); }
+  if (on.has("fire")) { fx.fire(V(-1.5, 0.02, 0), 0.9, 0.7, dt); fireLight.intensity = 6 + 3 * Math.sin(t * 17) * Math.sin(t * 5.3); } else fireLight.intensity = 0;
+  if (on.has("smoke")) fx.smoke(V(1.6, 0.1, 0.4), 12, dt);
+  if (on.has("motes")) fx.motes(V(0, 1.2, 0.5), 2.5, dt);
+  if (on.has("steam")) fx.steam(V(-0.4, 1.4, -1.35), V(0.2, 0.3, 1).normalize(), 55, dt);
+  if (on.has("heat")) fx.heat(V(0.9, 0.3, 0.3), 14, dt);
+  if (on.has("scrapeM")) fx.scrape(V(-0.8, 0.6, -1.39), V(0, 0, 1), 1.5, "metal");
+  if (on.has("scrapeC")) fx.scrape(V(0.2, 0.01, 0.6), V(0, 1, 0), 1.2, "concrete");
+  if (sfx.ctx) { sfx.motors(val("thr"), val("air")); sfx.scrape(val("slip"), "concrete", val("roll")); }
+  fx.update(dt, cam);
+  r.render(scene, cam);
+}
+window.__fx.step = (n, dt = 1 / 60) => { for (let i = 0; i < n; i++) step(dt); };
+requestAnimationFrame(frame);
+addEventListener("resize", () => { r.setSize(innerWidth, innerHeight); cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix(); });
+</script>
+</body>
+</html>

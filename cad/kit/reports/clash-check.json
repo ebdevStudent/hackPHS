@@ -1,0 +1,118 @@
+{
+  "cage": {
+    "span_mm": [
+      245.84,
+      242.32,
+      247.85
+    ],
+    "hubs": 62,
+    "rods": 100,
+    "volume_mm3": 18334.3,
+    "genus": -161
+  },
+  "self_clash": {
+    "cage_x_p1a_props_mm3": 0.0,
+    "cage_to_p1a_props_gap_mm": 38.132,
+    "cage_x_p1b_swept_mm3": 0.0
+  },
+  "p1b_swept_radius_mm": 79.61,
+  "p1b_outer_ring_mm": 99.0,
+  "probes": [
+    {
+      "diameter_mm": 10,
+      "passes_through": [
+        3,
+        5,
+        6
+      ],
+      "p1a_prop_contact": true,
+      "p1a_min_gap_mm": null,
+      "p1b_swept_contact": true,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    },
+    {
+      "diameter_mm": 30,
+      "passes_through": [
+        5,
+        6
+      ],
+      "p1a_prop_contact": true,
+      "p1a_min_gap_mm": null,
+      "p1b_swept_contact": true,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    },
+    {
+      "diameter_mm": 60,
+      "passes_through": [
+        5,
+        6
+      ],
+      "p1a_prop_contact": true,
+      "p1a_min_gap_mm": null,
+      "p1b_swept_contact": true,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    },
+    {
+      "diameter_mm": 80,
+      "passes_through": [
+        6
+      ],
+      "p1a_prop_contact": true,
+      "p1a_min_gap_mm": null,
+      "p1b_swept_contact": true,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    },
+    {
+      "diameter_mm": 84,
+      "passes_through": [
+        6
+      ],
+      "p1a_prop_contact": true,
+      "p1a_min_gap_mm": null,
+      "p1b_swept_contact": true,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    },
+    {
+      "diameter_mm": 90,
+      "passes_through": [],
+      "p1a_prop_contact": false,
+      "p1a_min_gap_mm": 3.05,
+      "p1b_swept_contact": false,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    },
+    {
+      "diameter_mm": 100,
+      "passes_through": [],
+      "p1a_prop_contact": false,
+      "p1a_min_gap_mm": 8.9,
+      "p1b_swept_contact": false,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    },
+    {
+      "diameter_mm": 120,
+      "passes_through": [],
+      "p1a_prop_contact": false,
+      "p1a_min_gap_mm": 14.62,
+      "p1b_swept_contact": false,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    },
+    {
+      "diameter_mm": 150,
+      "passes_through": [],
+      "p1a_prop_contact": false,
+      "p1a_min_gap_mm": 19.32,
+      "p1b_swept_contact": false,
+      "p1b_ring_contact": true,
+      "max_ball_cage_overlap_mm3": 0.0001
+    }
+  ],
+  "scope": "Solid clash check: cage (exported hub meshes + rod cylinders) against prop volumes and outside objects.\n\nBuilds the P1A cage from cad/apex2-cage/exports hub STLs placed exactly as build_p1a.py places them, plus\nevery edge and pole rod as a cylinder. Prop volumes:\n  P1A  the convex hull of each prop disk at every corner of the balancing travel (adj_x, adj_y);\n  P1B  the sphere swept by the free-turning aircraft (generator's aircraft_radius) and the outer ring band.\nChecks:\n  1. the cage itself never intersects any prop volume;\n  2. for each object diameter and each opening, a solid ball is pushed in along the opening's normal (at the\n     opening centre and at the analytic worst-case position from opening_probe) until it first touches real\n     hub/rod material, or passes through the opening; at that point its intersection volume and gap to the\n     prop volumes are measured with Manifold Booleans.\nVendor/provisional dimensions; rigid, no rod deflection."
+}

@@ -1,0 +1,8 @@
+specimen,load_g,deflection_mm,phase,slip_mm,notes
+A,0,0,load,0,
+A,20,,load,,
+A,50,,load,,
+A,100,,load,,
+A,200,,load,,
+A,200,,hold,,
+A,0,,unload,,

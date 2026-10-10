@@ -1,0 +1,100 @@
+{
+  "api_version": 1,
+  "sequence": 41,
+  "observed_at": "2026-10-09T16:00:00.000Z",
+  "operator_authorized": true,
+  "source": "mock",
+  "server_name": "Contract example (mock)",
+  "capabilities": {
+    "follow": {
+      "supported": true,
+      "ready": true,
+      "reason": null
+    },
+    "land_current": {
+      "supported": true,
+      "ready": true,
+      "reason": null
+    },
+    "land_point": {
+      "supported": true,
+      "ready": true,
+      "reason": null
+    },
+    "land_tag": {
+      "supported": true,
+      "ready": true,
+      "reason": null
+    },
+    "audio_receive": {
+      "supported": true,
+      "ready": true,
+      "reason": null
+    },
+    "audio_transmit": {
+      "supported": true,
+      "ready": true,
+      "reason": null
+    },
+    "tts": {
+      "supported": true,
+      "ready": true,
+      "reason": null
+    }
+  },
+  "roster": [
+    {
+      "person_id": "ishaan",
+      "display_name": "Ishaan",
+      "tag_id": 7,
+      "tag_family": "tag36h11",
+      "detection_state": "visible",
+      "available": true,
+      "reason": null
+    }
+  ],
+  "camera": {
+    "state": "live",
+    "name": "Main camera",
+    "session_id": "example-camera",
+    "transport": "webrtc",
+    "frame": {
+      "frame_id": "example-frame-41",
+      "camera_session_id": "example-camera",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-09T16:00:00.000Z",
+      "valid_for_ms": 4000,
+      "rotation": 0,
+      "mirrored": false,
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "image_path": "/api/ui/v1/camera/frames/example-frame-41.jpg",
+      "tags": []
+    }
+  },
+  "mission": {
+    "type": "none",
+    "phase": "idle"
+  },
+  "audio": {
+    "state": "ready",
+    "max_text_length": 500,
+    "voices": [],
+    "speech": []
+  },
+  "components": [
+    {
+      "id": "aircraft",
+      "name": "Aircraft link",
+      "state": "unknown",
+      "observed_at": "2026-10-09T16:00:00.000Z",
+      "detail": "No aircraft attached"
+    }
+  ],
+  "events": []
+}

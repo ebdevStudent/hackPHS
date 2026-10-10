@@ -1,0 +1,273 @@
+{
+  "cage": {
+    "outside_span_mm": [
+      245.8401176232222,
+      243.05881987940057,
+      247.84582859180003
+    ],
+    "rod_solids": {
+      "rods_edge_x90_cut_44.50mm": 90,
+      "rods_pole_x10_cut_37.83mm": 10
+    }
+  },
+  "static": {
+    "bodies_tested": 105,
+    "nominal_interference_pairs": [],
+    "unexpected_intersections": 0,
+    "pin_seats": {
+      "geometrically_engaged_seats": [
+        {
+          "pin": "pin_0",
+          "part": "arm_pivot_block",
+          "diameter_mm": 2.25,
+          "engagement_mm": 6.0,
+          "axis_error_mm": 1.7985612998927536e-14
+        },
+        {
+          "pin": "pin_1",
+          "part": "arm_pivot_block",
+          "diameter_mm": 2.25,
+          "engagement_mm": 6.0,
+          "axis_error_mm": 1.7985612998927536e-14
+        },
+        {
+          "pin": "pin_2",
+          "part": "inner_junction_X_pin",
+          "diameter_mm": 2.15,
+          "engagement_mm": 5.999999999999972,
+          "axis_error_mm": 0.0
+        },
+        {
+          "pin": "pin_3",
+          "part": "inner_junction_X_pin",
+          "diameter_mm": 2.15,
+          "engagement_mm": 5.999999999999972,
+          "axis_error_mm": 1.086874034243276e-14
+        },
+        {
+          "pin": "pin_4",
+          "part": "hub_pole_5way_pivot",
+          "diameter_mm": 2.25,
+          "engagement_mm": 6.000000000000014,
+          "axis_error_mm": 0.0
+        },
+        {
+          "pin": "pin_5",
+          "part": "hub_pole_5way_pivot",
+          "diameter_mm": 2.25,
+          "engagement_mm": 6.000000000000014,
+          "axis_error_mm": 0.0
+        }
+      ],
+      "fit_basis": "User-reported T2 coupon fit; CAD clearance compensates FDM hole shrinkage; loaded retention remains physical"
+    },
+    "bearing_seats": {
+      "geometrically_engaged_seats": [
+        {
+          "bearing": "MR52ZZ_0",
+          "part": "inner_junction_Y_bearing",
+          "seat_diameter_mm": 5.300000000000001,
+          "engagement_mm": 2.5,
+          "axis_error_mm": 1.8818280267396407e-14
+        },
+        {
+          "bearing": "MR52ZZ_1",
+          "part": "inner_junction_Y_bearing",
+          "seat_diameter_mm": 5.300000000000001,
+          "engagement_mm": 2.5,
+          "axis_error_mm": 1.8818280267396407e-14
+        },
+        {
+          "bearing": "MR52ZZ_2",
+          "part": "outer_junction_X_bearing",
+          "seat_diameter_mm": 5.300000000000001,
+          "engagement_mm": 2.5,
+          "axis_error_mm": 0.0
+        },
+        {
+          "bearing": "MR52ZZ_3",
+          "part": "outer_junction_X_bearing",
+          "seat_diameter_mm": 5.300000000000001,
+          "engagement_mm": 2.5,
+          "axis_error_mm": 1.1327982892113017e-14
+        },
+        {
+          "bearing": "MR52ZZ_4",
+          "part": "outer_junction_Z_bearing",
+          "seat_diameter_mm": 5.300000000000001,
+          "engagement_mm": 2.5,
+          "axis_error_mm": 2.4907390438122518e-14
+        },
+        {
+          "bearing": "MR52ZZ_5",
+          "part": "outer_junction_Z_bearing",
+          "seat_diameter_mm": 5.300000000000001,
+          "engagement_mm": 2.5,
+          "axis_error_mm": 2.4907390438122518e-14
+        }
+      ],
+      "fit_basis": "User-reported T2 #4 bearing fit; loaded retention remains physical"
+    }
+  },
+  "battery_hardware": [
+    {
+      "nuts": "M2_nut_and_tail_x4_envelope",
+      "pack": "450",
+      "offset_mm": [
+        0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 2.541708782459344,
+      "foam_gap_mm": 2.499999999999999
+    },
+    {
+      "nuts": "M2_nut_and_tail_x4_envelope",
+      "pack": "1100",
+      "offset_mm": [
+        0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 1.200000000000001,
+      "foam_gap_mm": 2.499999999999999
+    },
+    {
+      "nuts": "M2_nut_and_tail_x4_envelope",
+      "pack": "450",
+      "offset_mm": [
+        -2.0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 1.223882282682844,
+      "foam_gap_mm": 0.5000000000000004
+    },
+    {
+      "nuts": "M2_nut_and_tail_x4_envelope",
+      "pack": "1100",
+      "offset_mm": [
+        -2.0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 1.200000000000001,
+      "foam_gap_mm": 0.5000000000000004
+    },
+    {
+      "nuts": "M2_nut_and_tail_x4_envelope",
+      "pack": "450",
+      "offset_mm": [
+        2.0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 1.223882282682844,
+      "foam_gap_mm": 0.5000000000000004
+    },
+    {
+      "nuts": "M2_nut_and_tail_x4_envelope",
+      "pack": "1100",
+      "offset_mm": [
+        2.0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 1.200000000000001,
+      "foam_gap_mm": 0.5000000000000004
+    },
+    {
+      "nuts": "M2_nut_arm_x4_envelope",
+      "pack": "450",
+      "offset_mm": [
+        0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 1.2,
+      "foam_gap_mm": 0.5000000000000002
+    },
+    {
+      "nuts": "M2_nut_arm_x4_envelope",
+      "pack": "1100",
+      "offset_mm": [
+        0,
+        0,
+        0
+      ],
+      "nut_gap_mm": 1.200000000000001,
+      "foam_gap_mm": 0.5000000000000002
+    },
+    {
+      "nuts": "M2_nut_arm_x4_envelope",
+      "pack": "450",
+      "offset_mm": [
+        0,
+        -3.0000000000000004,
+        0
+      ],
+      "nut_gap_mm": 1.2,
+      "foam_gap_mm": 0.5000000000000002
+    },
+    {
+      "nuts": "M2_nut_arm_x4_envelope",
+      "pack": "1100",
+      "offset_mm": [
+        0,
+        -3.0000000000000004,
+        0
+      ],
+      "nut_gap_mm": 1.200000000000001,
+      "foam_gap_mm": 0.5000000000000002
+    },
+    {
+      "nuts": "M2_nut_arm_x4_envelope",
+      "pack": "450",
+      "offset_mm": [
+        0,
+        3.0000000000000004,
+        0
+      ],
+      "nut_gap_mm": 1.2,
+      "foam_gap_mm": 0.5000000000000002
+    },
+    {
+      "nuts": "M2_nut_arm_x4_envelope",
+      "pack": "1100",
+      "offset_mm": [
+        0,
+        3.0000000000000004,
+        0
+      ],
+      "nut_gap_mm": 1.200000000000001,
+      "foam_gap_mm": 0.5000000000000002
+    }
+  ],
+  "prop_support_travel": {
+    "tests": 128,
+    "minimum_sampled_support_gap_mm": 8.057333053389982,
+    "continuous_face_AABB_separation_min_mm": 2.5124278936389786,
+    "continuous_scope": "Each support boundary face is outside every expanded prop box. Nominal props are outside supports, so no continuous translated prop can enter. Arms share vertical movement, pivot blocks do not."
+  },
+  "continuous_radial_bounds_mm": {
+    "cage": [
+      113.42849338845632,
+      124.1630122986092
+    ],
+    "outer": [
+      91.74999999999999,
+      113.0678650826687
+    ],
+    "inner": [
+      84.0,
+      91.4291862369701
+    ]
+  },
+  "continuous_radial_clearances_mm": {
+    "inner_to_outer_mm": 0.3208137630298893,
+    "outer_to_cage_mm": 0.36062830578761407,
+    "props_to_inner_mm": 4.3146938723128585
+  },
+  "scope": "Origin-centred rigid CAD bodies, excluding coaxial pins/bearings; nominal material dimensions; no wires/flex.",
+  "physical_pending": "Strap routing/closure, battery removal, wires, antenna retention, full aircraft fit, strength, mass and thrust require delivered parts."
+}

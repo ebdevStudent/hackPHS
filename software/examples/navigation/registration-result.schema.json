@@ -1,0 +1,333 @@
+{
+  "$defs": {
+    "CameraGeometry": {
+      "additionalProperties": false,
+      "description": "Optical geometry shared by the FPV camera and stationary scanner RGB.",
+      "properties": {
+        "image_size": {
+          "items": {
+            "maximum": 4096,
+            "minimum": 16,
+            "type": "integer"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Image Size",
+          "type": "array"
+        },
+        "intrinsics": {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 3,
+            "minItems": 3,
+            "type": "array"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Intrinsics",
+          "type": "array"
+        },
+        "distortion_model": {
+          "const": "opencv_brown",
+          "title": "Distortion Model",
+          "type": "string"
+        },
+        "distortion": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Distortion",
+          "type": "array"
+        }
+      },
+      "required": [
+        "image_size",
+        "intrinsics",
+        "distortion_model",
+        "distortion"
+      ],
+      "title": "CameraGeometry",
+      "type": "object"
+    },
+    "RegistrationPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "min_tags": {
+          "default": 2,
+          "maximum": 587,
+          "minimum": 2,
+          "title": "Min Tags",
+          "type": "integer"
+        },
+        "stable_frames": {
+          "default": 3,
+          "maximum": 100,
+          "minimum": 2,
+          "title": "Stable Frames",
+          "type": "integer"
+        },
+        "min_pixel_span": {
+          "default": 30.0,
+          "exclusiveMinimum": 0,
+          "title": "Min Pixel Span",
+          "type": "number"
+        },
+        "max_reprojection_px": {
+          "default": 3.0,
+          "exclusiveMinimum": 0,
+          "title": "Max Reprojection Px",
+          "type": "number"
+        },
+        "min_ambiguity_gap_px": {
+          "default": 0.4,
+          "minimum": 0,
+          "title": "Min Ambiguity Gap Px",
+          "type": "number"
+        },
+        "max_translation_m": {
+          "default": 0.02,
+          "exclusiveMinimum": 0,
+          "title": "Max Translation M",
+          "type": "number"
+        },
+        "max_rotation_rad": {
+          "default": 0.05,
+          "exclusiveMinimum": 0,
+          "title": "Max Rotation Rad",
+          "type": "number"
+        },
+        "max_uncertainty_m": {
+          "default": 0.15,
+          "exclusiveMinimum": 0,
+          "title": "Max Uncertainty M",
+          "type": "number"
+        },
+        "survey_uncertainty_m": {
+          "default": 0.03,
+          "minimum": 0,
+          "title": "Survey Uncertainty M",
+          "type": "number"
+        },
+        "factory_uncertainty_m": {
+          "default": 0.005,
+          "minimum": 0,
+          "title": "Factory Uncertainty M",
+          "type": "number"
+        },
+        "depth_uncertainty_m": {
+          "default": 0.02,
+          "minimum": 0,
+          "title": "Depth Uncertainty M",
+          "type": "number"
+        }
+      },
+      "title": "RegistrationPolicy",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "survey_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Survey Id",
+      "type": "string"
+    },
+    "map_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Map Id",
+      "type": "string"
+    },
+    "map_version": {
+      "minimum": 1,
+      "title": "Map Version",
+      "type": "integer"
+    },
+    "frame_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Frame Id",
+      "type": "string"
+    },
+    "camera": {
+      "$ref": "#/$defs/CameraGeometry"
+    },
+    "map_from_color": {
+      "items": {
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4,
+        "minItems": 4,
+        "type": "array"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "title": "Map From Color",
+      "type": "array"
+    },
+    "color_from_depth": {
+      "items": {
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4,
+        "minItems": 4,
+        "type": "array"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "title": "Color From Depth",
+      "type": "array"
+    },
+    "map_from_depth": {
+      "items": {
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4,
+        "minItems": 4,
+        "type": "array"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "title": "Map From Depth",
+      "type": "array"
+    },
+    "tag_ids": {
+      "items": {
+        "type": "integer"
+      },
+      "maxItems": 587,
+      "minItems": 2,
+      "title": "Tag Ids",
+      "type": "array"
+    },
+    "timestamps_s": {
+      "items": {
+        "minimum": 0,
+        "type": "number"
+      },
+      "maxItems": 1000,
+      "minItems": 2,
+      "title": "Timestamps S",
+      "type": "array"
+    },
+    "image_sha256": {
+      "items": {
+        "pattern": "^[a-f0-9]{64}$",
+        "type": "string"
+      },
+      "maxItems": 1000,
+      "minItems": 2,
+      "title": "Image Sha256",
+      "type": "array"
+    },
+    "image_digest_kind": {
+      "const": "decoded_pixels_sha256",
+      "default": "decoded_pixels_sha256",
+      "title": "Image Digest Kind",
+      "type": "string"
+    },
+    "reprojection_px": {
+      "minimum": 0,
+      "title": "Reprojection Px",
+      "type": "number"
+    },
+    "ambiguity_gap_px": {
+      "minimum": 0,
+      "title": "Ambiguity Gap Px",
+      "type": "number"
+    },
+    "translation_spread_m": {
+      "minimum": 0,
+      "title": "Translation Spread M",
+      "type": "number"
+    },
+    "rotation_spread_rad": {
+      "minimum": 0,
+      "title": "Rotation Spread Rad",
+      "type": "number"
+    },
+    "uncertainty_m": {
+      "minimum": 0,
+      "title": "Uncertainty M",
+      "type": "number"
+    },
+    "camera_uncertainty_m": {
+      "minimum": 0,
+      "title": "Camera Uncertainty M",
+      "type": "number"
+    },
+    "uncertainty_provisional": {
+      "const": true,
+      "default": true,
+      "title": "Uncertainty Provisional",
+      "type": "boolean"
+    },
+    "source": {
+      "enum": [
+        "synthetic_estimate",
+        "recorded_estimate",
+        "vision_estimate"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "example": {
+      "title": "Example",
+      "type": "boolean"
+    },
+    "physical_acceptance": {
+      "const": false,
+      "default": false,
+      "title": "Physical Acceptance",
+      "type": "boolean"
+    },
+    "policy": {
+      "$ref": "#/$defs/RegistrationPolicy"
+    }
+  },
+  "required": [
+    "survey_id",
+    "map_id",
+    "map_version",
+    "frame_id",
+    "camera",
+    "map_from_color",
+    "color_from_depth",
+    "map_from_depth",
+    "tag_ids",
+    "timestamps_s",
+    "image_sha256",
+    "reprojection_px",
+    "ambiguity_gap_px",
+    "translation_spread_m",
+    "rotation_spread_rad",
+    "uncertainty_m",
+    "camera_uncertainty_m",
+    "source",
+    "example",
+    "policy"
+  ],
+  "title": "RegistrationResult",
+  "type": "object"
+}

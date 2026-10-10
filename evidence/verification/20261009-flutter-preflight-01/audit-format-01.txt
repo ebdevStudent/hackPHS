@@ -1,0 +1,6 @@
+Formatted lib/application/operator_controller.dart
+Formatted lib/media/media_port.dart
+Formatted lib/ui/audio.dart
+Formatted lib/ui/dialogs.dart
+Formatted lib/ui/operations.dart
+Formatted 22 files (5 changed) in 0.22 seconds.

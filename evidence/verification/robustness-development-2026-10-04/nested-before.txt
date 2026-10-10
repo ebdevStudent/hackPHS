@@ -1,0 +1,167 @@
+FFFFFFFFFFFFFFFF..FF.....FFF.....FFFFFF                                  [100%]
+=================================== FAILURES ===================================
+_________ test_snapshot_validation_protects_nested_ui_fields[change0] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change1] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change2] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change3] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change4] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change5] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change6] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change7] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change8] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change9] __________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change10] _________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change11] _________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change12] _________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_________ test_snapshot_validation_protects_nested_ui_fields[change13] _________
+tests/test_desktop_robustness.py:24: in test_snapshot_validation_protects_nested_ui_fields
+    with pytest.raises(ValueError): desktop.validate_snapshot(state(**change))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_ test_malformed_snapshot_never_reaches_widgets_or_callbacks[/api/state-None] __
+tests/test_desktop_robustness.py:33: in test_malformed_snapshot_never_reaches_widgets_or_callbacks
+    assert not snapshots and not completed and callbacks == [None] and errors
+E   AssertionError: assert (not [{'ack_age_ms': 10, 'ack_yaw': 0, 'bridge': 'MOCK / no physical output', 'bridge_fault': 'none', ...}])
+_ test_malformed_snapshot_never_reaches_widgets_or_callbacks[/api/operator/assist-payload1] _
+tests/test_desktop_robustness.py:33: in test_malformed_snapshot_never_reaches_widgets_or_callbacks
+    assert not snapshots and not completed and callbacks == [None] and errors
+E   AssertionError: assert (not [{'ack_age_ms': 10, 'ack_yaw': 0, 'bridge': 'MOCK / no physical output', 'bridge_fault': 'none', ...}])
+___________ test_authorization_reply_requires_explicit_true[value2] ____________
+tests/test_desktop_robustness.py:40: in test_authorization_reply_requires_explicit_true
+    assert not workstation.authorized and not workstation.enable.isEnabled()
+E   assert (not True)
+E    +  where True = <ball_demo.desktop.Workstation(0xbb63746c0) at 0x11f2f7900>.authorized
+___________ test_authorization_reply_requires_explicit_true[value3] ____________
+tests/test_desktop_robustness.py:40: in test_authorization_reply_requires_explicit_true
+    assert not workstation.authorized and not workstation.enable.isEnabled()
+E   assert (not True)
+E    +  where True = <ball_demo.desktop.Workstation(0xbb63d4240) at 0x11f37aa00>.authorized
+___ test_close_neutral_confirmation_requires_complete_zero_snapshot[reply2] ____
+tests/test_desktop_robustness.py:52: in test_close_neutral_confirmation_requires_complete_zero_snapshot
+    assert not workstation.neutral_remote()
+E   assert not True
+E    +  where True = neutral_remote()
+E    +    where neutral_remote = <ball_demo.desktop.Workstation(0xbb648f000) at 0x11f3a0f80>.neutral_remote
+___ test_close_neutral_confirmation_requires_complete_zero_snapshot[reply3] ____
+tests/test_desktop_robustness.py:52: in test_close_neutral_confirmation_requires_complete_zero_snapshot
+    assert not workstation.neutral_remote()
+E   assert not True
+E    +  where True = neutral_remote()
+E    +    where neutral_remote = <ball_demo.desktop.Workstation(0xbb64b2be0) at 0x11f39fc40>.neutral_remote
+___ test_close_neutral_confirmation_requires_complete_zero_snapshot[reply4] ____
+tests/test_desktop_robustness.py:52: in test_close_neutral_confirmation_requires_complete_zero_snapshot
+    assert not workstation.neutral_remote()
+E   assert not True
+E    +  where True = neutral_remote()
+E    +    where neutral_remote = <ball_demo.desktop.Workstation(0xbb648f000) at 0x11f3a2bc0>.neutral_remote
+_ test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update0] _
+tests/test_desktop_robustness.py:87: in test_trace_rejects_invalid_geometry_time_and_state_before_allocation
+    with pytest.raises(ValueError): desktop.validate_trace({'samples': [sample]})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_ test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update1] _
+tests/test_desktop_robustness.py:87: in test_trace_rejects_invalid_geometry_time_and_state_before_allocation
+    with pytest.raises(ValueError): desktop.validate_trace({'samples': [sample]})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_ test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update2] _
+tests/test_desktop_robustness.py:87: in test_trace_rejects_invalid_geometry_time_and_state_before_allocation
+    with pytest.raises(ValueError): desktop.validate_trace({'samples': [sample]})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_ test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update3] _
+tests/test_desktop_robustness.py:87: in test_trace_rejects_invalid_geometry_time_and_state_before_allocation
+    with pytest.raises(ValueError): desktop.validate_trace({'samples': [sample]})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_ test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update4] _
+tests/test_desktop_robustness.py:87: in test_trace_rejects_invalid_geometry_time_and_state_before_allocation
+    with pytest.raises(ValueError): desktop.validate_trace({'samples': [sample]})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+_ test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update5] _
+tests/test_desktop_robustness.py:87: in test_trace_rejects_invalid_geometry_time_and_state_before_allocation
+    with pytest.raises(ValueError): desktop.validate_trace({'samples': [sample]})
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE ValueError
+=========================== short test summary info ============================
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change0]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change1]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change2]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change3]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change4]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change5]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change6]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change7]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change8]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change9]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change10]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change11]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change12]
+FAILED tests/test_desktop_robustness.py::test_snapshot_validation_protects_nested_ui_fields[change13]
+FAILED tests/test_desktop_robustness.py::test_malformed_snapshot_never_reaches_widgets_or_callbacks[/api/state-None]
+FAILED tests/test_desktop_robustness.py::test_malformed_snapshot_never_reaches_widgets_or_callbacks[/api/operator/assist-payload1]
+FAILED tests/test_desktop_robustness.py::test_authorization_reply_requires_explicit_true[value2]
+FAILED tests/test_desktop_robustness.py::test_authorization_reply_requires_explicit_true[value3]
+FAILED tests/test_desktop_robustness.py::test_close_neutral_confirmation_requires_complete_zero_snapshot[reply2]
+FAILED tests/test_desktop_robustness.py::test_close_neutral_confirmation_requires_complete_zero_snapshot[reply3]
+FAILED tests/test_desktop_robustness.py::test_close_neutral_confirmation_requires_complete_zero_snapshot[reply4]
+FAILED tests/test_desktop_robustness.py::test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update0]
+FAILED tests/test_desktop_robustness.py::test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update1]
+FAILED tests/test_desktop_robustness.py::test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update2]
+FAILED tests/test_desktop_robustness.py::test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update3]
+FAILED tests/test_desktop_robustness.py::test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update4]
+FAILED tests/test_desktop_robustness.py::test_trace_rejects_invalid_geometry_time_and_state_before_allocation[update5]
+27 failed, 12 passed in 3.96s

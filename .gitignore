@@ -1,0 +1,32 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+.venv-desktop/
+node_modules/
+.env
+.env.*
+!.env.example
+software/runs/
+software/build/
+software/dist/
+software/*.spec
+software/*.egg-info/
+firmware/build*/
+.pytest_cache/
+.coverage*
+software/htmlcov/
+*.o
+evidence/raw/
+simulation/data/
+data/leaderboard.json
+data/missions.log
+*.log
+tools/.autocommit.pid
+build/
+dist/
+/Ball Drone.spec
+# Runtime data and private operator tokens wherever the CLI was started
+runs/
+**/runs/
+operator-token*

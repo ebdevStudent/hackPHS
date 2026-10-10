@@ -1,0 +1,9 @@
+# Run from software/ after building the headless and desktop ARM64 base images.
+FROM ball-drone-desktop:arm64
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends clang libclang-rt-dev && rm -rf /var/lib/apt/lists/*
+COPY requirements-dev.lock requirements.lock /app/
+RUN pip install --no-cache-dir -r requirements-dev.lock
+ENV QT_QPA_PLATFORM=offscreen
+WORKDIR /work/software
+CMD ["python", "/work/tools/verify.py", "--output", "/evidence/linux-arm64-final-2026-10-04"]

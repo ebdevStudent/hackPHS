@@ -1,0 +1,24 @@
+[Unit]
+Description=Ball Drone software demonstration (mock output)
+After=network.target
+
+[Service]
+Type=simple
+User=ball-demo
+Group=ball-demo
+SupplementaryGroups=video dialout
+WorkingDirectory=/opt/ball-drone/software
+Environment=BALL_DATA_DIR=/var/lib/ball-drone
+EnvironmentFile=/etc/ball-drone/operator.env
+ExecStart=/opt/ball-drone/software/.venv/bin/python -m ball_demo.cli serve --host 0.0.0.0 --port 8080
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/ball-drone
+# Synthetic startup deliberately has no serial/camera argument.
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,41 @@
+name,value,unit,notes,design,how_to_measure,vendor_or_placeholder
+motor_diag,,mm,,both,Centre of one motor shaft to the diagonally opposite shaft; average both diagonals,95 mm
+prop_dia,,mm,,both,Tip-to-tip across an installed prop; take the largest of the four,50.8 mm
+prop_z,,mm,,both,Frame top surface to the underside of the prop blades at the hub,8.9 mm
+motor_od,,mm,,both,Motor bell outside diameter,15.84 mm
+motor_h,,mm,,both,Frame top to the top of the motor bell,8.9 mm
+frame_t,,mm,,both,Bottom plate thickness at a mounting hole,2.5 mm
+arm_w,,mm,,both,Narrowest arm width,
+stack_w,,mm,,both,Centre plate width across the flats,33 mm
+stack_h,,mm,,both,Frame top to the highest point of the AIO stack and its wiring,12 mm
+frame_hole_pitch,,mm,,both,Centre-to-centre of the square mounting-hole pattern you will use,25.5 mm
+cam_size,,mm,,both,Camera body width (19 mm with the bracket),14 mm
+cam_y,,mm,,both,"Frame centre to camera centre, forward",
+cam_z,,mm,,both,Frame top to camera centre,
+cam_tilt,,deg,,both,Camera uptilt as mounted (angle gauge or phone level on the lens face),
+cam_hfov,,deg,,both,Horizontal field of view; leave blank unless measured against a grid,160 deg
+batt450_l,,mm,,both,450 mAh pack length without leads,62.8 mm
+batt450_w,,mm,,both,450 mAh pack width,16.4 mm
+batt450_h,,mm,,both,450 mAh pack height,13.8 mm
+batt1100_l,,mm,,both,1100 mAh pack length without leads,56.56 mm
+batt1100_w,,mm,,both,1100 mAh pack width,23.5 mm
+batt1100_h,,mm,,both,1100 mAh pack height,18.4 mm
+rod_dia,,mm,,both,"Carbon rod diameter, calipers at three points along one rod; record the largest",1.0 mm
+strap_w,,mm,,both,Battery strap width,12.5 mm
+strap_slot_t,,mm,,both,Strap thickness plus 0.5 mm,2.5 mm
+rod_bore_clear,,mm,,both,Fit strip: per-side clearance of the snuggest socket a rod enters without force,
+socket_depth,,mm,,both,Only if the fit strip shows a deeper socket is needed,
+m2_tap,,mm,,both,Fit strip: pilot hole that holds an M2 screw without cracking,
+antenna_len,,mm,,both,Exposed VTX antenna element length,
+antenna_d,,mm,,both,Antenna element outside diameter,
+frame_column_h,,mm,,both,Top plate underside above bottom plate top,
+bearing_od,,mm,,p1b,MR52ZZ outside diameter,
+bearing_w,,mm,,p1b,MR52ZZ width,
+bearing_seat_clear,,mm,,p1b,Gimbal coupon: seat allowance (seat - bearing OD) that holds the bearing; coupon prints 0/+0.10/+0.20/+0.30/+0.40,
+pin_d,,mm,,p1b,Dowel pin diameter,
+pin_press_d,,mm,,p1b,Gimbal coupon: press hole that holds a pin without cracking; coupon prints 1.85/1.95/2.05/2.15/2.25,
+pin_len,,mm,,p1b,Dowel pin stock length,
+bare_aircraft_g,,g,,mass,"Aircraft with AIO, motors, props, camera, antenna, wiring and XT30, without battery or cage",
+pack_450_g,,g,,mass,One 450 mAh pack with leads,26
+pack_1100_g,,g,,mass,One 1100 mAh pack with leads,48
+thrust_total_g,,g,,mass,Static thrust of all four motors at full throttle (tools/thrust_log.py),

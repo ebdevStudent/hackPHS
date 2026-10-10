@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-09",
+  "environment": "Mac cad/kit .venv",
+  "observed": "44 passed, 1 failed",
+  "test": "test_jig_reproduces_the_cage_span_and_socket",
+  "assertion": "expected pin_cut_length_mm 10.5; generated 11.0",
+  "cause": "Old expected pin length predates the authorized 1 mm running-gap change"
+}

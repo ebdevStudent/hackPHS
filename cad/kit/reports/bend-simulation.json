@@ -1,0 +1,96 @@
+{
+  "assembly": {
+    "rod_length_mm": 44.5,
+    "rod_cut_len_mm": 44.5,
+    "rod_x_blocks_mm3": 0.0,
+    "rod_x_jig_mm3": 0.0,
+    "blocks_x_jig_mm3": 0.0,
+    "blocks_overlap_mm3": 0.0,
+    "rod_end_gap_each_mm": 0.25,
+    "room_to_deflect_mm": 8.0,
+    "deflected_rod_x_jig_mm3": 0.0,
+    "hook_x_jig_mm3": 0.0,
+    "hook_x_rod_mm3": 0.0,
+    "hook_room_above_floor_mm": 4.0,
+    "pass": true
+  },
+  "predictions": {
+    "span_mm": 35.0,
+    "rod_diameter_mm": 1.0,
+    "second_moment_mm4": 0.04909,
+    "loads": [
+      {
+        "load_g": 20,
+        "pinned_mm": [
+          0.089,
+          0.128
+        ],
+        "fixed_mm": [
+          0.022,
+          0.032
+        ],
+        "max_stress_mpa_pinned": 17.5,
+        "stress_fraction_of_typical_strength": 0.04
+      },
+      {
+        "load_g": 50,
+        "pinned_mm": [
+          0.223,
+          0.319
+        ],
+        "fixed_mm": [
+          0.056,
+          0.08
+        ],
+        "max_stress_mpa_pinned": 43.7,
+        "stress_fraction_of_typical_strength": 0.11
+      },
+      {
+        "load_g": 100,
+        "pinned_mm": [
+          0.446,
+          0.638
+        ],
+        "fixed_mm": [
+          0.112,
+          0.159
+        ],
+        "max_stress_mpa_pinned": 87.4,
+        "stress_fraction_of_typical_strength": 0.22
+      },
+      {
+        "load_g": 200,
+        "pinned_mm": [
+          0.893,
+          1.275
+        ],
+        "fixed_mm": [
+          0.223,
+          0.319
+        ],
+        "max_stress_mpa_pinned": 174.9,
+        "stress_fraction_of_typical_strength": 0.44
+      }
+    ]
+  },
+  "predicted_log_verdict": {
+    "specimens": [
+      {
+        "specimen": "SIM",
+        "pass": true,
+        "problems": [],
+        "stiffness_g_per_mm": 223.9,
+        "deflection_at_top_load_mm": 0.893,
+        "residual_mm": 0.0,
+        "max_slip_mm": 0.0
+      }
+    ],
+    "pass": true,
+    "limits": {
+      "residual_mm": 0.25,
+      "slip_mm": 0.5,
+      "top_load_g": 200.0
+    }
+  },
+  "scope": "Simulated rod/hub bend test: jig assembly fit with solids, then beam-theory predictions of the readings.\n\n1. Assembly (Manifold Booleans): two bend_test_blocks seated in the jig pockets (pushed toward the middle),\n   a cut rod in both sockets, and the load hook at mid-span. Checks the rod clears every bore and the jig,\n   seats with the generator's end gap at each socket floor, the blocks fit their pockets, and the rod can\n   deflect down to the bottom of the scale without touching the channel floor.\n2. Predictions: mid-span deflection of a 1 mm solid round rod over the exposed span under the logged loads,\n   bounded by pinned ends (loose sockets) and fixed ends (tight sockets), using the 28-40 GPa lengthwise\n   modulus that Easy Composites publishes for its own pultruded rods. These are expected-reading ranges,\n   not properties of the ordered rods. The predicted log is run through analyse_bend to show the pipeline."
+}

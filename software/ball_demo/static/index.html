@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ball Drone — Monitor</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-name">Ball Drone <span>Software demo · no transmitter output</span></div>
+    <div class="header-actions">
+      <span id="connection" class="connection">Connecting</span>
+      <a class="header-link" href="/fallback">Fallback screen</a>
+      <button id="operator-open">Operator access</button>
+    </div>
+  </header>
+  <nav class="view-tabs" aria-label="Workspace">
+    <button id="monitor-tab" class="selected" role="tab" aria-selected="true" aria-controls="monitor-view">Monitor</button>
+    <button id="sandbox-tab" role="tab" aria-selected="false" aria-controls="sandbox-view">Sandbox</button>
+    <span id="session-id" class="session-id"></span>
+  </nav>
+  <main>
+    <section id="monitor-view" role="tabpanel" aria-labelledby="monitor-tab">
+      <div class="workspace">
+        <section class="video-panel">
+          <div class="section-heading">
+            <h1>Video monitor</h1>
+            <span id="source-label" class="source-label">SYNTHETIC</span>
+          </div>
+          <p id="steering-status" class="steering-status" role="status">Manual steering — computer steering unavailable</p>
+          <div class="video-stage">
+            <img id="preview" src="/api/preview" alt="Video feed with target detection outline">
+            <p id="video-stale" class="video-stale hidden">Video stale · no fresh frames</p>
+          </div>
+          <div class="video-caption"><span id="scenario-label">Moving target</span><span>640 × 480</span></div>
+          <div class="signal-row">
+            <div><small>Tracking state</small><strong id="state">MANUAL</strong></div>
+            <div><small>Requested yaw</small><strong id="yaw">0 <em>/ 1000</em></strong></div>
+            <div><small>Horizontal error</small><strong id="error">—</strong></div>
+          </div>
+          <div class="yaw-rail"><span>−1000</span><div><i id="yaw-marker"></i></div><span>+1000</span></div>
+          <div class="error-rail" aria-label="Target centre error"><span>Left</span><div><i id="error-marker" class="hidden"></i></div><span>Right</span></div>
+          <section class="navigation-panel" aria-label="Navigation guidance">
+            <div class="section-heading"><h2>Mapped guidance</h2><span id="nav-label" class="source-label">OPTIONAL</span></div>
+            <p id="nav-authority" class="note">Pilot controls movement, height, arming and takeover. Navigation is advisory.</p>
+            <p id="nav-status" role="status">Load a navigation bundle or a local replay to inspect guidance.</p>
+            <canvas id="nav-map" width="640" height="260" aria-label="Top view of estimated position and planned route"></canvas>
+            <dl class="nav-readouts"><div><dt>Estimated XYZ · m</dt><dd id="nav-position">—</dd></div><div><dt>Next waypoint · m</dt><dd id="nav-waypoint">—</dd></div><div><dt>Pose age / envelope</dt><dd id="nav-age">—</dd></div></dl>
+            <label class="replay-field">Inspect navigation replay<input id="nav-replay-file" type="file" accept=".json"><small>Browser-local playback. Use nav-replay or nav-demo exports.</small></label>
+            <div class="actions"><button id="nav-replay-play">Play replay</button><button id="nav-live">Show live guidance</button></div>
+          </section>
+        </section>
+        <aside class="sidebar">
+          <div id="fault-box" role="status" class="fault hidden"></div>
+          <section class="status-section">
+            <h2>Session status</h2>
+            <dl>
+              <div><dt>Assistance</dt><dd id="assistance">Disabled</dd></div>
+              <div><dt>Frame age</dt><dd id="frame-age">—</dd></div>
+              <div><dt>ACK age</dt><dd id="ack-age">—</dd></div>
+              <div><dt>Accepted yaw</dt><dd id="ack-yaw">0</dd></div>
+              <div><dt>Detection quality</dt><dd id="quality">—</dd></div>
+            </dl>
+            <p class="note">Quality measures blob size and continuity. It is a heuristic.</p>
+            <div class="bridge-info"><span>Bridge</span><p id="bridge">MOCK / no physical output</p></div>
+            <p class="note" id="limits-note">Acquire: 3 frames. Freshness limit: 250 ms.</p>
+            <p class="note">Aircraft telemetry unavailable.</p>
+          </section>
+          <section id="operator-panel" class="operator-panel hidden">
+            <div class="section-heading"><h2>Operator controls</h2><button id="operator-lock">Lock</button></div>
+            <div class="assist-actions"><button id="enable" class="primary">Enable assistance</button><button id="disable" class="danger">Disable · neutral</button></div>
+            <p id="operator-message" role="status" class="operator-message"></p>
+            <fieldset><legend>Advisory navigation</legend>
+              <label>Map goal · metres, X Y Z<input id="nav-goal" placeholder="1.5 1.0 1.2"></label>
+              <div class="actions"><button id="nav-goal-apply">Set goal</button><button id="nav-resume">Restore guidance</button><button id="nav-disable">Stop guidance</button></div>
+              <label>Import navigation bundle<input id="nav-bundle-file" type="file" accept=".json"></label>
+              <label>Import inspection mission<input id="nav-mission-file" type="file" accept=".json"></label>
+              <p id="nav-mission-status" class="note">No inspection mission loaded.</p>
+              <div class="actions"><button id="nav-mission-start">Start dry run</button><button id="nav-mission-advance">Advance target</button><button id="nav-mission-abort">Abort mission</button></div>
+              <p class="note">Mission progress uses estimated poses only. Requested snapshots are saved in private session storage; no aircraft output is connected.</p>
+              <p class="note">Restore deliberately after pose acquisition or loss. These controls never steer the aircraft.</p>
+            </fieldset>
+            <button id="pick-toggle" class="pick-toggle" aria-pressed="false">Pick target colour from video</button>
+            <fieldset>
+              <legend>Video source</legend>
+              <label>Input<select id="source-kind"><option value="synthetic">Synthetic scenes</option><option value="recorded">Recorded video</option><option value="camera">OpenCV camera</option></select></label>
+              <label id="scenario-field">Scene<select id="operator-scenario"></select></label>
+              <label id="source-path-field" class="hidden">Server video path / camera index<input id="source-path" placeholder="/path/to/clip.avi or 0"></label>
+              <button id="source-apply">Load source</button>
+            </fieldset>
+            <details class="settings-section">
+              <summary>Controller and detector settings</summary>
+              <div class="settings-grid">
+                <label>Gain<input id="gain" type="number" value="700" min="0" max="2000"></label>
+                <label>Yaw limit<input id="max-yaw" type="number" value="650" min="0" max="1000"></label>
+                <label>Deadband<input id="deadband" type="number" value="0.04" step="0.01" min="0" max="0.5"></label>
+                <label>Smoothing<input id="smoothing" type="number" value="0.35" step="0.05" min="0.01" max="1"></label>
+                <label>Slew / second<input id="slew" type="number" value="1800" min="1" max="10000"></label>
+                <label>Direction<select id="direction"><option value="1">+1</option><option value="-1">−1</option></select></label>
+                <label>Hue low<input id="hue-low" type="number" value="35" min="0" max="179"></label>
+                <label>Hue high<input id="hue-high" type="number" value="85" min="0" max="179"></label>
+                <label>Saturation min<input id="saturation-min" type="number" value="100" min="0" max="255"></label>
+                <label>Value min<input id="value-min" type="number" value="80" min="0" max="255"></label>
+                <label>Area min<input id="min-area" type="number" value="100" min="1"></label>
+                <label>Area max<input id="max-area" type="number" value="50000" min="1"></label>
+              </div>
+              <button id="settings-apply">Apply settings</button>
+              <p class="note">Applying settings disables assistance.</p>
+            </details>
+            <details class="settings-section">
+              <summary>Bridge fault demonstration</summary>
+              <label>Mock fault<select id="bridge-fault"><option value="none">Normal / recover disabled</option><option value="disconnect">Disconnected</option><option value="missing_ack">Missing acknowledgements</option><option value="delayed_ack">Delayed replies</option></select></label>
+              <button id="fault-apply">Apply fault / recover</button>
+            </details>
+            <button id="reset" class="reset">Reset demonstration</button>
+          </section>
+        </aside>
+      </div>
+    </section>
+    <section id="sandbox-view" class="sandbox hidden" role="tabpanel" aria-labelledby="sandbox-tab">
+      <div class="section-heading"><h1>Sandbox playback</h1><span class="source-label">LOCAL PLAYBACK</span></div>
+      <p class="description">Synthetic tracking traces. Playback controls affect this browser only.</p>
+      <div class="sandbox-grid">
+        <canvas id="sandbox-canvas" width="640" height="480" aria-label="Independent synthetic target playback"></canvas>
+        <div class="sandbox-controls">
+          <label>Scene<select id="sandbox-scenario"></select></label>
+          <div class="actions"><button id="sandbox-play" class="primary">Play</button><button id="sandbox-reset">Reset</button></div>
+          <dl><div><dt>Time</dt><dd id="sandbox-time">0.00 s</dd></div><div><dt>Tracking state</dt><dd id="sandbox-state">MANUAL</dd></div><div><dt>Requested yaw</dt><dd id="sandbox-yaw">0</dd></div></dl>
+          <p class="note">The response scene uses a software motion model.</p>
+          <details class="timeline"><summary>Playback events</summary><ol id="playback-events"></ol></details>
+          <label class="replay-field">Load session replay<input id="replay-file" type="file" accept=".json"><small>Exported replay JSON. No serial output.</small></label>
+        </div>
+      </div>
+    </section>
+    <footer>Mac simulation · Pi 5 processing and demo server · software version 0.1.0</footer>
+  </main>
+  <dialog id="login">
+    <form id="login-form">
+      <h2>Operator access</h2>
+      <p class="description">Enter the local operator token to change the shared session.</p>
+      <label>Token<input id="token" type="password" autocomplete="off" required></label>
+      <p id="login-error" role="alert"></p>
+      <div class="actions"><button type="submit" class="primary">Unlock</button><button type="button" id="login-cancel">Cancel</button></div>
+    </form>
+  </dialog>
+  <script src="/assets/app.js" defer></script>
+  <script src="/assets/navigation.js" defer></script>
+</body>
+</html>

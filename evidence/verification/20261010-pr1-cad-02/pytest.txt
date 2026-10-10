@@ -1,0 +1,125 @@
+......................................FEE....                            [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_solid_cage_matches_the_generator_and_never_touches_the_props _
+
+    @pytest.fixture(scope='module')
+    def clash():
+>       return clash_check.analyse([20, 90])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad/kit/tests/test_kit.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cad/kit/clash_check.py:122: in analyse
+    points, edges, hubs, rods = build_cage(values)
+                                ^^^^^^^^^^^^^^^^^^
+cad/kit/clash_check.py:67: in build_cage
+    solid = to_manifold(read_mesh_stl(exports / f'{name}.stl'))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cad/kit/test_pieces.py:137: in read_mesh_stl
+    data = Path(path).read_bytes()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl'
+
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+_________ ERROR at setup of test_solid_balls_agree_with_the_rod_model __________
+
+    @pytest.fixture(scope='module')
+    def clash():
+>       return clash_check.analyse([20, 90])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad/kit/tests/test_kit.py:256: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cad/kit/clash_check.py:122: in analyse
+    points, edges, hubs, rods = build_cage(values)
+                                ^^^^^^^^^^^^^^^^^^
+cad/kit/clash_check.py:67: in build_cage
+    solid = to_manifold(read_mesh_stl(exports / f'{name}.stl'))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cad/kit/test_pieces.py:137: in read_mesh_stl
+    data = Path(path).read_bytes()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports/hub_3way.stl'
+
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+=================================== FAILURES ===================================
+________________________ test_mass_report_is_consistent ________________________
+
+    def test_mass_report_is_consistent():
+>       result = p1b_mass_options.report()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cad/kit/tests/test_kit.py:241: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cad/kit/p1b_mass_options.py:56: in report
+    state = current()
+            ^^^^^^^^^
+cad/kit/p1b_mass_options.py:19: in current
+    manifest = json.loads((cage_model.CAGE_DIR / 'exports_p1b' / 'manifest.json').read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py:546: in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_abc.py:632: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports_p1b/manifest.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/devk/Documents/ChatGPT/HackPHS26/cad/apex2-cage/exports_p1b/manifest.json'
+
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+- generated xml file: /Users/devk/Documents/ChatGPT/HackPHS26/evidence/verification/20261010-pr1-cad-02/junit.xml -
+=========================== short test summary info ============================
+FAILED cad/kit/tests/test_kit.py::test_mass_report_is_consistent - FileNotFou...
+ERROR cad/kit/tests/test_kit.py::test_solid_cage_matches_the_generator_and_never_touches_the_props
+ERROR cad/kit/tests/test_kit.py::test_solid_balls_agree_with_the_rod_model - ...
+1 failed, 42 passed, 2 errors in 1.21s

@@ -1,0 +1,16 @@
+{
+  "pass": false,
+  "environment": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python_executable": "/Users/devk/Documents/HackPHS26/software/.venv/bin/python",
+  "pytest": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 1,
+    "skipped": 0
+  },
+  "command": "python -m pytest cad/kit/tests -q --junitxml=evidence/verification/20261010-pr1-cad/junit.xml",
+  "limits": [
+    "CAD/software only; no physical fit or flight verification."
+  ],
+  "setup_note": "Initial attempts retained: first environment lacked manifold3d; subsequent sparse checkout lacked CAD mesh fixtures. Final run uses the existing CAD environment with complete export fixtures."
+}

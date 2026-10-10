@@ -1,0 +1,624 @@
+{
+  "source_url": "https://www.thingiverse.com/thing:408519",
+  "author": "kert",
+  "inspected_on": "2026-10-07",
+  "role": "Unmodified upstream Thingiverse reference; not HackPHS manufacturing geometry",
+  "stl_units": "Not encoded in STL; bounding boxes are raw mesh units",
+  "archives": [
+    {
+      "file": "part-1-of-2.zip",
+      "original_filename": "Spherical Drone - 408519 - part 1 of 2.zip",
+      "sha256": "b40bc6635edbaf02f0058b704df963911963c4e1189813a07db7fd199f3fd596",
+      "entries": [
+        {
+          "path": "files/Croisillon_Y3_Bouclier.STL",
+          "bytes": 42684,
+          "sha256": "15b0217e1bfd240b232f218c11fa409e80ef7d475a837cd63ba28f0b08a35259",
+          "triangles": 852,
+          "bounds_min": [
+            188.60350036621094,
+            -609.0723266601562,
+            167.74913024902344
+          ],
+          "bounds_max": [
+            208.89134216308594,
+            -590.8151245117188,
+            174.39976501464844
+          ],
+          "extent_raw_units": [
+            20.287841796875,
+            18.2572021484375,
+            6.650634765625
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Croisillon_Y4_Bouclier.STL",
+          "bytes": 54284,
+          "sha256": "d260dc459c6d9d5f149bd22a486abcb42a77506eb6233e5c3428cde95f9a0000",
+          "triangles": 1084,
+          "bounds_min": [
+            61.35293960571289,
+            -584.85595703125,
+            159.33389282226562
+          ],
+          "bounds_max": [
+            81.64129638671875,
+            -563.5213623046875,
+            166.23338317871094
+          ],
+          "extent_raw_units": [
+            20.28835678100586,
+            21.3345947265625,
+            6.8994903564453125
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Croisillon_toile5_Bouclier.STL",
+          "bytes": 68784,
+          "sha256": "975f82fc040dbd6e9e8a878571e4a5b9df9c3aa6f526416e20fcf5e0280b5af0",
+          "triangles": 1374,
+          "bounds_min": [
+            -159.62747192382812,
+            -9.419288635253906,
+            177.6795654296875
+          ],
+          "bounds_max": [
+            -135.8972930908203,
+            13.468713760375977,
+            184.36610412597656
+          ],
+          "extent_raw_units": [
+            23.730178833007812,
+            22.888002395629883,
+            6.6865386962890625
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Jonction_grand_bouclier.STL",
+          "bytes": 60684,
+          "sha256": "7be075e937e2f4e3dfa3792a1d9bb63b76555282d653d7613fac787c80b531ed",
+          "triangles": 1212,
+          "bounds_min": [
+            -64.82627868652344,
+            336.2900085449219,
+            -22.41573143005371
+          ],
+          "bounds_max": [
+            -25.842453002929688,
+            395.3304748535156,
+            -15.113664627075195
+          ],
+          "extent_raw_units": [
+            38.98382568359375,
+            59.04046630859375,
+            7.302066802978516
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/DO_NOT_PRINT_Quart_trop_grand_bouclier.STL",
+          "bytes": 104484,
+          "sha256": "477cc5266bd575686b08a21ec37f7f6127159b8cb05e5e9ae9f01e9c2f6fe454",
+          "triangles": 2088,
+          "bounds_min": [
+            166.37332153320312,
+            158.0336151123047,
+            -20.41299057006836
+          ],
+          "bounds_max": [
+            345.13140869140625,
+            336.79180908203125,
+            -15.871201515197754
+          ],
+          "extent_raw_units": [
+            178.75808715820312,
+            178.75819396972656,
+            4.5417890548706055
+          ],
+          "do_not_print": true
+        },
+        {
+          "path": "files/Plaque_Centrale_Connecteur.STL",
+          "bytes": 33084,
+          "sha256": "38527cd3f7ef7b3fa283bbbe67fd78ce050089cc12c45cbf54e245fa8e9e8c68",
+          "triangles": 660,
+          "bounds_min": [
+            -148.6239013671875,
+            -388.8491516113281,
+            -56.95689392089844
+          ],
+          "bounds_max": [
+            -104.03824615478516,
+            -381.7955627441406,
+            -45.0060920715332
+          ],
+          "extent_raw_units": [
+            44.585655212402344,
+            7.0535888671875,
+            11.950801849365234
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Plaque_Centrale.STL",
+          "bytes": 278784,
+          "sha256": "511e14586f178316c6e6b1a0b1a93a7920b1614cb318888a752a40df42174f77",
+          "triangles": 5574,
+          "bounds_min": [
+            -336.21026611328125,
+            -524.2554931640625,
+            -52.98576354980469
+          ],
+          "bounds_max": [
+            -136.93832397460938,
+            -360.8843994140625,
+            -47.36674880981445
+          ],
+          "extent_raw_units": [
+            199.27194213867188,
+            163.37109375,
+            5.619014739990234
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Quart_grand_bouclier.STL",
+          "bytes": 104484,
+          "sha256": "ae58a1186c7c4785b975ff5e8bec7e7281577dfdd3a01013a3045b039b57e227",
+          "triangles": 2088,
+          "bounds_min": [
+            165.16683959960938,
+            156.8271484375,
+            -20.41299057006836
+          ],
+          "bounds_max": [
+            324.6787109375,
+            316.339111328125,
+            -15.871198654174805
+          ],
+          "extent_raw_units": [
+            159.51187133789062,
+            159.511962890625,
+            4.541791915893555
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Jonction_petit_bouclier.STL",
+          "bytes": 60684,
+          "sha256": "4d035fb0e9f842c2cc3dde5eea20522faddc49f856e246287ee36ab76a023b08",
+          "triangles": 1212,
+          "bounds_min": [
+            -98.84272003173828,
+            339.3989562988281,
+            -22.41573143005371
+          ],
+          "bounds_max": [
+            -63.964508056640625,
+            392.2215270996094,
+            -15.113666534423828
+          ],
+          "extent_raw_units": [
+            34.878211975097656,
+            52.82257080078125,
+            7.302064895629883
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Quart_petit_bouclier.STL",
+          "bytes": 104484,
+          "sha256": "9b22216e24ec2b42bc70aa4a4f11e2119a868925a03d2cadb22e3af063669a14",
+          "triangles": 2088,
+          "bounds_min": [
+            164.09213256835938,
+            155.75244140625,
+            -20.41299057006836
+          ],
+          "bounds_max": [
+            306.4599609375,
+            298.120361328125,
+            -15.87120246887207
+          ],
+          "extent_raw_units": [
+            142.36782836914062,
+            142.367919921875,
+            4.541788101196289
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/DO_NOT_PRINT_Jonction_trop_grand_bouclier.STL",
+          "bytes": 60684,
+          "sha256": "4a4eef1f67ee412c05f6cdddd4f381efcd04748c919ca36f4f8d9df9d4a90100",
+          "triangles": 1212,
+          "bounds_min": [
+            -27.226341247558594,
+            332.7021484375,
+            -22.41573143005371
+          ],
+          "bounds_max": [
+            16.495498657226562,
+            398.9183044433594,
+            -15.113664627075195
+          ],
+          "extent_raw_units": [
+            43.721839904785156,
+            66.21615600585938,
+            7.302066802978516
+          ],
+          "do_not_print": true
+        },
+        {
+          "path": "files/Nomenclature.xlsx",
+          "bytes": 11858,
+          "sha256": "d0ba8bb529b6268a9ec750f2a0237528b5a0e2a721726bafd33c3347f18a046e"
+        },
+        {
+          "path": "files/Support_Moteur_Drone_Bouclier.STL",
+          "bytes": 106884,
+          "sha256": "fb75c0786c7bf50dc4a901816387eec5c413e207bfa076ed07deaa781143ca14",
+          "triangles": 2136,
+          "bounds_min": [
+            -194.9673309326172,
+            93.49202728271484,
+            1.774000644683838
+          ],
+          "bounds_max": [
+            -143.8979034423828,
+            127.79529571533203,
+            18.939903259277344
+          ],
+          "extent_raw_units": [
+            51.069427490234375,
+            34.30326843261719,
+            17.165902614593506
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Palette_Guignole.STL",
+          "bytes": 39184,
+          "sha256": "924ebccc5797d3012fc247bf93d82f2305b43c6263a09d9d913ef389db5a55f8",
+          "triangles": 782,
+          "bounds_min": [
+            -223.6153106689453,
+            -64.00685119628906,
+            -104.9503402709961
+          ],
+          "bounds_max": [
+            -208.0533905029297,
+            -46.350067138671875,
+            -83.55812072753906
+          ],
+          "extent_raw_units": [
+            15.561920166015625,
+            17.656784057617188,
+            21.39221954345703
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Palette_pleine.STL",
+          "bytes": 30084,
+          "sha256": "3ff5b810e1a9fa2e77de0c786262739839825c68278ff56e86476acaf94c5b3d",
+          "triangles": 600,
+          "bounds_min": [
+            -107.75462341308594,
+            -29.3387508392334,
+            -106.37382507324219
+          ],
+          "bounds_max": [
+            -20.499778747558594,
+            29.338510513305664,
+            -104.873779296875
+          ],
+          "extent_raw_units": [
+            87.25484466552734,
+            58.67726135253906,
+            1.5000457763671875
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Palette_Fly_Wing.STL",
+          "bytes": 86284,
+          "sha256": "8499ff4d939db69b38e4fe07d3a23f77c871bf8b90b53057d4900859b76ce330",
+          "triangles": 1724,
+          "bounds_min": [
+            -282.60614013671875,
+            -307.9199523925781,
+            0.0008785825921222568
+          ],
+          "bounds_max": [
+            -195.35128784179688,
+            -249.24269104003906,
+            1.4998201131820679
+          ],
+          "extent_raw_units": [
+            87.25485229492188,
+            58.67726135253906,
+            1.4989415305899456
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Plaque_Centrale_With_Battery_Hole.STL",
+          "bytes": 209584,
+          "sha256": "6388e334dc066f0e6d8ff39e683004880dfddc68882c30bf23ad7af4ca42f378",
+          "triangles": 4190,
+          "bounds_min": [
+            -99.61148071289062,
+            -81.6856689453125,
+            -53.02048110961914
+          ],
+          "bounds_max": [
+            99.66045379638672,
+            81.6854019165039,
+            -47.401466369628906
+          ],
+          "extent_raw_units": [
+            199.27193450927734,
+            163.3710708618164,
+            5.619014739990234
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Quard_Grand_NEW_HorizontalJunction.STL",
+          "bytes": 462684,
+          "sha256": "edc224523ee10fdeb0f5133c24727b11cac753eb6a54e078f6a23c1e9b25cf8b",
+          "triangles": 9252,
+          "bounds_min": [
+            -537.6157836914062,
+            -166.26837158203125,
+            -10.0
+          ],
+          "bounds_max": [
+            -379.30810546875,
+            26.045747756958008,
+            0.0
+          ],
+          "extent_raw_units": [
+            158.30767822265625,
+            192.31411933898926,
+            10.0
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "files/Quard_Grand_NEW_VerticalJunction.STL",
+          "bytes": 463784,
+          "sha256": "1ec1fb50ff3cb0351d65bf216a56a5d60d7ab9b52ccd8975f831db49d6c2c34c",
+          "triangles": 9274,
+          "bounds_min": [
+            8.19025707244873,
+            -164.44119262695312,
+            -10.0
+          ],
+          "bounds_max": [
+            166.4980010986328,
+            26.046327590942383,
+            0.0
+          ],
+          "extent_raw_units": [
+            158.30774402618408,
+            190.4875202178955,
+            10.0
+          ],
+          "do_not_print": false
+        },
+        {
+          "path": "images/DO_NOT_PRINT_Quart_trop_grand_bouclier.jpg",
+          "bytes": 40085,
+          "sha256": "d2422c5354d89ef8ddfcf4cac7aa8e80efc558b36b666115a7b0da62b320c8e3"
+        },
+        {
+          "path": "images/Croisillon_Y3_Bouclier.jpg",
+          "bytes": 25645,
+          "sha256": "a5a694451bb914c459a73c9db67a199b16a2d6e69837ced1a65b2adfe75b2a9f"
+        },
+        {
+          "path": "images/Plaque_Centrale.jpg",
+          "bytes": 44271,
+          "sha256": "159d3df5b5cf4ecac64afbae8538036fe0fa6efe2ce92f34a18f00a7e19c1950"
+        },
+        {
+          "path": "images/Jonction_petit_bouclier.jpg",
+          "bytes": 32212,
+          "sha256": "f2387bc069ee903b62262883ec2e04cc603259e45fc2b055847f3d27deeee396"
+        },
+        {
+          "path": "images/Jonction_grand_bouclier.jpg",
+          "bytes": 32934,
+          "sha256": "4cc4115fa6104a54d3294f56cd257d6103fe432c131812c676b9c1b317e619c5"
+        },
+        {
+          "path": "images/DO_NOT_PRINT_Jonction_trop_grand_bouclier.jpg",
+          "bytes": 33185,
+          "sha256": "ef1f98bce2ce4bf5e550ef812f7026f3acd12eaa63e0bccabf8ae99a12eabfb3"
+        },
+        {
+          "path": "images/Quart_grand_bouclier.jpg",
+          "bytes": 40129,
+          "sha256": "da457841abd2f7b8092e357e97c2065180e0403d5640fcf2e1e9c88eca3023de"
+        },
+        {
+          "path": "images/Quart_petit_bouclier.jpg",
+          "bytes": 39966,
+          "sha256": "d5a7ab11263881c2260df0701b74e001bac434f3cd489e6b32960ea53f21d10f"
+        },
+        {
+          "path": "images/Croisillon_Y4_Bouclier.jpg",
+          "bytes": 26227,
+          "sha256": "a2fba9d027ebc36e7d4015b3d0292522b0daa7f09229ddcd9b0a813a56fbfee0"
+        },
+        {
+          "path": "images/Croisillon_toile5_Bouclier.jpg",
+          "bytes": 28842,
+          "sha256": "5e4c91d70037aaad00a17c27d4dad85cb9a06df8d5325a455169ec5958781430"
+        },
+        {
+          "path": "images/Plaque_Centrale_Connecteur.jpg",
+          "bytes": 27515,
+          "sha256": "dfdc290cc42f93b1b57ca205d08c806d6dd4930484d214457f42d28e35657ab4"
+        },
+        {
+          "path": "images/dtail_guignol.jpg",
+          "bytes": 25735,
+          "sha256": "56c441ab3baf77fbf94f10c584932a2bec5d6f3ecdc4f847fbfd2817797aa686"
+        },
+        {
+          "path": "images/dtail_plaque_centrale4.jpg",
+          "bytes": 22828,
+          "sha256": "01364a7d614be234349fe3afe3931f8d5b19022f6ed1d9b517b3ec1137b1b7a0"
+        },
+        {
+          "path": "images/dtail_plaque_centrale3.jpg",
+          "bytes": 26932,
+          "sha256": "9b849e93ce3f2178eb8f5eb8c87462e03b55e54e30fdfb296e6617e97f83c25c"
+        },
+        {
+          "path": "images/dtail_plaque_centrale2.jpg",
+          "bytes": 19343,
+          "sha256": "6e0e0f295905847356e89b0a2a02a5f288fd0242f925ff2e815bf34a754fe5c1"
+        },
+        {
+          "path": "images/dtail_croisillons.jpg",
+          "bytes": 22787,
+          "sha256": "c321a78d317b2435ad7bc4b9f02b622711324d0d5ec7cbef1a48e43db3cb869c"
+        },
+        {
+          "path": "images/Support_Moteur_Drone_Bouclier.jpg",
+          "bytes": 33609,
+          "sha256": "569246fdcbd74c0362b2f7655e5ec499d4d878c9bc497a18bee572b10c1fb764"
+        },
+        {
+          "path": "images/03174076.jpg",
+          "bytes": 103737,
+          "sha256": "1df4d7bc301f957ed48b2f80a5aae83b539257b5ee4307ce47bc8b918e0001f4"
+        },
+        {
+          "path": "images/10007520_10202679954934505_1955825701_n.jpg",
+          "bytes": 53280,
+          "sha256": "e5045395a90e4421d38b6df6af69166dc3c45051f52a7a29c89955b39b242c13"
+        },
+        {
+          "path": "images/03174075.jpg",
+          "bytes": 100053,
+          "sha256": "7063b7b50f7406d8c170c7d0bf2968de9e1c6f52c520a2ff4b43a4b1c9b9c413"
+        },
+        {
+          "path": "images/03183827.jpg",
+          "bytes": 106782,
+          "sha256": "2ad6c4f665bad491441ec47214946e30bd7e1782268dd28d8b20f019afda273a"
+        },
+        {
+          "path": "images/03174078.jpg",
+          "bytes": 99379,
+          "sha256": "3e1ffc194e6524578991ab3c2e7e364162ccd081450378b88e016abcf6bda324"
+        },
+        {
+          "path": "images/03174077.jpg",
+          "bytes": 107879,
+          "sha256": "53a5d9d35e6e70431673e2e5ea05be65e5bcae59f81024c818ed113ee443adc4"
+        },
+        {
+          "path": "images/IMAG1445.jpg",
+          "bytes": 52929,
+          "sha256": "f9caf6b2b4eca50397cd4df17b13662436b842bf1dabca3474d4bb53d18e9e59"
+        },
+        {
+          "path": "images/03033375.jpg",
+          "bytes": 92544,
+          "sha256": "aa765c2be28c797705cdfd643ab08cf8d5f1d4f4ba4ef8c3ab6db66606e58f46"
+        },
+        {
+          "path": "images/03013335.jpg",
+          "bytes": 45851,
+          "sha256": "0c01017def2f7bf4e7c959d2452650382a35529cee745d323e462353218838e8"
+        },
+        {
+          "path": "images/03013329.jpg",
+          "bytes": 100407,
+          "sha256": "379e3e0f23721d259ea227037d31dbfbcdd87a3132a3de607e691e3a187350f3"
+        },
+        {
+          "path": "images/03023359.jpg",
+          "bytes": 82308,
+          "sha256": "1d01f11d4797ecf57d8fdd7e9220b0c4b34e264b0c8dd5a8d86853056055ac01"
+        },
+        {
+          "path": "images/IMAG1442.jpg",
+          "bytes": 92932,
+          "sha256": "59fc82d6081b5eec5c1f681668790b3fbf05bb2c96ca62d01d86851a01d5f204"
+        },
+        {
+          "path": "images/IMAG1448.jpg",
+          "bytes": 78592,
+          "sha256": "0489c3327256d37b254a638659d967e3b0620672fb2f29ea326e6b08b2636678"
+        },
+        {
+          "path": "README.txt",
+          "bytes": 2229,
+          "sha256": "89c6de90f65d741ebb914a6664af19b47d5c1a3b818534a81815144beaebf9dd"
+        },
+        {
+          "path": "LICENSE.txt",
+          "bytes": 118,
+          "sha256": "9f2c3441e41ce8d39f277e1f5ea9b09822daa6b81da83a7380060eaeafc25d97"
+        }
+      ]
+    },
+    {
+      "file": "part-2-of-2.zip",
+      "original_filename": "Spherical Drone - 408519 - part 2 of 2.zip",
+      "sha256": "ca61dc46877530fd8bf694d4d5c512ece08cd3cedc696cf788f2e8e4736d7dbb",
+      "entries": [
+        {
+          "path": "images/Palette_Guignole.jpg",
+          "bytes": 29783,
+          "sha256": "a7afae3db77cd1dc8747b5c3093b6b6aed83bcdeadf89572073d261feab142a5"
+        },
+        {
+          "path": "images/Palette_pleine.jpg",
+          "bytes": 31515,
+          "sha256": "fe7f640e09a13d6b4b457070e65b1fb6f382e520e66ab8ce2a9924c5f97612f7"
+        },
+        {
+          "path": "images/Palette_Fly_Wing.jpg",
+          "bytes": 38895,
+          "sha256": "19228a3a794f5c577295644fdcbdd18a5fb259959b785f1016915b4e69d0da46"
+        },
+        {
+          "path": "images/Plaque_Centrale_With_Battery_Hole.jpg",
+          "bytes": 43572,
+          "sha256": "040fc9d86fc8cb16e3c23e7eaeb797d310f6aeffeffe53609d1747d8e912fc7a"
+        },
+        {
+          "path": "images/Quard_Grand_NEW_VerticalJunction.png",
+          "bytes": 174779,
+          "sha256": "93acd4f2cc076f7a98e02e45ea10abcd6bbe2ae97d6650a6d1e017f4161f060c"
+        },
+        {
+          "path": "images/Quard_Grand_NEW_HorizontalJunction.png",
+          "bytes": 171735,
+          "sha256": "5b0961bcde3e9f7dfd9c43fc1329c5c19ec2dda9be2882c94b6fc9cb9c5536bf"
+        },
+        {
+          "path": "README.txt",
+          "bytes": 2229,
+          "sha256": "89c6de90f65d741ebb914a6664af19b47d5c1a3b818534a81815144beaebf9dd"
+        },
+        {
+          "path": "LICENSE.txt",
+          "bytes": 118,
+          "sha256": "9f2c3441e41ce8d39f277e1f5ea9b09822daa6b81da83a7380060eaeafc25d97"
+        }
+      ]
+    }
+  ]
+}

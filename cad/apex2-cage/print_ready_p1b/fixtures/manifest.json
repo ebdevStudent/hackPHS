@@ -1,0 +1,82 @@
+{
+  "source": "cad/kit/test_pieces.py (read-only use of cad/apex2-cage generator parameters)",
+  "parameters": {
+    "rod_dia": 1.0,
+    "rod_bore_clear": 0.1375,
+    "hub_arm_od": 3.2,
+    "hub_arm_len": 7.0,
+    "hub_keel_w": 1.6,
+    "socket_depth": 5.0,
+    "cage_edge": 49.0,
+    "rod_cut_len": 44.5
+  },
+  "exposed_rod_span_mm": 35.0,
+  "rod_cut_for_test_mm": 44.5,
+  "pin_cut_length_mm": 11.0,
+  "jig": {
+    "tip_gap_pushed_inward_mm": 35.0,
+    "tip_gap_pushed_outward_mm": 35.6,
+    "rod_axis_height_mm": 10.0,
+    "scale_step_mm": 0.5,
+    "deep_groove_every_mm": 2.0,
+    "jig_length_mm": 76.2
+  },
+  "parts": [
+    {
+      "name": "bend_test_block",
+      "qty": 2,
+      "volume_mm3": 1149.54,
+      "mass_g_solid_petg": 1.46,
+      "bodies": 1,
+      "genus": 0,
+      "size_mm": [
+        17.0,
+        10.0,
+        9.0
+      ],
+      "sha256": "aa06cb1a4baeffe8dfbfb5d1dff0e8562dbb832084d21d045d76a54a159fbb51"
+    },
+    {
+      "name": "bend_test_jig",
+      "qty": 1,
+      "volume_mm3": 17682.78,
+      "mass_g_solid_petg": 22.46,
+      "bodies": 1,
+      "genus": 1,
+      "size_mm": [
+        76.2,
+        30.6,
+        13.0
+      ],
+      "sha256": "2c71ab220c62a0785e0381aa0d5474558ba35cd718c0c9d754ca297c1ca1b815"
+    },
+    {
+      "name": "load_hook",
+      "qty": 1,
+      "volume_mm3": 51.97,
+      "mass_g_solid_petg": 0.07,
+      "bodies": 1,
+      "genus": 2,
+      "size_mm": [
+        2.0,
+        5.0,
+        6.0
+      ],
+      "sha256": "0a613e02d1b48f0e307f61c39f6ada18371a5b77a134b4909fa67145722be8cc"
+    },
+    {
+      "name": "pin_cut_gauge",
+      "qty": 1,
+      "volume_mm3": 4224.6,
+      "mass_g_solid_petg": 5.37,
+      "bodies": 1,
+      "genus": 0,
+      "size_mm": [
+        24.0,
+        10.0,
+        18.0
+      ],
+      "sha256": "e74f9da7c039e74e454f60d62ccefc9691a09e0d837b619f7cc3e51ffc6c5051"
+    }
+  ]
+}

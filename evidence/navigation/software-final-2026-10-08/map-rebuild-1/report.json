@@ -1,0 +1,19 @@
+{
+  "scan_id": "EXAMPLE-depth",
+  "scan_sha256": "fd1612184b77184bcd01db8655cf2c6b75436a5bdb24386f7ee1f1c32abe5b9f",
+  "map_sha256": "7072136b7a0815cdcf8257e542448b5c001580b24df25a5552149fbba63fd75b",
+  "voxel_m": 0.2,
+  "occupied_voxels": 100,
+  "observed_free_voxels": 556,
+  "unknown_voxels": 844,
+  "frames": 1,
+  "physical_acceptance": false,
+  "example": true,
+  "limitations": "Static surveyed stations; no SLAM, dynamic obstacle sensing or glass/reflectivity guarantee. Recheck controlled zone before use.",
+  "source_manifests": [
+    {
+      "path": "/Users/devk/Documents/HackPHS26/evidence/navigation/software-final-2026-10-08/synthetic-depth-scan.json",
+      "sha256": "19f0044f28edb3f98275115e8e5b26e7498b42201280f03a8090cb9ea044eac5"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Computing fixes in flutter_operator...
+Applying fixes...
+
+lib/application/operator_controller.dart
+  unnecessary_import - 1 fix
+
+1 fix made in 1 file.

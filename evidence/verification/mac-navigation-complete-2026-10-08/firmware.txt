@@ -1,0 +1,2 @@
+PASS: 10000 seeded arbitrary frames and full command-boundary sweep.
+PASS: portable C parsing, bounds, sequence, session, watchdog and clock rollover. No transmitter output.
