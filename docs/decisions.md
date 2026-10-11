@@ -1002,3 +1002,12 @@ and do the accelerometer calibration level in the gimbal. Readback also showed s
 commands had switched the active PID profile 0→2 (BF: throttle low + yaw left + right-stick
 direction selects profile), which made `level_limit` read 55. `level_limit = 35` is now set
 in all four profiles 0–3 and profile 0 re-selected; verified by `diff all` after reboot.
+
+**Update: Angle-mode stick expo.** User approved gentler small-stick response for speed
+control (no true speed cap is possible: no GPS/optical flow). BF 4.4 Angle mode uses
+`getLevelModeRcDeflection`, so ordinary rate expo does not apply; set the 4.4 Angle-only
+`roll_level_expo = 40` and `pitch_level_expo = 40` in all four rate profiles (0–3).
+Half stick ≈ 12° and quarter stick ≈ 5.5° of lean instead of 17.5°/8.75°; full stick still
+35°. Pre-change `diff all` kept at `~/Documents/betaflight-diff-all-20261011-054332-before-level-expo.txt`;
+`diff all` after reboot confirms all eight values. Active rate profile is 1 (stick input had
+moved it from 2; all rate profiles are otherwise default). Angle mode itself remains parked.
