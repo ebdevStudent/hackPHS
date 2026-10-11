@@ -1098,3 +1098,11 @@ calibrated over USB (MSP_ACC_CALIBRATION) in the drone's flying position: attitu
 roll −4.6° / pitch +4.3°, after +0.1° / −1.4°; `acc_calibration = -128,-172,-15,1`. Betaflight does
 not re-learn level at power-up (only the gyro zeroes); to re-level before a flight use the stick command
 (left stick up-left + right stick down, disarmed). Next: failsafe test, props off.
+
+## 2026-10-11 — Throttle softened a lot (user: "slightest power increase jumps")
+
+All four rate profiles: `thr_expo = 60`, `throttle_limit_type = SCALE`, `throttle_limit_percent = 80`
+(diff all after reboot confirms; active rate profile 1). Backup:
+`~/Documents/betaflight-diff-all-20261011-094209-before-throttle-feel.txt`. Estimated hover with the
+cage (51–64 % power, docs/22) now sits around 64–80 % stick; raise the limit to 85–90 % if the caged
+build struggles to climb, especially with the 1100 mAh pack.

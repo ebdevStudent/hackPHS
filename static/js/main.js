@@ -27,12 +27,14 @@ const params = new URLSearchParams(location.search);
 
 // ---------------- graphics quality ----------------
 // Low (default) runs on integrated laptop graphics: no post-processing, pixel ratio 1, one 1024² shadow map (the sun or
-// moon), hard-edged PCF shadows, fewer particles. High restores the original look: GTAO + bloom + SMAA, pixel
-// ratio up to 1.5, soft shadows at full size from every shadow-casting light, full particle rates. G cycles them.
+// moon), hard-edged PCF shadows, fewer particles, and a render scale that drops to 0.85 / 0.7 while the frame rate
+// stays under 40 fps (back up above 57). High restores the original look: GTAO + bloom + SMAA, pixel ratio up to 1.5,
+// soft shadows at full size from every shadow-casting light, full particle rates. G cycles them.
 const QUALITY = {
-  low: { label: "Low", pixelRatio: 1, post: false, softShadows: false, shadowMap: 1024, extraShadows: false, particles: 0.6 },
-  high: { label: "High", pixelRatio: 1.5, post: true, softShadows: true, shadowMap: Infinity, extraShadows: true, particles: 1 },
+  low: { label: "Low", pixelRatio: 1, post: false, softShadows: false, shadowMap: 1024, extraShadows: false, particles: 0.6, dynamicRes: true },
+  high: { label: "High", pixelRatio: 1.5, post: true, softShadows: true, shadowMap: Infinity, extraShadows: true, particles: 1, dynamicRes: false },
 };
+const RES_STEPS = [1, 0.85, 0.7];
 function loadQuality() {
   const q = params.get("quality"); if (QUALITY[q]) return q;
   try { const s = localStorage.getItem("bdQuality"); if (QUALITY[s]) return s; } catch { /* storage blocked */ }
@@ -40,7 +42,7 @@ function loadQuality() {
 }
 
 // ---------------- renderer ----------------
-const renderer = new THREE.WebGLRenderer({ canvas: $("view"), antialias: params.get("aa") !== "0", powerPreference: "high-performance" });
+const renderer = new THREE.WebGLRenderer({ canvas: $("view"), antialias: true, powerPreference: "high-performance" });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.autoUpdate = false;           // shadow maps are drawn once per frame, not again for the FPV inset
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -73,7 +75,7 @@ function ensureComposer() {
 }
 
 const G = {
-  state: "menu", level: null, id: null, cam: "chase", quality: loadQuality(), post: false, debug: false,
+  state: "menu", level: null, id: null, cam: "chase", quality: loadQuality(), post: false, resStep: 0, resT: 0, debug: false,
   acc: 0, time: 0, shake: 0, chaseDist: 0.8, battery: loadPref("bdBattery", 550), orbitA: 0, envCache: new Map(), loading: false, impacts: 0,
 };
 
@@ -129,13 +131,25 @@ function setQuality(q, announce = false) {
   G.quality = QUALITY[q] ? q : "low"; try { localStorage.setItem("bdQuality", G.quality); } catch { /* storage blocked */ }
   G.post = Q.post && !params.get("nopost");
   if (G.post) ensureComposer();
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, Q.pixelRatio));
+  G.resStep = 0; G.resT = 0;
+  applyPixelRatio();
   const type = Q.softShadows ? THREE.PCFSoftShadowMap : THREE.PCFShadowMap;
   if (renderer.shadowMap.type !== type) { renderer.shadowMap.type = type; scene.traverse(o => { if (o.material) [].concat(o.material).forEach(m => { m.needsUpdate = true; }); }); }
   applyLightQuality();
   fx.density = Q.particles;
   resize();
   if (announce) hud.toast(G.quality === "high" ? "Graphics: High (GTAO · bloom · SMAA, soft shadows)" : "Graphics: Low (fast: no post-processing, one shadow)", 1.6);
+}
+function applyPixelRatio() {
+  const Q = QUALITY[G.quality];
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, Q.pixelRatio) * RES_STEPS[G.resStep]);
+}
+// Dynamic resolution (Low only): integrated GPUs are fill-rate bound, so trade a little sharpness for frame rate.
+function adaptResolution(dt, fps) {
+  if (!QUALITY[G.quality].dynamicRes || G.state !== "play" || (G.resT += dt) < 2) return;
+  G.resT = 0;
+  const step = fps < 40 ? Math.min(RES_STEPS.length - 1, G.resStep + 1) : fps > 57 ? Math.max(0, G.resStep - 1) : G.resStep;
+  if (step !== G.resStep) { G.resStep = step; applyPixelRatio(); resize(); }
 }
 // Shadow casters per quality. The level's own settings are remembered so High can restore them.
 function applyLightQuality() {
@@ -359,6 +373,7 @@ function frame(now) {
   if (G.state === "play" && G.level) simulate(dt);
   else if (G.level && G.state === "menu") { for (const u of G.level.level.updaters) u(dt); fx.update(dt); G.orbitA += dt * 0.1; }
   render(dt);
+  adaptResolution(dt, fps);
   if (G.level && G.state !== "menu" && (hudT -= dt) <= 0) {
     hudT = 0.1;
     hud.telemetry(drone, { agl: agl(), cam: G.cam, post: G.post, quality: QUALITY[G.quality].label, fps, impacts: G.impacts, debug: G.debug, time: G.time });
