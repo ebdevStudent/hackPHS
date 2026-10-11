@@ -959,3 +959,15 @@ reports the DShot throttle %, adds read-only `config` and read-only `esc-info` (
 passthrough, EEPROM read only; not yet run on hardware), and gates voltage at 6.8–8.45 V.
 Remaining: solder motors 2–4, verify numbering/direction per motor, fix RC throttle
 reading ~1293 at stick-low before arming, final-mount accelerometer calibration.
+
+## 2026-10-11 — Local motor web dashboard
+
+Added `tools/motor_dashboard.py` + `tools/motor_dashboard.html`: a stdlib HTTP server
+(127.0.0.1:8765 by default) that owns the FC USB port and drives disarmed MSP motor-test
+commands from browser sliders. Starts disabled; enable needs a props-removed attestation;
+0.5 s heartbeat dead-man, STOP/Space, tab hide/close, USB loss, FC armed or battery
+<6.4 V all stop and disable; reconnect always comes back disabled; normal arming is
+blocked over MSP while connected; slider ceiling 1300 (~30 %) unless `--max` is raised.
+Verified against a mock MSP FC on a pty (clamping, heartbeat timeout, stop, malformed
+requests rejected, disconnect handling) and rendered in headless Chrome. **Not yet run
+against the real FC.**

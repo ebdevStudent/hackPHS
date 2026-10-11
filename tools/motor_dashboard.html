@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motor Dashboard</title>
+<style>
+  :root { --bg:#111418; --panel:#1b2027; --line:#2c333d; --text:#e6e9ee; --dim:#8b95a3;
+          --ok:#3ecf74; --warn:#f2b33d; --bad:#ef4b4b; --accent:#4c9dff; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:16px; background:var(--bg); color:var(--text);
+         font:14px/1.4 system-ui, sans-serif; }
+  h1 { font-size:18px; margin:0 0 12px; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+  .pill { padding:4px 10px; border-radius:99px; background:var(--panel); border:1px solid var(--line);
+          font-variant-numeric:tabular-nums; }
+  .pill.ok { color:var(--ok); border-color:var(--ok); }
+  .pill.bad { color:var(--bad); border-color:var(--bad); }
+  .pill.warn { color:var(--warn); border-color:var(--warn); }
+  .grid { display:grid; grid-template-columns: minmax(260px, 340px) 1fr; gap:12px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px; }
+  .panel h2 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--dim); margin:0 0 10px; }
+  button { font:inherit; color:var(--text); background:#2a313b; border:1px solid var(--line);
+           border-radius:8px; padding:8px 12px; cursor:pointer; }
+  button:hover { filter:brightness(1.2); }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+  #stop { width:100%; padding:18px; font-size:22px; font-weight:700; background:var(--bad);
+          border-color:#ff7a7a; color:#fff; margin-bottom:10px; }
+  #enable { background:#1f4d33; border-color:var(--ok); }
+  #enable.on { background:var(--ok); color:#06210f; font-weight:700; }
+  label.chk { display:flex; gap:8px; align-items:center; margin:8px 0; }
+  .row { display:grid; grid-template-columns: 48px 1fr 92px; gap:10px; align-items:center; margin:10px 0; }
+  .row .val { text-align:right; font-variant-numeric:tabular-nums; }
+  .row .val small { color:var(--dim); display:block; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  input[type=range]:disabled { opacity:.35; }
+  .tests { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  svg { width:100%; max-width:320px; display:block; margin:0 auto; }
+  table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+  td { padding:3px 4px; border-bottom:1px solid var(--line); }
+  td:last-child { text-align:right; }
+  .log { font:12px ui-monospace, monospace; color:var(--dim); max-height:180px; overflow:auto; white-space:pre-wrap; }
+  .hint { color:var(--dim); font-size:12px; }
+  .err { color:var(--bad); min-height:1.2em; }
+</style>
+</head>
+<body>
+<h1>Ball Drone — props-off motor dashboard</h1>
+<div class="bar">
+  <span id="conn" class="pill">…</span>
+  <span id="volt" class="pill">— V</span>
+  <span id="armed" class="pill">—</span>
+  <span id="fw" class="pill">—</span>
+  <span id="proto" class="pill">—</span>
+</div>
+
+<div class="grid">
+  <div>
+    <div class="panel">
+      <button id="stop">STOP ALL (Space)</button>
+      <label class="chk"><input type="checkbox" id="props"> All propellers are removed</label>
+      <button id="enable">Enable motor control</button>
+      <div id="err" class="err"></div>
+      <p class="hint">Closing/hiding this tab, losing the server, unplugging USB or arming the FC
+        stops everything and disables control. If a motor ever keeps spinning, unplug the battery.</p>
+    </div>
+    <div class="panel" style="margin-top:12px">
+      <h2>Quad X — top view, nose up</h2>
+      <svg viewBox="0 0 200 200" id="quad">
+        <line x1="50" y1="50" x2="150" y2="150" stroke="#3a424d" stroke-width="6"/>
+        <line x1="150" y1="50" x2="50" y2="150" stroke="#3a424d" stroke-width="6"/>
+        <rect x="80" y="80" width="40" height="40" rx="6" fill="#2a313b"/>
+        <polygon points="100,62 92,76 108,76" fill="#4c9dff"/>
+        <text x="100" y="14" fill="#8b95a3" font-size="10" text-anchor="middle">FRONT</text>
+      </svg>
+      <p class="hint">Betaflight default (props in): M1 & M4 clockwise, M2 & M3 counter-clockwise.
+        Arrows show expected direction — compare with what you see.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="panel">
+      <h2>Motors <span id="maxinfo" class="hint"></span></h2>
+      <div class="row"><b>ALL</b><input type="range" id="master" min="1000" max="1300" value="1000" disabled>
+        <span class="val" id="masterv">1000</span></div>
+      <div id="rows"></div>
+      <div class="tests" id="tests"></div>
+      <p class="hint">1000 = stop. 1100 ≈ 10 % throttle = this FC's armed idle. Values below ~1060
+        can stutter (ESC loses sync) — that's normal, not a fault. Arrow keys nudge the master slider.</p>
+    </div>
+    <div class="grid" style="grid-template-columns:1fr 1fr; margin-top:12px">
+      <div class="panel"><h2>Receiver (RC)</h2><table id="rc"></table></div>
+      <div class="panel"><h2>Log</h2><div class="log" id="log"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const POS = { 1:[150,150,'cw'], 2:[150,50,'ccw'], 3:[50,150,'ccw'], 4:[50,50,'cw'] };
+const RC_NAMES = ['Roll','Pitch','Yaw','Throttle','AUX1 (ARM)','AUX2','AUX3','AUX4'];
+let state = {}, sliders = [], busy = false, lastOk = 0, testTimers = {};
+
+// Build motor rows, quad markers, test buttons
+for (let m = 1; m <= 4; m++) {
+  const row = document.createElement('div'); row.className = 'row';
+  row.innerHTML = `<b>M${m}</b><input type="range" min="1000" max="1300" value="1000" disabled>
+    <span class="val"><span>1000</span><small>0 %</small></span>`;
+  $('rows').appendChild(row);
+  const s = row.querySelector('input'); sliders.push(s);
+  s.addEventListener('input', () => { clearTimeout(testTimers[m]); render(); });
+
+  const [x, y, dir] = POS[m];
+  const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const sweep = dir === 'cw' ? 1 : 0;
+  const ax = dir === 'cw' ? x + 22 : x - 22;
+  g.innerHTML = `<circle cx="${x}" cy="${y}" r="30" fill="none" stroke="#2c333d" stroke-width="2"/>
+    <path d="M ${x} ${y-24} A 24 24 0 0 ${sweep} ${ax} ${y-8}" fill="none" stroke="#8b95a3" stroke-width="2"/>
+    <circle id="dot${m}" cx="${x}" cy="${y}" r="16" fill="#2a313b" stroke="#4c9dff" stroke-width="2"/>
+    <text x="${x}" y="${y+4}" fill="#e6e9ee" font-size="12" text-anchor="middle" font-weight="700">M${m}</text>
+    <text id="q${m}" x="${x}" y="${y+46}" fill="#8b95a3" font-size="10" text-anchor="middle">${dir.toUpperCase()}</text>`;
+  $('quad').appendChild(g);
+
+  const b = document.createElement('button');
+  b.textContent = `Test M${m}: 1100 × 2 s`;
+  b.onclick = () => {
+    if (!state.enabled) return;
+    sliders.forEach(x => x.value = 1000);
+    sliders[m-1].value = 1100; render();
+    clearTimeout(testTimers[m]);
+    testTimers[m] = setTimeout(() => { sliders[m-1].value = 1000; render(); }, 2000);
+  };
+  $('tests').appendChild(b);
+}
+
+$('master').addEventListener('input', e => {
+  sliders.forEach(s => s.value = e.target.value); render();
+});
+
+function pct(v) { return v <= 1000 ? 0 : ((Math.min(v,2000) - 1001) / 999 * 100).toFixed(1); }
+
+async function post(path, body) {
+  const r = await fetch(path, { method:'POST', headers:{'Content-Type':'application/json'},
+                                body: JSON.stringify(body || {}) });
+  return r.json();
+}
+
+function stopAll(reason) {
+  sliders.forEach(s => s.value = 1000); $('master').value = 1000;
+  Object.values(testTimers).forEach(clearTimeout);
+  render();
+  post('/api/stop', { reason: reason || 'STOP pressed' }).then(apply).catch(() => {});
+}
+
+$('stop').onclick = () => stopAll();
+$('enable').onclick = async () => {
+  if (state.enabled) return stopAll('Disabled from dashboard');
+  const r = await post('/api/enable', { props_removed: $('props').checked });
+  apply(r);
+};
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space' || e.code === 'Escape') { e.preventDefault(); stopAll(); }
+  if (state.enabled && (e.code === 'ArrowUp' || e.code === 'ArrowDown') && e.target.type !== 'range') {
+    e.preventDefault();
+    const v = Math.max(1000, Math.min(+$('master').max, +$('master').value + (e.code === 'ArrowUp' ? 10 : -10)));
+    $('master').value = v; sliders.forEach(s => s.value = v); render();
+  }
+});
+document.addEventListener('visibilitychange', () => { if (document.hidden) stopAll('Tab hidden'); });
+addEventListener('pagehide', () => navigator.sendBeacon('/api/stop', JSON.stringify({ reason: 'Page closed' })));
+
+function apply(r) {
+  if (!r) return;
+  state = r; lastOk = Date.now();
+  $('err').textContent = r.error || '';
+  if (!r.enabled) { sliders.forEach(s => s.value = 1000); $('master').value = 1000; }
+  render();
+}
+
+function render() {
+  const en = !!state.enabled, max = state.max_value || 1300;
+  const stale = Date.now() - lastOk > 1500;
+  [...sliders, $('master')].forEach(s => { s.disabled = !en; s.max = max; });
+  $('maxinfo').textContent = `(ceiling ${max} = ${pct(max)} %)`;
+  $('enable').textContent = en ? 'ENABLED — click to disable' : 'Enable motor control';
+  $('enable').classList.toggle('on', en);
+  $('enable').disabled = !state.connected && !en;
+  document.querySelectorAll('#tests button').forEach(b => b.disabled = !en);
+  $('masterv').textContent = $('master').value;
+
+  const conn = $('conn');
+  if (stale) { conn.textContent = 'Dashboard server unreachable'; conn.className = 'pill bad'; }
+  else if (state.connected) { conn.textContent = 'FC connected'; conn.className = 'pill ok'; }
+  else { conn.textContent = 'Waiting for FC USB…'; conn.className = 'pill warn'; }
+
+  const v = state.voltage;
+  $('volt').textContent = v == null ? '— V' : (v < 5 ? `${v.toFixed(2)} V (no battery)` : `${v.toFixed(2)} V`);
+  $('volt').className = 'pill ' + (v == null ? '' : v < 5 ? 'warn' : v < 6.8 ? 'bad' : 'ok');
+  $('armed').textContent = state.armed == null ? '—' : state.armed ? 'ARMED' : 'Disarmed';
+  $('armed').className = 'pill ' + (state.armed ? 'bad' : state.armed == null ? '' : 'ok');
+  $('fw').textContent = state.firmware ? 'BF ' + state.firmware.join('.') : '—';
+  const c = state.config || {};
+  $('proto').textContent = c.motor_protocol ? `${c.motor_protocol}, idle ${(c.dshot_idle_value/100).toFixed(1)} %` : '—';
+
+  const cmd = state.motor_commands || [1000,1000,1000,1000];
+  sliders.forEach((s, i) => {
+    const val = s.parentElement.querySelector('.val');
+    val.children[0].textContent = `${s.value} → ${cmd[i]}`;
+    val.children[1].textContent = `${pct(+s.value)} % set`;
+    const on = cmd[i] > 1000;
+    $('dot' + (i+1)).setAttribute('fill', on ? '#3ecf74' : '#2a313b');
+    $('q' + (i+1)).textContent = on ? `${cmd[i]} (${pct(cmd[i])} %)` : POS[i+1][2].toUpperCase();
+  });
+
+  const rc = state.rc || [];
+  $('rc').innerHTML = RC_NAMES.map((n, i) => {
+    let note = '';
+    if (i === 3 && rc[i] > 1050) note = ' ⚠ not at min';
+    if (i === 4 && rc[i] >= 1800) note = ' ⚠ ARM switch on';
+    return `<tr><td>${n}</td><td>${rc[i] ?? '—'}${note}</td></tr>`;
+  }).join('');
+  $('log').textContent = (state.events || []).map(e => `${e.t}  ${e.msg}`).reverse().join('\n');
+}
+
+async function loop() {
+  if (busy) return; busy = true;
+  try {
+    const r = state.enabled
+      ? await post('/api/set', { motors: sliders.map(s => +s.value) })
+      : await (await fetch('/api/state')).json();
+    apply(r);
+  } catch (e) { render(); }
+  busy = false;
+}
+setInterval(loop, 100);
+loop();
+</script>
+</body>
+</html>
