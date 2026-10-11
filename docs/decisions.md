@@ -1089,3 +1089,12 @@ earlier "nose = M2/M4 side" note.
 M2 normal, M3 reversed, M4 reversed (ESC on outputs 3, 1, 4, 2 respectively). User-observed at 1060,
 FC arrow = nose: **M1 rear-right CW, M2 front-right CCW, M3 rear-left CCW, M4 front-left CW.**
 Props: CW props on M1/M4, CCW props on M2/M3.
+
+## 2026-10-11 — ANGLE mode enabled + accelerometer calibrated (FC mounted)
+
+User request. Backup `~/Documents/betaflight-diff-all-20261011-092955-before-angle-on.txt`.
+`aux 1 1 0 900 2100 0 0` saved (ANGLE always on; diff + MSP mode flags confirm). Accelerometer
+calibrated over USB (MSP_ACC_CALIBRATION) in the drone's flying position: attitude before
+roll −4.6° / pitch +4.3°, after +0.1° / −1.4°; `acc_calibration = -128,-172,-15,1`. Betaflight does
+not re-learn level at power-up (only the gyro zeroes); to re-level before a flight use the stick command
+(left stick up-left + right stick down, disarmed). Next: failsafe test, props off.
