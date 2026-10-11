@@ -92,6 +92,14 @@
       <p class="hint">1000 = stop. 1100 ≈ 10 % throttle = this FC's armed idle. Values below ~1060
         can stutter (ESC loses sync) — that's normal, not a fault. Arrow keys nudge the master slider.</p>
     </div>
+    <div class="panel" style="margin-top:12px">
+      <h2>Motor direction (stored in each ESC)</h2>
+      <div id="dirs"></div>
+      <p class="hint">Look from <b>above</b>. Betaflight default (props in): <b>M1 & M4 clockwise, M2 & M3
+        counter-clockwise</b>. If a motor turns the wrong way, press the <i>other</i> button for it
+        (try “Reversed”; if it was already reversed, “Normal” flips it back), then spin-test it again.
+        Motors stop and controls disable while it saves. If nothing changes, unplug/replug the battery and re-test.</p>
+    </div>
     <div class="grid" style="grid-template-columns:1fr 1fr; margin-top:12px">
       <div class="panel"><h2>Receiver (RC)</h2><table id="rc"></table></div>
       <div class="panel"><h2>Log</h2><div class="log" id="log"></div></div>
@@ -135,6 +143,18 @@ for (let m = 1; m <= 4; m++) {
     testTimers[m] = setTimeout(() => { sliders[m-1].value = 1000; render(); }, 2000);
   };
   $('tests').appendChild(b);
+}
+
+for (let m = 1; m <= 4; m++) {
+  const row = document.createElement('div'); row.className = 'row';
+  row.style.gridTemplateColumns = '48px 1fr 1fr 1fr';
+  row.innerHTML = `<b>M${m}</b><span class="hint">should be ${POS[m][2] === 'cw' ? 'clockwise' : 'counter-CW'}</span>
+    <button data-r="0">Normal</button><button data-r="1">Reversed</button>`;
+  row.querySelectorAll('button').forEach(b => b.onclick = async () => {
+    sliders.forEach(x => x.value = 1000); render();
+    try { apply(await post('/api/direction', { motor: m, reverse: b.dataset.r === '1' })); } catch (e) {}
+  });
+  $('dirs').appendChild(row);
 }
 
 $('master').addEventListener('input', e => {
@@ -196,6 +216,7 @@ function render() {
   $('locked').style.display = en ? 'none' : 'block';
   $('enable').disabled = !state.connected && !en;
   document.querySelectorAll('#tests button').forEach(b => b.disabled = !en);
+  document.querySelectorAll('#dirs button').forEach(b => b.disabled = !state.connected);
   $('masterv').textContent = $('master').value;
 
   const conn = $('conn');

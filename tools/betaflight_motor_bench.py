@@ -16,6 +16,7 @@ Subcommands:
   status    read-only firmware, voltage, RC and motor command readbacks
   config    read-only motor protocol / idle / pole settings
   stop      block normal arming and send all outputs to stop
+  direction store one ESC's spin direction (normal/reversed) via DShot cmds
   esc-info  read-only ESC firmware + settings via BLHeli 4-way passthrough
             (needs battery; the FC must be power-cycled or re-plugged after)
   pulse     PHYSICAL ACTION: spin one motor, props removed
@@ -149,6 +150,58 @@ class FC:
             1001 + out['dshot_idle_value'] / 10000 * 999)
         return out
 
+    def request_v2(self, command, payload=b'', timeout=1.5):
+        """MSPv2 request; returns the reply payload."""
+        body = struct.pack('<BHH', 0, command, len(payload)) + payload
+        with self.write_lock:
+            self.ser.write(b'$X<' + body + bytes([crc8_dvb_s2(body)]))
+        deadline = time.monotonic() + timeout
+        while time.monotonic() < deadline:
+            self.buf.extend(self.ser.read(self.ser.in_waiting or 1))
+            while True:
+                pos = self.buf.find(b'$X')
+                if pos < 0:
+                    if len(self.buf) > 2:
+                        del self.buf[:-2]
+                    break
+                if pos:
+                    del self.buf[:pos]
+                if len(self.buf) < 9:
+                    break
+                if self.buf[2] not in (ord('>'), ord('!')):
+                    del self.buf[0]
+                    continue
+                size = struct.unpack_from('<H', self.buf, 6)[0]
+                total = 8 + size + 1
+                if len(self.buf) < total:
+                    break
+                frame = bytes(self.buf[:total])
+                del self.buf[:total]
+                if crc8_dvb_s2(frame[3:-1]) != frame[-1]:
+                    continue
+                if struct.unpack_from('<H', frame, 4)[0] != command:
+                    continue
+                if frame[2] == ord('!'):
+                    raise RuntimeError(f'MSPv2 0x{command:04X} rejected')
+                return frame[8:-1]
+        raise TimeoutError(f'MSPv2 0x{command:04X} reply timeout')
+
+    def set_direction(self, motor, reverse):
+        """Store spin direction in one ESC via DShot commands (motors must be stopped).
+
+        Sends DSHOT_CMD_SPIN_DIRECTION_1 (7, normal) or _2 (8, reversed), then
+        DSHOT_CMD_SAVE_SETTINGS (12), as a blocking MSP2_SEND_DSHOT_COMMAND; Betaflight
+        repeats each 10x. Physical direction also depends on wire order, so
+        "normal" is not a fixed CW/CCW - check by eye afterwards.
+        """
+        if not 1 <= motor <= 4:
+            raise ValueError('motor must be 1-4')
+        self.stop()
+        time.sleep(0.5)            # let the motor spin down; ESCs ignore commands while running
+        if self.motors() != [1000] * 4:
+            raise RuntimeError('Motors not stopped; direction not changed')
+        self.request_v2(0x3003, bytes([1, motor - 1, 2, 8 if reverse else 7, 12]))
+
     def stop(self):
         errors = []
         for _ in range(3):
@@ -160,6 +213,15 @@ class FC:
         if errors:
             report(stop_write_errors=errors,
                    action='If the motor is moving, disconnect the battery immediately')
+
+
+def crc8_dvb_s2(data):
+    crc = 0
+    for byte in data:
+        crc ^= byte
+        for _ in range(8):
+            crc = ((crc << 1) ^ 0xD5) & 0xFF if crc & 0x80 else (crc << 1) & 0xFF
+    return crc
 
 
 # --- BLHeli 4-way interface (read-only use) --------------------------------
@@ -325,6 +387,9 @@ def main():
     sub.add_parser('status', help='Read-only firmware, voltage, RC and command readbacks')
     sub.add_parser('config', help='Read-only motor protocol / idle settings')
     sub.add_parser('stop', help='Block normal arming and send all outputs to stop')
+    d = sub.add_parser('direction', help='Store one ESC spin direction (normal/reversed)')
+    d.add_argument('--motor', type=int, required=True, choices=[1, 2, 3, 4])
+    d.add_argument('setting', choices=['normal', 'reversed'])
     e = sub.add_parser('esc-info', help='Read-only ESC firmware/settings via 4-way passthrough')
     e.add_argument('--escs', type=int, nargs='+', default=[1, 2, 3, 4])
     p = sub.add_parser('pulse', help='PHYSICAL ACTION: one motor; not an aircraft ARM')
@@ -341,7 +406,7 @@ def main():
             parser.error('Up to three finite durations in (0, 10] seconds only')
 
     fc = FC(args.port)
-    mutating = args.action in ('stop', 'pulse')
+    mutating = args.action in ('stop', 'pulse', 'direction')
 
     def interrupted(signum, frame):
         raise KeyboardInterrupt(f'Signal {signum}')
@@ -352,6 +417,14 @@ def main():
         state = fc.status()
         report(**state)
         if args.action == 'status':
+            return 0
+        if args.action == 'direction':
+            if state['armed']:
+                raise RuntimeError('FC is armed')
+            fc.request(99, b'\x01\x00')
+            fc.set_direction(args.motor, args.setting == 'reversed')
+            report(event='direction_saved', motor=args.motor, setting=args.setting,
+                   note='spin it to check; replug battery if it did not change')
             return 0
         if args.action == 'config':
             report(**fc.config())

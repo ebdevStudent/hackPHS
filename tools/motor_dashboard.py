@@ -45,6 +45,7 @@ class Controller:
         self.running = True
         self.reconnect_requested = False
         self.connect_error = None
+        self.pending_direction = None
 
     def log(self, message):
         self.events.append(dict(t=time.strftime('%H:%M:%S'), msg=message))
@@ -93,6 +94,20 @@ class Controller:
                         events=self.events[-12:], port=self.port,
                         connect_error=self.connect_error)
 
+    def request_direction(self, motor, reverse):
+        with self.lock:
+            if not self.state.get('connected'):
+                return 'FC not connected'
+            if self.state.get('armed'):
+                return 'FC is armed'
+            if self.pending_direction:
+                return 'Direction change already in progress'
+            self.enabled = False
+            self.targets = [1000] * 4
+            self.pending_direction = (motor, reverse)
+            self.log(f"Setting M{motor} direction {'REVERSED' if reverse else 'NORMAL'}…")
+            return None
+
     def request_reconnect(self):
         with self.lock:
             self.enabled = False
@@ -112,6 +127,10 @@ class Controller:
                 config = fc.config()
             except Exception:
                 config = {}
+            try:
+                config['mspv2_api'] = list(fc.request_v2(1))
+            except Exception as exc:
+                config['mspv2_api'] = f'unavailable: {exc}'
         except Exception:
             fc.ser.close()
             raise
@@ -163,6 +182,16 @@ class Controller:
                             break
                         time.sleep(0.1)
                     continue
+            if self.pending_direction:
+                motor, reverse = self.pending_direction
+                try:
+                    self.fc.set_direction(motor, reverse)
+                    self.log(f"M{motor} direction {'REVERSED' if reverse else 'NORMAL'} saved "
+                             '- spin it to check (replug battery if unchanged)')
+                except Exception as exc:
+                    self.log(f'M{motor} direction change FAILED: {exc}')
+                finally:
+                    self.pending_direction = None
             try:
                 with self.lock:
                     if self.enabled and time.monotonic() - self.heartbeat > HEARTBEAT_TIMEOUT:
@@ -236,6 +265,12 @@ def make_handler(ctl):
                 ctl.disable(body.get('reason', 'STOP pressed'))
             elif self.path == '/api/reconnect':
                 ctl.request_reconnect()
+            elif self.path == '/api/direction':
+                motor, reverse = body.get('motor'), body.get('reverse')
+                if (not isinstance(motor, int) or isinstance(motor, bool)
+                        or not 1 <= motor <= 4 or not isinstance(reverse, bool)):
+                    return self.send(400, json.dumps(dict(error='bad direction request')))
+                error = ctl.request_direction(motor, reverse)
             elif self.path == '/api/enable':
                 error = ctl.enable(body.get('props_removed') is True)
             elif self.path == '/api/set':

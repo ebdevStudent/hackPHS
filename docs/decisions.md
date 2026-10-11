@@ -971,3 +971,14 @@ blocked over MSP while connected; slider ceiling 1300 (~30 %) unless `--max` is 
 Verified against a mock MSP FC on a pty (clamping, heartbeat timeout, stop, malformed
 requests rejected, disconnect handling) and rendered in headless Chrome. **Not yet run
 against the real FC.**
+
+## 2026-10-11 — Per-motor ESC direction from the dashboard / bench tool
+
+User reported motors spinning the same direction. Added ESC spin-direction setting via
+`MSP2_SEND_DSHOT_COMMAND` (0x3003, confirmed present in BF 4.4.2 `msp.c`): blocking
+DShot `SPIN_DIRECTION_1/2` (7/8) + `SAVE_SETTINGS` (12) to one motor, which Betaflight
+repeats 10x; motors are stopped and verified at 1000 first. Exposed as
+`betaflight_motor_bench.py direction --motor N normal|reversed` and dashboard Normal /
+Reversed buttons. MSPv2 framing verified against the real FC (API 1.45 readback); the
+DShot payloads were verified on the mock FC only. **Physical direction change pending user
+observation.** No soldering change needed; props-in default is M1/M4 CW, M2/M3 CCW.
