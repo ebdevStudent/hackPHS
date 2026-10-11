@@ -914,3 +914,29 @@ Published the current CAD sources, calibrated native/export geometry, complete `
 User instruction: “tell me what you can achive right now without hardware. do it. finish it properly.” Connected generated AprilTag pixels through an independent relative-pose worker to the existing shared mock mission ledger/API. Frozen frames, delayed/stalled inference, target loss, Stop/Abort and source/settings changes cannot retain simulated motion. Added explicit --portable-demo, exact JPEG/frame association, real Python HTTP/Dart client rehearsals and phone/desktop render checks. Physical follow/landing, audio/TTS, D435 work, arbitrary point landing and UI redesign remain outside scope.
 
 Replaced the active ESP32 PPM experiment with a no-output ESP32-S3 USB-UART protocol port at 115200 using the shared core/watchdog/framer; original experiment preserved as text under docs/sources. Added sketch host execution tests, selected-target compilation and CI/build/evidence gates. Hardware-free completion record: [docs/28](28-hardware-free-completion.md). No compiler/test result establishes actual USB, GPIO, radio or aircraft behavior.
+
+
+## 2026-10-11 — Adopt trainer branch and publish full Claude hardware handoff (user)
+
+**Decision:** Use `ebdevStudent/hackPHS`, branch `esp32-trainer-ppm`, baseline
+`df186f4865aedc61bad246e535e8a785855fa750`, rather than the old `chessdroid108/HackPHS`
+checkout. User requested a comprehensive handoff for Claude on this same laptop and
+publication of the direct USB motor-control code. Publish this work on the adopted branch;
+no main merge or unrelated source changes.
+
+**Actual findings:** Ordinary Pocket ELRS binding and sticks were established. Earlier
+Claude reports ESP-to-Pocket timing/mix/override checks; full 20 trainer-to-FC trials remain
+pending. Codex observed fresh ESP NO_OUTPUT sessions with GPIO5 out. Actual FC firmware
+is Betaflight 4.4.2 / API 1.45. Motor 1 at command 1020 physically spun in short pulses,
+but the user reported stop/restart during a monitored 10-second run while MSP commands
+remained 1020 for Motor 1 and 1000 for the others. All commands read back stopped afterward.
+Continuous rotation, actual RPM, ESC firmware/settings and flight readiness are unverified.
+1040 for 2 seconds is a proposed diagnostic after physical/supply checks, not a completed test.
+
+**Delivery:** Added `docs/29-claude-flight-controller-handoff-2026-10-11.md`, optional
+`tools/betaflight_motor_bench.py`, exact inert script/source snapshots and pointers from the
+index/firmware README. Preserved earlier records rather than rewriting them as passed tests.
+The helper is import-safe, requires explicit movement flags and adds voltage sampling;
+Claude may choose another solution. Its syntax was inspected without importing it. No
+new hardware pulse, installation, firmware flash, calibration, automated test suite or
+trainer enable was performed while preparing this handoff.

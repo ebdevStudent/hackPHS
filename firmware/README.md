@@ -1,5 +1,11 @@
 # Bridge firmware
 
+## Actual bench status — 2026-10-11
+
+See the [complete laptop handoff](../docs/29-claude-flight-controller-handoff-2026-10-11.md) and [dated source records](../docs/sources/bench-handoff-2026-10-11/README.md). The earlier Claude handoff reports real Pi PPM timing and Pocket trainer/mix/SD-override checks; Codex inspected the matching source and Pi tools and independently observed a fresh `NO_OUTPUT` serial session with GPIO5 out. Those reported physical measurements supersede the older table below only in their stated ESP-to-radio scope. **The 20 disarmed trainer-to-FC trials and Linux suites remain pending in this session.**
+
+Direct USB FC motor work is a separate path. User confirmed Motor 1 rotation in short pulses but intermittent spin/stop during a 10-second command at 1020 despite steady MSP command readback. Actual ESC firmware/settings, RPM, direction, loaded current and continuous reliable rotation are unverified. The optional Python helper does not change this ESP firmware. No board was flashed while preparing this handoff.
+
 ## Current selected board: Freenove ESP32-S3 WROOM
 
 The user selected this board on 2026-10-10 because the team does not have the previously planned Arduino Mega 2560. Connect the Pi through the board's **USB-UART** interface for a direct serial link; the VIXLW capture adapter is a separate USB device for video. Freenove documents USB-UART as the board's USB-to-serial path and distinguishes it from USB-OTG in its [USB guide](https://docs.freenove.com/projects/fnk0085/en/latest/fnk0085/codes/C/35_USB.html).

@@ -1,5 +1,7 @@
 # Ball Drone documentation
 
+**2026-10-11 actual bench handoff:** [Flight controller, Motor 1 fault, and full Pi/ESP32/Pocket/FPV pipeline](29-claude-flight-controller-handoff-2026-10-11.md). This dated record supersedes older no-output/Mega/source-location assumptions for the adopted `ebdevStudent/hackPHS` `esp32-trainer-ppm` branch. Motor 1 starts but stops/restarts at command 1020; continuous reliable rotation is not verified. The optional direct USB helper is `tools/betaflight_motor_bench.py`; exact executed scripts and the earlier Claude source handoff are preserved under `docs/sources/bench-handoff-2026-10-11/`. Full trainer-to-FC trials remain pending.
+
 **P1B print package — 2026-10-09:** [Start printing](../cad/apex2-cage/print_now/START_HERE.md). All final plates, profiles, native model and assembly/validation records are in `cad/apex2-cage/print_now/FINAL_P1B/`; the ZIP is alongside that folder. Print T3 first, then qualify section retention and strength.
 
 Updated **2026-10-10** (combined CAD print delivery, Flutter/portable mission software, and ESP32-S3 bridge-board selection; source snapshot remains 2026-10-07) from [HackPHS 2026](https://docs.google.com/document/d/1QrmGZfF8AJm1gQhVAsY_8FbZmaZgIQHXRB_zzldYWVA/edit) and the user's follow-up decisions.

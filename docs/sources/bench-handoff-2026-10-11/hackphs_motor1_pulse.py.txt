@@ -1,0 +1,92 @@
+import serial, struct, time, threading, signal, json
+from pathlib import Path
+
+PORT = '/dev/serial/by-id/usb-Betaflight_Betaflight_STM32F411_0x8000000-if00'
+STOP = struct.pack('<8H', *([1000] * 8))
+PULSE = struct.pack('<8H', 1020, *([1000] * 7))
+ser = serial.Serial(PORT, 115200, timeout=0.02, write_timeout=0.1, exclusive=True)
+buf = bytearray()
+write_lock = threading.Lock()
+
+def write(cmd, data=b''):
+    body = bytes([len(data), cmd]) + data
+    checksum = 0
+    for v in body: checksum ^= v
+    with write_lock:
+        ser.write(b'$M<' + body + bytes([checksum]))
+
+def request(cmd, data=b'', timeout=0.4):
+    write(cmd, data)
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        buf.extend(ser.read(ser.in_waiting or 1))
+        while True:
+            pos = buf.find(b'$M')
+            if pos < 0:
+                if len(buf)>2: del buf[:-2]
+                break
+            if pos: del buf[:pos]
+            if len(buf)<6: break
+            size, code = buf[3], buf[4]
+            total = size + 6
+            if len(buf)<total: break
+            frame = bytes(buf[:total]); del buf[:total]
+            checksum = 0
+            for v in frame[3:-1]: checksum ^= v
+            if checksum != frame[-1]: continue
+            if code != cmd: continue
+            if frame[2:3] == b'!': raise RuntimeError(f'MSP {cmd} rejected')
+            if frame[2:3] == b'>': return frame[5:-1]
+    raise TimeoutError(f'MSP {cmd} reply timeout')
+
+def stop():
+    for _ in range(3):
+        try: write(214, STOP)
+        except Exception: pass
+        time.sleep(0.025)
+
+def interrupted(signum, frame):
+    stop()
+    raise SystemExit('Interrupted; stop commands sent')
+
+signal.signal(signal.SIGINT, interrupted)
+signal.signal(signal.SIGTERM, interrupted)
+timer = None
+try:
+    print('Connected FC USB', flush=True)
+    version = list(request(3))
+    if version != [4,4,2]: raise RuntimeError(f'Unexpected firmware {version}')
+    request(99, b'\x01\x00') # block normal arming; retain runaway protection
+    stop()
+    analog = request(110)
+    volts = struct.unpack_from('<H', analog, 7)[0]/100 if len(analog)>=9 else analog[0]/10
+    rc_payload = request(105)
+    rc = list(struct.unpack('<'+'H'*(len(rc_payload)//2), rc_payload))
+    status = request(101)
+    boxids = request(119)
+    if not boxids or boxids[0] != 0: raise RuntimeError('ARM status mapping unexpected')
+    armed = bool(struct.unpack_from('<I', status, 6)[0] & 1)
+    baseline = list(struct.unpack('<8H',request(104)))
+    print(json.dumps({'voltage':volts,'rc':rc[:5],'armed':armed,'motors_before':baseline[:4]}),flush=True)
+    if not 6.4 <= volts <= 8.4: raise RuntimeError('Battery voltage outside this bench check range')
+    if armed or len(rc)<5 or rc[4]>=1800: raise RuntimeError('ARM must remain off')
+    if baseline[:4] != [1000]*4: raise RuntimeError('Motor outputs not stopped')
+    timer = threading.Timer(0.8, stop)
+    timer.start()
+    start = time.monotonic()
+    request(214, PULSE)
+    time.sleep(0.1)
+    during = list(struct.unpack('<8H',request(104)))
+    print(json.dumps({'commanded':[1020,1000,1000,1000],'reported_during':during[:4]}),flush=True)
+    if any(v!=1000 for v in during[1:4]) or not 1000<=during[0]<=1020:
+        raise RuntimeError('Unexpected motor readback')
+    time.sleep(max(0, 0.7-(time.monotonic()-start)))
+finally:
+    stop()
+    if timer is not None:
+        timer.cancel(); timer.join()
+    try:
+        after = list(struct.unpack('<8H',request(104)))
+        print(json.dumps({'motors_after':after[:4]}),flush=True)
+        if after[:4] != [1000]*4: raise RuntimeError('Stop readback failed: unplug battery')
+    finally: ser.close()

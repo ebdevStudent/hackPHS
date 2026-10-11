@@ -1,0 +1,59 @@
+# 
+
+# diff -all
+
+# version
+# Betaflight / STM32F411 (S411) 4.4.2 Jul  3 2023 / 01:49:11 (23d066d08) MSP API: 1.45
+
+# config: YES
+
+# start the command batch
+batch start
+
+board_name HGLRCF411SX1280V2
+manufacturer_id HGLR
+
+# feature
+feature -RX_SERIAL
+feature -SOFTSERIAL
+feature -TELEMETRY
+
+# serial
+serial 0 2048 115200 57600 0 115200
+
+# vtxtable
+vtxtable bands 6
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A FACTORY 5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B FACTORY 5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E FACTORY 5705 5685 5665 5645 5885 5905 5925 5945
+vtxtable band 4 FATSHARK F FACTORY 5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 5 RACEBAND R FACTORY 5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable band 6 LOWRACE  L FACTORY 5333 5373 5413 5453 5493 5533 5573 5613
+vtxtable powerlevels 5
+vtxtable powervalues 10 2 14 16 26
+vtxtable powerlabels 0 RCE 25 100 400
+
+# master
+set dshot_idle_value = 1000
+set motor_pwm_protocol = DSHOT300
+set ibata_scale = 470
+set osd_canvas_width = 30
+set osd_canvas_height = 13
+set vtx_band = 5
+set vtx_channel = 8
+set vtx_power = 4
+set vtx_low_power_disarm = ON
+set vtx_freq = 5917
+set expresslrs_uid = 0,0,224,242,158,88
+set expresslrs_rate_index = 3
+set expresslrs_switch_mode = HYBRID
+
+profile 0
+
+rateprofile 0
+
+# end the command batch
+batch end
+
+# 
