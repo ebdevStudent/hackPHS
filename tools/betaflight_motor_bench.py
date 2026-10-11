@@ -218,6 +218,28 @@ class FC:
                 break
         return v
 
+    def mode_ranges(self):
+        """[(permanent_box_id, aux_index, start_us, end_us)] for configured (non-empty) ranges."""
+        d = self.request(34)
+        out = []
+        for i in range(0, len(d) - 3, 4):
+            box, aux, start, end = d[i:i + 4]
+            if end > start:
+                out.append((box, aux, 900 + 25 * start, 900 + 25 * end))
+        return out
+
+    def failsafe(self):
+        d = self.request(75)
+        return dict(delay_s=d[0] / 10, off_delay_s=d[1] / 10, throttle=struct.unpack_from('<H', d, 2)[0],
+                    procedure=['DROP', 'LAND', 'GPS_RESCUE'][d[7]] if len(d) > 7 and d[7] < 3 else d[7:8])
+
+    def board_alignment(self):
+        return list(struct.unpack_from('<3h', self.request(38), 0))
+
+    def level_limit(self):
+        d = self.request(94)
+        return d[18] if len(d) > 18 else None
+
     def set_direction(self, motor, reverse):
         """Store spin direction in one ESC via DShot commands (motors must be stopped).
 

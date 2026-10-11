@@ -33,6 +33,8 @@ copy is also in `docs/sources/bench-handoff-2026-10-11/`.
   - Motors tab: sliders, test buttons, direction buttons, arming-block readout, "Allow radio arming".
   - Camera tab: live FPV, plus a video on/off switch (VTX pit mode, ~0.1 A saved).
   - Safety: dead-man heartbeat, Space = STOP.
+- Dashboard **Preflight** tab: read-only GO / NO-GO from FC + Pi, plus the manual checklist.
+- AprilTag follow + landing guidance, tag kit and Pi `drone-mode`: see [31-apriltags-and-tracking.md](31-apriltags-and-tracking.md).
 - `tools/pi/`: FPV streamer (`fpv-stream.service`, port 8090) with capture-stick auto-reset, installed on the Pi.
 
 ## Next steps

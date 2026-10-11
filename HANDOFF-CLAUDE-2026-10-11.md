@@ -75,6 +75,12 @@ Add the ESP32 trainer only after manual hover is reliable.
 - The older calibrated 3D tag tracking (`target_tracking.py`, `--target-calibration`) is unchanged and
   still display-only.
 
+### Preflight (laptop dashboard, FC on USB)
+`tools/motor_dashboard.py` → **Preflight** tab: one read-only button checks FC (battery, ELRS link, ARM range,
+ANGLE aux, max tilt, board alignment, throttle/ARM switch, arming blockers, failsafe, VTX, motor protocol)
+and Pi (fpv/track mode, video, bridge) → GO / CHECK / NO-GO, plus the manual checklist. Logic in
+`tools/preflight_checks.py` (tests: `software/tests/test_preflight_checks.py`).
+
 ## 5. Software audit fixes — PUSHED (commit after the handoff commit, same branch)
 
 A Sonnet compat audit found four software issues; they are implemented and pushed:

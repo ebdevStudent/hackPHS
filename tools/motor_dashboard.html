@@ -51,6 +51,18 @@
 <div class="bar" id="tabs">
   <button data-tab="motors" class="tab on">Motors</button>
   <button data-tab="camera" class="tab">Camera</button>
+  <button data-tab="preflight" class="tab">Preflight</button>
+</div>
+<div id="tab-preflight" hidden>
+  <div class="panel" style="max-width:900px">
+    <div class="bar"><button id="pfrun" style="padding:10px 18px">Run preflight checks</button>
+      <span id="pfsum" class="pill">not run</span><span id="pftime" class="hint"></span></div>
+    <table id="pftable"></table>
+    <h2 style="margin-top:16px">Manual checks (software can't see these)</h2>
+    <div id="pfmanual"></div>
+    <p class="hint">Read-only: nothing is changed on the FC or Pi. GO needs every automatic line green and every
+      manual box ticked. First hover: pilot only, USB unplugged, ESP32 trainer off (SD up).</p>
+  </div>
 </div>
 <div id="tab-camera" hidden>
   <div class="panel">
@@ -207,6 +219,7 @@ function showTab(name) {
   document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === name));
   $('tab-motors').hidden = name !== 'motors';
   $('tab-camera').hidden = name !== 'camera';
+  $('tab-preflight').hidden = name !== 'preflight';
   const base = state.fpv_url || '';
   if (name === 'camera' && base) {
     $('fpvimg').removeAttribute('src');
@@ -254,6 +267,25 @@ $('vtxtoggle').onclick = async () => {
 };
 $('fpvreset').onclick = () => fetch(state.fpv_url + '/reset', { method: 'POST' }).then(fpvStatus).catch(() => {});
 $('fpvimg').onerror = () => { if (tab === 'camera') setTimeout(() => showTab('camera'), 2000); };
+
+// --- Preflight tab ---
+const ICON = { ok: '✅', warn: '⚠️', fail: '❌', manual: '👁' };
+$('pfrun').onclick = async () => {
+  $('pfrun').disabled = true; $('pfsum').textContent = 'checking…'; $('pfsum').className = 'pill';
+  try {
+    const r = await post('/api/preflight', {});
+    const manualDone = [...document.querySelectorAll('#pfmanual input')].every((c) => c.checked);
+    const sum = r.summary === 'GO' && !manualDone ? 'CHECK' : r.summary;
+    $('pfsum').textContent = sum === 'GO' ? 'GO' : sum === 'NO-GO' ? 'NO-GO' : 'CHECK warnings / manual items';
+    $('pfsum').className = 'pill ' + (sum === 'GO' ? 'ok' : sum === 'NO-GO' ? 'bad' : 'warn');
+    $('pftime').textContent = 'at ' + r.t;
+    $('pftable').innerHTML = r.checks.map((c) => `<tr><td>${ICON[c.status] || ''} ${c.name}</td><td>${c.detail}</td></tr>`).join('');
+    if (!$('pfmanual').children.length) {
+      $('pfmanual').innerHTML = r.manual.map((m, i) => `<label class="chk"><input type="checkbox" id="pfm${i}"> ${m}</label>`).join('');
+    }
+  } catch (e) { $('pfsum').textContent = 'failed: ' + e.message; $('pfsum').className = 'pill bad'; }
+  $('pfrun').disabled = false;
+};
 
 function pct(v) { return v <= 1000 ? 0 : ((Math.min(v,2000) - 1001) / 999 * 100).toFixed(1); }
 

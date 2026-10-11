@@ -23,6 +23,9 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import urllib.request
+
+import preflight_checks
 from betaflight_motor_bench import DEFAULT_PORT, FC, dshot_percent
 
 HEARTBEAT_TIMEOUT = 0.5
@@ -51,6 +54,7 @@ class Controller:
         self.pending_arming_block = None
         self.pending_vtx_pit = None
         self.vtx = {}
+        self.preflight_request = None   # (Event, result dict) for the worker
 
     def log(self, message):
         self.events.append(dict(t=time.strftime('%H:%M:%S'), msg=message))
@@ -140,6 +144,40 @@ class Controller:
             self.log(f"Video transmitter {'ON' if on else 'OFF (pit mode)'} requested")
             return None
 
+    def read_preflight(self):
+        """Worker-side: extra read-only MSP queries for the checklist."""
+        fc = self.fc
+        data = dict(self.state)
+        data.update(config=self.config, vtx=fc.vtx(), mode_ranges=fc.mode_ranges(), failsafe=fc.failsafe(),
+                    board_alignment=fc.board_alignment(), level_limit=fc.level_limit())
+        return data
+
+    def preflight(self):
+        """HTTP-thread side: FC data via the worker, Pi data over HTTP, then the GO/NO-GO list."""
+        import threading as _t
+        fc_data, checks = None, []
+        if self.state.get('connected'):
+            done, box = _t.Event(), {}
+            with self.lock:
+                self.preflight_request = (done, box)
+            if done.wait(4) and 'data' in box:
+                fc_data = box['data']
+            checks += (preflight_checks.fc_checks(fc_data) if fc_data else
+                       [preflight_checks.check('Flight controller', 'fail', box.get('error', 'read timed out'))])
+        else:
+            checks.append(preflight_checks.check('Flight controller', 'fail', 'not connected over USB'))
+        pi = {}
+        base = self.fpv_url
+        for key, url in (('fpv', base + '/status'), ('track', base.rsplit(':', 1)[0] + ':8080/api/state')):
+            try:
+                with urllib.request.urlopen(url, timeout=1.5) as reply:
+                    pi[key] = json.loads(reply.read())
+            except Exception as exc:
+                pi.setdefault('error', f'unreachable ({type(exc).__name__})')
+        checks += preflight_checks.pi_checks(pi)
+        return dict(summary=preflight_checks.summary(checks), checks=checks, manual=preflight_checks.MANUAL,
+                    t=time.strftime('%H:%M:%S'))
+
     def request_reconnect(self):
         with self.lock:
             self.enabled = False
@@ -222,6 +260,13 @@ class Controller:
                     self.fc.request(99, bytes([1 if block else 0, 0]))
                 except Exception as exc:
                     self.log(f'Arming block change FAILED: {exc}')
+            if self.preflight_request is not None:
+                (done, box), self.preflight_request = self.preflight_request, None
+                try:
+                    box['data'] = self.read_preflight()
+                except Exception as exc:
+                    box['error'] = f'FC read failed: {exc}'
+                done.set()
             if self.pending_vtx_pit is not None:
                 pit, self.pending_vtx_pit = self.pending_vtx_pit, None
                 try:
@@ -328,6 +373,8 @@ def make_handler(ctl):
                 if not isinstance(body.get('allow'), bool):
                     return self.send(400, json.dumps(dict(error='bad request')))
                 error = ctl.set_radio_arming(body['allow'])
+            elif self.path == '/api/preflight':
+                return self.send(200, json.dumps(ctl.preflight()))
             elif self.path == '/api/vtx':
                 if not isinstance(body.get('on'), bool):
                     return self.send(400, json.dumps(dict(error='bad request')))
