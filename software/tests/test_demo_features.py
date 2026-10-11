@@ -583,7 +583,7 @@ def test_gpio_led_trigger_uses_gpiozero(monkeypatch):
     assert states == [('pin', 17), 'on', 'off', 'closed']
 
 
-# ---------------------------------------------------------------- serial HELLO retry (Mega reset on open)
+# ---------------------------------------------------------------- serial HELLO retry (ESP32-S3 reset on open)
 class FakeSerial:
     def __init__(self, *a, **k): self.written, self.incoming, self.in_waiting = [], b'', 0
     def write(self, data): self.written.append(data.decode())
@@ -614,7 +614,7 @@ def test_hello_repeats_until_ready_then_stops(monkeypatch):
 
 
 def test_unanswered_commands_resync_with_a_new_session(monkeypatch):
-    # A Mega reset or Pico USB drop forgets the session; CMDs are then silently ignored.
+    # An ESP32-S3 reset or USB drop forgets the session; CMDs are then silently ignored.
     monkeypatch.setattr('ball_demo.bridge.serial.Serial', FakeSerial)
     bridge = SerialBridge('/dev/fake')
     start = bridge.last_hello

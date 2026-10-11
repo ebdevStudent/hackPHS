@@ -33,9 +33,53 @@ def test_not_ready_send_is_noop_and_hello_is_sent(adapter):
     assert adapter.seq == 0 and len(adapter.serial.writes) == 1
     assert adapter.serial.writes[0] == f'HELLO 1 {adapter.session}\n'.encode()
 
-def test_unverified_trainer_output_handshake_is_rejected(adapter):
+def test_serial_port_opens_at_default_or_requested_baud(monkeypatch):
+    opened = []
+    class Recording(Serial):
+        def __init__(self, device, baud, **kwargs): super().__init__(); opened.append(baud)
+    monkeypatch.setattr(module.serial, 'Serial', Recording)
+    SerialBridge('in-memory-only').close()
+    SerialBridge('in-memory-only', baud=57600).close()
+    assert opened == [module.DEFAULT_BAUD, 57600] and module.DEFAULT_BAUD == 115200
+
+def test_trainer_output_handshake_is_rejected_without_opt_in(adapter):
     feed(adapter, f'READY 1 {adapter.session} PPM_YAW\n', 1)
     assert not adapter.ready and adapter.physical_output is False
+
+@pytest.fixture
+def trainer(monkeypatch):
+    monkeypatch.setattr(module.serial, 'Serial', Serial)
+    bridge = SerialBridge('in-memory-only', trainer_output=True)
+    yield bridge
+    bridge.close()
+
+def test_opted_in_bridge_reports_trainer_output_from_ready(trainer):
+    assert trainer.physical_output is False and 'PPM' not in trainer.transport
+    feed(trainer, f'READY 1 {trainer.session} PPM_YAW\n', 1)
+    assert trainer.ready and trainer.physical_output is True
+    assert 'ESP32-S3' in trainer.transport and 'PPM' in trainer.transport
+    assert SerialBridge.physical_output is False
+
+def test_opted_in_bridge_without_jumper_is_ready_but_has_no_output(trainer):
+    feed(trainer, f'READY 1 {trainer.session} NO_OUTPUT\n', 1)
+    assert trainer.ready and trainer.physical_output is False and 'PPM' not in trainer.transport
+
+def test_replayed_ready_cannot_change_the_session_output_mode(trainer):
+    feed(trainer, f'READY 1 {trainer.session} NO_OUTPUT\n', 1)
+    feed(trainer, f'READY 1 {trainer.session} PPM_YAW\n', 1.1)
+    assert trainer.physical_output is False
+
+def test_resync_drops_trainer_output_until_the_new_session_reports_it(trainer):
+    feed(trainer, f'READY 1 {trainer.session} PPM_YAW\n', 1)
+    old = trainer.session
+    trainer.send(True, 200, 1.1)
+    trainer.poll(1.1 + module.RESYNC_S)
+    assert trainer.session != old and not trainer.ready and trainer.physical_output is False
+    assert 'PPM' not in trainer.transport
+    feed(trainer, f'READY 1 {old} PPM_YAW\n', 2.2)
+    assert not trainer.ready
+    feed(trainer, f'READY 1 {trainer.session} NO_OUTPUT\n', 2.3)
+    assert trainer.ready and trainer.physical_output is False
 
 @pytest.mark.parametrize('message', [
     b'\xff\xfe\n', b'unknown\n', b'x' * (MAX_FRAME + 1) + b'\n',

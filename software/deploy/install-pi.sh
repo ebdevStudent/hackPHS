@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get install -y python3 python3-venv python3-pip libglib2.0-0 libgl1 network-manager
 python3 -c 'import sys; assert sys.version_info >= (3, 13), "Python 3.13+ required (Raspberry Pi OS Trixie)"'
 sudo useradd --system --create-home --home-dir /var/lib/ball-drone ball-demo 2>/dev/null || id ball-demo
-# Camera (/dev/video*) and Mega serial (/dev/ttyACM*) access for the service account.
+# Camera (/dev/video*) and ESP32-S3 bridge serial (/dev/ttyACM*) access for the service account.
 sudo usermod -a -G video,dialout ball-demo
 # The service cannot read home directories (ProtectHome); put recordings here instead.
 sudo mkdir -p /opt/ball-drone/software /etc/ball-drone /var/lib/ball-drone/recordings

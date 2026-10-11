@@ -10,14 +10,14 @@ from pathlib import Path
 import uvicorn
 
 from .api import create_app
-from .bridge import SerialBridge
+from .bridge import DEFAULT_BAUD, SerialBridge
 from .engine import Engine
 from .fixtures import generate
 from .protocol import BridgeCore
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Ball Drone software demo; no physical transmitter output')
+    parser = argparse.ArgumentParser(description='Ball Drone software demo; transmitter output only via an opted-in ESP32-S3 bridge')
     sub = parser.add_subparsers(dest='command', required=True)
     serve = sub.add_parser('serve')
     serve.add_argument('--host', default='127.0.0.1')
@@ -25,7 +25,12 @@ def main():
     serve.add_argument('--data', default=os.environ.get('BALL_DATA_DIR', 'runs'))
     serve.add_argument('--roster', default=os.environ.get('BALL_ROSTER_FILE'),
                        help='Private server-owned JSON file containing measured person tags and landing pads')
-    serve.add_argument('--serial', help='Explicit device opt-in; scaffold internal state only')
+    serve.add_argument('--serial', help='Explicit ESP32-S3 bridge device opt-in, e.g. /dev/ttyACM0')
+    serve.add_argument('--baud', type=int, default=DEFAULT_BAUD,
+                       help=f'Bridge serial baud; must match the sketch (default {DEFAULT_BAUD})')
+    serve.add_argument('--trainer-output', action='store_true',
+                       help='Accept an ESP32-S3 bridge that reports PPM trainer yaw output (arming jumper fitted). '
+                            'Startup stays MANUAL and disabled; output is not physically verified')
     serve.add_argument('--portable-demo', action='store_true',
                        help='Generated AprilTag images and invented geometry; no hardware or aircraft output')
     serve.add_argument('--target-calibration', help='Versioned FPV Calibration JSON for informational relative tracking')
@@ -102,6 +107,8 @@ def main():
     card.add_argument('--network', default='Shared network')
     card.add_argument('--output', default='runs/connection-card')
     args = parser.parse_args()
+    if args.command == 'serve' and args.trainer_output and not args.serial:
+        serve.error('--trainer-output requires --serial')
     if args.command == 'serve':
         if args.portable_demo and (args.camera or args.recorded or args.serial or args.roster or args.nav_bundle or args.nav_replay or args.target_calibration):
             parser.error('--portable-demo uses generated images, mock bridge and its own fictional roster/geometry')
@@ -116,7 +123,7 @@ def main():
         print(f'Visitor URL: http://{args.host}:{args.port}/', flush=True)
         print(f'Operator token saved to {token_path.resolve()} (local, private). Startup: MANUAL.', flush=True)
         source = {'kind': 'recorded', 'path': args.recorded} if args.recorded else camera_spec(args.camera, args.camera_backend) if args.camera else None
-        bridge = SerialBridge(args.serial) if args.serial else None
+        bridge = SerialBridge(args.serial, baud=args.baud, trainer_output=args.trainer_output) if args.serial else None
         bundle, recording = None, None
         if args.nav_bundle or args.nav_replay:
             from .map_io import load_bundle

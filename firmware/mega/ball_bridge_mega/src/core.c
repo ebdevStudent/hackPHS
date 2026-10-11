@@ -4,7 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-void ball_init(ball_core *core) { memset(core, 0, sizeof(*core)); }
+void ball_init(ball_core *core) {
+    memset(core, 0, sizeof(*core));
+    core->output_mode = core->session_output = BALL_NO_OUTPUT;
+}
+void ball_set_output_mode(ball_core *core, const char *mode) {
+    core->output_mode = mode ? mode : BALL_NO_OUTPUT;
+}
 void ball_tick(ball_core *core, uint32_t now_ms) {
     if (core->has_command && (uint32_t)(now_ms - core->last_valid_ms) >= BALL_WATCHDOG_MS) {
         core->enabled = false;
@@ -61,9 +67,11 @@ bool ball_receive(ball_core *core, const char *line, size_t length, uint32_t now
     }
     if (count < 3 || strcmp(fields[1], "1") || !session_valid(fields[2])) return false;
     if (!strcmp(fields[0], "HELLO") && count == 3) {
+        const char *mode = core->output_mode;
         ball_init(core);
+        core->output_mode = core->session_output = mode;
         strcpy(core->session, fields[2]);
-        snprintf(reply, capacity, "READY 1 %s NO_OUTPUT\n", core->session);
+        snprintf(reply, capacity, "READY 1 %s %s\n", core->session, core->session_output);
         return true;
     }
     if (strcmp(fields[0], "CMD") || count != 6 || !core->session[0] || strcmp(core->session, fields[2])) return false;

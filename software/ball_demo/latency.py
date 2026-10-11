@@ -5,7 +5,7 @@ switches the target on through a trigger and reads frames until the same
 Detector used by the engine finds it. The interval runs from the trigger call to
 the moment the detection decision is available on the host. It therefore
 includes the trigger's own display or LED delay, the camera, receiver, capture
-adapter, driver buffering and processing. It excludes the Mega, radio and flight
+adapter, driver buffering and processing. It excludes the ESP32-S3 bridge, radio and flight
 controller, which need their own measurement.
 """
 import json
@@ -68,7 +68,7 @@ def summarise(results):
                         'p95_ms': values[min(len(values) - 1, int(round(.95 * (len(values) - 1))))],
                         'max_ms': values[-1]})
     summary['scope'] = ('Trigger-to-host-detection only. Includes trigger display/LED delay; excludes '
-                        'Mega, radio, receiver-to-motor and flight-controller response.')
+                        'ESP32-S3 bridge, radio, receiver-to-motor and flight-controller response.')
     return summary
 
 

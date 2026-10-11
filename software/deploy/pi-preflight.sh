@@ -44,7 +44,7 @@ shopt -s nullglob
 cameras=("$root"/dev/video*)
 serials=("$root"/dev/ttyACM* "$root"/dev/ttyUSB*)
 if (( ${#cameras[@]} )); then pass "Video devices: ${cameras[*]#$root}"; else warn "No /dev/video* yet: plug in the USB capture adapter, then run 'ball-demo cameras'"; fi
-if (( ${#serials[@]} )); then pass "Serial devices: ${serials[*]#$root}"; else warn "No /dev/ttyACM*/ttyUSB* yet: the Arduino Mega appears as /dev/ttyACM0 when connected"; fi
+if (( ${#serials[@]} )); then pass "Serial devices: ${serials[*]#$root}"; else warn "No /dev/ttyACM*/ttyUSB* yet: the ESP32-S3 bridge (USB/UART port) appears as /dev/ttyACM0 when connected"; fi
 
 if (( failures )); then echo "Preflight failed with $failures problem(s); nothing was installed."; exit 1; fi
 echo "Preflight passed."

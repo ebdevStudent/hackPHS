@@ -1220,7 +1220,7 @@ class Workstation(QMainWindow):
         self.source_label.setText(' ' + state['source_label'] + ' ')
         detection = state.get('detection') or {}
         for key, label in self.readouts.items():
-            if key in ('bridge', 'bridge_fault') and not state.get('physical_output'):
+            if key in ('bridge', 'bridge_fault') and not (state.get('physical_output') or state.get('steering_available')):
                 label.setText('—')
                 continue
             value = detection.get(key) if key in ('error', 'quality') else state.get(key)

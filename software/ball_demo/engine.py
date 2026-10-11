@@ -18,7 +18,7 @@ STEERING_UNAVAILABLE = 'Manual steering — computer steering unavailable'
 CAMERA_RETRY_S = 1.0
 # A camera open/read can legitimately block for a while; beyond this the worker is reported stalled.
 WORKER_STALL_MS = 3000
-# A Mega resets when its port opens and needs ~1.5 s before answering HELLO. Stay MANUAL
+# The ESP32-S3 can reset when its port opens and needs time to boot before answering HELLO. Stay MANUAL
 # while the handshake is pending; only an unanswered handshake beyond this is a fault.
 BRIDGE_READY_S = 3.0
 

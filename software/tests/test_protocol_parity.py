@@ -12,7 +12,8 @@ from ball_demo.protocol import BridgeCore, parse
 
 class CCore(ctypes.Structure):
     _fields_ = [('session', ctypes.c_char * 33), ('seq', ctypes.c_uint32), ('last_valid_ms', ctypes.c_uint32),
-                ('enabled', ctypes.c_bool), ('has_command', ctypes.c_bool), ('yaw', ctypes.c_int), ('watchdog_fault', ctypes.c_bool)]
+                ('enabled', ctypes.c_bool), ('has_command', ctypes.c_bool), ('yaw', ctypes.c_int), ('watchdog_fault', ctypes.c_bool),
+                ('output_mode', ctypes.c_char_p), ('session_output', ctypes.c_char_p)]
 
 
 @pytest.fixture(scope='module')

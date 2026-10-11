@@ -49,7 +49,7 @@ fi
 shopt -s nullglob
 cams=("$root"/dev/video*); serial=("$root"/dev/ttyACM* "$root"/dev/ttyUSB*)
 (( ${#cams[@]} )) && pass "video devices: ${cams[*]#$root}" || warn "no /dev/video*: connect the capture adapter"
-(( ${#serial[@]} )) && pass "serial devices: ${serial[*]#$root}" || warn "no /dev/ttyACM*: connect the Mega if testing the bridge"
+(( ${#serial[@]} )) && pass "serial devices: ${serial[*]#$root}" || warn "no /dev/ttyACM*: connect the ESP32-S3 USB/UART port if testing the bridge"
 
 if (( failures )); then echo "Pi acceptance: $failures failure(s). Report: $report"; exit 1; fi
 echo "Pi acceptance passed. Report: $report"

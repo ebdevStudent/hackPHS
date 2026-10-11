@@ -4,14 +4,43 @@
 
 The user selected this board on 2026-10-10 because the team does not have the previously planned Arduino Mega 2560. Connect the Pi through the board's **USB-UART** interface for a direct serial link; the VIXLW capture adapter is a separate USB device for video. Freenove documents USB-UART as the board's USB-to-serial path and distinguishes it from USB-OTG in its [USB guide](https://docs.freenove.com/projects/fnk0085/en/latest/fnk0085/codes/C/35_USB.html).
 
-[`esp32/ball_bridge_esp32/`](esp32/ball_bridge_esp32/ball_bridge_esp32.ino) implements protocol v1 at 115200 baud using the shared portable parser, watchdog and line framer. `HELLO` reports `READY ... NO_OUTPUT`. It drives no pins and accepts commands into internal state only. The 250 ms watchdog, session/sequence handling, oversized-frame discard and rollover are tested against the actual sketch using a UART-only host stub. Target compilation is recorded separately in [hardware-free completion](../docs/28-hardware-free-completion.md).
+Sketch: [`esp32/ball_bridge_esp32/`](esp32/ball_bridge_esp32/). It runs the same tested protocol core as the other bridges (`src/` is a byte-identical copy of `firmware/core.*` and `line_reader.*`; `tests/test_esp32_bridge.py` fails on drift). It generates a CPPM trainer signal for **yaw only**. That output is compiled and checked in a host simulation, **not yet physically verified** on the radio. Terminal tools (flash, drive, probe): [`esp32/tools/`](esp32/tools/).
+
+### Output behaviour
+
+- Link: `Serial0` at 115200 (CH343 USB-UART, UART0). The host default `--baud` matches.
+- Arming jumper: GPIO 5 to GND. It is sampled at each HELLO. READY reports `PPM_YAW` only if the jumper was in at that HELLO; otherwise `NO_OUTPUT` and no pulses. The host accepts a `PPM_YAW` bridge only with `serve --trainer-output`.
+- Pulling the jumper disarms at once, for the rest of the session. Refitting it needs a new HELLO.
+- While armed, GPIO 4 streams CPPM continuously: 8 channels, 22.5 ms frames, every channel 1500 µs except CH4 (yaw) = 1500 ± 150 µs, scaled from protocol yaw ±1000.
+- Disabled, watchdog-expired or stale (main loop stalled more than 5 frames) → CH4 1500 µs. The stream keeps running, because EdgeTX holds the last trainer value for about 1 s after the signal stops.
+- Disarm → 3 neutral frames, then the line idles HIGH and the radio drops the trainer input.
+- GPIO 4/5 are also the camera SCCB pins. Leave the camera ribbon unplugged.
+
+### Build and flash
+
+Arduino-ESP32 core 3.x (2.x also compiles via the version switch in `ppm.cpp`). Board: `ESP32S3 Dev Module`.
 
 ```sh
-arduino-cli core install esp32:esp32@3.3.12 --additional-urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
-arduino-cli compile --fqbn 'esp32:esp32:esp32s3:USBMode=hwcdc,CDCOnBoot=default' --warnings all firmware/esp32/ball_bridge_esp32
+arduino-cli compile --fqbn esp32:esp32:esp32s3 --warnings all firmware/esp32/ball_bridge_esp32
+arduino-cli upload  --fqbn esp32:esp32:esp32s3 -p <port> firmware/esp32/ball_bridge_esp32
 ```
 
-Use the USB-UART connector. Hardware enumeration, flashing, reset scheduling and electrical/trainer behavior remain unverified. The earlier incompatible PPM experiment is preserved as [reference text](../docs/sources/esp32-ppm-experiment-2026-10-10/README.md), outside the active sketch. Shared `src/` files must remain byte-identical to `firmware/core.c/.h` and `line_reader.c/.h`; the ESP32 tests enforce this.
+Use the USB-C port next to the BOOT button (CH343, VID:PID `1a86:55d3`); on Linux it is `/dev/ttyACM*`, stable as `/dev/serial/by-id/usb-1a86_*`. If upload does not start, hold BOOT, tap RST, release BOOT.
+
+Then on the Pi: `python -m ball_demo.cli serve --serial /dev/serial/by-id/<id> --trainer-output` (omit `--trainer-output` for an internal-state-only bridge). Startup stays MANUAL and disabled.
+
+### Checks (2026-10-10, no board attached)
+
+| Check | Result |
+| --- | --- |
+| `arduino-cli compile --warnings all` (esp32 core 3.x, ESP32S3 Dev Module) | Clean; 285,273 B flash (21%), 22,392 B RAM |
+| Host simulation `esp32/test/test_ppm.cpp` (EdgeTX-style decode: 22.5 ms frames, 4–19 ms sync, non-yaw 1500 µs, yaw cap, neutral on disable/stall, 3-frame tail then idle, no start-up glitch) | PASS |
+| `test_core.c` incl. per-HELLO output latch; `test_line_reader.c` | PASS |
+| Flashed to the board, CPPM measured on a scope, EdgeTX trainer channel monitor, props-off 20/20 | **Not done**: needs hardware |
+
+Rebuild the simulation from `firmware/esp32/test`: `c++ -std=c++17 -Wall -Wextra -Werror -I stubs -I ../ball_bridge_esp32 test_ppm.cpp && ./a.out`.
+
+The historical Mega and Pico artifacts below do not establish ESP32-S3 behaviour.
 
 ## Historical Arduino Mega 2560 sketch
 

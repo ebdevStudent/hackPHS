@@ -11,6 +11,19 @@ int main(void) {
     ball_core c;
     ball_init(&c);
     assert(!c.enabled && c.yaw == 0);
+    assert(!strcmp(c.output_mode, "NO_OUTPUT") && !strcmp(c.session_output, "NO_OUTPUT"));
+    {   /* Output mode is latched at HELLO: a mid-session change is neither advertised nor armed. */
+        ball_core o; char r[160];
+        memset(&o, 0x5a, sizeof(o)); ball_init(&o);
+        assert(ball_receive(&o, "HELLO 1 s1\n", 11, 0, r, sizeof(r)) && !strcmp(r, "READY 1 s1 NO_OUTPUT\n"));
+        ball_set_output_mode(&o, "PPM_YAW");
+        assert(!strcmp(o.session_output, "NO_OUTPUT"));
+        assert(ball_receive(&o, "HELLO 1 s2\n", 11, 0, r, sizeof(r)) && !strcmp(r, "READY 1 s2 PPM_YAW\n"));
+        assert(!strcmp(o.session_output, "PPM_YAW"));
+        ball_set_output_mode(&o, NULL);
+        assert(!strcmp(o.session_output, "PPM_YAW") && !strcmp(o.output_mode, "NO_OUTPUT"));
+        assert(ball_receive(&o, "HELLO 1 s3\n", 11, 0, r, sizeof(r)) && !strcmp(r, "READY 1 s3 NO_OUTPUT\n"));
+    }
     assert(!send(&c, "CMD 1 abc 1 1 10\n", 0));
     assert(send(&c, "HELLO 1 abc\n", 0));
     assert(send(&c, "CMD 1 abc 1 1 650\n", 10));

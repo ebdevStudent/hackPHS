@@ -178,11 +178,12 @@ def test_detector_reacquires_after_far_target_and_rejects_degenerate_contour(mon
     assert Detector().detect(image, settings) is None
 
 
-@pytest.mark.parametrize('recorded,serial_device', [(False, False), (True, False), (False, True)])
-def test_serve_cli_wiring_private_token_and_exit_neutral(tmp_path, monkeypatch, recorded, serial_device):
+@pytest.mark.parametrize('recorded,serial_device,trainer', [
+    (False, False, False), (True, False, False), (False, True, False), (False, True, True)])
+def test_serve_cli_wiring_private_token_and_exit_neutral(tmp_path, monkeypatch, recorded, serial_device, trainer):
     values = []; servers = []
     monkeypatch.setenv('BALL_OPERATOR_TOKEN', 'known-token')
-    monkeypatch.setattr(cli, 'SerialBridge', lambda identifier: values.append(identifier) or SimpleNamespace(transport='TEST'))
+    monkeypatch.setattr(cli, 'SerialBridge', lambda identifier, **options: values.append((identifier, options)) or SimpleNamespace(transport='TEST'))
     class DemoEngine:
         def __init__(self, data, bridge=None, source=None, **navigation):
             self.data, self.bridge, self.source, self.running, self.disabled = data, bridge, source, True, False
@@ -198,14 +199,23 @@ def test_serve_cli_wiring_private_token_and_exit_neutral(tmp_path, monkeypatch, 
     args = ['ball-demo', 'serve', '--data', str(tmp_path), '--host', '127.0.0.1', '--port', '8181']
     if recorded: args += ['--recorded', '/mock/input.avi']
     if serial_device: args += ['--serial', 'virtual-only']
+    if trainer: args += ['--trainer-output']
     monkeypatch.setattr(sys, 'argv', args); cli.main()
     server = servers[0]; engine, token = server.config.app
     assert engine.disabled and not engine.running and server.exited and token == 'known-token'
     assert server.config.host == '127.0.0.1' and server.config.port == 8181
     assert engine.source == ({'kind': 'recorded', 'path': '/mock/input.avi'} if recorded else None)
-    assert values == (['virtual-only'] if serial_device else [])
+    options = {'baud': 115200, 'trainer_output': trainer}
+    assert values == ([('virtual-only', options)] if serial_device else [])
     path = tmp_path / 'operator-token'
     assert path.read_text().strip() == 'known-token' and path.stat().st_mode & 0o777 == 0o600
+
+
+def test_trainer_output_without_serial_device_is_cli_error(tmp_path, monkeypatch):
+    monkeypatch.setattr(cli, 'SerialBridge', lambda *args, **kwargs: pytest.fail('bridge opened'))
+    monkeypatch.setattr(sys, 'argv', ['ball-demo', 'serve', '--data', str(tmp_path), '--trainer-output'])
+    with pytest.raises(SystemExit) as error: cli.main()
+    assert error.value.code == 2 and not (tmp_path / 'operator-token').exists()
 
 
 def test_invalid_connection_card_scheme_is_cli_error(tmp_path, monkeypatch):

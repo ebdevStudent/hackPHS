@@ -38,19 +38,29 @@ class MockBridge:
         self.send(False, 0, time.monotonic())
 
 
-# Opening an Arduino Mega's USB port resets the board; its bootloader ignores the first
-# ~1.5 s of input. Repeat HELLO (same session) until READY rather than sending it once.
+# Must match Serial.begin() in the ESP32-S3 bridge sketch. At 9600 one worst-case CMD or ACK
+# (~55-60 ms on the wire) is longer than the 50 ms control period.
+DEFAULT_BAUD = 115200
+# Opening the board's USB-UART port can reset it (ESP32-S3 auto-reset via DTR/RTS) and input is
+# ignored while it boots. Repeat HELLO (same session) until READY rather than sending it once.
 HELLO_RETRY_S = .5
 # A bridge that reset or dropped the session silently ignores CMDs. After this long with
 # commands unanswered, start a new session handshake; the board comes back neutral.
 RESYNC_S = 1.0
+NO_OUTPUT_TRANSPORT = 'USB SERIAL / internal command state only'
+# The ESP32-S3 sketch reports PPM_YAW only while its GPIO 5 arming jumper is fitted. Output is
+# reported by the firmware, not physically verified (radio trainer mapping, override, failsafe).
+TRAINER_TRANSPORT = 'ESP32-S3 USB SERIAL / PPM trainer yaw (CH4) reported, not physically verified'
 
 
 class SerialBridge:
-    transport = 'USB SERIAL / internal command state only'
+    transport = NO_OUTPUT_TRANSPORT
     physical_output = False
-    def __init__(self, device, watchdog_ms=250):
-        self.serial = serial.Serial(device, 115200, timeout=0, write_timeout=.02)
+    def __init__(self, device, watchdog_ms=250, baud=DEFAULT_BAUD, trainer_output=False):
+        """trainer_output: operator opt-in to accept a bridge whose READY reports PPM_YAW.
+        Without it such a bridge is never treated as ready, so no CMD is sent to it."""
+        self.serial = serial.Serial(device, baud, timeout=0, write_timeout=.02)
+        self.accepted_modes = ('NO_OUTPUT', 'PPM_YAW') if trainer_output else ('NO_OUTPUT',)
         self.session, self.seq, self.buffer = uuid.uuid4().hex, 0, bytearray()
         self.discarding = False
         self.ready = False
@@ -64,7 +74,7 @@ class SerialBridge:
     def resync(self, now):
         self.session, self.ready, self.outstanding = uuid.uuid4().hex, False, {}
         self.physical_output = False
-        self.transport = 'USB SERIAL / internal command state only'
+        self.transport = NO_OUTPUT_TRANSPORT
         self.last_hello = self.handshake_started = now
         self.serial.write(f'HELLO 1 {self.session}\n'.encode())
     def send(self, enabled, yaw, now):
@@ -99,9 +109,12 @@ class SerialBridge:
             try: f = parse(line.decode('ascii'))
             except (UnicodeDecodeError, ValueError): continue
             if f[2] != self.session: continue
-            if f[0] == 'READY' and f[3] == 'NO_OUTPUT' and not self.ready:
+            # The output mode is fixed per session: only the first accepted READY sets it.
+            if f[0] == 'READY' and f[3] in self.accepted_modes and not self.ready:
                 self.ready = True
                 self.last_ack = now
+                self.physical_output = f[3] == 'PPM_YAW'
+                self.transport = TRAINER_TRANSPORT if self.physical_output else NO_OUTPUT_TRANSPORT
             if f[0] == 'ACK' and f[6] == 'NONE':
                 seq = int(f[3])
                 expected = self.outstanding.pop(seq, None)
