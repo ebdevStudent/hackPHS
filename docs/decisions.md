@@ -1062,3 +1062,15 @@ rotated 90°; no rewiring or board-alignment change, because the mixer positions
 FC pads). M2 was CW, so it was set to ESC direction NORMAL (`direction --motor 2 normal`) and
 re-checked: **final, user-observed M1 CW, M2 CCW, M3 CCW, M4 CW**. Stored ESC settings: M1 and M3
 REVERSED, M2 NORMAL, M4 default. Next: mount the FC with its arrow toward the M2/M4 side.
+
+## 2026-10-11 — AprilTag follow and landing guidance on the existing yaw path
+
+User asked for software-side AprilTag support (follow; landing likely) while hardware is unavailable.
+Implemented `target_mode` (`color`/`tag`/`landing`) feeding the unchanged Controller (yaw-only,
+watchdogs, loss→neutral). Landing is pilot guidance only, so authority is unchanged. Tag kit CLI (wizard,
+exact-size PDF, detection test), roster reload API/UI, Pi `drone-mode` switcher (deployed; Pi left in
+`fpv` mode), roster push script, dashboard Camera tab auto-switching to the tracking preview in track
+mode. Rahul's audit fixes (B3) arrived separately in 15d2f04. Range estimates are uncalibrated.
+`--trainer-output`/`assist` remains a team decision. Verified on: laptop Python 3.13 venv (18 new tests,
+4305 existing pass) and Pi deployment smoke test (track mode starts with the mock bridge when the ESP32
+is absent). Live tag detection on real FPV is pending hardware.

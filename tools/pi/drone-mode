@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# Switch the Pi between the two programs that want the USB capture card (/dev/video0).
+#
+#   drone-mode fpv                 live FPV viewer only (fpv-stream :8090); tracking app on fake video
+#   drone-mode track [TARGET]      tracking app on the real camera + ESP32 bridge, NO transmitter output
+#   drone-mode assist [TARGET]     same + --trainer-output: computer yaw can reach the radio (team decision!)
+#   drone-mode status
+#
+# TARGET: color (HSV ball, default) | tag (follow an AprilTag) | landing (line up on a pad tag).
+# Tags: /var/lib/ball-drone/roster.json (push from the laptop with tools/pi/push-roster.sh).
+# Assistance always starts DISABLED; an operator must enable it in the monitor (port 8080).
+set -euo pipefail
+
+DROPIN=/etc/systemd/system/ball-demo.service.d/mode.conf
+ESP=/dev/serial/by-id/usb-1a86_USB_Single_Serial_5876079136-if00
+ROSTER=/var/lib/ball-drone/roster.json
+ORIGINS=https://chessdroid108.github.io,http://127.0.0.1:8765,http://localhost:8765
+PY=/opt/ball-drone/software/.venv/bin/python
+mode=${1:-status}
+target=${2:-color}
+
+case "$target" in color|tag|landing) ;; *) echo "TARGET must be color, tag or landing" >&2; exit 2 ;; esac
+[ "$(id -u)" -eq 0 ] || [ "$mode" = status ] || exec sudo "$0" "$@"
+
+write_dropin() {   # $1 = extra serve args
+  mkdir -p "$(dirname "$DROPIN")"
+  cat > "$DROPIN" <<EOF
+# Written by drone-mode ($mode $target) on $(date -Iseconds)
+[Service]
+Environment=BALL_ROSTER_FILE=$ROSTER
+Environment=BALL_OPERATOR_ORIGINS=$ORIGINS
+ExecStart=
+ExecStart=$PY -m ball_demo.cli serve --host 0.0.0.0 --port 8080 --roster $ROSTER --target-mode $target $1
+EOF
+  systemctl daemon-reload
+}
+
+case "$mode" in
+  fpv)
+    write_dropin ""
+    systemctl restart ball-demo
+    systemctl enable --now fpv-stream
+    systemctl restart fpv-stream
+    echo "FPV mode: live view on :8090 (dashboard Camera tab). Tracking app on synthetic video."
+    ;;
+  track|assist)
+    extra="--camera /dev/video0 --camera-backend v4l2 --capture-mode 720x480@30"
+    if [ -e "$ESP" ]; then
+      extra="$extra --serial $ESP"
+    elif [ "$mode" = assist ]; then
+      echo "ESP32 not found at $ESP: plug it into the Pi first." >&2; exit 1
+    else
+      echo "WARNING: ESP32 not found - using the MOCK bridge (vision/tags only, nothing reaches the radio)."
+      echo "         Re-run 'drone-mode track $target' after plugging the ESP32 in."
+    fi
+    if [ "$mode" = assist ]; then
+      echo "ASSIST: computer yaw can reach the transmitter through the ESP32 trainer (yaw only, pilot overrides)."
+      read -r -p "Props-off checks done and team agreed? Type YES: " ok
+      [ "$ok" = YES ] || { echo "Cancelled."; exit 1; }
+      extra="$extra --trainer-output"
+    fi
+    systemctl stop fpv-stream
+    write_dropin "$extra"
+    systemctl restart ball-demo
+    echo "$mode mode ($target): monitor http://$(hostname -I | awk '{print $1}'):8080  (operator token: sudo cat /etc/ball-drone/operator.env)"
+    ;;
+  status)
+    echo "fpv-stream: $(systemctl is-active fpv-stream)   ball-demo: $(systemctl is-active ball-demo)"
+    grep -h '^# Written\|^ExecStart=/' "$DROPIN" 2>/dev/null || echo "(no drone-mode override: stock service)"
+    [ -e "$ESP" ] && echo "ESP32: present" || echo "ESP32: NOT present"
+    [ -e /dev/video0 ] && echo "capture card: present" || echo "capture card: NOT present"
+    [ -f "$ROSTER" ] && echo "roster: $(grep -c '"tag_id"' "$ROSTER") tag(s)" || echo "roster: none yet"
+    ;;
+  *) sed -n '2,12p' "$0"; exit 2 ;;
+esac

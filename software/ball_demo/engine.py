@@ -12,7 +12,8 @@ from .mission_control import MissionController, capability
 from .session import Session
 from .sources import OpenCVSource, SyntheticSource
 from .video_health import VideoHealth
-from .vision import Detector
+from .tag_target import TargetDetector, draw_overlay
+from .vision import Detector  # noqa: F401 - the colour path (tests patch engine.Detector)
 
 STEERING_UNAVAILABLE = 'Manual steering — computer steering unavailable'
 CAMERA_RETRY_S = 1.0
@@ -26,7 +27,7 @@ BRIDGE_READY_S = 3.0
 class Engine:
     """Capture may block; control and neutralization have their own clock/thread."""
     def __init__(self, root, settings=None, bridge=None, source=None, navigation_bundle=None, navigation_recording=None, roster=None,
-                 portable_calibration=None, portable_delay_s=None):
+                 portable_calibration=None, portable_delay_s=None, roster_path=None):
         self.settings = settings or Settings()
         self.bridge = bridge or MockBridge(self.settings.watchdog_ms)
         self.bridge_ready = getattr(self.bridge, 'ready', True)
@@ -38,6 +39,7 @@ class Engine:
         self.generation = 0
         self.frame = None
         self.detection = None
+        self.guidance = None
         self.processing_ms = None
         self.preview = None
         self.preview_frame = None
@@ -55,8 +57,9 @@ class Engine:
         else:
             import os
             from .roster import Roster, load_roster
-            roster_path = os.environ.get('BALL_ROSTER_FILE')
-            self.roster = load_roster(roster_path) if roster_path else Roster()
+            roster_path = roster_path or os.environ.get('BALL_ROSTER_FILE')
+            self.roster = load_roster(roster_path) if roster_path and Path(roster_path).exists() else Roster()
+        self.roster_path = roster_path
         self.ui_sequence = 0
         self.current_source = None
         self.threads = []
@@ -140,7 +143,7 @@ class Engine:
                     'source_label': {'synthetic': 'SYNTHETIC', 'recorded': 'RECORDED', 'camera': 'CAMERA'}[self.source_spec['kind']],
                     'frame_age_ms': round((now - self.frame.captured) * 1000, 1) if self.frame else None,
                     'ack_age_ms': round((now - self.bridge.last_ack) * 1000, 1),
-                    'fault': self.controller.fault, 'detection': self.detection,
+                    'fault': self.controller.fault, 'detection': self.detection, 'guidance': self.guidance,
                     'processing_ms': self.processing_ms, 'frames': self.processed,
                     'preview_index': self.preview_index, 'settings': self.settings.dict(),
                     'session': self.session.id, 'physical_telemetry': None,
@@ -324,6 +327,25 @@ class Engine:
         if apply: self.configure(result['settings'])
         result['applied'] = bool(apply)
         return result
+    def reload_roster(self):
+        """Re-read the operator roster file (tags added with `ball-demo tags`). Disables assistance."""
+        from .roster import load_roster
+        if not self.roster_path:
+            raise ValueError('No roster file configured (start serve with --roster or BALL_ROSTER_FILE)')
+        roster = load_roster(self.roster_path)
+        with self.lock:
+            self.assist(False)
+            self.roster = roster
+            self.session.event('roster_reload', {'people': len(roster.people), 'landing_sites': len(roster.landing_sites)})
+        return roster
+    def roster_summary(self):
+        with self.lock:
+            roster = self.roster
+            return {'path': self.roster_path,
+                    'people': [{'tag_id': p.tag_id, 'name': p.display_name, 'size_m': p.tag_size_m, 'enabled': p.enabled}
+                               for p in roster.people],
+                    'landing_sites': [{'tag_id': s.tag_id, 'name': s.display_name, 'size_m': s.tag_size_m, 'enabled': s.enabled}
+                                      for s in roster.landing_sites]}
     def set_source(self, spec):
         with self.lock:
             self.assist(False)
@@ -334,6 +356,7 @@ class Engine:
             self.source_defaulted = False
             self.generation += 1
             self.frame, self.detection, self.preview = None, None, None
+            self.guidance = None
             self.preview_frame = None
             self.source_error, self.eof = None, False
             self.video_issue = self.video_report = self.decision_ms = None
@@ -371,7 +394,7 @@ class Engine:
             return OpenCVSource(spec['path'], settings, True, None, True)
         return OpenCVSource(spec.get('device', 0), settings, False, spec.get('backend'))
     def capture_loop(self):
-        source, generation, detector, health = None, -1, Detector(), None
+        source, generation, detector, health = None, -1, TargetDetector(lambda: self.roster), None
         last_preview = 0.
         last_frame_at = retry_at = time.monotonic()
         try:
@@ -384,7 +407,7 @@ class Engine:
                 live = spec['kind'] == 'camera'
                 if requested != generation:
                     if source: source.close()
-                    generation, detector = requested, Detector()
+                    generation, detector = requested, TargetDetector(lambda: self.roster)
                     health = VideoHealth() if live else None
                     last_frame_at = tick
                     try:
@@ -440,6 +463,7 @@ class Engine:
                 began = time.monotonic()
                 if health is not None: health.update(frame.image, frame.captured)
                 detection = detector.detect(frame.image, settings)
+                guidance = detector.guidance
                 processing_ms = round((time.monotonic() - began) * 1000, 3)
                 jpeg = None
                 if began - last_preview >= 1 / settings.preview_hz:
@@ -448,6 +472,7 @@ class Engine:
                     if detection:
                         x, y, w, h = detection['bbox']
                         cv2.rectangle(image, (x - 4, y - 4), (x + w + 4, y + h + 4), (90, 240, 160), 2)
+                    if guidance: draw_overlay(image, guidance)
                     cv2.putText(image, source.label, (18, 28), cv2.FONT_HERSHEY_SIMPLEX, .65, (210, 224, 233), 1)
                     if self.synthetic_fallback:
                         # No real camera was configured: make fake video impossible to mistake for live FPV.
@@ -464,6 +489,7 @@ class Engine:
                             self.source_error = None
                             self.session.event('source_recovered', {'device': spec.get('device')})
                         self.frame, self.detection, self.processing_ms = frame, detection, processing_ms
+                        self.guidance = guidance
                         if health is not None:
                             self.video_issue = health.issue(frame.captured, settings.picture_ms)
                             self.video_report = health.report(frame.captured)

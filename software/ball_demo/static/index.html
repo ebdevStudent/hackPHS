@@ -40,6 +40,7 @@
             <div><small>Requested yaw</small><strong id="yaw">0 <em>/ 1000</em></strong></div>
             <div><small>Horizontal error</small><strong id="error">—</strong></div>
           </div>
+          <p id="guidance" class="guidance hidden" role="status"></p>
           <div class="yaw-rail"><span>−1000</span><div><i id="yaw-marker"></i></div><span>+1000</span></div>
           <div class="error-rail" aria-label="Target centre error"><span>Left</span><div><i id="error-marker" class="hidden"></i></div><span>Right</span></div>
           <section class="navigation-panel" aria-label="Navigation guidance">
@@ -93,6 +94,11 @@
             <details class="settings-section">
               <summary>Controller and detector settings</summary>
               <div class="settings-grid">
+                <label>Target<select id="target-mode"><option value="color">Colored ball (HSV)</option><option value="tag">Follow AprilTag</option><option value="landing">Land at AprilTag pad</option></select></label>
+                <label>Tag ID (−1 = roster)<input id="tag-id" type="number" value="-1" min="-1" max="586"></label>
+                <label>Unregistered tag size m<input id="tag-size" type="number" value="0.10" step="0.01" min="0.01" max="2"></label>
+                <label>Descend cue range m<input id="land-range" type="number" value="0.6" step="0.1" min="0.1" max="5"></label>
+                <label>Camera FOV °<input id="camera-hfov" type="number" value="160" min="40" max="220"></label>
                 <label>Gain<input id="gain" type="number" value="700" min="0" max="2000"></label>
                 <label>Yaw limit<input id="max-yaw" type="number" value="650" min="0" max="1000"></label>
                 <label>Deadband<input id="deadband" type="number" value="0.04" step="0.01" min="0" max="0.5"></label>
@@ -108,6 +114,12 @@
               </div>
               <button id="settings-apply">Apply settings</button>
               <p class="note">Applying settings disables assistance.</p>
+            </details>
+            <details class="settings-section">
+              <summary>AprilTags</summary>
+              <ul id="roster-list" class="roster-list"><li>Open to load the roster.</li></ul>
+              <button id="roster-reload">Reload tags from roster file</button>
+              <p class="note">Add tags on the server with <code>ball-demo tags wizard</code> (or <code>tags add</code>), then reload. Reloading disables assistance.</p>
             </details>
             <details class="settings-section">
               <summary>Bridge fault demonstration</summary>

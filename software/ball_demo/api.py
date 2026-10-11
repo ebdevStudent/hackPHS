@@ -52,9 +52,15 @@ class SettingsRequest(OperatorRequest):
     value_min: int | None = Field(None, ge=0, le=255)
     min_area: int | None = Field(None, ge=1, le=50000)
     max_area: int | None = Field(None, ge=1, le=307200)
+    target_mode: str | None = None
+    tag_id: int | None = Field(None, ge=-1, le=586)
+    tag_size_m: float | None = Field(None, ge=.01, le=2)
+    camera_hfov_deg: float | None = Field(None, ge=40, le=220)
+    land_range_m: float | None = Field(None, ge=.1, le=5)
     @model_validator(mode='after')
     def valid(self):
         if self.direction not in [None, -1, 1]: raise ValueError('Direction must be -1 or 1')
+        if self.target_mode not in [None, 'color', 'tag', 'landing']: raise ValueError("target_mode must be 'color', 'tag' or 'landing'")
         return self
 
 
@@ -191,6 +197,14 @@ def create_app(engine=None, token=None):
         with engine.lock: frame = engine.preview
         if frame is None: return Response(status_code=204)
         return Response(frame, media_type='image/jpeg', headers={'Cache-Control': 'no-store'})
+    @app.get('/api/operator/roster', dependencies=[Depends(operator)])
+    async def roster():
+        return engine.roster_summary()
+    @app.post('/api/operator/roster/reload', dependencies=[Depends(operator)])
+    async def roster_reload():
+        try: engine.reload_roster()
+        except ValueError as error: raise HTTPException(409, str(error))
+        return engine.roster_summary()
     @app.get('/api/operator/access', dependencies=[Depends(operator)])
     async def access(): return {'authorized': True}
     @app.get('/api/events')

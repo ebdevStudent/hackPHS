@@ -57,22 +57,23 @@ USB on the FC is **only** for Betaflight setup on the bench, props off. In fligh
 The pilot keeps throttle/roll/pitch/arm and can override; computer assist is yaw-only (V1).
 Add the ESP32 trainer only after manual hover is reliable.
 
-## 4. AprilTag tracking from the FPV feed — NOT active
+## 4. AprilTag follow / landing — IMPLEMENTED 2026-10-11 (see docs/31-apriltags-and-tracking.md)
 
-Checked 2026-10-11:
-- Detector exists: `software/ball_demo/tag_detector.py` (OpenCV `aruco`, `DICT_APRILTAG_36h11`).
-  Pi venv OpenCV 5.0.0 has it (import-checked on the Pi).
-- Live-camera tag tracking path: `engine.py` → `portable_runtime.py` → `target_tracking.py`.
-  It only runs with `serve --target-calibration <file>.json --target-delay-ms <n>` **plus** a
-  `--roster <file>.json` (tag IDs + measured sizes). **No calibration or roster file exists** in the repo
-  or on the Pi. Make the calibration with `ball_demo.cli nav-calibrate` from checkerboard shots through
-  the FPV camera **at 640x480** (frames are resized to 640x480; the detector rejects other sizes).
-  The built-in example calibration is rejected for live sources.
-- **Tag tracking is display-only**: `physical_output: False`, "This class has no bridge reference",
-  motion is simulated only for synthetic sources. Yaw to the ESP32 comes **only** from `vision.py`
-  (HSV ball). Tags steering yaw = new code (tracker output → `control.Controller`).
-- Analog FPV is interlaced/noisy and 720x480 is squashed to 640x480 → tags must be big and close.
-- **Only one program can open `/dev/video0`**: stop `fpv-stream.service` before `ball_demo` uses the camera.
+- `ball_demo/tag_target.py`: `target_mode` = `color` | `tag` | `landing`. Tag detections use the ball's
+  detection schema and feed the SAME `Controller` (watchdogs, loss → neutral, yaw-only). No calibration
+  needed; range is an approximate fisheye estimate. Landing = pilot cues (SEARCH/ALIGN/APPROACH/DESCEND/
+  OVER PAD), never throttle.
+- `ball_demo/tag_kit.py` / `ball-demo tags …`: wizard, add/remove/list, exact-size printable PDF with a
+  5 cm scale check, detect from image/URL/camera. Roster = existing `Roster` (people + landing_sites).
+- Monitor: Target/Tag ID/descend range/FOV settings, AprilTags roster panel + live reload
+  (`POST /api/operator/roster/reload`), guidance line under the video, overlay on the preview.
+- Pi: `/usr/local/bin/drone-mode fpv|track|assist [color|tag|landing]|status` (systemd drop-in; deployed).
+  `tools/pi/push-roster.sh` installs the laptop roster at /var/lib/ball-drone/roster.json and reloads.
+  `assist` (= `--trainer-output`) still needs the team's decision; it asks for YES.
+- 18 tests in `software/tests/test_apriltag_targets.py`; full suite 4305 passed (only pre-existing
+  env failures: C++ `cassert` missing for the PPM host sim, Qt-less desktop collection).
+- The older calibrated 3D tag tracking (`target_tracking.py`, `--target-calibration`) is unchanged and
+  still display-only.
 
 ## 5. Software audit fixes — PUSHED (commit after the handoff commit, same branch)
 

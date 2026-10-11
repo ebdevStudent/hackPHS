@@ -198,7 +198,9 @@ $('master').addEventListener('input', e => {
 });
 
 // --- Camera tab ---
-let tab = 'motors', fpvTimer = null;
+let tab = 'motors', fpvTimer = null, camSource = 'fpv';
+// Pi tracking app (drone-mode track/assist) owns the camera instead of the FPV streamer; same host, port 8080.
+const trackUrl = () => (state.fpv_url || '').replace(/:\d+$/, ':8080');
 document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => showTab(b.dataset.tab));
 function showTab(name) {
   tab = name; history.replaceState(null, '', '#' + name);
@@ -207,13 +209,28 @@ function showTab(name) {
   $('tab-camera').hidden = name !== 'camera';
   const base = state.fpv_url || '';
   if (name === 'camera' && base) {
-    $('fpvimg').src = base + '/stream.mjpg?t=' + Date.now();
-    $('fpvsnap').href = base + '/snapshot.jpg';
+    $('fpvimg').removeAttribute('src');
     clearInterval(fpvTimer); fpvTimer = setInterval(fpvStatus, 700); fpvStatus();
   } else {
     $('fpvimg').removeAttribute('src');   // stop streaming when hidden
     clearInterval(fpvTimer);
   }
+}
+function useCamSource(kind) {
+  if (kind === camSource && $('fpvimg').getAttribute('src')) return;
+  camSource = kind;
+  $('fpvimg').src = (kind === 'track' ? trackUrl() + '/api/preview' : state.fpv_url + '/stream.mjpg') + '?t=' + Date.now();
+  $('fpvsnap').href = kind === 'track' ? trackUrl() + '/api/preview.jpg' : state.fpv_url + '/snapshot.jpg';
+}
+async function trackStatus() {
+  const s = await (await fetch(trackUrl() + '/api/state', { cache: 'no-store' })).json();
+  if (s.source.kind !== 'camera') throw new Error('tracking app not on the camera');
+  useCamSource('track');
+  const g = s.guidance;
+  $('fpvsig').textContent = `TRACK MODE · ${s.settings.target_mode} · ${s.state}`;
+  $('fpvsig').className = 'pill ' + (s.fault ? 'bad' : 'ok');
+  $('fpvinfo').textContent = s.fault ? `fault: ${s.fault}` :
+    g ? `${g.stage}: ${g.cue}` : `yaw ${s.yaw} · ${s.bridge}`;
 }
 async function fpvStatus() {
   const base = state.fpv_url;
@@ -224,9 +241,11 @@ async function fpvStatus() {
     $('fpvinfo').textContent = s.fps != null
       ? `${s.size ? s.size.join('×') : ''} · ${s.fps} fps · brightness ${s.mean} · detail ${s.std} · motion ${s.change}`
       : (s.note || '');
+    useCamSource('fpv');
   } catch (e) {
-    $('fpvsig').textContent = 'Pi streamer unreachable'; $('fpvsig').className = 'pill bad';
-    $('fpvinfo').textContent = base;
+    try { await trackStatus(); return; } catch (e2) {}
+    $('fpvsig').textContent = 'Pi video unreachable'; $('fpvsig').className = 'pill bad';
+    $('fpvinfo').textContent = `${base} (fpv) / ${trackUrl()} (track) - is the Pi on? drone-mode status`;
   }
 }
 $('vtxtoggle').onclick = async () => {

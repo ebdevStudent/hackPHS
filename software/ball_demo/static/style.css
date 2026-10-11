@@ -136,3 +136,8 @@ dialog h2 { margin-bottom: 12px; }
 .navigation-panel .source-label { max-width: 65%; white-space: normal; text-align: right; }
 .nav-readouts { display: flex; flex-wrap: wrap; gap: 16px; font-variant-numeric: tabular-nums; }
 .nav-readouts dd { margin: 4px 0; font-family: monospace; }
+
+.guidance { margin: .4rem 0; padding: .45rem .7rem; border-radius: 6px; background: #1f2a33; color: #d2e0e9; font-weight: 600; }
+.guidance[data-stage="DESCEND"], .guidance[data-stage="OVER PAD"], .guidance[data-stage="TRACK"] { background: #1e3b2b; color: #9ee07a; }
+.guidance[data-stage="ALIGN"], .guidance[data-stage="APPROACH"] { background: #3b331e; color: #ffd27a; }
+.roster-list { margin: .3rem 0; padding-left: 1.1rem; font-size: .9rem; }

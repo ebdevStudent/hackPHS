@@ -50,6 +50,13 @@ def main():
                        help='Mode requested from the live camera as WIDTHxHEIGHT@FPS (default 720x480@30, NTSC; '
                             'PAL is 720x576@25). The opened mode is read back and a size/format mismatch is a fault')
     serve.add_argument('--capture-fourcc', default='YUYV', help='Pixel format requested from the live camera (default YUYV)')
+    serve.add_argument('--target-mode', choices=['color', 'tag', 'landing'], default='color',
+                       help='Steer toward the HSV ball (color), follow an AprilTag (tag) or line up on a landing-pad '
+                            'tag (landing). Changeable live from the operator panel; yaw-only either way')
+    serve.add_argument('--tag-id', type=int, default=-1, help='AprilTag ID to steer toward (-1: choose from the roster)')
+    tags = sub.add_parser('tags', help='AprilTag kit: register, print and test tags (see `ball-demo tags -h`)')
+    from .tag_kit import add_arguments as tag_arguments
+    tag_arguments(tags)
     fixtures = sub.add_parser('fixtures')
     fixtures.add_argument('--output', default='runs/fixtures')
     fixtures.add_argument('--frames', type=int, default=160)
@@ -115,6 +122,14 @@ def main():
     card.add_argument('--network', default='Shared network')
     card.add_argument('--output', default='runs/connection-card')
     args = parser.parse_args()
+    if args.command == 'tags':
+        from .tag_kit import run as run_tags
+        try:
+            raise SystemExit(run_tags(args))
+        except ValueError as error:
+            raise SystemExit(f'Error: {error}')
+    if args.command == 'serve' and not -1 <= args.tag_id <= 586:
+        serve.error('--tag-id must be -1 or 0-586')
     if args.command == 'serve' and args.trainer_output and not args.serial:
         serve.error('--trainer-output requires --serial')
     if args.command == 'serve':
@@ -143,7 +158,8 @@ def main():
             recording = load_recording(args.nav_replay) if args.nav_replay else None
             bundle = bundle or recording.bundle
         from .roster import load_roster
-        prepared_roster = load_roster(args.roster) if args.roster else None
+        # A roster path that does not exist yet is allowed: tags can be added later and reloaded live.
+        prepared_roster = load_roster(args.roster) if args.roster and Path(args.roster).exists() else None
         calibration, delay_s = None, None
         if args.portable_demo:
             from .portable_demo import demo_calibration, demo_roster
@@ -154,10 +170,12 @@ def main():
             calibration = Calibration.model_validate_json(Path(args.target_calibration).read_text())
             delay_s = args.target_delay_ms / 1000
         width, height, fps = args.capture_mode
-        settings = Settings(capture_width=width, capture_height=height, capture_fps=fps, capture_fourcc=args.capture_fourcc)
+        settings = Settings(capture_width=width, capture_height=height, capture_fps=fps, capture_fourcc=args.capture_fourcc,
+                            target_mode=args.target_mode, tag_id=args.tag_id)
         engine = Engine(args.data, settings=settings, bridge=bridge, source=source, navigation_bundle=bundle,
                         navigation_recording=recording, roster=prepared_roster,
-                        portable_calibration=calibration, portable_delay_s=delay_s)
+                        portable_calibration=calibration, portable_delay_s=delay_s,
+                        roster_path=None if args.portable_demo else args.roster)
         class DemoServer(uvicorn.Server):
             def handle_exit(self, sig, frame):
                 engine.assist(False)

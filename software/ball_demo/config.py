@@ -24,6 +24,17 @@ class Settings:
     max_yaw: int = 650
     slew_per_s: float = 1800
     direction: int = 1
+    # What the yaw controller steers toward: 'color' (HSV ball), 'tag' (follow an AprilTag) or
+    # 'landing' (line up on a landing-pad AprilTag; descent stays with the pilot).
+    target_mode: str = 'color'
+    # Tag to steer toward; -1 picks from the roster (people for 'tag', pads for 'landing').
+    tag_id: int = -1
+    # Printed black-square edge used for range estimates when the tag is not in the roster.
+    tag_size_m: float = .10
+    # Approximate horizontal field of view of the processed frame (Caddx Ant ≈ 160°), for range estimates.
+    camera_hfov_deg: float = 160
+    # Landing mode: estimated range at which the pilot is told to descend.
+    land_range_m: float = .6
     # Live camera only: the mode requested from the capture device (resized to width x height afterwards).
     # The MS2106 USB capture card (534d:0021) offers only YUYV 720x480@30 (NTSC) and 720x576@25 (PAL);
     # OpenCV silently ignores any other request, so the opened mode is read back and checked.

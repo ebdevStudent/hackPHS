@@ -13,7 +13,10 @@ const settingFields = {
   gain: 'gain', max_yaw: 'max-yaw', deadband: 'deadband', smoothing: 'smoothing',
   slew_per_s: 'slew', direction: 'direction', hue_low: 'hue-low', hue_high: 'hue-high',
   saturation_min: 'saturation-min', value_min: 'value-min', min_area: 'min-area', max_area: 'max-area',
+  target_mode: 'target-mode', tag_id: 'tag-id', tag_size_m: 'tag-size', land_range_m: 'land-range',
+  camera_hfov_deg: 'camera-hfov',
 };
+const textSettings = new Set(['target_mode']);
 
 function renderState(state) {
   currentState = state;
@@ -41,6 +44,13 @@ function renderState(state) {
   element('fault-box').classList.toggle('hidden', !state.fault);
   element('fault-box').textContent = state.fault ? `${state.fault}. Assistance disabled; requested yaw is zero.` : '';
   element('limits-note').textContent = `Acquire: ${state.settings.acquire_frames} frames. Frame limit: ${state.settings.stale_ms} ms. ACK limit: ${state.settings.ack_ms} ms.`;
+  const guidance = state.guidance;
+  element('guidance').classList.toggle('hidden', !guidance);
+  if (guidance) {
+    const seen = (guidance.tags_seen || []).map((t) => `${t.id}${t.name ? ` ${t.name}` : ''}`).join(', ');
+    element('guidance').textContent = `${guidance.stage}: ${guidance.cue}${seen ? ` · tags in view: ${seen}` : ''}`;
+    element('guidance').dataset.stage = guidance.stage;
+  }
   renderFallback(state);
   if (typeof renderNavigation === 'function') renderNavigation(state.navigation);
 }
@@ -256,8 +266,33 @@ bindAction('source-apply', 'source', () => {
   return source;
 }, 'Source changed. Assistance disabled.');
 bindAction('settings-apply', 'settings', () => Object.fromEntries(
-  Object.entries(settingFields).map(([setting, id]) => [setting, Number(element(id).value)]),
+  Object.entries(settingFields).map(([setting, id]) => [setting, textSettings.has(setting) ? element(id).value : Number(element(id).value)]),
 ), 'Settings applied. Assistance disabled.');
+
+function renderRoster(roster) {
+  const list = element('roster-list');
+  const rows = [...roster.people.map((p) => ({ ...p, role: 'follow' })), ...roster.landing_sites.map((s) => ({ ...s, role: 'landing pad' }))]
+    .sort((a, b) => a.tag_id - b.tag_id);
+  list.replaceChildren(...(rows.length ? rows.map((row) => {
+    const item = document.createElement('li');
+    item.textContent = `ID ${row.tag_id} · ${row.name} · ${row.role} · ${(row.size_m * 100).toFixed(1)} cm${row.enabled ? '' : ' (disabled)'}`;
+    return item;
+  }) : [Object.assign(document.createElement('li'), { textContent: `No tags yet${roster.path ? ` in ${roster.path}` : ''}.` })]));
+}
+async function loadRoster(reload = false) {
+  try {
+    const response = await fetch(reload ? '/api/operator/roster/reload' : '/api/operator/roster', {
+      method: reload ? 'POST' : 'GET', headers: { Authorization: `Bearer ${operatorToken}` } });
+    const body = await response.json();
+    if (!response.ok) throw new Error(body.detail || 'Roster unavailable');
+    renderRoster(body);
+    if (reload) element('operator-message').textContent = 'Tags reloaded. Assistance disabled.';
+  } catch (error) {
+    element('operator-message').textContent = error.message;
+  }
+}
+element('roster-reload').onclick = () => loadRoster(true);
+document.querySelector('#roster-list').closest('details').addEventListener('toggle', (event) => { if (event.target.open) loadRoster(); });
 
 async function loadPlayback() {
   playing = false;
