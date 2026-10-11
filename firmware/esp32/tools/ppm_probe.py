@@ -1,6 +1,6 @@
 """Decode the ESP32's CPPM output on a Raspberry Pi 5 GPIO (no scope needed).
 
-Wiring: ESP32 GPIO4 -> 1 kOhm -> Pi GPIO17 (header pin 11); ESP32 GND -> Pi GND (pin 6).
+Wiring: ESP32 GPIO4 -> 2 kOhm -> Pi GPIO17 (header pin 11); ESP32 GND -> any Pi GND (pin 39 was used).
 Both sides are 3.3 V logic.
 
 Each channel is the time between consecutive falling edges; a gap over SYNC_MIN_US ends a frame.

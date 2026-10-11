@@ -30,6 +30,7 @@ HELLO_RETRY_S = 0.5
 HELLO_TIMEOUT_S = 10.0
 YAW_LIMIT = 1000
 QUIT_NEUTRAL_FRAMES = 5
+THREAD_EXIT_WAIT_S = 0.25
 
 
 def find_port():
@@ -121,6 +122,9 @@ class Bridge:
             self.enable, self.yaw = False, 0
         time.sleep(CMD_PERIOD_S * QUIT_NEUTRAL_FRAMES)
         self.running = False
+        # Let the reader's readline (0.1 s timeout) and the sender's sleep finish before closing,
+        # otherwise the reader thread raises on the closed port.
+        time.sleep(THREAD_EXIT_WAIT_S)
         self.ser.close()
 
 
