@@ -1,9 +1,24 @@
 #!/usr/bin/env python3
-"""Optional direct-USB bench helper for the known Betaflight 4.4.2 FC.
+"""Direct-USB bench helper for the known Betaflight 4.4.2 FC.
 
 No browser automation and no installation step. Uses existing pyserial.
 Importing this module does not open USB or move a motor. See the dated handoff.
 Output readbacks are commands, not measured RPM or proof of physical rotation.
+
+Motor test values map to DShot throttle as Betaflight 4.4 does it:
+    1000 = DShot stop; 1001..2000 -> DShot 48..2047 (0..100 %).
+So 1020 is only ~2 % throttle, far below the armed idle (dshot_idle_value
+1000 = 10 %, i.e. motor-test value ~1100). Small BLHeli_S motors without a
+prop commonly lose sync and restart at ~2 %. Use `pulse --value 1100` to test
+at the same throttle the motor actually sees when armed at idle.
+
+Subcommands:
+  status    read-only firmware, voltage, RC and motor command readbacks
+  config    read-only motor protocol / idle / pole settings
+  stop      block normal arming and send all outputs to stop
+  esc-info  read-only ESC firmware + settings via BLHeli 4-way passthrough
+            (needs battery; the FC must be power-cycled or re-plugged after)
+  pulse     PHYSICAL ACTION: spin one motor, props removed
 """
 
 import argparse
@@ -19,10 +34,21 @@ import serial
 
 DEFAULT_PORT = '/dev/serial/by-id/usb-Betaflight_Betaflight_STM32F411_0x8000000-if00'
 STOP = struct.pack('<8H', *([1000] * 8))
+MAX_PULSE_VALUE = 1150   # ~15 % DShot throttle; props-off diagnostic ceiling
+MOTOR_PROTOCOLS = ['PWM', 'ONESHOT125', 'ONESHOT42', 'MULTISHOT', 'BRUSHED',
+                   'DSHOT150', 'DSHOT300', 'DSHOT600', 'PROSHOT1000', 'DISABLED']
 
 
 def report(**fields):
     print(json.dumps(fields), flush=True)
+
+
+def dshot_percent(value):
+    """Betaflight 4.4 dshotConvertFromExternal, expressed as throttle %."""
+    if value <= 1000:
+        return 0.0
+    dshot = 48 + (min(value, 2000) - 1001) * (2047 - 48) / (2000 - 1001)
+    return round((dshot - 48) / (2047 - 48) * 100, 1)
 
 
 class FC:
@@ -82,14 +108,16 @@ class FC:
             raise RuntimeError('Invalid motor reply')
         return list(struct.unpack('<' + 'H' * (len(data) // 2), data))[:4]
 
+    def voltage(self):
+        analog = self.request(110)
+        if len(analog) < 9:
+            raise RuntimeError('Missing full voltage reply')
+        return struct.unpack_from('<H', analog, 7)[0] / 100
+
     def status(self):
         version = list(self.request(3))
         api = list(self.request(1))
-        analog = self.request(110)
-        if not analog:
-            raise RuntimeError('Missing voltage reply')
-        volts = (struct.unpack_from('<H', analog, 7)[0] / 100
-                 if len(analog) >= 9 else analog[0] / 10)
+        volts = self.voltage()
         data = self.request(105)
         if len(data) < 10 or len(data) % 2:
             raise RuntimeError('Missing RC channels')
@@ -101,7 +129,25 @@ class FC:
         flags = struct.unpack_from('<I', status, 6)[0]
         armed = bool(flags & (1 << ids.index(0)))
         return dict(firmware=version, api=api, voltage=volts,
-                    rc=rc, armed=armed, motor_commands=self.motors())
+                    rc=rc[:8], armed=armed, motor_commands=self.motors())
+
+    def config(self):
+        mc = self.request(131)
+        minthrottle, maxthrottle, mincommand = struct.unpack_from('<3H', mc, 0)
+        out = dict(minthrottle=minthrottle, maxthrottle=maxthrottle,
+                   mincommand=mincommand)
+        if len(mc) >= 10:
+            out.update(motor_count=mc[6], motor_poles=mc[7],
+                       dshot_bidir=bool(mc[8]), esc_sensor=bool(mc[9]))
+        ac = self.request(90)
+        protocol = ac[3]
+        out.update(motor_protocol=(MOTOR_PROTOCOLS[protocol]
+                                   if protocol < len(MOTOR_PROTOCOLS) else protocol),
+                   motor_pwm_rate=struct.unpack_from('<H', ac, 4)[0],
+                   dshot_idle_value=struct.unpack_from('<H', ac, 6)[0])
+        out['idle_equivalent_test_value'] = round(
+            1001 + out['dshot_idle_value'] / 10000 * 999)
+        return out
 
     def stop(self):
         errors = []
@@ -116,39 +162,149 @@ class FC:
                    action='If the motor is moving, disconnect the battery immediately')
 
 
+# --- BLHeli 4-way interface (read-only use) --------------------------------
+
+def crc16_xmodem(data):
+    crc = 0
+    for byte in data:
+        crc ^= byte << 8
+        for _ in range(8):
+            crc = ((crc << 1) ^ 0x1021) if crc & 0x8000 else crc << 1
+            crc &= 0xFFFF
+    return crc
+
+
+class FourWay:
+    TEST_ALIVE, GET_PROTOCOL, GET_NAME, GET_IF_VERSION, EXIT = 0x30, 0x31, 0x32, 0x33, 0x34
+    INIT_FLASH, READ = 0x37, 0x3A
+
+    def __init__(self, ser):
+        self.ser = ser
+
+    def cmd(self, command, address=0, params=b'\x00', timeout=1.0):
+        frame = bytes([0x2F, command, address >> 8, address & 0xFF,
+                       len(params) & 0xFF]) + params
+        crc = crc16_xmodem(frame)
+        self.ser.reset_input_buffer()
+        self.ser.write(frame + bytes([crc >> 8, crc & 0xFF]))
+        buf = bytearray()
+        deadline = time.monotonic() + timeout
+        while time.monotonic() < deadline:
+            buf.extend(self.ser.read(self.ser.in_waiting or 1))
+            start = buf.find(0x2E)
+            if start < 0:
+                buf.clear()
+                continue
+            del buf[:start]
+            if len(buf) < 5:
+                continue
+            n = buf[4] or 256
+            total = 5 + n + 3
+            if len(buf) < total:
+                continue
+            resp = bytes(buf[:total])
+            if crc16_xmodem(resp[:-2]) != (resp[-2] << 8 | resp[-1]):
+                raise RuntimeError(f'4-way CRC error on cmd 0x{command:02X}')
+            if resp[1] != command:
+                raise RuntimeError(f'4-way reply for 0x{resp[1]:02X}, wanted 0x{command:02X}')
+            ack = resp[5 + n]
+            if ack != 0:
+                raise RuntimeError(f'4-way cmd 0x{command:02X} NACK {ack}')
+            return resp[5:5 + n]
+        raise TimeoutError(f'4-way cmd 0x{command:02X} timeout')
+
+
+BLHELI_S_FIELDS = [
+    'main_revision', 'sub_revision', 'layout_revision', 'p_gain', 'i_gain',
+    'governor_mode', 'low_voltage_limit', 'motor_gain', 'motor_idle',
+    'startup_power', 'pwm_frequency', 'motor_direction', 'input_pwm_polarity',
+    'mode_lo', 'mode_hi', 'programming_by_tx', 'rearm_at_start',
+    'governor_setup_target', 'startup_rpm', 'startup_accel', 'volt_comp',
+    'commutation_timing', 'damping_force', 'governor_range', 'startup_method',
+    'ppm_min_throttle', 'ppm_max_throttle', 'beep_strength', 'beacon_strength',
+    'beacon_delay', 'throttle_rate', 'demag_compensation', 'bec_voltage_high',
+    'ppm_center_throttle', 'spoolup_time', 'temperature_protection',
+    'low_rpm_power_protection', 'pwm_input', 'pwm_dither', 'brake_on_stop',
+    'led_control',
+]
+
+
+def esc_info(fc, escs):
+    count = fc.request(245, timeout=1.0)   # MSP_SET_PASSTHROUGH -> 4-way mode
+    report(event='passthrough', esc_count=count[0] if count else None)
+    fw = FourWay(fc.ser)
+    results = []
+    try:
+        report(protocol=list(fw.cmd(FourWay.GET_PROTOCOL)),
+               interface=fw.cmd(FourWay.GET_NAME).decode(errors='replace'))
+        for esc in escs:
+            try:
+                info = fw.cmd(FourWay.INIT_FLASH, params=bytes([esc - 1]))
+                sig = info[1] << 8 | info[0] if len(info) >= 2 else None
+                mode = info[3] if len(info) >= 4 else None
+                if mode not in (1, 2):   # SiLabs BLB / Atmel BLB: BLHeli_S layout
+                    results.append(dict(esc=esc, signature=hex(sig or 0),
+                                        interface_mode=mode,
+                                        note='non-BLHeli_S layout; raw read skipped'))
+                    continue
+                raw = fw.cmd(FourWay.READ, address=0x1A00, params=b'\x70')
+                fields = dict(zip(BLHELI_S_FIELDS, raw))
+                text = lambda a, b: raw[a:b].decode('ascii', 'replace').strip('\x00\xff #')
+                results.append(dict(
+                    esc=esc, signature=hex(sig), interface_mode=mode,
+                    layout=text(0x40, 0x50), mcu=text(0x50, 0x60),
+                    name=text(0x60, 0x70),
+                    firmware=f"{fields['main_revision']}.{fields['sub_revision']}",
+                    settings=fields, raw=raw.hex()))
+            except Exception as exc:
+                results.append(dict(esc=esc, error=str(exc)))
+    finally:
+        try:
+            fw.cmd(FourWay.EXIT)
+        except Exception:
+            pass
+    for item in results:
+        report(**item)
+    report(note='4-way exited; unplug/replug FC USB (or power-cycle) before more MSP use')
+
+
+# --- Pulse ------------------------------------------------------------------
+
 def gate(state):
     if state['firmware'] != [4, 4, 2] or state['api'] != [0, 1, 45]:
         raise RuntimeError('Pulse helper is restricted to the inspected BF 4.4.2 / API 1.45')
     # Conservative diagnostic stop threshold; not a cell-balance or battery-health check.
-    if not 6.8 <= state['voltage'] <= 8.4:
-        raise RuntimeError('Battery voltage outside 6.8–8.4 V diagnostic range')
+    if not 6.8 <= state['voltage'] <= 8.45:
+        raise RuntimeError(f"Battery voltage {state['voltage']} V outside 6.8–8.45 V "
+                           '(is the battery plugged in?)')
     if state['armed'] or state['rc'][4] >= 1800:
         raise RuntimeError('FC must be disarmed and AUX1/SA off')
     if state['motor_commands'] != [1000] * 4:
         raise RuntimeError('Motor commands are not all stopped')
 
 
-def pulse(fc, seconds, value):
+def pulse(fc, motor, seconds, value):
     gate(fc.status())
-    desired = [value, 1000, 1000, 1000]
+    desired = [1000] * 4
+    desired[motor - 1] = value
     payload = struct.pack('<8H', *(desired + [1000] * 4))
     timer = threading.Timer(seconds + 0.15, fc.stop)
     start = time.monotonic()
     timer.start()
+    min_v = 99.0
     try:
         fc.request(214, payload)
-        report(event='pulse_started', seconds=seconds, motor_commands=desired)
+        report(event='pulse_started', motor=motor, value=value,
+               dshot_throttle_pct=dshot_percent(value), seconds=seconds)
         while time.monotonic() - start < seconds:
             commands = fc.motors()
-            analog = fc.request(110)
-            if len(analog) < 9:
-                raise RuntimeError('Missing full voltage reply during pulse')
-            voltage = struct.unpack_from('<H', analog, 7)[0] / 100
+            voltage = fc.voltage()
+            min_v = min(min_v, voltage)
             report(elapsed=round(time.monotonic() - start, 3),
                    motor_commands=commands, voltage=voltage)
             if commands != desired:
                 raise RuntimeError('Motor command changed during pulse')
-            if not 6.8 <= voltage <= 8.4:
+            if not 6.6 <= voltage <= 8.45:
                 raise RuntimeError('Voltage crossed diagnostic stop threshold')
             time.sleep(min(0.2, max(0, seconds - (time.monotonic() - start))))
     finally:
@@ -156,31 +312,36 @@ def pulse(fc, seconds, value):
         timer.cancel()
         timer.join()
     commands = fc.motors()
-    report(event='pulse_finished', motor_commands=commands)
+    report(event='pulse_finished', motor_commands=commands, min_voltage=min_v)
     if commands != [1000] * 4:
         raise RuntimeError('Stop readback failed; disconnect battery')
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__,
+                                     formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--port', default=DEFAULT_PORT)
     sub = parser.add_subparsers(dest='action', required=True)
     sub.add_parser('status', help='Read-only firmware, voltage, RC and command readbacks')
+    sub.add_parser('config', help='Read-only motor protocol / idle settings')
     sub.add_parser('stop', help='Block normal arming and send all outputs to stop')
-    p = sub.add_parser('pulse', help='PHYSICAL ACTION: Motor 1 only; not an aircraft ARM')
-    p.add_argument('--value', type=int, default=1020)
+    e = sub.add_parser('esc-info', help='Read-only ESC firmware/settings via 4-way passthrough')
+    e.add_argument('--escs', type=int, nargs='+', default=[1, 2, 3, 4])
+    p = sub.add_parser('pulse', help='PHYSICAL ACTION: one motor; not an aircraft ARM')
+    p.add_argument('--motor', type=int, default=1, choices=[1, 2, 3, 4])
+    p.add_argument('--value', type=int, default=1100)
     p.add_argument('--seconds', type=float, nargs='+', required=True)
     p.add_argument('--props-removed', action='store_true', required=True,
                    help='Explicitly attest that all propellers are removed')
     args = parser.parse_args()
     if args.action == 'pulse':
-        if not 1001 <= args.value <= 1040:
-            parser.error('This diagnostic helper limits Motor 1 to 1001–1040')
-        if len(args.seconds) > 2 or any(not 0 < n <= 10 for n in args.seconds):
-            parser.error('One or two finite durations in (0, 10] seconds only')
+        if not 1001 <= args.value <= MAX_PULSE_VALUE:
+            parser.error(f'Props-off diagnostic limit is 1001–{MAX_PULSE_VALUE}')
+        if len(args.seconds) > 3 or any(not 0 < n <= 10 for n in args.seconds):
+            parser.error('Up to three finite durations in (0, 10] seconds only')
 
     fc = FC(args.port)
-    mutating = args.action != 'status'
+    mutating = args.action in ('stop', 'pulse')
 
     def interrupted(signum, frame):
         raise KeyboardInterrupt(f'Signal {signum}')
@@ -192,6 +353,16 @@ def main():
         report(**state)
         if args.action == 'status':
             return 0
+        if args.action == 'config':
+            report(**fc.config())
+            return 0
+        if args.action == 'esc-info':
+            if state['voltage'] < 5.0:
+                raise RuntimeError('ESCs need battery power for passthrough; plug in the battery')
+            if state['armed']:
+                raise RuntimeError('FC is armed')
+            esc_info(fc, args.escs)
+            return 0
         if args.action == 'pulse':
             gate(state)
         # Blocks normal arming. Second byte 0 retains runaway prevention.
@@ -199,8 +370,10 @@ def main():
         fc.request(99, b'\x01\x00')
         fc.stop()
         if args.action == 'pulse':
-            for seconds in args.seconds:
-                pulse(fc, seconds, args.value)
+            for i, seconds in enumerate(args.seconds):
+                if i:
+                    time.sleep(1.5)
+                pulse(fc, args.motor, seconds, args.value)
         return 0
     finally:
         try:

@@ -940,3 +940,22 @@ The helper is import-safe, requires explicit movement flags and adds voltage sam
 Claude may choose another solution. Its syntax was inspected without importing it. No
 new hardware pulse, installation, firmware flash, calibration, automated test suite or
 trainer enable was performed while preparing this handoff.
+
+## 2026-10-11 — Motor 1 "intermittent spin" resolved: test value was below ESC sync range
+
+**Root cause:** Betaflight 4.4 maps a disarmed motor-test value of 1001–2000 linearly to
+DShot 48–2047. The earlier 1020 command was therefore **~1.9 % throttle**, about one fifth
+of this FC's armed idle (`dshot_idle_value` 1000 = 10 %, motor-test equivalent ~1100, read
+over MSP: DSHOT300, 14 poles, bidir off). At ~2 % an unloaded 1202.5 11000KV motor gives
+too little back-EMF for the BLHeli_S ESC to hold sync, so it starts, desyncs and restarts.
+
+**Actual laptop measurement + user observation:** with a fresh pack (7.61 V resting),
+Motor 1 = 1100 (9.9 %) for 2 s then 5 s, twice; commands held `[1100,1000,1000,1000]`,
+voltage 7.61→7.58 V, stop confirmed after each run. User observed **smooth continuous
+rotation for the full 2 s and 5 s**. No ESC/FC settings were changed; no flash.
+
+**Tool:** `tools/betaflight_motor_bench.py` now allows motors 1–4 up to 1150 (~15 %),
+reports the DShot throttle %, adds read-only `config` and read-only `esc-info` (BLHeli 4-way
+passthrough, EEPROM read only; not yet run on hardware), and gates voltage at 6.8–8.45 V.
+Remaining: solder motors 2–4, verify numbering/direction per motor, fix RC throttle
+reading ~1293 at stick-low before arming, final-mount accelerometer calibration.
