@@ -61,8 +61,7 @@
   <div>
     <div class="panel">
       <button id="stop">STOP ALL (Space)</button>
-      <label class="chk"><input type="checkbox" id="props"> All propellers are removed</label>
-      <button id="enable">Enable motor control</button>
+      <button id="enable" style="width:100%;padding:12px">Props removed — ENABLE motors</button>
       <div id="err" class="err"></div>
       <p class="hint">Closing/hiding this tab, losing the server, unplugging USB or arming the FC
         stops everything and disables control. If a motor ever keeps spinning, unplug the battery.</p>
@@ -85,7 +84,7 @@
     <div class="panel">
       <h2>Motors <span id="maxinfo" class="hint"></span></h2>
       <div id="locked" class="pill warn" style="display:block;border-radius:8px;margin-bottom:6px">
-        🔒 Sliders locked — tick “All propellers are removed”, then click “Enable motor control” (left).</div>
+        🔒 Sliders locked — click the green “Props removed — ENABLE motors” button (left).</div>
       <div class="row"><b>ALL</b><input type="range" id="master" min="1000" max="1300" value="1000" disabled>
         <span class="val" id="masterv">1000</span></div>
       <div id="rows"></div>
@@ -165,7 +164,7 @@ $('reconnect').onclick = async () => {
 };
 $('enable').onclick = async () => {
   if (state.enabled) return stopAll('Disabled from dashboard');
-  const r = await post('/api/enable', { props_removed: $('props').checked });
+  const r = await post('/api/enable', { props_removed: true });
   apply(r);
 };
 document.addEventListener('keydown', e => {
@@ -192,7 +191,7 @@ function render() {
   const stale = Date.now() - lastOk > 1500;
   [...sliders, $('master')].forEach(s => { s.disabled = !en; s.max = max; });
   $('maxinfo').textContent = `(ceiling ${max} = ${pct(max)} %)`;
-  $('enable').textContent = en ? 'ENABLED — click to disable' : 'Enable motor control';
+  $('enable').textContent = en ? 'ENABLED — click to disable' : 'Props removed — ENABLE motors';
   $('enable').classList.toggle('on', en);
   $('locked').style.display = en ? 'none' : 'block';
   $('enable').disabled = !state.connected && !en;

@@ -27,7 +27,7 @@ from betaflight_motor_bench import DEFAULT_PORT, FC, dshot_percent
 
 HEARTBEAT_TIMEOUT = 0.5
 LOW_BATTERY = 6.4        # cut if a battery is present and sags below this
-HTML = (Path(__file__).with_name('motor_dashboard.html')).read_text()
+HTML_PATH = Path(__file__).with_name('motor_dashboard.html')
 
 
 class Controller:
@@ -218,7 +218,7 @@ def make_handler(ctl):
 
         def do_GET(self):
             if self.path in ('/', '/index.html'):
-                self.send(200, HTML, 'text/html; charset=utf-8')
+                self.send(200, HTML_PATH.read_text(), 'text/html; charset=utf-8')
             elif self.path == '/api/state':
                 self.send(200, json.dumps(ctl.snapshot()))
             else:
