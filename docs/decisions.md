@@ -1084,3 +1084,8 @@ so `set motor_output_reordering = 2,0,3,1,4,5,6,7` + save (backup:
 re-test: **all four corners correct**. Spin directions must be re-checked: ESC direction settings belong
 to the physical ESC/output, and a 90° change swaps the needed CW/CCW at every corner. Supersedes the
 earlier "nose = M2/M4 side" note.
+
+**Directions after the remap — verified.** Set per logical motor via DShot commands: M1 normal,
+M2 normal, M3 reversed, M4 reversed (ESC on outputs 3, 1, 4, 2 respectively). User-observed at 1060,
+FC arrow = nose: **M1 rear-right CW, M2 front-right CCW, M3 rear-left CCW, M4 front-left CW.**
+Props: CW props on M1/M4, CCW props on M2/M3.
