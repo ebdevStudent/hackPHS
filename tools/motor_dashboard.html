@@ -53,7 +53,9 @@
   <span id="armed" class="pill">—</span>
   <span id="fw" class="pill">—</span>
   <span id="proto" class="pill">—</span>
+  <button id="reconnect">⟳ Reconnect FC</button>
 </div>
+<div id="connerr" class="err"></div>
 
 <div class="grid">
   <div>
@@ -156,6 +158,11 @@ function stopAll(reason) {
 }
 
 $('stop').onclick = () => stopAll();
+$('reconnect').onclick = async () => {
+  sliders.forEach(s => s.value = 1000); render();
+  $('conn').textContent = 'Reconnecting…'; $('conn').className = 'pill warn';
+  try { apply(await post('/api/reconnect')); } catch (e) {}
+};
 $('enable').onclick = async () => {
   if (state.enabled) return stopAll('Disabled from dashboard');
   const r = await post('/api/enable', { props_removed: $('props').checked });
@@ -196,6 +203,13 @@ function render() {
   if (stale) { conn.textContent = 'Dashboard server unreachable'; conn.className = 'pill bad'; }
   else if (state.connected) { conn.textContent = 'FC connected'; conn.className = 'pill ok'; }
   else { conn.textContent = 'Waiting for FC USB…'; conn.className = 'pill warn'; }
+  const ce = state.connect_error || '';
+  $('connerr').textContent = state.connected || !ce ? '' :
+    (ce.includes('ermission')
+      ? 'USB permission denied. In a terminal run: sudo setfacl -m u:$USER:rw /dev/ttyACM0  (or log out/in once), then Reconnect.'
+      : ce.includes('No such file') ? 'FC not plugged in (no USB device found).'
+      : ce.includes('busy') || ce.includes('lock') ? 'Port busy — close the Betaflight app / other serial tools, then Reconnect.'
+      : 'Connect error: ' + ce);
 
   const v = state.voltage;
   $('volt').textContent = v == null ? '— V' : (v < 5 ? `${v.toFixed(2)} V (no battery)` : `${v.toFixed(2)} V`);

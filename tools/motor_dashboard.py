@@ -43,6 +43,8 @@ class Controller:
         self.config = {}
         self.events = []
         self.running = True
+        self.reconnect_requested = False
+        self.connect_error = None
 
     def log(self, message):
         self.events.append(dict(t=time.strftime('%H:%M:%S'), msg=message))
@@ -88,7 +90,16 @@ class Controller:
             return dict(self.state, enabled=self.enabled, targets=self.targets,
                         targets_pct=[dshot_percent(v) for v in self.targets],
                         max_value=self.max_value, config=self.config,
-                        events=self.events[-12:], port=self.port)
+                        events=self.events[-12:], port=self.port,
+                        connect_error=self.connect_error)
+
+    def request_reconnect(self):
+        with self.lock:
+            self.enabled = False
+            self.targets = [1000] * 4
+            self.reconnect_requested = True
+            self.connect_error = None
+            self.log('Reconnect requested')
 
     # --- worker thread: sole owner of the serial port ---
     def connect(self):
@@ -133,11 +144,24 @@ class Controller:
     def run(self):
         tick = 0
         while self.running:
+            if self.reconnect_requested:
+                self.reconnect_requested = False
+                if self.fc is not None:
+                    self.drop('reconnect requested')
             if self.fc is None:
                 try:
                     self.connect()
-                except Exception:
-                    time.sleep(1.0)
+                    self.connect_error = None
+                except Exception as exc:
+                    message = str(exc) or type(exc).__name__
+                    if message != self.connect_error:
+                        self.connect_error = message
+                        if 'ermission' in message:
+                            self.log('USB permission denied - see hint in status bar')
+                    for _ in range(10):
+                        if self.reconnect_requested or not self.running:
+                            break
+                        time.sleep(0.1)
                     continue
             try:
                 with self.lock:
@@ -210,6 +234,8 @@ def make_handler(ctl):
             error = None
             if self.path == '/api/stop':
                 ctl.disable(body.get('reason', 'STOP pressed'))
+            elif self.path == '/api/reconnect':
+                ctl.request_reconnect()
             elif self.path == '/api/enable':
                 error = ctl.enable(body.get('props_removed') is True)
             elif self.path == '/api/set':
