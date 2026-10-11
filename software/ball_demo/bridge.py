@@ -59,7 +59,13 @@ class SerialBridge:
     def __init__(self, device, watchdog_ms=250, baud=DEFAULT_BAUD, trainer_output=False):
         """trainer_output: operator opt-in to accept a bridge whose READY reports PPM_YAW.
         Without it such a bridge is never treated as ready, so no CMD is sent to it."""
-        self.serial = serial.Serial(device, baud, timeout=0, write_timeout=.02)
+        # DTR/RTS drive the board's EN/BOOT auto-reset. Construct without a port, deassert both, then
+        # open (same order as firmware/esp32/tools/esp_term.py) so opening does not reset the ESP32-S3.
+        self.serial = serial.Serial(None, baud, timeout=0, write_timeout=.02)
+        self.serial.dtr = False
+        self.serial.rts = False
+        self.serial.port = device
+        self.serial.open()
         self.accepted_modes = ('NO_OUTPUT', 'PPM_YAW') if trainer_output else ('NO_OUTPUT',)
         self.session, self.seq, self.buffer = uuid.uuid4().hex, 0, bytearray()
         self.discarding = False

@@ -74,11 +74,9 @@ Checked 2026-10-11:
 - Analog FPV is interlaced/noisy and 720x480 is squashed to 640x480 → tags must be big and close.
 - **Only one program can open `/dev/video0`**: stop `fpv-stream.service` before `ball_demo` uses the camera.
 
-## 5. Software audit fixes — ON RAHUL'S LAPTOP, NOT YET COMMITTED/PUSHED
+## 5. Software audit fixes — PUSHED (commit after the handoff commit, same branch)
 
-A Sonnet compat audit found four software issues; a fix agent implemented them in the working tree of
-Rahul's Windows clone. **They are not in this commit.** If you don't see these changes, ask the user
-to push them (or re-implement):
+A Sonnet compat audit found four software issues; they are implemented and pushed:
 1. **Capture mode never set/checked** → `sources.py` `OpenCVSource.negotiate_capture_mode` requests
    YUYV 720x480@30, reads back, raises on size/fourcc mismatch, warns on fps. New `Settings`
    `capture_width/height/fps/fourcc`; CLI `--capture-mode WxH@FPS`, `--capture-fourcc`.
@@ -90,8 +88,10 @@ to push them (or re-implement):
    `requirements.lock`; note in `pyproject.toml`; server logs `cv2.__version__`.
 Tests: +14 in `software/tests/test_hardware_compat.py`; suite 45F/1852P → 44F/1867P (remaining failures
 are pre-existing Windows-only). Repo `software/deploy/ball-demo.service` was changed to pass
-`--camera /dev/video0 --camera-backend v4l2 --capture-mode 720x480@30 --serial /dev/serial/by-id/usb-1a86_USB_Single_Serial_5876079136-if00 --trainer-output`
-— **NOT deployed**, and **the user still has to decide on `--trainer-output`**.
+`--camera /dev/video0 --camera-backend v4l2 --capture-mode 720x480@30 --serial /dev/serial/by-id/usb-1a86_USB_Single_Serial_5876079136-if00`
+— **NOT deployed to the Pi.** `--trainer-output` was deliberately left OUT (user hasn't decided; add it
+only on their OK). Deploying this file makes `ball-demo` claim `/dev/video0`, so `fpv-stream.service`
+must be stopped/disabled first.
 
 ## 6. Raspberry Pi 5 state
 
@@ -124,3 +124,21 @@ are pre-existing Windows-only). Repo `software/deploy/ball-demo.service` was cha
 - They have no oscilloscope; work from the terminal (no Arduino IDE GUI). Only 2 kΩ resistors on hand.
 - Run Pi commands yourself over SSH when you have access, rather than asking them to.
 - Commit/push only with their OK. Never put credentials in the repo.
+
+## 9. Camera-feature next steps (proposed to the user, not started)
+
+Computer authority is **yaw only**, so true obstacle avoidance (stop/back off/climb) is impossible by
+design; the cage is the obstacle strategy. The repo's mapped navigation (`mapping.py` D435 static scans +
+`navigation.py` A* + wall-tag `localization.py`) is advisory-only, has no live obstacle sensing, and needs
+a D435 survey + measured mount — not realistic during the hackathon. Recommended order:
+1. **Colored-ball → yaw** (already wired): stop `fpv-stream.service`, run `ball_demo serve --camera
+   /dev/video0 --camera-backend v4l2 --serial <port>` (+ `--trainer-output` only on user OK), tune HSV on
+   real FPV, props-off CH4 check.
+2. **"Follow tag" → yaw** (new, ~1 h): add a tag mode to the detector that feeds the tag's center x into
+   the SAME `Controller` path the ball uses (keeps watchdog / blank-video / loss → neutral). No calibration
+   needed for yaw. Needs big printed 36h11 tags (≥10 cm).
+3. **Tag-as-obstacle demo** (~30 min on top of 2): a designated "avoid" tag that is large in frame (close)
+   yaws the drone away from it. Pilot still stops the drone.
+4. Full calibrated tag display (`--target-calibration`/`--target-delay-ms`/`--roster`, `nav-calibrate`
+   needs a bundle with a measured mount) — display only; skip unless judges need distance readouts.
+The user was asked for tag size and follow/avoid IDs before coding 2–3. First manual hover comes first.

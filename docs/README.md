@@ -1,6 +1,6 @@
 # Ball Drone documentation
 
-**>>> LATEST CLAUDE HANDOFF (2026-10-11, read first): [HANDOFF-CLAUDE-2026-10-11.md](../HANDOFF-CLAUDE-2026-10-11.md)** — flight checklist, current status of every link, AprilTag status, uncommitted audit fixes.
+**>>> LATEST CLAUDE HANDOFF (2026-10-11, read first): [HANDOFF-CLAUDE-2026-10-11.md](../HANDOFF-CLAUDE-2026-10-11.md)** — flight checklist, current status of every link, AprilTag status, audit fixes, camera-feature next steps.
 
 **2026-10-11 Claude bench session:** [summary](30-claude-session-summary-2026-10-11.md): Motor 1 fixed (test value too low), FPV video working end to end, VTX on R8 5917 MHz, Angle-mode settings staged, motor dashboard with Camera tab.
 

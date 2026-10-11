@@ -7,6 +7,8 @@ name = "ball-drone-demo"
 version = "0.1.0"
 description = "Offline vision and yaw demonstration; no transmitter output"
 requires-python = ">=3.13"
+# OpenCV drift (2026-10-11 audit): Pi venv opencv-python-headless 5.0.0.93 (pinned in requirements.lock),
+# Pi system python 4.10.0, laptop 4.12.0.88. Not pinned here: probe with the service's own interpreter.
 dependencies = ["fastapi", "uvicorn", "opencv-python-headless", "numpy", "pyserial", "qrcode", "pillow"]
 
 [project.optional-dependencies]

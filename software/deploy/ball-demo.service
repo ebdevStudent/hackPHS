@@ -10,7 +10,7 @@ SupplementaryGroups=video dialout
 WorkingDirectory=/opt/ball-drone/software
 Environment=BALL_DATA_DIR=/var/lib/ball-drone
 EnvironmentFile=/etc/ball-drone/operator.env
-ExecStart=/opt/ball-drone/software/.venv/bin/python -m ball_demo.cli serve --host 0.0.0.0 --port 8080
+ExecStart=/opt/ball-drone/software/.venv/bin/python -m ball_demo.cli serve --host 0.0.0.0 --port 8080 --camera /dev/video0 --camera-backend v4l2 --capture-mode 720x480@30 --serial /dev/serial/by-id/usb-1a86_USB_Single_Serial_5876079136-if00
 Restart=on-failure
 RestartSec=3
 NoNewPrivileges=true
@@ -18,7 +18,8 @@ PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
 ReadWritePaths=/var/lib/ball-drone
-# Synthetic startup deliberately has no serial/camera argument.
+# Real camera and bridge are passed explicitly: with no --camera/--serial the demo would silently run
+# on synthetic video and a mock bridge. NTSC 720x480@30 is what the MS2106 card offers (PAL: 720x576@25).
 
 [Install]
 WantedBy=multi-user.target

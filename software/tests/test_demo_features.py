@@ -447,7 +447,8 @@ class FakeCapture:
     def __init__(self, device, *backend):
         self.device, self.backend, self.released = device, backend, False
     def isOpened(self): return self.device in (0, '/dev/video0')
-    def get(self, prop): return {cv2.CAP_PROP_FRAME_WIDTH: 720, cv2.CAP_PROP_FRAME_HEIGHT: 480, cv2.CAP_PROP_FPS: 29.97}[prop]
+    def get(self, prop): return {cv2.CAP_PROP_FRAME_WIDTH: 720, cv2.CAP_PROP_FRAME_HEIGHT: 480, cv2.CAP_PROP_FPS: 29.97,
+                                cv2.CAP_PROP_FOURCC: cv2.VideoWriter_fourcc(*'YUYV')}[prop]
     def set(self, prop, value): return True
     def release(self): self.released = True
 
@@ -592,6 +593,7 @@ class FakeSerial:
         self.in_waiting = len(self.incoming)
         return data
     def feed(self, data): self.incoming += data; self.in_waiting = len(self.incoming)
+    def open(self): pass
     def close(self): pass
 
 

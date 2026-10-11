@@ -33,6 +33,8 @@ class Engine:
         self.controller = Controller()
         self.lock = threading.RLock()
         self.source_spec = source or {'kind': 'synthetic', 'scenario': 'moving'}
+        # True while synthetic frames are running only because no real source was configured.
+        self.source_defaulted = source is None
         self.generation = 0
         self.frame = None
         self.detection = None
@@ -102,7 +104,8 @@ class Engine:
             thread = threading.Thread(target=target, daemon=True)
             thread.start()
             self.threads.append(thread)
-        self.session.event('startup', {'state': 'MANUAL', 'bridge': self.bridge.transport})
+        self.session.event('startup', {'state': 'MANUAL', 'bridge': self.bridge.transport,
+                                       'synthetic_fallback': self.synthetic_fallback})
         if self.portable:
             self.portable.start()
         with self.navigation_config_lock:
@@ -132,6 +135,8 @@ class Engine:
                     'yaw': self.controller.yaw, 'ack_yaw': self.bridge.accepted_yaw,
                     'bridge': self.bridge.transport, 'bridge_fault': self.bridge.fault,
                     'source': dict(self.source_spec),
+                    'synthetic_fallback': self.synthetic_fallback,
+                    'mock_bridge': isinstance(self.bridge, MockBridge),
                     'source_label': {'synthetic': 'SYNTHETIC', 'recorded': 'RECORDED', 'camera': 'CAMERA'}[self.source_spec['kind']],
                     'frame_age_ms': round((now - self.frame.captured) * 1000, 1) if self.frame else None,
                     'ack_age_ms': round((now - self.bridge.last_ack) * 1000, 1),
@@ -147,6 +152,9 @@ class Engine:
                     'lease_ms_remaining': None if self.lease_deadline is None else
                         max(0., round((self.lease_deadline - now) * 1000, 1)),
                     'navigation': self.navigation.snapshot(now) if self.navigation else None}
+    @property
+    def synthetic_fallback(self):
+        return self.source_defaulted and self.source_spec['kind'] == 'synthetic'
     def mission_status(self):
         """Return explicit subsystem readiness and non-actuating mission gates."""
         with self.lock:
@@ -323,6 +331,7 @@ class Engine:
             if self.portable:
                 self.portable.neutral()
             self.source_spec = spec
+            self.source_defaulted = False
             self.generation += 1
             self.frame, self.detection, self.preview = None, None, None
             self.preview_frame = None
@@ -440,6 +449,11 @@ class Engine:
                         x, y, w, h = detection['bbox']
                         cv2.rectangle(image, (x - 4, y - 4), (x + w + 4, y + h + 4), (90, 240, 160), 2)
                     cv2.putText(image, source.label, (18, 28), cv2.FONT_HERSHEY_SIMPLEX, .65, (210, 224, 233), 1)
+                    if self.synthetic_fallback:
+                        # No real camera was configured: make fake video impossible to mistake for live FPV.
+                        cv2.rectangle(image, (0, settings.height - 36), (settings.width, settings.height), (0, 0, 200), -1)
+                        cv2.putText(image, 'SYNTHETIC - NO CAMERA CONFIGURED - NOT LIVE VIDEO', (12, settings.height - 12),
+                                    cv2.FONT_HERSHEY_SIMPLEX, .55, (255, 255, 255), 2)
                     ok, encoded = cv2.imencode('.jpg', image, [cv2.IMWRITE_JPEG_QUALITY, 75])
                     if ok: jpeg = encoded.tobytes()
                     last_preview = began

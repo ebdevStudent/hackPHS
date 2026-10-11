@@ -19,7 +19,7 @@ function render(state) {
   $('source').textContent = state.source_label;
   const live = state.source.kind === 'camera';
   $('source-warning').classList.toggle('hidden', live);
-  $('source-warning').textContent = live ? '' : `${state.source_label} input — not live FPV`;
+  $('source-warning').textContent = live ? '' : state.synthetic_fallback ? 'SYNTHETIC VIDEO — no camera configured, NOT live FPV' : `${state.source_label} input — not live FPV`;
 }
 
 const events = new EventSource('/api/events');

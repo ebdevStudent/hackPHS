@@ -11,6 +11,7 @@ class Serial:
     def read(self, size):
         data = bytes(self.incoming[:size]); del self.incoming[:size]; return data
     def write(self, data): self.writes.append(data); return len(data)
+    def open(self): pass
     def close(self): self.closed = True
 
 @pytest.fixture

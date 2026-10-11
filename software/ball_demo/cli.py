@@ -1,16 +1,20 @@
 import argparse
 import csv
 import json
+import logging
 import os
+import re
 import secrets
 import sys
 import time
 from pathlib import Path
 
+import cv2
 import uvicorn
 
 from .api import create_app
 from .bridge import DEFAULT_BAUD, SerialBridge
+from .config import Settings
 from .engine import Engine
 from .fixtures import generate
 from .protocol import BridgeCore
@@ -42,6 +46,10 @@ def main():
     start.add_argument('--camera', help='Start disabled on a live camera: index such as 0, or a device path such as /dev/video0')
     serve.add_argument('--camera-backend', choices=['auto', 'v4l2', 'default'], default='auto',
                        help='auto uses Video4Linux2 on Linux and the OpenCV default elsewhere')
+    serve.add_argument('--capture-mode', default='720x480@30', type=capture_mode,
+                       help='Mode requested from the live camera as WIDTHxHEIGHT@FPS (default 720x480@30, NTSC; '
+                            'PAL is 720x576@25). The opened mode is read back and a size/format mismatch is a fault')
+    serve.add_argument('--capture-fourcc', default='YUYV', help='Pixel format requested from the live camera (default YUYV)')
     fixtures = sub.add_parser('fixtures')
     fixtures.add_argument('--output', default='runs/fixtures')
     fixtures.add_argument('--frames', type=int, default=160)
@@ -114,6 +122,9 @@ def main():
             parser.error('--portable-demo uses generated images, mock bridge and its own fictional roster/geometry')
         if bool(args.target_calibration) != (args.target_delay_ms is not None):
             parser.error('--target-calibration and --target-delay-ms are required together')
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(name)s: %(message)s')
+        logging.getLogger(__name__).info('OpenCV %s', cv2.__version__)
+        for warning in startup_warnings(args): logging.getLogger(__name__).warning(warning)
         token = os.environ.get('BALL_OPERATOR_TOKEN') or secrets.token_urlsafe(24)
         Path(args.data).mkdir(parents=True, exist_ok=True)
         token_path = Path(args.data) / 'operator-token'
@@ -142,7 +153,9 @@ def main():
             from .map_io import Calibration
             calibration = Calibration.model_validate_json(Path(args.target_calibration).read_text())
             delay_s = args.target_delay_ms / 1000
-        engine = Engine(args.data, bridge=bridge, source=source, navigation_bundle=bundle,
+        width, height, fps = args.capture_mode
+        settings = Settings(capture_width=width, capture_height=height, capture_fps=fps, capture_fourcc=args.capture_fourcc)
+        engine = Engine(args.data, settings=settings, bridge=bridge, source=source, navigation_bundle=bundle,
                         navigation_recording=recording, roster=prepared_roster,
                         portable_calibration=calibration, portable_delay_s=delay_s)
         class DemoServer(uvicorn.Server):
@@ -212,7 +225,6 @@ def main():
         output.write_text(json.dumps(result, indent=2, allow_nan=False) + '\n')
         print(output.resolve())
     elif args.command == 'nav-calibrate':
-        import cv2
         from .map_io import load_bundle
         from .calibration import calibrate
         template = load_bundle(args.bundle)
@@ -268,6 +280,24 @@ def main():
         (output / 'visitor.txt').write_text(f'Ball Drone visitor access\nNetwork: {args.network}\nURL: {args.url}\nNo operator credentials required.\n')
         print(output.resolve())
 
+
+
+def capture_mode(value):
+    """'720x480@30' -> (720, 480, 30.0)."""
+    match = re.fullmatch(r'(\d+)x(\d+)@(\d+(?:\.\d+)?)', value)
+    if not match: raise argparse.ArgumentTypeError('capture mode must look like 720x480@30')
+    return int(match[1]), int(match[2]), float(match[3])
+
+
+def startup_warnings(args):
+    """Loud lines for every input that fell back to synthetic/mock instead of real hardware."""
+    if args.portable_demo: return []
+    warnings = []
+    if not args.camera and not args.recorded:
+        warnings.append('NO CAMERA CONFIGURED (--camera): running on SYNTHETIC video, NOT a live FPV feed')
+    if not args.serial:
+        warnings.append('NO SERIAL BRIDGE CONFIGURED (--serial): MOCK bridge, no PPM output reaches the transmitter')
+    return warnings
 
 
 def camera_device(value):

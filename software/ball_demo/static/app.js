@@ -21,6 +21,7 @@ function renderState(state) {
   element('connection').textContent = 'Connected';
   element('connection').classList.remove('stale');
   element('source-label').textContent = state.source_label;
+  element('synthetic-banner').classList.toggle('hidden', !state.synthetic_fallback);
   element('scenario-label').textContent = displayName(state.source.scenario || state.source.kind);
   element('preview').alt = `${state.source_label.toLowerCase()} video with target detection outline`;
   element('session-id').textContent = `Session ${state.session}`;

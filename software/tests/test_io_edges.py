@@ -26,6 +26,9 @@ class Camera:
     def __init__(self, opened=True): self.opened, self.released, self.properties, self.reads = opened, False, [], 0
     def isOpened(self): return self.opened
     def set(self, key, value): self.properties.append((key, value)); return True
+    def get(self, key):
+        return {cv2.CAP_PROP_FOURCC: cv2.VideoWriter_fourcc(*'YUYV'), cv2.CAP_PROP_FRAME_WIDTH: 720,
+                cv2.CAP_PROP_FRAME_HEIGHT: 480, cv2.CAP_PROP_FPS: 30}.get(key, 0)
     def read(self):
         self.reads += 1
         return (True, np.zeros((240, 320, 3), dtype=np.uint8)) if self.reads == 1 else (False, None)
@@ -35,8 +38,8 @@ class Camera:
 def test_camera_adapter_requests_dimensions_and_does_not_call_loss_eof(monkeypatch):
     device = Camera(); monkeypatch.setattr(cv2, 'VideoCapture', lambda identifier: device)
     source = OpenCVSource(2, Settings(), recorded=False)
-    assert device.properties == [(cv2.CAP_PROP_FRAME_WIDTH, 640), (cv2.CAP_PROP_FRAME_HEIGHT, 480), (cv2.CAP_PROP_FPS, 20),
-                                 (cv2.CAP_PROP_BUFFERSIZE, 1)]
+    assert device.properties == [(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV')), (cv2.CAP_PROP_FRAME_WIDTH, 720),
+                                 (cv2.CAP_PROP_FRAME_HEIGHT, 480), (cv2.CAP_PROP_FPS, 30), (cv2.CAP_PROP_BUFFERSIZE, 1)]
     assert source.read().image.shape == (480, 640, 3)
     assert source.read() is None and not source.eof
     source.close(); assert device.released

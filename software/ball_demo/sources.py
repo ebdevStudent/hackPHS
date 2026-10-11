@@ -1,3 +1,4 @@
+import logging
 import math
 import time
 from dataclasses import dataclass
@@ -5,6 +6,11 @@ from datetime import datetime, timezone
 
 import cv2
 import numpy as np
+
+log = logging.getLogger(__name__)
+
+# V4L2 and AVFoundation report fps rounded or as 0; NTSC is really 29.97. Beyond this is a real mismatch.
+FPS_TOLERANCE = 1.0
 
 SCENARIOS = ['centered', 'moving', 'approach', 'edges', 'brightness', 'distractions', 'small',
              'occlusion', 'blur', 'noise', 'loss', 'absent', 'reappear', 'freeze', 'delay', 'stop', 'response']
@@ -91,15 +97,40 @@ class OpenCVSource:
             raise ValueError('Cannot open video source')
         self.file_fps, self.position, self.started, self.last = None, 0, None, None
         if not recorded:
-            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, settings.width)
-            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, settings.height)
-            self.capture.set(cv2.CAP_PROP_FPS, settings.processing_hz)
-            # Keep at most one queued frame so the newest picture is processed, not an old backlog.
-            self.capture.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+            try:
+                self.negotiate_capture_mode(settings)
+            except Exception:
+                self.capture.release()
+                raise
         elif paced:
             # paced: the engine plays files in real time at their own rate; tools read sequentially.
             fps = self.capture.get(cv2.CAP_PROP_FPS)
             self.file_fps = fps if fps and 1 <= fps <= 240 else None
+    def negotiate_capture_mode(self, settings):
+        """Request the configured mode (FOURCC first, as V4L2 needs), then read back and log what opened."""
+        fourcc = settings.capture_fourcc
+        self.capture.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*fourcc))
+        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, settings.capture_width)
+        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, settings.capture_height)
+        self.capture.set(cv2.CAP_PROP_FPS, settings.capture_fps)
+        # Keep at most one queued frame so the newest picture is processed, not an old backlog.
+        self.capture.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+        code = int(self.capture.get(cv2.CAP_PROP_FOURCC))
+        actual_fourcc = ''.join(chr((code >> (8 * i)) & 0xFF) for i in range(4)).strip(' \x00') or 'unknown'
+        width, height = int(self.capture.get(cv2.CAP_PROP_FRAME_WIDTH)), int(self.capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        fps = float(self.capture.get(cv2.CAP_PROP_FPS) or 0)
+        self.mode = {'width': width, 'height': height, 'fps': fps, 'fourcc': actual_fourcc}
+        log.info('capture opened: %dx%d @ %.2f fps %s (requested %dx%d @ %g %s)', width, height, fps, actual_fourcc,
+                 settings.capture_width, settings.capture_height, settings.capture_fps, fourcc)
+        # A wrong size or pixel format means the card never accepted the mode (no signal lock or wrong
+        # standard), so fail like an unopenable device; the engine reports it and retries.
+        if (width, height) != (settings.capture_width, settings.capture_height) or actual_fourcc != fourcc:
+            raise ValueError(f'Capture mode mismatch: requested {settings.capture_width}x{settings.capture_height} {fourcc}, '
+                             f'device gave {width}x{height} {actual_fourcc}')
+        # fps read-back is unreliable on some drivers, so a mismatch is a loud warning rather than a failure.
+        if fps and abs(fps - settings.capture_fps) > FPS_TOLERANCE:
+            log.warning('CAPTURE FPS MISMATCH: requested %g fps, device reports %.2f fps', settings.capture_fps, fps)
+
     def read(self):
         if self.file_fps:
             # Play a recording at its own frame rate: skip frames the processing rate cannot keep up
