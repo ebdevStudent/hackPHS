@@ -82,6 +82,8 @@
   <div>
     <div class="panel">
       <h2>Motors <span id="maxinfo" class="hint"></span></h2>
+      <div id="locked" class="pill warn" style="display:block;border-radius:8px;margin-bottom:6px">
+        🔒 Sliders locked — tick “All propellers are removed”, then click “Enable motor control” (left).</div>
       <div class="row"><b>ALL</b><input type="range" id="master" min="1000" max="1300" value="1000" disabled>
         <span class="val" id="masterv">1000</span></div>
       <div id="rows"></div>
@@ -185,6 +187,7 @@ function render() {
   $('maxinfo').textContent = `(ceiling ${max} = ${pct(max)} %)`;
   $('enable').textContent = en ? 'ENABLED — click to disable' : 'Enable motor control';
   $('enable').classList.toggle('on', en);
+  $('locked').style.display = en ? 'none' : 'block';
   $('enable').disabled = !state.connected && !en;
   document.querySelectorAll('#tests button').forEach(b => b.disabled = !en);
   $('masterv').textContent = $('master').value;

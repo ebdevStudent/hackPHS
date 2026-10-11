@@ -60,7 +60,8 @@ class Controller:
     def enable(self, props_removed):
         with self.lock:
             if not props_removed:
-                return 'Confirm that all propellers are removed'
+                self.log('Enable refused: props-removed box not ticked')
+                return 'Tick "All propellers are removed" first'
             if not self.state.get('connected'):
                 return 'FC not connected'
             if self.state.get('armed'):
