@@ -199,6 +199,25 @@ class FC:
                 return frame[8:-1]
         raise TimeoutError(f'MSPv2 0x{command:04X} reply timeout')
 
+    def vtx(self):
+        """Video transmitter state from MSP_VTX_CONFIG."""
+        d = self.request(88)
+        return dict(type=d[0], band=d[1], channel=d[2], power=d[3], pit=bool(d[4]),
+                    freq=struct.unpack_from('<H', d, 5)[0], ready=bool(d[7]))
+
+    def set_vtx_pit(self, pit):
+        """Pit mode on/off (runtime only, not saved). Keeps band/channel/power."""
+        v = self.vtx()
+        chan = (v['band'] - 1) * 8 + (v['channel'] - 1) if v['band'] else v['freq']
+        self.request(89, struct.pack('<HBB', chan, v['power'], 1 if pit else 0))
+        deadline = time.monotonic() + 8   # SmartAudio applies asynchronously (~3-5 s)
+        while time.monotonic() < deadline:
+            time.sleep(0.5)
+            v = self.vtx()
+            if v['pit'] == pit:
+                break
+        return v
+
     def set_direction(self, motor, reverse):
         """Store spin direction in one ESC via DShot commands (motors must be stopped).
 

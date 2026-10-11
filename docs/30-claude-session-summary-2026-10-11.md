@@ -31,7 +31,7 @@ copy is also in `docs/sources/bench-handoff-2026-10-11/`.
 - `tools/betaflight_motor_bench.py`: status, config, ESC info, direction, pulse (max 1150).
 - `tools/motor_dashboard.py` + `.html`: local web dashboard at http://127.0.0.1:8765.
   - Motors tab: sliders, test buttons, direction buttons, arming-block readout, "Allow radio arming".
-  - Camera tab: live FPV.
+  - Camera tab: live FPV, plus a video on/off switch (VTX pit mode, ~0.1 A saved).
   - Safety: dead-man heartbeat, Space = STOP.
 - `tools/pi/`: FPV streamer (`fpv-stream.service`, port 8090) with capture-stick auto-reset, installed on the Pi.
 

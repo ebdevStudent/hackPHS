@@ -1044,3 +1044,12 @@ plus Betaflight OSD text ("BATT < FULL"): camera → AIO SmartAudio VTX (R8 5917
 `evidence/physical/fpv-first-live-frame-2026-10-11.jpg`. Earlier intermittent flat-grey
 video happened on USB power only (FC ~2.2 V): the VTX carrier was received but the camera
 had no proper supply. Flat grey = carrier without video; snow = no carrier.
+
+## 2026-10-11 — Dashboard "video on/off" (VTX pit mode) to save battery
+
+Camera tab button toggles VTX pit mode via `MSP_SET_VTX_CONFIG` (keeps band/channel/power,
+runtime only, not saved; refused while armed; stops motors first). SmartAudio confirms
+asynchronously, so the tool polls MSP_VTX_CONFIG up to 8 s. Measured on the bench (FC current
+sensor, uncalibrated `ibata_scale`): ~0.46 A video on vs ~0.36 A pit mode, about 0.1 A saved.
+The camera itself is hard-wired and stays powered. Pit mode still emits a weak signal, so an
+RC832 right next to the drone may keep showing the picture.

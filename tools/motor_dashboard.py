@@ -49,6 +49,8 @@ class Controller:
         self.pending_direction = None
         self.radio_arming = False          # False: dashboard blocks arming via MSP
         self.pending_arming_block = None
+        self.pending_vtx_pit = None
+        self.vtx = {}
 
     def log(self, message):
         self.events.append(dict(t=time.strftime('%H:%M:%S'), msg=message))
@@ -110,7 +112,7 @@ class Controller:
                         max_value=self.max_value, config=self.config,
                         events=self.events[-12:], port=self.port,
                         connect_error=self.connect_error,
-                        radio_arming=self.radio_arming, fpv_url=self.fpv_url)
+                        radio_arming=self.radio_arming, fpv_url=self.fpv_url, vtx=self.vtx)
 
     def request_direction(self, motor, reverse):
         with self.lock:
@@ -124,6 +126,18 @@ class Controller:
             self.targets = [1000] * 4
             self.pending_direction = (motor, reverse)
             self.log(f"Setting M{motor} direction {'REVERSED' if reverse else 'NORMAL'}…")
+            return None
+
+    def request_vtx(self, on):
+        with self.lock:
+            if not self.state.get('connected'):
+                return 'FC not connected (plug in USB)'
+            if not on and self.state.get('armed'):
+                return 'Refusing to turn video off while armed'
+            self.enabled = False            # worker is busy ~5 s confirming; stop motors first
+            self.targets = [1000] * 4
+            self.pending_vtx_pit = not on
+            self.log(f"Video transmitter {'ON' if on else 'OFF (pit mode)'} requested")
             return None
 
     def request_reconnect(self):
@@ -208,6 +222,17 @@ class Controller:
                     self.fc.request(99, bytes([1 if block else 0, 0]))
                 except Exception as exc:
                     self.log(f'Arming block change FAILED: {exc}')
+            if self.pending_vtx_pit is not None:
+                pit, self.pending_vtx_pit = self.pending_vtx_pit, None
+                try:
+                    self.fc.stop()
+                    v = self.fc.set_vtx_pit(pit)
+                    self.vtx = v
+                    ok = v['pit'] == pit
+                    self.log(f"Video transmitter now {'OFF (pit mode)' if v['pit'] else 'ON'}"
+                             + ('' if ok else ' - VTX did not accept the change'))
+                except Exception as exc:
+                    self.log(f'Video transmitter change FAILED: {exc}')
             if self.pending_direction:
                 motor, reverse = self.pending_direction
                 try:
@@ -226,6 +251,11 @@ class Controller:
                         self.log('Disabled: dashboard heartbeat lost')
                     out = list(self.targets) if self.enabled else [1000] * 4
                 self.fc.request(214, struct.pack('<8H', *(out + [1000] * 4)))
+                if tick % 60 == 0:
+                    try:
+                        self.vtx = self.fc.vtx()
+                    except Exception:
+                        pass
                 if tick % 4 == 0:
                     status = self.fc.status()
                     with self.lock:
@@ -298,6 +328,10 @@ def make_handler(ctl):
                 if not isinstance(body.get('allow'), bool):
                     return self.send(400, json.dumps(dict(error='bad request')))
                 error = ctl.set_radio_arming(body['allow'])
+            elif self.path == '/api/vtx':
+                if not isinstance(body.get('on'), bool):
+                    return self.send(400, json.dumps(dict(error='bad request')))
+                error = ctl.request_vtx(body['on'])
             elif self.path == '/api/direction':
                 motor, reverse = body.get('motor'), body.get('reverse')
                 if (not isinstance(motor, int) or isinstance(motor, bool)

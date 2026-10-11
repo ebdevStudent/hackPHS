@@ -55,6 +55,8 @@
 <div id="tab-camera" hidden>
   <div class="panel">
     <div class="bar" style="margin-bottom:8px">
+      <span id="vtxstate" class="pill">VTX —</span>
+      <button id="vtxtoggle">—</button>
       <span id="fpvsig" class="pill">—</span>
       <span id="fpvinfo" class="hint"></span>
       <button id="fpvreset">Reset capture stick</button>
@@ -66,7 +68,10 @@
     <p class="hint">Drone camera → FC video transmitter (5917 MHz, 25 mW) → RC832 (set to 5-8) → USB capture
       stick → Pi → here. SNOW = RC832 hears nothing on its channel (drone battery out, wrong channel).
       FLAT = blank screen. NO INPUT = capture stick stuck (auto-resets, or press Reset).
-      Motor safety (Space = STOP) still works on this tab.</p>
+      Motor safety (Space = STOP) still works on this tab.<br>
+      <b>Video OFF</b> puts the drone's video transmitter in pit mode (near-zero output) to save battery and heat;
+      the camera itself stays powered (it's hard-wired). Not saved: unplugging the battery turns video back ON.
+      Needs the FC on USB. Turning video off is refused while armed.</p>
   </div>
 </div>
 <div id="tab-motors">
@@ -224,6 +229,10 @@ async function fpvStatus() {
     $('fpvinfo').textContent = base;
   }
 }
+$('vtxtoggle').onclick = async () => {
+  const on = !!(state.vtx && state.vtx.pit);   // currently off -> turn on
+  try { apply(await post('/api/vtx', { on })); } catch (e) {}
+};
 $('fpvreset').onclick = () => fetch(state.fpv_url + '/reset', { method: 'POST' }).then(fpvStatus).catch(() => {});
 $('fpvimg').onerror = () => { if (tab === 'camera') setTimeout(() => showTab('camera'), 2000); };
 
@@ -305,6 +314,16 @@ function render() {
       + (ab.includes('MSP') && !state.radio_arming ? '<br>MSP = the dashboard\'s own block (button below).' : '');
   $('radioarm').textContent = state.radio_arming ? 'Block radio arming again' : 'Allow radio arming';
   $('radioarm').disabled = !state.connected;
+  const vt = state.vtx || {};
+  if (vt.freq != null && state.connected) {
+    $('vtxstate').textContent = vt.pit ? 'VIDEO OFF (pit mode)' : `VIDEO ON · ${vt.freq} MHz`;
+    $('vtxstate').className = 'pill ' + (vt.pit ? 'warn' : 'ok');
+    $('vtxtoggle').textContent = vt.pit ? 'Turn video ON' : 'Turn video OFF (save battery)';
+    $('vtxtoggle').disabled = false;
+  } else {
+    $('vtxstate').textContent = 'VTX ? (FC not on USB)'; $('vtxstate').className = 'pill';
+    $('vtxtoggle').textContent = 'Video on/off'; $('vtxtoggle').disabled = true;
+  }
   const ce = state.connect_error || '';
   $('connerr').textContent = state.connected || !ce ? '' :
     (ce.includes('ermission')
