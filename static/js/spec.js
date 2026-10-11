@@ -14,13 +14,11 @@ export const PARTS = [
   { group: "Quad", name: "Gemfan 2015 2-blade prop, 1.5 mm shaft", qty: 4, g: 0.5, src: "Gemfan / GetFPV" },
   { group: "Quad", name: "Caddx Ant 14×14 mm analog camera", qty: 1, g: 2.0, src: "Caddx / HobbyKing" },
   { group: "Quad", name: "XT30 pigtail, 30 AWG wiring, strap, antenna, screws", qty: 1, g: 3.5, src: "estimate" },
-  // ---- rolling cage (BOM p.3; icosahedral per review p.20)
-  { group: "Cage", name: "1.0 mm carbon rod, 110 mm (cut from 1 × 500 mm stock)", qty: 30, g: 0.134, src: "CF 1.55 g/cm³" },
-  { group: "Cage", name: "5-way hub, printed TPU 95A (minimal/hollow)", qty: 12, g: 0.8, src: "estimate, TPU 1.21 g/cm³" },
-  { group: "Cage", name: "Gimbal ring, outer (R 92 mm, 5 × 3 mm PETG)", qty: 1, g: 7.4, src: "PETG 1.27 g/cm³" },
-  { group: "Cage", name: "Gimbal ring, inner (R 85 mm, 5 × 3 mm PETG)", qty: 1, g: 6.8, src: "PETG 1.27 g/cm³" },
-  { group: "Cage", name: "MR52 bearings + Ø2 mm steel pivot pins", qty: 1, g: 1.6, src: "6 × 0.2 g + pins" },
-  { group: "Cage", name: "Centre mount TPU/PETG + silicone dampers", qty: 1, g: 3.5, src: "estimate" },
+  // ---- two-ring gimbal (P1B, no outer cage): ring sizes and masses from docs/22-motion-physics.md §2.3
+  { group: "Gimbal", name: "Gimbal ring, outer (R 96.5 mm, PETG)", qty: 1, g: 16.5, src: "docs/22 §2.3 estimate" },
+  { group: "Gimbal", name: "Gimbal ring, inner (R 86.5 mm, PETG)", qty: 1, g: 14.8, src: "docs/22 §2.3 estimate" },
+  { group: "Gimbal", name: "6 × MR52ZZ bearings + Ø2 mm steel pivot pins", qty: 1, g: 1.6, src: "6 × 0.2 g + pins" },
+  { group: "Gimbal", name: "Centre mount TPU/PETG + silicone dampers", qty: 1, g: 3.5, src: "estimate" },
 ];
 
 // 2S LiHV battery test set (BOM p.3/p.5, review p.24–26: 450 baseline, ~550, ~650–680, 750–850 high-energy)
@@ -37,13 +35,18 @@ export const MOTOR = {
   curve: [[0, 0.4], [23, 7.92], [40.9, 15.69], [56.6, 23.46], [68.6, 29.97], [81.8, 37.30], [95, 45.81]],
 };
 
-export const CAGE = {
-  shape: "icosahedron", circumradius: 0.1125, hubRadius: 0.005, rodRadius: 0.0005,
-  edge: 0.1125 / 0.9510565, ringBig: [0.087, 0.092], ringSmall: [0.080, 0.085],
-  muHub: 0.75, muRod: 0.30, eHub: 0.35,     // TPU hub on hard floor; carbon rod; flexible 1 mm cage absorbs energy
+// Two-ring gimbal, no cage (P1B chain, docs/22 §3). In three.js axes (Y up, nose −Z): the outer ring turns about the
+// vertical Y axis, the inner ring about X inside it, and the aircraft about Z (its fore-aft axis) inside the inner ring.
+// Radii are the outer edge of each ring band; both bands stay clear of the 2-inch prop disks (tips at ≤ 70 mm).
+export const GIMBAL = {
+  outer: { r: 0.0965, band: 0.006, width: 0.010 },     // radial band thickness and axial width (drawn bold so it reads)
+  inner: { r: 0.0865, band: 0.006, width: 0.010 },
+  pin: 0.001, bearing: { od: 0.005, w: 0.0025 },      // Ø2 mm steel pins in MR52ZZ (2 × 5 × 2.5 mm) bearings
+  envelope: 0.102,                                     // contact sphere: outer ring + its yaw bearings and hubs
+  mu: 0.30, e: 0.35, rollRes: 0.03,                    // PETG ring on a hard floor; restitution; rolling resistance
 };
 
-export const INSTALL_LOSS = 1.12;       // cage rods / rings / ducts in the prop wash raise hover power (review p.25)
+export const INSTALL_LOSS = 1.12;       // gimbal rings / mount arms in the prop wash raise hover power (review p.25)
 export const AVIONICS_W = 1.6;          // F411 AIO + ELRS + Caddx Ant + VTX at 25 mW indoors
 export const INSPECTION_LED_W = 0.6;    // two small switchable white LEDs (review p.22)
 
@@ -57,15 +60,15 @@ export function motorPower(thrust_g) { return interp(MOTOR.curve, Math.max(0, th
 export function buildSpec(capacityMah = 550) {
   const bat = BATTERIES[capacityMah] || BATTERIES[550];
   const sum = grp => PARTS.filter(p => !grp || p.group === grp).reduce((s, p) => s + p.qty * p.g, 0);
-  const quad = sum("Quad"), cage = sum("Cage"), auw = quad + cage + bat.g;
+  const quad = sum("Quad"), gimbal = sum("Gimbal"), auw = quad + gimbal + bat.g;
   const thrustTotal = 4 * MOTOR.thrustMax_g;
-  // rotating cage parts: rods + hubs at ~R, half of each ring (rings turn partially with the cage)
-  const shell = (30 * 0.134 + 12 * 0.8) / 1000, rings = (7.4 + 6.8) / 2 / 1000;
-  const I = (2 / 3) * shell * CAGE.circumradius ** 2 + 0.5 * rings * 0.088 ** 2 * 2;
+  // parts that turn when the gimbal is spun by a contact: both rings (thin hoop about a diameter: ½·m·r²)
+  const ring = (g, r) => 0.5 * g / 1000 * r ** 2;
+  const I = ring(16.5, GIMBAL.outer.r - GIMBAL.outer.band / 2) + ring(14.8, GIMBAL.inner.r - GIMBAL.inner.band / 2);
   const hoverW = 4 * motorPower(auw / 4) * INSTALL_LOSS + AVIONICS_W;
   const usableWh = capacityMah / 1000 * 7.6 * 0.85;
   return {
-    capacityMah, battery: bat, quad_g: quad, cage_g: cage, auw_g: auw, mass: auw / 1000,
+    capacityMah, battery: bat, quad_g: quad, gimbal_g: gimbal, auw_g: auw, mass: auw / 1000,
     thrustMax_N: thrustTotal / 1000 * 9.81, tw: thrustTotal / auw, I,
     hoverW, hoverMin: usableWh / hoverW * 60, usableWh,
   };

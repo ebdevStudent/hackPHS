@@ -48,7 +48,7 @@ export class Colliders {
     return out;
   }
 
-  // Colliders whose bounding sphere overlaps a sphere (broad phase for multi-point bodies like the cage).
+  // Colliders whose bounding sphere overlaps a sphere (broad phase for the drone's contact envelope).
   near(p, radius, out = []) {
     out.length = 0;
     for (const c of this.list) { const centre = c.kind === "box" ? c.c : c.mid; if (centre.distanceToSquared(p) <= (c.r + radius) ** 2) out.push(c); }

@@ -30,7 +30,7 @@ export class Hud {
     for (const id of ["level", "help"]) { $(id).classList.remove("faded"); clearTimeout(this["_t" + id]); this["_t" + id] = setTimeout(() => $(id).classList.add("faded"), id === "level" ? 4000 : 7000); }
   }
 
-  telemetry(d, { agl, cam, post, fps, impacts, debug, time }) {
+  telemetry(d, { agl, cam, post, quality, fps, impacts, debug, time }) {
     const t = d.t, v = d.vel, hs = Math.hypot(v.x, v.z);
     this.power(d.armed);
     const f = Math.round(fps), fe = $("s-fps"); set("s-fps", f); fe.className = f >= 50 ? "good" : f >= 30 ? "ok" : "bad";
@@ -48,17 +48,18 @@ export class Hud {
     set("t-batt", `${Math.round(d.battery * 100)}% · ${(d.voltage / 2).toFixed(2)} V/cell`);
     set("t-va", `${d.voltage.toFixed(2)} V · ${d.current.toFixed(1)} A`); set("t-mah", `${Math.round(d.mAh)} / ${d.spec.capacityMah} mAh`);
     const s = d.spec; set("t-auw", s.auw_g.toFixed(1)); set("t-tw", (d.thrustMax() / (s.mass * 9.81)).toFixed(2) + " : 1");
-    set("t-split", `${s.quad_g.toFixed(1)} · ${s.cage_g.toFixed(1)} · ${s.battery.g}`); set("t-pack", s.battery.name);
+    set("t-split", `${s.quad_g.toFixed(1)} · ${s.gimbal_g.toFixed(1)} · ${s.battery.g}`); set("t-pack", s.battery.name);
     $("t-batt-bar").style.width = Math.round(d.battery * 100) + "%";
     $("t-batt-bar").classList.toggle("low", d.battery < 0.2);
     set("t-spin", `${Math.round(t.spinRpm || 0)} rpm`);
+    const ga = d.model.gimbalAngles; set("t-rings", `${Math.round(deg(ga.outer))}° / ${Math.round(deg(ga.inner))}°`);
     const c = $("t-contact"); c.textContent = t.contact; c.className = "state " + t.contact.toLowerCase();
     set("t-normal", t.contact === "FREE" ? "—" : `${(t.normalForce || 0).toFixed(1)} N`);
     const recent = time - (t.impactT ?? -99);
     set("t-impact", t.impact ? `${t.impact.toFixed(2)} m/s · ${t.peakG.toFixed(0)} g` : "—");
     $("t-impact").classList.toggle("flash", recent < 0.6);
     set("t-hits", impacts);
-    set("m-cam", cam.toUpperCase() + (post ? " · PBR+AO" : " · FAST")); set("m-fps", Math.round(fps));
+    set("m-cam", cam.toUpperCase() + " · " + (quality || "").toUpperCase() + (post ? " · AO" : "")); set("m-fps", Math.round(fps));
   }
 
   power(armed) {

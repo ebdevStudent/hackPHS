@@ -1,4 +1,4 @@
-// Physics test bay: a clean hangar-like room to show the cage physics in isolation —
+// Physics test bay: a clean hangar-like room to show the gimbal-ring contact physics in isolation —
 // a ramp to roll down, a wall to climb, a pipe to roll along, a low gap to crawl through, a pole to spin off.
 import * as THREE from "three";
 import { Level, pbr } from "./common.js";
@@ -31,7 +31,7 @@ export async function buildLab({ scene, colliders }) {
   for (const [x, z] of [[-5, -5], [5, -5], [-5, 5], [5, 5]]) { L.spot(x, 5.9, z, x, 0, z, { intensity: 60, angle: 60, shadow: false }); L.panel(x, 5.98, z, 1.2, 0.4, 0xffffff, 4); }
 
   return {
-    level: L, id: "lab", title: "Physics test bay", subtitle: "Ramp, wall, pipe, pole and crawl gap for testing the cage contact physics",
+    level: L, id: "lab", title: "Physics test bay", subtitle: "Ramp, wall, pipe, pole and crawl gap for testing the gimbal-ring contact physics",
     spawn: { pos: new THREE.Vector3(0, 1, 7), yaw: 0 },
     env: { hdri: "empty_warehouse_01_1k", envIntensity: 0.35, background: 0x22262a, exposure: 0.85, droneLight: 8 },
   };

@@ -1,4 +1,5 @@
-// Headless checks of the HackPHS ball-drone physics (85 mm whoop in a 225 mm icosahedral cage):
+// Headless checks of the HackPHS ball-drone physics (85 mm whoop on a two-ring gimbal, no cage; contacts on the
+// outer ring's envelope, a sphere of radius P.R):
 //   node --import ./register.mjs physics_test.mjs
 import * as THREE from "three";
 import { Colliders } from "../../static/js/physics.js";
@@ -16,7 +17,7 @@ function run(d, secs, input = none, every = 0, tag = "") {
   for (let i = 0; i < secs / dt; i++) {
     const hit = d.step(dt, input, W, t); t += dt;
     if (hit && tag) rows.push(`  impact ${hit.speed.toFixed(2)} m/s (${hit.mat}), peak ${d.t.peakG.toFixed(0)} g`);
-    if (every && i % Math.round(every / dt) === 0) rows.push(`  t=${(i * dt).toFixed(2)} y=${d.pos.y.toFixed(3)} v=${d.vel.length().toFixed(2)} cage ω=${d.w.length().toFixed(1)} rad/s ${d.t.contact} pts=${d.t.points} T=${d.thrust.toFixed(2)} N`);
+    if (every && i % Math.round(every / dt) === 0) rows.push(`  t=${(i * dt).toFixed(2)} y=${d.pos.y.toFixed(3)} v=${d.vel.length().toFixed(2)} gimbal ω=${d.w.length().toFixed(1)} rad/s ${d.t.contact} pts=${d.t.points} T=${d.thrust.toFixed(2)} N`);
   }
   if (rows.length) console.log(rows.slice(0, 12).join("\n"));
 }
@@ -38,19 +39,29 @@ d.reset(new THREE.Vector3(0, 1, 0), 0); run(d, 3, { ...none, fwd: 1 }, 0.75);
 
 console.log("3. into the wall at full speed");
 d.reset(new THREE.Vector3(0, 1, -2), 0); run(d, 4, { ...none, fwd: 1 }, 0, "impact");
-console.log(`  after: z=${d.pos.z.toFixed(3)} contact=${d.t.contact}, cage spin ${d.w.length().toFixed(1)} rad/s`);
-check("cage stops at the wall", d.pos.z >= -10 + 0.0944 - 0.005, `z=${d.pos.z.toFixed(3)}`);
+console.log(`  after: z=${d.pos.z.toFixed(3)} contact=${d.t.contact}, gimbal spin ${d.w.length().toFixed(1)} rad/s`);
+check("outer ring stops at the wall", d.pos.z >= -10 + P.R - 0.005, `z=${d.pos.z.toFixed(3)}`);
 check("wall contact was counted", d.t.contacts >= 1);
 
-console.log("4. land, then drive along the floor — the icosahedron should tip from face to face (bumpy, not smooth)");
+console.log("4. land, then drive along the floor — the ring envelope rolls/slides and the gimbal spins up");
 d.reset(new THREE.Vector3(0, 0.6, 0), 0); run(d, 2, { ...none, lift: -1 });
 run(d, 2.5, { ...none, lift: -1, fwd: 0.6 }, 0.25);
+check("rolling spins the gimbal up", d.w.length() > 2 && d.t.contact === "ROLLING", `ω=${d.w.length().toFixed(1)} rad/s ${d.t.contact}`);
+// each ring may only turn about its own pivot: aircraft ↔ inner about Z, inner ↔ outer about X, outer ↔ support about Y
+d.model.pose(d.pos, d.quadQuat(), d.qc, 0, dt);
+const qi = d.model.innerRing.quaternion, qo = d.model.outerRing.quaternion;
+const offAxis = (qa, qb, axis) => { const q = qa.clone().invert().multiply(qb); const v = new THREE.Vector3(q.x, q.y, q.z); return v.length() < 1e-9 ? 0 : 1 - Math.abs(v.normalize().dot(axis)); };
+const err = Math.max(offAxis(qi, d.quadQuat(), new THREE.Vector3(0, 0, 1)), offAxis(qo, qi, new THREE.Vector3(1, 0, 0)), offAxis(qo, d.qc, new THREE.Vector3(0, 1, 0)));
+const ang = d.model.gimbalAngles;
+console.log(`  ring angles: inner ${THREE.MathUtils.radToDeg(ang.inner).toFixed(0)}°, outer ${THREE.MathUtils.radToDeg(ang.outer).toFixed(0)}°, yaw ${THREE.MathUtils.radToDeg(ang.yaw).toFixed(0)}°`);
+check("each gimbal ring turns only about its own pivot axis", err < 1e-6, `off-axis ${err.toExponential(1)}`);
 
 console.log("5. power OFF at 2 m, then ON");
 d.reset(new THREE.Vector3(5, 2, 0), 0); run(d, 0.3); d.setArmed(false); run(d, 2.5, none, 0, "impact");
-console.log(`  resting y=${d.pos.y.toFixed(4)} (expect a face or edge on the floor: inradius ${(0.7558 * 0.1183 + 0.005).toFixed(4)}–${(0.1125 + 0.005).toFixed(4)})`);
+console.log(`  resting y=${d.pos.y.toFixed(4)} (expect the outer ring envelope on the floor: R = ${P.R.toFixed(4)})`);
 const restY = d.pos.y;
-check("resting height is a face or edge on the floor", restY >= 0.7558 * 0.1183 + 0.005 - 0.002 && restY <= 0.1125 + 0.005 + 0.002, `y=${restY.toFixed(4)}`);
+check("resting height is the outer ring envelope on the floor", Math.abs(restY - P.R) < 0.003, `y=${restY.toFixed(4)}`);
+check("passive drone comes to rest", d.vel.length() < 0.05, `v=${d.vel.length().toFixed(3)}`);
 d.setArmed(true); run(d, 0.6); run(d, 1.5, { ...none, lift: 1 }); console.log(`  power on + 1.5 s climb: y=${d.pos.y.toFixed(2)} m`);
 check("re-armed drone climbs", d.pos.y > 1.5, `y=${d.pos.y.toFixed(2)}`);
 

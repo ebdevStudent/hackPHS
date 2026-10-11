@@ -25,16 +25,30 @@ const LEVELS = {
 const PHYS_DT = 1 / 240;
 const params = new URLSearchParams(location.search);
 
+// ---------------- graphics quality ----------------
+// Low (default) runs on integrated laptop graphics: no post-processing, pixel ratio 1, one 1024² shadow map (the sun or
+// moon), hard-edged PCF shadows, fewer particles. High restores the original look: GTAO + bloom + SMAA, pixel
+// ratio up to 1.5, soft shadows at full size from every shadow-casting light, full particle rates. G cycles them.
+const QUALITY = {
+  low: { label: "Low", pixelRatio: 1, post: false, softShadows: false, shadowMap: 1024, extraShadows: false, particles: 0.6 },
+  high: { label: "High", pixelRatio: 1.5, post: true, softShadows: true, shadowMap: Infinity, extraShadows: true, particles: 1 },
+};
+function loadQuality() {
+  const q = params.get("quality"); if (QUALITY[q]) return q;
+  try { const s = localStorage.getItem("bdQuality"); if (QUALITY[s]) return s; } catch { /* storage blocked */ }
+  return "low";
+}
+
 // ---------------- renderer ----------------
-const renderer = new THREE.WebGLRenderer({ canvas: $("view"), antialias: false, powerPreference: "high-performance" });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const renderer = new THREE.WebGLRenderer({ canvas: $("view"), antialias: true, powerPreference: "high-performance" });
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.autoUpdate = false;           // shadow maps are drawn once per frame, not again for the FPV inset
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
-setAnisotropy(Math.min(8, renderer.capabilities.getMaxAnisotropy()));
+setAnisotropy(Math.min(4, renderer.capabilities.getMaxAnisotropy()));
 const scene = new THREE.Scene();
 const colliders = new Colliders();
-const fx = new Particles(scene);
+const fx = new Particles(scene, 3000);
 const drone = new Drone(); scene.add(drone.model.root);
 const hud = new Hud();
 const sfx = new Sfx();
@@ -43,18 +57,23 @@ const chaseCam = new THREE.PerspectiveCamera(70, 1, 0.03, 300); chaseCam.layers.
 const orbitCam = new THREE.PerspectiveCamera(50, 1, 0.03, 300); orbitCam.layers.enable(1);
 const fpvCam = drone.model.fpv;
 
-// post-processing: render → GTAO (ambient occlusion) → bloom → SMAA → output (ACES tone map + sRGB)
-const composer = new EffectComposer(renderer);
-const renderPass = new RenderPass(scene, chaseCam);
-const gtao = new GTAOPass(scene, chaseCam, innerWidth, innerHeight);
-gtao.updateGtaoMaterial({ radius: 0.45, distanceExponent: 1.5, thickness: 1.2, scale: 1.0, samples: 12 });
-gtao.blendIntensity = 0.85;
-const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.18, 0.4, 1.05);   // only real light sources bloom
-const smaa = new SMAAPass(innerWidth * renderer.getPixelRatio(), innerHeight * renderer.getPixelRatio());
-composer.addPass(renderPass); composer.addPass(gtao); composer.addPass(bloom); composer.addPass(smaa); composer.addPass(new OutputPass());
+// post-processing (High only, built on first use): render → GTAO (ambient occlusion) → bloom → SMAA → output
+let composer = null, renderPass = null, gtao = null;
+function ensureComposer() {
+  if (composer) return;
+  composer = new EffectComposer(renderer);
+  renderPass = new RenderPass(scene, chaseCam);
+  gtao = new GTAOPass(scene, chaseCam, innerWidth, innerHeight);
+  gtao.updateGtaoMaterial({ radius: 0.45, distanceExponent: 1.5, thickness: 1.2, scale: 1.0, samples: 12 });
+  gtao.blendIntensity = 0.85;
+  const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.18, 0.4, 1.05);   // only real light sources bloom
+  const smaa = new SMAAPass(innerWidth * renderer.getPixelRatio(), innerHeight * renderer.getPixelRatio());
+  composer.addPass(renderPass); composer.addPass(gtao); composer.addPass(bloom); composer.addPass(smaa); composer.addPass(new OutputPass());
+  composer.setSize(innerWidth, innerHeight);
+}
 
 const G = {
-  state: "menu", level: null, id: null, cam: "chase", post: params.get("nopost") ? false : true, debug: false,
+  state: "menu", level: null, id: null, cam: "chase", quality: loadQuality(), post: false, debug: false,
   acc: 0, time: 0, shake: 0, chaseDist: 0.8, battery: loadPref("bdBattery", 550), orbitA: 0, envCache: new Map(), loading: false, impacts: 0,
 };
 
@@ -76,7 +95,7 @@ addEventListener("keydown", e => {
     case "KeyB": if (G.state === "play") { const caps = [450, 550, 650, 850]; setBattery(caps[(caps.indexOf(G.battery) + 1) % caps.length], true); } break;
     case "F11": e.preventDefault(); toggleFullscreen(); break;
     case "KeyT": G.debug = !G.debug; break;
-    case "KeyG": G.post = !G.post; hud.toast(G.post ? "Post-processing on (GTAO · bloom · SMAA)" : "Post-processing off", 1.4); break;
+    case "KeyG": setQuality(G.quality === "low" ? "high" : "low", true); break;
     case "KeyN": hud.toggleMap(); break;
     case "KeyH": hud.toggleHelp(); break;
     case "KeyI": hud.toggleTelemetry(); break;
@@ -103,6 +122,33 @@ function toggleFullscreen() {
 }
 addEventListener("blur", () => keys.clear());
 addEventListener("wheel", e => { G.chaseDist = THREE.MathUtils.clamp(G.chaseDist * (e.deltaY > 0 ? 1.1 : 0.9), 0.35, 3); }, { passive: true });
+
+// ---------------- graphics quality switch ----------------
+function setQuality(q, announce = false) {
+  const Q = QUALITY[q] || QUALITY.low;
+  G.quality = QUALITY[q] ? q : "low"; try { localStorage.setItem("bdQuality", G.quality); } catch { /* storage blocked */ }
+  G.post = Q.post && !params.get("nopost");
+  if (G.post) ensureComposer();
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, Q.pixelRatio));
+  const type = Q.softShadows ? THREE.PCFSoftShadowMap : THREE.PCFShadowMap;
+  if (renderer.shadowMap.type !== type) { renderer.shadowMap.type = type; scene.traverse(o => { if (o.material) [].concat(o.material).forEach(m => { m.needsUpdate = true; }); }); }
+  applyLightQuality();
+  fx.density = Q.particles;
+  resize();
+  if (announce) hud.toast(G.quality === "high" ? "Graphics: High (GTAO · bloom · SMAA, soft shadows)" : "Graphics: Low (fast: no post-processing, one shadow)", 1.6);
+}
+// Shadow casters per quality. The level's own settings are remembered so High can restore them.
+function applyLightQuality() {
+  const Q = QUALITY[G.quality];
+  scene.traverse(o => {
+    if (!o.isLight || !o.shadow) return;
+    if (!o.userData.shadowOrig) o.userData.shadowOrig = { cast: o.castShadow, size: o.shadow.mapSize.x };
+    const orig = o.userData.shadowOrig;
+    o.castShadow = orig.cast && (Q.extraShadows || o.isDirectionalLight);
+    const size = Math.min(orig.size, Q.shadowMap);
+    if (o.shadow.mapSize.x !== size) { o.shadow.mapSize.set(size, size); if (o.shadow.map) { o.shadow.map.dispose(); o.shadow.map = null; } }
+  });
+}
 
 // ---------------- battery test set (450 / 550 / 650 / 850 mAh 2S LiHV, per the project document) ----------------
 function loadPref(k, d) { try { return +(localStorage.getItem(k) || d); } catch { return d; } }
@@ -160,7 +206,8 @@ async function start(id) {
     scene.fog = env.fog ? new THREE.Fog(env.fog.color, env.fog.near, env.fog.far) : null;
     renderer.toneMappingExposure = env.exposure ?? 1;
     G.ledIntensity = env.droneLight ?? 20;
-    scene.traverse(o => { if (o.isLight && o.castShadow) o.shadow.camera.layers.enable(1); });   // the drone casts shadows too
+    scene.traverse(o => { if (o.isLight && o.shadow) o.shadow.camera.layers.enable(1); });   // the drone casts shadows too
+    applyLightQuality();
     G.level = lv; G.id = id;
     resetDrone();
     hud.setLevel(lv); hud.show(true);
@@ -202,7 +249,7 @@ function simulate(dt) {
   }
   if (hit) {
     G.impacts++;
-    const fxSpeed = hit.speed * (drone.mass / 0.6);                 // effects scale with impact energy: a ~100 g cage barely disturbs dust
+    const fxSpeed = hit.speed * (drone.mass / 0.6);                 // effects scale with impact energy: a ~100 g drone barely disturbs dust
     if (fx.impact) fx.impact(hit.point, hit.normal, fxSpeed, hit.mat);
     else if (hit.mat === "metal") fx.sparks(hit.point, hit.normal, hit.speed * 0.5); else fx.dust(hit.point, hit.normal, hit.speed);
     if (sfx.impact) sfx.impact(hit.speed, hit.mat); else sfx.hit(hit.speed);
@@ -260,7 +307,7 @@ function render(dt) {
   drone.render(dt);
   drone.model.light.intensity = drone.leds ? (G.ledIntensity ?? 20) : 0;
   if (G.level) updateCams(dt);
-  // physics debug vectors: cage spin axis (red, length ∝ rpm), velocity (green), contact normal (yellow)
+  // physics debug vectors: gimbal spin axis (red, length ∝ rpm), velocity (green), contact normal (yellow)
   debugGroup.visible = G.debug && !!G.level;
   if (debugGroup.visible) {
     const w = drone.w.length(), v = drone.vel.length();
@@ -273,6 +320,7 @@ function render(dt) {
   renderer.setScissorTest(false); renderer.setViewport(0, 0, W, H);
   const pr = renderer.getPixelRatio();
   fx.setViewport(W * pr, H * pr, main);
+  renderer.shadowMap.needsUpdate = true;          // once per frame; the inset below reuses the same shadow maps
   if (G.post) { renderPass.camera = main; gtao.camera = main; composer.render(dt); }
   else renderer.render(scene, main);
   if (G.level && (G.state === "play" || G.state === "paused")) {
@@ -300,10 +348,10 @@ setInterval(async () => {
 // ---------------- loop ----------------
 function resize() {
   renderer.setSize(innerWidth, innerHeight, false);
-  composer.setSize(innerWidth, innerHeight);
+  if (composer) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(innerWidth, innerHeight); }
   hud.resize();
 }
-addEventListener("resize", resize); resize();
+addEventListener("resize", resize); setQuality(G.quality);
 
 let last = performance.now(), hudT = 0, fps = 60;
 function frame(now) {
@@ -313,17 +361,16 @@ function frame(now) {
   render(dt);
   if (G.level && G.state !== "menu" && (hudT -= dt) <= 0) {
     hudT = 0.1;
-    hud.telemetry(drone, { agl: agl(), cam: G.cam, post: G.post, fps, impacts: G.impacts, debug: G.debug, time: G.time });
+    hud.telemetry(drone, { agl: agl(), cam: G.cam, post: G.post, quality: QUALITY[G.quality].label, fps, impacts: G.impacts, debug: G.debug, time: G.time });
     hud.minimap(G.level, drone);
   }
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
 
-// the HackPHS V1 model (85 mm whoop, icosahedral cage); contacts are taken from the model's actual hub positions
+// the HackPHS V1 aircraft from the project CAD (85 mm whoop); the two-ring gimbal is built procedurally, no cage
 const droneReady = drone.model.load("assets/drone/ball_drone85.glb")
-  .catch(() => drone.model.load("assets/drone/ball_drone.glb"))
-  .then(() => { if (drone.model.hubs) drone.setCageGeometry(drone.model.hubs); });
+  .catch(() => drone.model.load("assets/drone/ball_drone.glb"));
 if (params.get("level") && LEVELS[params.get("level")]) start(params.get("level"));
 
 // ---------------- debug / test API ----------------
@@ -336,4 +383,4 @@ function fly(codes, seconds, fps = 60) {
 }
 function teleport(x, y, z, yaw = drone.yaw) { drone.reset(new THREE.Vector3(x, y, z), yaw); snapChase(); for (let i = 0; i < 10; i++) updateCams(1 / 60); render(1 / 60); }
 function setCam(c) { G.cam = c; render(1 / 60); }
-window.__game = { G, drone, scene, renderer, colliders, start, fly, teleport, setCam, render, P };
+window.__game = { G, drone, scene, renderer, colliders, start, fly, teleport, setCam, render, setQuality, P };

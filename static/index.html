@@ -23,7 +23,7 @@
     <div><span>SPD</span><b id="s-spd">0.0</b><i>m/s</i></div>
     <div><span>ALT</span><b id="s-alt">0.0</b><i>m</i></div>
     <div><span>BAT</span><b id="s-volt">8.7</b><i>V</i><b id="s-bat">100</b><i>%</i></div>
-    <div><span>CAGE</span><b id="s-cage" class="state free">FREE</b></div>
+    <div><span>CONTACT</span><b id="s-cage" class="state free">FREE</b></div>
     <div><span>SPIN</span><b id="s-spin">0</b><i>rpm</i></div>
     <div><span>LED</span><b id="s-led">OFF</b></div>
     <div class="fps"><span>FPS</span><b id="s-fps">60</b></div>
@@ -43,16 +43,17 @@
     <div class="row"><span>Pack · current</span><b id="t-va">8.7 V · 0 A</b><i></i></div>
     <div class="row"><span>Used</span><b id="t-mah">0 mAh</b><i></i></div>
     <div class="batt"><div id="t-batt-bar"></div></div>
-    <div class="grp">Cage contact</div>
+    <div class="grp">Gimbal contact</div>
     <div class="row"><span>State</span><b id="t-contact" class="state free">FREE</b><i></i></div>
-    <div class="row"><span>Cage spin</span><b id="t-spin">0 rpm</b><i></i></div>
+    <div class="row"><span>Gimbal spin</span><b id="t-spin">0 rpm</b><i></i></div>
+    <div class="row"><span>Outer / inner ring</span><b id="t-rings">0° / 0°</b><i></i></div>
     <div class="row"><span>Normal force</span><b id="t-normal">—</b><i></i></div>
     <div class="row"><span>Last impact</span><b id="t-impact">—</b><i></i></div>
     <div class="row"><span>Impacts</span><b id="t-hits">0</b><i></i></div>
     <div class="grp">Airframe (HackPHS V1 spec)</div>
     <div class="row"><span>All-up weight</span><b id="t-auw">—</b><i>g</i></div>
     <div class="row"><span>Thrust : weight now</span><b id="t-tw">—</b><i></i></div>
-    <div class="row"><span>Quad · cage · pack</span><b id="t-split">—</b><i>g</i></div>
+    <div class="row"><span>Quad · gimbal · pack</span><b id="t-split">—</b><i>g</i></div>
     <div class="row"><span>Pack</span><b id="t-pack" class="small">—</b><i></i></div>
     <div class="grp">View</div>
     <div class="row"><span>Camera · render</span><b id="m-cam">CHASE</b><i></i></div>
@@ -64,7 +65,7 @@
   <div id="link" class="panel hidden"><div class="grp">Physical drone link</div><div id="link-body"></div></div>
   <div id="help">
     <b>W S</b> fwd/back · <b>A D</b> yaw · <b>Q E</b> strafe · <b>Space Shift</b> up/down · <b>P</b> power · <b>L</b> LEDs · <b>B</b> battery · <b>V</b> FPV ⇄ normal view · <b>C</b> cameras ·
-    <b>I</b> telemetry · <b>T</b> vectors · <b>N</b> map · <b>R</b> reset · <b>Esc</b> menu
+    <b>I</b> telemetry · <b>T</b> vectors · <b>N</b> map · <b>G</b> graphics · <b>R</b> reset · <b>Esc</b> menu
   </div>
   <div id="toasts"></div>
   <div id="warn" class="hidden">LOW BATTERY — LAND</div>
@@ -76,9 +77,10 @@
   <div class="menu-inner">
     <div class="eyebrow">Contact-tolerant drone · flight simulator</div>
     <h1>Ball Drone</h1>
-    <p class="lead">The HackPHS V1 build: an 85 mm Meteor85 whoop (1103 11000KV, Gemfan 2015, 2S LiHV) on a two-ring gimbal
-      inside a 225 mm icosahedral cage of 1 mm carbon rods and TPU hubs — simulated as a rigid body with real part masses,
-      motor data and battery sag. The cage bumps, tips and rolls over its hubs and rods.</p>
+    <p class="lead">The HackPHS build: an 85 mm Meteor85 whoop (1103 11000KV, Gemfan 2015, 2S LiHV) on a two-ring gimbal
+      (orange outer ring 96.5 mm, blue inner ring 86.5 mm, 2 mm steel pins in MR52ZZ bearings) with no outer cage — simulated
+      as a rigid body with real part masses, motor data and battery sag. The outer ring takes the contacts: the drone
+      bumps, slides and rolls while the aircraft stays level and the rings swing round it.</p>
     <div class="cards">
       <button class="card" data-level="industrial">
         <span class="key">1</span>
@@ -95,7 +97,7 @@
       <div><kbd>W</kbd><kbd>S</kbd> forward / back</div><div><kbd>A</kbd><kbd>D</kbd> yaw</div>
       <div><kbd>Q</kbd><kbd>E</kbd> strafe</div><div><kbd>Space</kbd><kbd>Shift</kbd> climb / descend</div>
       <div><kbd>V</kbd> FPV ⇄ normal view · <kbd>C</kbd> all cameras</div><div><kbd>P</kbd> motor power · <kbd>L</kbd> inspection LEDs</div><div><kbd>I</kbd> telemetry · <kbd>T</kbd> vectors</div>
-      <div><kbd>R</kbd> reset · <kbd>1</kbd><kbd>2</kbd> environment</div><div><kbd>F11</kbd> fullscreen · <kbd>Esc</kbd> pause</div>
+      <div><kbd>R</kbd> reset · <kbd>1</kbd><kbd>2</kbd> environment</div><div><kbd>G</kbd> graphics quality (Low / High)</div><div><kbd>F11</kbd> fullscreen · <kbd>Esc</kbd> pause</div>
     </div>
     <div class="battery-pick"><span>Battery (2S LiHV test set)</span>
       <button data-mah="450">450 mAh</button><button data-mah="550" class="on">550 mAh</button><button data-mah="650">650 mAh</button><button data-mah="850">850 mAh</button>

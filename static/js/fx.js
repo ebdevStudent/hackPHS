@@ -169,6 +169,7 @@ export class Particles {
     this.add = new Pool(scene, Math.round(capacity * 0.4), true, tex);    // fire, sparks, embers, glow
     this.blend = new Pool(scene, capacity - this.add.n, false, tex);      // smoke, dust, steam, grit, motes
     this.scene = scene; this.time = 0; this.dt = 1 / 60;
+    this.density = 1;                                                     // emission scale (graphics quality: Low = 0.6)
     this._acc = { fire: 0, smoke: 0, motes: 0, steam: 0, heat: 0, ember: 0 };
     if (typeof window !== "undefined") {
       const d = Math.min(window.devicePixelRatio || 1, 2);
@@ -184,7 +185,7 @@ export class Particles {
 
   // Bright metal sparks: short streaks thrown off the surface, gravity, fast cooling (white → orange → dark red).
   sparks(point, normal, strength = 1) {
-    const n = Math.min(60, Math.round(8 + strength * 22));
+    const n = Math.round(Math.min(60, 8 + strength * 22) * this.density);
     for (let k = 0; k < n; k++) {
       const s = (1.5 + R() * 4.5) * Math.min(1.6, 0.5 + strength);
       const vx = normal.x * s * 0.6 + rs(s * 0.8), vy = normal.y * s * 0.6 + rs(s * 0.6) + s * 0.25, vz = normal.z * s * 0.6 + rs(s * 0.8);
@@ -199,7 +200,7 @@ export class Particles {
 
   // Grey-brown dust puff kicked off a surface.
   dust(point, normal, strength = 1, color = [0.42, 0.39, 0.35]) {
-    const n = Math.min(26, Math.round(5 + strength * 10));
+    const n = Math.round(Math.min(26, 5 + strength * 10) * this.density);
     for (let k = 0; k < n; k++) {
       const s = 0.25 + R() * 0.7 * Math.min(1.5, strength);
       this.blend.spawn(point.x + rs(0.05), point.y + rs(0.05), point.z + rs(0.05),
@@ -212,7 +213,7 @@ export class Particles {
 
   // Small dark chips of grit thrown off concrete / brick / wood.
   grit(point, normal, strength, color) {
-    const n = Math.min(30, Math.round(4 + strength * 12));
+    const n = Math.round(Math.min(30, 4 + strength * 12) * this.density);
     for (let k = 0; k < n; k++) {
       const s = 0.8 + R() * 2.2 * Math.min(1.5, strength);
       this.blend.spawn(point.x, point.y, point.z, normal.x * s + rs(s * 0.7), normal.y * s + R() * s * 0.6, normal.z * s + rs(s * 0.7), {
@@ -223,7 +224,7 @@ export class Particles {
 
   // Steam jet from a leak: fast white core that slows, widens and fades.
   steam(p, dir, rate, dt) {
-    this._acc.steam += rate * dt;
+    this._acc.steam += rate * this.density * dt;
     while (this._acc.steam >= 1) {
       this._acc.steam -= 1;
       const s = 2.2 + R() * 1.4;
@@ -236,7 +237,7 @@ export class Particles {
 
   // Overheating machine: faint rising heat wisps and the odd glowing fleck.
   heat(p, rate, dt) {
-    this._acc.heat += rate * dt;
+    this._acc.heat += rate * this.density * dt;
     while (this._acc.heat >= 1) {
       this._acc.heat -= 1;
       this.blend.spawn(p.x + rs(0.5), p.y, p.z + rs(0.35), rs(0.05), 0.35 + R() * 0.3, rs(0.05), {
@@ -251,7 +252,7 @@ export class Particles {
   // Burning debris pile: layered additive flame puffs (yellow core → orange → deep red), rising embers, some smoke.
   fire(pos, width = 1, depth = 1, dt = 1 / 60) {
     const area = Math.max(0.1, width * depth);
-    this._acc.fire += 220 * area * dt;
+    this._acc.fire += 220 * area * this.density * dt;
     while (this._acc.fire >= 1) {
       this._acc.fire -= 1;
       const x = pos.x + rs(width * 0.5) * (0.3 + R() * 0.7), z = pos.z + rs(depth * 0.5) * (0.3 + R() * 0.7);
@@ -268,7 +269,7 @@ export class Particles {
         color: [1, 0.92, 0.6], color1: [1, 0.55, 0.12], gravity: -1.0, drag: 1.5, turb: 1.0, spin: 2, fade: 0.05,
       });
     }
-    this._acc.ember += 9 * area * dt;
+    this._acc.ember += 9 * area * this.density * dt;
     while (this._acc.ember >= 1) {
       this._acc.ember -= 1;
       this.add.spawn(pos.x + rs(width * 0.4), pos.y + 0.2, pos.z + rs(depth * 0.4), rs(0.4), 1.2 + R() * 1.4, rs(0.4), {
@@ -281,7 +282,7 @@ export class Particles {
 
   // Dark billowing smoke: rises, widens and slows; lit-looking grey-brown, never glowing.
   smoke(pos, rate = 10, dt = 1 / 60) {
-    this._acc.smoke += rate * dt;
+    this._acc.smoke += rate * this.density * dt;
     while (this._acc.smoke >= 1) {
       this._acc.smoke -= 1;
       const d = R();
@@ -294,7 +295,7 @@ export class Particles {
 
   // Slow drifting dust motes around a point (visible in torch beams / sun shafts).
   motes(center, radius = 3, dt = 1 / 60) {
-    this._acc.motes += radius * radius * 2.5 * dt;
+    this._acc.motes += radius * radius * 2.5 * this.density * dt;
     while (this._acc.motes >= 1) {
       this._acc.motes -= 1;
       const b = 0.55 + R() * 0.35;
@@ -304,7 +305,7 @@ export class Particles {
     }
   }
 
-  // Material-aware cage impact.
+  // Material-aware impact of the gimbal's outer ring.
   impact(point, normal, speed, material = "concrete") {
     const s = Math.min(2, speed / 2.5);
     if (s < 0.05) return;
@@ -330,7 +331,7 @@ export class Particles {
     }
   }
 
-  // Light continuous particles while the cage slides along a surface (call every frame while sliding).
+  // Light continuous particles while the drone slides along a surface (call every frame while sliding).
   scrape(point, normal, slipSpeed, material = "concrete") {
     if (slipSpeed < 0.05) return;
     const p = Math.min(1, slipSpeed * this.dt * 18);

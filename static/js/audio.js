@@ -120,7 +120,7 @@ export class Sfx {
     const t = this.ctx.currentTime, v = Math.max(0, Math.min(1, speed / 4));
     if (v < 0.02) return;
     const amp = 0.08 + 0.55 * v;
-    // the cage itself: a short plasticky rattle of 60 joints + carbon rods flexing
+    // the gimbal itself: a short plasticky knock of the PETG rings rattling on their pins
     this._burst(t, 0.12, "bandpass", 2400 + Math.random() * 600, 2.5, amp * 0.25, 0.07);
     if (material === "metal") {
       const f0 = 330 + Math.random() * 260;
@@ -164,10 +164,10 @@ export class Sfx {
     this.scrG.gain.setTargetAtTime(slipSpeed > 0.03 ? 0.04 + 0.3 * s : 0, t, 0.04);
     this.rumLP.frequency.setTargetAtTime(110 + 220 * r, t, 0.1);
     this.rumG.gain.setTargetAtTime(rollSpeed > 0.05 ? 0.06 + 0.35 * r : 0, t, 0.08);
-    // joints ticking on the surface: one tick per ~75 mm of rolled distance (the cage edge length)
+    // bearing blocks ticking on the surface: four per turn of the outer ring (~155 mm of rolled distance)
     const dt = this._tickT ? Math.min(0.1, t - this._tickT) : 0; this._tickT = t;
     if (rollSpeed > 0.05) {
-      this._tickPhase += rollSpeed * dt / 0.075;
+      this._tickPhase += rollSpeed * dt / 0.155;
       while (this._tickPhase >= 1) {
         this._tickPhase -= 1;
         this._burst(t + Math.random() * 0.01, 0.03, "bandpass", m.tick * (0.85 + Math.random() * 0.3), 3, 0.03 + 0.1 * r, 0.018, this.scrapeBus);
