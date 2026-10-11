@@ -982,3 +982,15 @@ repeats 10x; motors are stopped and verified at 1000 first. Exposed as
 Reversed buttons. MSPv2 framing verified against the real FC (API 1.45 readback); the
 DShot payloads were verified on the mock FC only. **Physical direction change pending user
 observation.** No soldering change needed; props-in default is M1/M4 CW, M2/M3 CCW.
+
+## 2026-10-11 — Angle mode always on, 35° tilt limit (beginner pilots, P1B gimbal)
+
+User (first-time FC team) approved. Pre-change `diff all` preserved at
+`docs/sources/bench-handoff-2026-10-11/betaflight-diff-all-before-angle-mode.txt`.
+Applied over CLI and saved: `aux 1 1 0 900 2100 0 0` (ANGLE on AUX1 across its whole
+range = always active) and `set level_limit = 35` (profile 0; BF 4.4 name for the angle
+limit). `small_angle` stays 25. Readback after reboot confirms both; MSP mode flags show
+ANGLE active. Readback also showed `acc_trim_pitch = 2` (0.2°), set by a Pocket stick trim
+command, not by Claude. Live throttle at stick-bottom now reads **995**, so the earlier
+1293 was the stick not being fully down. Accelerometer calibration is deferred until the
+FC is mounted in the gimbal and level (the board currently sits at an arbitrary angle).
