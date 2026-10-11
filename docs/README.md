@@ -1,5 +1,7 @@
 # Ball Drone documentation
 
+**>>> LATEST CLAUDE HANDOFF (2026-10-11, read first): [HANDOFF-CLAUDE-2026-10-11.md](../HANDOFF-CLAUDE-2026-10-11.md)** — flight checklist, current status of every link, AprilTag status, uncommitted audit fixes.
+
 **2026-10-11 Claude bench session:** [summary](30-claude-session-summary-2026-10-11.md): Motor 1 fixed (test value too low), FPV video working end to end, VTX on R8 5917 MHz, Angle-mode settings staged, motor dashboard with Camera tab.
 
 **2026-10-11 actual bench handoff:** [Flight controller, Motor 1 fault, and full Pi/ESP32/Pocket/FPV pipeline](29-claude-flight-controller-handoff-2026-10-11.md). This dated record supersedes older no-output/Mega/source-location assumptions for the adopted `ebdevStudent/hackPHS` `esp32-trainer-ppm` branch. Motor 1 starts but stops/restarts at command 1020; continuous reliable rotation is not verified. The optional direct USB helper is `tools/betaflight_motor_bench.py`; exact executed scripts and the earlier Claude source handoff are preserved under `docs/sources/bench-handoff-2026-10-11/`. Full trainer-to-FC trials remain pending.
