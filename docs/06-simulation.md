@@ -27,7 +27,7 @@ Expected features: flying/turning, wall contact/bounce/slide/roll, chase and opt
 
 [WasimVorvoi/HackPHS](https://github.com/WasimVorvoi/HackPHS) is the existing simulator that this project joins. On this machine it is under `simulation/` (`server.py`, `static/`, `tools/`). In the published integrated repository those simulator files remain at the repository root. The maintained navigation source on this machine is top-level `software/`, not the older copied `simulation/software/`. Review the current [repository README](https://github.com/WasimVorvoi/HackPHS#wasims-existing-ball-drone-flight-sim) for the original run instructions; the older local source checkout is not a separate project subdirectory in the published repository.
 
-The current game is **free flight with no objectives, scoring or target detection** (those were removed in the simulator's "Free-flight simulator core" commit). It has Three.js rendering with post-processing, three maps (industrial bay, rescue site and a physics test bay), rigid-body cage contact at the real hub and rod positions, a battery/voltage-sag model, a telemetry HUD and minimap, FastAPI and a PyWebView wrapper.
+The current game is **free flight with no objectives, scoring or target detection** (those were removed in the simulator's "Free-flight simulator core" commit). It has Three.js rendering with post-processing, three maps (industrial bay, rescue site and a physics test bay), rigid-body contact on the gimbal's outer ring (no cage since 2026-10-11, see below), a battery/voltage-sag model, a telemetry HUD and minimap, FastAPI and a PyWebView wrapper.
 
 The industrial map now marks the three inspection points this tab names. Numbered yellow placards make a judge route: **1** the steam leak on the pipe run, **2** an overheating CNC 2 (pulsing red beacon on its stack light), **3** a carton jammed at the conveyor end (2026-10-08). They are visual markers, not objectives.
 
@@ -43,8 +43,9 @@ The [recorded smoke](../evidence/simulation-smoke.json) (`tools/simulation_smoke
 The headless physics check `node --import ./tools/test/register.mjs tools/test/physics_test.mjs` now asserts its results and exits non-zero on failure:
 
 - hover holds 1 m;
-- the wall stops the cage;
-- the resting height falls inside the icosahedron's face-to-vertex range;
+- the wall stops the outer gimbal ring;
+- rolling on the floor spins the gimbal up, and each ring turns only about its own pivot axis;
+- a passive drone rests on the outer ring's envelope (102 mm);
 - a discharged pack sags;
 - auto-land happens after a plausible time.
 
@@ -72,7 +73,7 @@ Open `http://127.0.0.1:8765/`. Running `python server.py` opens the browser auto
 | B | Cycle the simulated 450/550/650/850 mAh packs |
 | L | Inspection lights |
 | 1/2/3 | Industrial / rescue / physics test bay |
-| T / G | Physics vectors / post-processing |
+| T / G | Physics vectors / graphics quality (Low default, High) |
 | N / I | Minimap / telemetry panel |
 | R, Esc, F11 | Reset, pause, fullscreen |
 | M / H | Mute / help |
@@ -108,3 +109,20 @@ The independent [navigation mock follower](23-navigation-software.md) uses rende
 ## Final CAD print package — 2026-10-09
 
 The final print package and selected fit data are in [print_now](../cad/apex2-cage/print_now/START_HERE.md). A refreshed local simulator builder/model and headless check are preserved as [CAD finalization evidence](../cad/apex2-cage/review-2026-10-09-finalization/simulator-refresh/README.md), with 144.68 / 166.68 g accounted estimates. This CAD publication does not replace the published simulator runtime. The refreshed local simulator remains illustrative and does not establish physical strength, mass, clearance or flight performance.
+
+## Cage removed, lighter graphics, visible gimbal — 2026-10-11
+
+User request: remove the cage, make the game lighter to render, and make the gimbal more realistic and easier to see.
+
+- **No cage.** The icosahedral cage is no longer drawn or simulated, and its rods and hubs are out of the mass budget. Contact uses the outer ring's envelope: a 102 mm sphere covering the ring and its yaw bearings. Each contact gets an impulse with normal restitution, PETG Coulomb friction (μ 0.3) and a small rolling resistance, so the drone still bumps, slides and rolls.
+- **P1B gimbal, procedural.** The outer ring is orange (96.5 mm, 16.5 g) and the inner ring blue (86.5 mm, 14.8 g), from §2.3 of [motion physics](22-motion-physics.md). Every pivot has dark bearing blocks, steel MR52ZZ races and Ø2 mm pins. The chain in three.js axes is: free support →Y (yaw)→ outer →X→ inner →Z (fore-aft)→ aircraft. Ring angles come from a ZXY split of the aircraft and support attitudes. White-tabbed hubs on the yaw pins show the yaw rotation, which the rings themselves cannot show. The CAD aircraft's old X-axis pivot arms are hidden; new arms run along Z, under the props. Both rings stay clear of the prop disks, whose tips reach at most 70 mm.
+- **Graphics quality (G).** Low is the default:
+  - no GTAO, bloom or SMAA (the composer is built only for High);
+  - pixel ratio 1 with MSAA;
+  - one 1024² hard-PCF shadow (sun or moon), and shadow maps drawn once per frame, not again for the FPV inset;
+  - 60 % particle rates in a 3000-particle pool;
+  - a render scale that drops to 0.85 / 0.7 while the frame rate stays under 40 fps.
+
+  High restores the earlier effects. `?quality=high` or the saved choice overrides the default.
+- **Measured on an Intel UHD (TGL GT1) laptop GPU**, headless Chrome at 1280 × 800, industrial map: 16 fps before the change, 28 fps on Low at full scale, about 41 fps on Low after dynamic scaling, 18 fps on High. Rescue and lab hold 60 fps on Low.
+
