@@ -994,3 +994,11 @@ ANGLE active. Readback also showed `acc_trim_pitch = 2` (0.2°), set by a Pocket
 command, not by Claude. Live throttle at stick-bottom now reads **995**, so the earlier
 1293 was the stick not being fully down. Accelerometer calibration is deferred until the
 FC is mounted in the gimbal and level (the board currently sits at an arbitrary angle).
+
+**Update (same day): Angle mode parked until the drone is assembled.** At the user's request
+ANGLE is stored but inactive: `aux 1 1 0 900 900 0 0` (empty range). The aircraft is in Acro
+until the user says it is built/mounted; then enable with `aux 1 1 0 900 2100 0 0` + `save`,
+and do the accelerometer calibration level in the gimbal. Readback also showed stick
+commands had switched the active PID profile 0→2 (BF: throttle low + yaw left + right-stick
+direction selects profile), which made `level_limit` read 55. `level_limit = 35` is now set
+in all four profiles 0–3 and profile 0 re-selected; verified by `diff all` after reboot.
