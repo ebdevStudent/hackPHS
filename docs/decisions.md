@@ -1074,3 +1074,13 @@ mode. Rahul's audit fixes (B3) arrived separately in 15d2f04. Range estimates ar
 `--trainer-output`/`assist` remains a team decision. Verified on: laptop Python 3.13 venv (18 new tests,
 4305 existing pass) and Pi deployment smoke test (track mode starts with the mock bridge when the ESP32
 is absent). Live tag detection on real FPV is pending hardware.
+
+## 2026-10-11 — Motor positions remapped in software (motor_output_reordering = 2,0,3,1)
+
+After mounting, with the **FC arrow as the nose**, outputs 1–4 spun at front-right, front-left,
+rear-right, rear-left. Betaflight QUADX needs M1 rear-right, M2 front-right, M3 rear-left, M4 front-left,
+so `set motor_output_reordering = 2,0,3,1,4,5,6,7` + save (backup:
+`~/Documents/betaflight-diff-all-20261011-082836-before-motor-reorder.txt`). Readback confirmed; user
+re-test: **all four corners correct**. Spin directions must be re-checked: ESC direction settings belong
+to the physical ESC/output, and a 90° change swaps the needed CW/CCW at every corner. Supersedes the
+earlier "nose = M2/M4 side" note.
