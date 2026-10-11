@@ -19,7 +19,7 @@ longer used). Hackathon is **today, Oct 10–11, 2026**. Goal right now: **make 
 | Radio (RadioMaster Pocket) → ELRS → FC | **Works** | AETR, SA → CH5 = ARM |
 | FPV video: drone camera → FC's AIO VTX → RC832 → MS210x capture card → Pi | **Works** | VTX on Raceband ch 8 = **5917 MHz**, 25 mW. Pi streamer on port 8090 (`tools/pi/`) |
 | ESP32 → TS832 analog test-pattern video | **Dropped / not needed** | Was only a link test. Real FPV now works via the AIO VTX. Don't spend more time here. |
-| Motor directions | **Set, final check PENDING** | M1–M3 REVERSED, M4 default; target M1/M4 CW, M2/M3 CCW from above |
+| Motor directions | **Verified** | M1 CW, M2 CCW, M3 CCW, M4 CW; nose = M2/M4 side (mount FC arrow that way) |
 | FC mounted in frame / board alignment | **Not done** | |
 | ANGLE (self-level) mode | **Parked** | Enable once assembled (see §2 step 4) |
 | Failsafe | **Not verified** | Must pass before props-on |

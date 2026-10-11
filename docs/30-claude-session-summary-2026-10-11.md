@@ -8,7 +8,7 @@ in [decisions.md](decisions.md); this page is the short version.
 | Area | Result | Evidence |
 | --- | --- | --- |
 | Motor 1 "intermittent spin" | Not a fault. Test value 1020 = ~2 % DShot throttle (ESC loses sync). At 1100 (= 10 % armed idle) it spins smoothly | Laptop MSP readback + user observation |
-| Motors 2–4 | Soldered by the team. ESC spin direction set per motor over MSPv2 DShot commands (M1–M3 set REVERSED, M4 default) | Final all-four direction check **pending** |
+| Motor corners + directions | **Verified** (user-observed): M1 CW, M2 CCW, M3 CCW, M4 CW with the M2/M4 side as the nose. ESCs: M1, M3 reversed; M2 normal; M4 default | Bench spin test |
 | Throttle reading 1293 | Not a fault: the stick wasn't fully down. Reads 989–995 at the bottom | Live RC readback |
 | Pocket ↔ FC link | ELRS link live; Pocket SD config matches FC (AETR, SA→CH5 ARM) | SD card read + live RC |
 | FPV video | **Working end to end**: camera → AIO VTX → RC832 (5-8) → MS210x capture → Pi → dashboard | `evidence/physical/fpv-first-live-frame-2026-10-11.jpg` |

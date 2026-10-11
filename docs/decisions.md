@@ -1053,3 +1053,12 @@ asynchronously, so the tool polls MSP_VTX_CONFIG up to 8 s. Measured on the benc
 sensor, uncalibrated `ibata_scale`): ~0.46 A video on vs ~0.36 A pit mode, about 0.1 A saved.
 The camera itself is hard-wired and stays powered. Pit mode still emits a weak signal, so an
 RC832 right next to the drone may keep showing the picture.
+
+## 2026-10-11 — Motor corners and directions verified
+
+Props off, each motor alone at 1100 (and 1060 for M2/M3): M1/M2/M3/M4 sit at the
+Betaflight QUADX corners when the **M2/M4 side is the nose** (the frame was first viewed
+rotated 90°; no rewiring or board-alignment change, because the mixer positions are fixed to the
+FC pads). M2 was CW, so it was set to ESC direction NORMAL (`direction --motor 2 normal`) and
+re-checked: **final, user-observed M1 CW, M2 CCW, M3 CCW, M4 CW**. Stored ESC settings: M1 and M3
+REVERSED, M2 NORMAL, M4 default. Next: mount the FC with its arrow toward the M2/M4 side.
