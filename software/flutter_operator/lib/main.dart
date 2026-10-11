@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
@@ -26,5 +28,10 @@ Future<void> main() async {
     media: preview ? FixtureMediaPort() : WebRtcMediaPort(),
   );
   if (preview) await controller.connect('http://127.0.0.1:8080', 'fixture');
+  // Served by the Pi backend itself (http://<pi>:8080/app/): connect to that same server, read-only.
+  // Operators add their token in Connection settings to send commands.
+  if (!preview && kIsWeb && Uri.base.scheme == 'http' && Uri.base.path.startsWith('/app')) {
+    unawaited(controller.connect(Uri.base.origin, ''));
+  }
   runApp(OperatorApp(controller: controller));
 }

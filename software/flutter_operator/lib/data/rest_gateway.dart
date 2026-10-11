@@ -225,22 +225,22 @@ class RestOperatorGateway implements OperatorGateway {
           }.contains(response.headers['content-type']?.split(';').first)) {
         throw const GatewayFault('Camera frame could not be loaded.');
       }
-      final buffer = await ui.ImmutableBuffer.fromUint8List(response.bodyBytes);
+      // ui.ImageDescriptor is unimplemented on Flutter web; decoding with a codec works everywhere.
+      final codec = await ui.instantiateImageCodec(response.bodyBytes);
       try {
-        final descriptor = await ui.ImageDescriptor.encoded(buffer);
+        final image = (await codec.getNextFrame()).image;
         try {
-          if ((descriptor.width - frame.width * frame.crop.width).abs() > 1 ||
-              (descriptor.height - frame.height * frame.crop.height).abs() >
-                  1) {
+          if ((image.width - frame.width * frame.crop.width).abs() > 1 ||
+              (image.height - frame.height * frame.crop.height).abs() > 1) {
             throw const GatewayFault(
               'Camera frame dimensions do not match its metadata.',
             );
           }
         } finally {
-          descriptor.dispose();
+          image.dispose();
         }
       } finally {
-        buffer.dispose();
+        codec.dispose();
       }
       return response.bodyBytes;
     } on GatewayFault {

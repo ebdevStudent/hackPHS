@@ -151,6 +151,13 @@ def create_app(engine=None, token=None):
     async def index(): return FileResponse(static / 'index.html')
     @app.get('/fallback')
     async def fallback(): return FileResponse(static / 'fallback.html')
+    # Flutter operator web app (flutter build web --base-href /app/), same origin as this API.
+    web_app = Path(os.environ.get('BALL_WEB_APP_DIR', '/opt/ball-drone/web-app'))
+    if (web_app / 'index.html').is_file():
+        from fastapi.responses import RedirectResponse
+        @app.get('/app')
+        async def web_app_root(): return RedirectResponse('/app/')
+        app.mount('/app', StaticFiles(directory=web_app, html=True), name='web-app')
     @app.get('/judge')
     async def judge_page(): return FileResponse(static / 'judge.html')
     @app.get('/api/judge/status')
