@@ -36,6 +36,11 @@ import serial
 DEFAULT_PORT = '/dev/serial/by-id/usb-Betaflight_Betaflight_STM32F411_0x8000000-if00'
 STOP = struct.pack('<8H', *([1000] * 8))
 MAX_PULSE_VALUE = 1150   # ~15 % DShot throttle; props-off diagnostic ceiling
+ARMING_DISABLE_NAMES = [   # Betaflight 4.4 runtime_config.h order
+    'NOGYRO', 'FAILSAFE', 'RXLOSS', 'BADRX', 'BOXFAILSAFE', 'RUNAWAY', 'CRASH',
+    'THROTTLE', 'ANGLE', 'BOOTGRACE', 'NOPREARM', 'LOAD', 'CALIB', 'CLI', 'CMS',
+    'BST', 'MSP', 'PARALYZE', 'GPS', 'RESCUE_SW', 'RPMFILTER', 'REBOOT_REQD',
+    'DSHOT_BBANG', 'NO_ACC_CAL', 'MOTOR_PROTO', 'ARMSWITCH']
 MOTOR_PROTOCOLS = ['PWM', 'ONESHOT125', 'ONESHOT42', 'MULTISHOT', 'BRUSHED',
                    'DSHOT150', 'DSHOT300', 'DSHOT600', 'PROSHOT1000', 'DISABLED']
 
@@ -130,7 +135,15 @@ class FC:
         flags = struct.unpack_from('<I', status, 6)[0]
         armed = bool(flags & (1 << ids.index(0)))
         return dict(firmware=version, api=api, voltage=volts,
-                    rc=rc[:8], armed=armed, motor_commands=self.motors())
+                    rc=rc[:8], armed=armed, motor_commands=self.motors(),
+                    arming_blocked=self.arming_blocked())
+
+    def arming_blocked(self):
+        """Names of active Betaflight arming-disable flags (MSP_STATUS_EX)."""
+        d = self.request(150)
+        i = 16 + d[15]
+        flags = struct.unpack_from('<I', d, i + 1)[0]
+        return [name for bit, name in enumerate(ARMING_DISABLE_NAMES) if flags >> bit & 1]
 
     def config(self):
         mc = self.request(131)

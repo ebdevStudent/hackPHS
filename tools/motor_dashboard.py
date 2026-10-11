@@ -46,6 +46,8 @@ class Controller:
         self.reconnect_requested = False
         self.connect_error = None
         self.pending_direction = None
+        self.radio_arming = False          # False: dashboard blocks arming via MSP
+        self.pending_arming_block = None
 
     def log(self, message):
         self.events.append(dict(t=time.strftime('%H:%M:%S'), msg=message))
@@ -60,8 +62,22 @@ class Controller:
             self.enabled = False
             self.targets = [1000] * 4
 
+    def set_radio_arming(self, allow):
+        with self.lock:
+            if not self.state.get('connected'):
+                return 'FC not connected'
+            self.enabled = False
+            self.targets = [1000] * 4
+            self.radio_arming = allow
+            self.pending_arming_block = not allow
+            self.log('Radio arming ALLOWED (dashboard sliders off)' if allow
+                     else 'Radio arming blocked again')
+            return None
+
     def enable(self, props_removed):
         with self.lock:
+            if self.radio_arming:
+                return 'Radio arming is allowed - block it again to use the sliders'
             if not props_removed:
                 self.log('Enable refused: props-removed box not ticked')
                 return 'Tick "All propellers are removed" first'
@@ -92,7 +108,8 @@ class Controller:
                         targets_pct=[dshot_percent(v) for v in self.targets],
                         max_value=self.max_value, config=self.config,
                         events=self.events[-12:], port=self.port,
-                        connect_error=self.connect_error)
+                        connect_error=self.connect_error,
+                        radio_arming=self.radio_arming)
 
     def request_direction(self, motor, reverse):
         with self.lock:
@@ -136,6 +153,8 @@ class Controller:
             raise
         with self.lock:
             self.fc = fc
+            self.radio_arming = False
+            self.pending_arming_block = None
             self.config = config
             self.enabled = False
             self.targets = [1000] * 4
@@ -182,6 +201,12 @@ class Controller:
                             break
                         time.sleep(0.1)
                     continue
+            if self.pending_arming_block is not None:
+                block, self.pending_arming_block = self.pending_arming_block, None
+                try:
+                    self.fc.request(99, bytes([1 if block else 0, 0]))
+                except Exception as exc:
+                    self.log(f'Arming block change FAILED: {exc}')
             if self.pending_direction:
                 motor, reverse = self.pending_direction
                 try:
@@ -243,7 +268,10 @@ def make_handler(ctl):
             self.send_header('Content-Length', str(len(data)))
             self.send_header('Cache-Control', 'no-store')
             self.end_headers()
-            self.wfile.write(data)
+            try:
+                self.wfile.write(data)
+            except (BrokenPipeError, ConnectionResetError):
+                pass
 
         def do_GET(self):
             if self.path in ('/', '/index.html'):
@@ -265,6 +293,10 @@ def make_handler(ctl):
                 ctl.disable(body.get('reason', 'STOP pressed'))
             elif self.path == '/api/reconnect':
                 ctl.request_reconnect()
+            elif self.path == '/api/radio_arming':
+                if not isinstance(body.get('allow'), bool):
+                    return self.send(400, json.dumps(dict(error='bad request')))
+                error = ctl.set_radio_arming(body['allow'])
             elif self.path == '/api/direction':
                 motor, reverse = body.get('motor'), body.get('reverse')
                 if (not isinstance(motor, int) or isinstance(motor, bool)

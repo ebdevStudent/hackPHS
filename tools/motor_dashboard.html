@@ -63,6 +63,13 @@
       <button id="stop">STOP ALL (Space)</button>
       <button id="enable" style="width:100%;padding:12px">Props removed — ENABLE motors</button>
       <div id="err" class="err"></div>
+      <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:10px">
+        <div><b>Radio (Pocket) arming</b></div>
+        <div id="armblock" class="hint" style="margin:6px 0"></div>
+        <button id="radioarm" style="width:100%">Allow radio arming</button>
+        <p class="hint">The dashboard blocks arming while it controls motors. Allow it to arm with SA
+          and fly the motors from the Pocket sticks (props off!). Reconnecting re-blocks.</p>
+      </div>
       <p class="hint">Closing/hiding this tab, losing the server, unplugging USB or arming the FC
         stops everything and disables control. If a motor ever keeps spinning, unplug the battery.</p>
     </div>
@@ -177,6 +184,9 @@ function stopAll(reason) {
 }
 
 $('stop').onclick = () => stopAll();
+$('radioarm').onclick = async () => {
+  try { apply(await post('/api/radio_arming', { allow: !state.radio_arming })); } catch (e) {}
+};
 $('reconnect').onclick = async () => {
   sliders.forEach(s => s.value = 1000); render();
   $('conn').textContent = 'Reconnecting…'; $('conn').className = 'pill warn';
@@ -223,6 +233,18 @@ function render() {
   if (stale) { conn.textContent = 'Dashboard server unreachable'; conn.className = 'pill bad'; }
   else if (state.connected) { conn.textContent = 'FC connected'; conn.className = 'pill ok'; }
   else { conn.textContent = 'Waiting for FC USB…'; conn.className = 'pill warn'; }
+  const ab = state.arming_blocked || [];
+  const ignorable = state.radio_arming ? [] : ['MSP'];
+  $('armblock').innerHTML = !state.connected ? '' : state.armed
+    ? '<span style="color:var(--bad)"><b>ARMED</b> — SA off to disarm</span>'
+    : ab.length === 0 ? '<span style="color:var(--ok)">Ready to arm (nothing blocking)</span>'
+    : 'Arming blocked by: ' + ab.map(f => `<b style="color:${ignorable.includes(f) ? 'var(--dim)' : 'var(--warn)'}">${f}</b>`).join(', ')
+      + (ab.includes('THROTTLE') ? '<br>THROTTLE = throttle stick not below 1050 (yours reads ' + ((state.rc||[])[3] ?? '?') + ').' : '')
+      + (ab.includes('ANGLE') ? '<br>ANGLE = board tilted >25°; set it level.' : '')
+      + (ab.includes('ARMSWITCH') ? '<br>ARMSWITCH = SA was on while blocked; flip SA off then on.' : '')
+      + (ab.includes('MSP') && !state.radio_arming ? '<br>MSP = the dashboard\'s own block (button below).' : '');
+  $('radioarm').textContent = state.radio_arming ? 'Block radio arming again' : 'Allow radio arming';
+  $('radioarm').disabled = !state.connected;
   const ce = state.connect_error || '';
   $('connerr').textContent = state.connected || !ce ? '' :
     (ce.includes('ermission')
