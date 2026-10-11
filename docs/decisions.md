@@ -1011,3 +1011,15 @@ Half stick ≈ 12° and quarter stick ≈ 5.5° of lean instead of 17.5°/8.75°
 35°. Pre-change `diff all` kept at `~/Documents/betaflight-diff-all-20261011-054332-before-level-expo.txt`;
 `diff all` after reboot confirms all eight values. Active rate profile is 1 (stick input had
 moved it from 2; all rate profiles are otherwise default). Angle mode itself remains parked.
+
+## 2026-10-11 — VTX was never on 5917 MHz; fixed band, 25 mW, no low-power-disarm
+
+MSP_VTX_CONFIG readback showed SmartAudio VTX ready but **`vtx_band` = 0 (user-frequency
+mode) with frequency 0**: only `vtx_channel = 8` had been saved, so Betaflight never
+commanded R8/5917 as the earlier handoff claimed. User approved: `vtx_band = 5`,
+`vtx_channel = 8` (Raceband 5917 MHz), `vtx_power = 3` (table label "25"),
+`vtx_low_power_disarm = OFF` for bench video without arming. Pre-change backup
+`~/Documents/betaflight-diff-all-20261011-063631-before-vtx.txt`; readback: band 5, ch 8,
+5917 MHz, power index 3, pit off, ready. Pi capture of `/dev/video0` (MS210x) is still
+all-zero RGB (40 frames, std 0, no OSD), so RC832 reception or RC832→capture cabling is
+unverified. Live FPV remains pending.
