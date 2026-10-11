@@ -218,6 +218,13 @@ class FC:
                 break
         return v
 
+    def motor_rpm(self):
+        """Real RPM per motor from MSP_MOTOR_TELEMETRY (needs bidirectional DShot on)."""
+        d = self.request(139)
+        count = d[0] if d else 0
+        return [struct.unpack_from('<I', d, 1 + 13 * i)[0] for i in range(min(count, 4))
+                if len(d) >= 1 + 13 * (i + 1)]
+
     def mode_ranges(self):
         """[(permanent_box_id, aux_index, start_us, end_us)] for configured (non-empty) ranges."""
         d = self.request(34)

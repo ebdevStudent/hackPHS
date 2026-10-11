@@ -303,6 +303,11 @@ class Controller:
                         pass
                 if tick % 4 == 0:
                     status = self.fc.status()
+                    if self.config.get('dshot_bidir'):
+                        try:
+                            status['rpm'] = self.fc.motor_rpm()
+                        except Exception:
+                            status['rpm'] = None
                     with self.lock:
                         self.state = dict(status, connected=True)
                     if status['armed']:
