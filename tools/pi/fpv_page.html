@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPV Monitor</title>
+<style>
+:root {
+  --ui: "Bahnschrift", "DIN Alternate", "DIN 2014", "Barlow", "Roboto Condensed", "Arial Narrow", sans-serif;
+  --mono: "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+  --black: #000;
+  --bg: #0d0d0c;
+  --rail: #151514;
+  --rule: #272725;
+  --rule-hi: #3a3a37;
+  --text: #dcdbd6;
+  --dim: #8b8a84;
+  --faint: #807f79;
+  --go: #3fb35f;
+  --caution: #d9a21f;
+  --stop: #d23b2c;
+  --busy: #6f9fc9;
+  --trace: 127, 209, 139;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 13px/1.35 var(--ui); -webkit-font-smoothing: antialiased;
+  display: grid; grid-template-rows: 34px minmax(0, 1fr) 24px;
+}
+button { font: inherit; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 12px; }
+
+/* top strip */
+header {
+  display: flex; align-items: center; gap: 22px; padding: 0 12px;
+  border-bottom: 1px solid var(--rule); white-space: nowrap; overflow: hidden;
+}
+header h1 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .01em; }
+header h1 span { color: var(--dim); font-weight: 400; }
+.chain { display: flex; align-items: center; gap: 0; color: var(--dim); font-size: 12px; }
+.chain i { display: inline-block; width: 7px; height: 7px; margin-right: 6px; background: var(--faint); }
+.chain b { font-weight: 400; display: flex; align-items: center; }
+.chain b + b::before { content: ""; width: 18px; height: 1px; background: var(--rule-hi); margin: 0 8px; }
+.chain .go i { background: var(--go); } .chain .go { color: var(--text); }
+.chain .caution i { background: var(--caution); }
+.chain .stop i { background: var(--stop); }
+.chain .busy i { background: var(--busy); }
+header .clock { margin-left: auto; color: var(--dim); }
+
+/* main */
+main { display: grid; grid-template-columns: minmax(0, 1fr) 312px; min-height: 0; }
+.stage { position: relative; background: var(--black); min-height: 0; display: grid; place-items: center; overflow: hidden; }
+.tally { position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--faint); z-index: 3; }
+.frame { position: relative; max-width: 100%; max-height: 100%; aspect-ratio: 4 / 3; height: 100%; }
+.frame.native { aspect-ratio: 3 / 2; }
+.frame img:not([src]) { visibility: hidden; }
+.frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; display: block; }
+.guides { position: absolute; inset: 0; pointer-events: none; }
+.guides[data-mode="cross"] .cross, .guides[data-mode="thirds"] .thirds { display: block; }
+.cross, .thirds { display: none; position: absolute; inset: 0; }
+.cross::before, .cross::after { content: ""; position: absolute; background: rgba(255,255,255,.55); }
+.cross::before { left: 50%; top: calc(50% - 14px); width: 1px; height: 28px; }
+.cross::after { top: 50%; left: calc(50% - 14px); height: 1px; width: 28px; }
+.thirds {
+  background:
+    linear-gradient(to right, transparent calc(33.333% - .5px), rgba(255,255,255,.28) 0 calc(33.333% + .5px), transparent 0 calc(66.666% - .5px), rgba(255,255,255,.28) 0 calc(66.666% + .5px), transparent 0),
+    linear-gradient(to bottom, transparent calc(33.333% - .5px), rgba(255,255,255,.28) 0 calc(33.333% + .5px), transparent 0 calc(66.666% - .5px), rgba(255,255,255,.28) 0 calc(66.666% + .5px), transparent 0);
+}
+.safe { position: absolute; inset: 5%; border: 1px solid rgba(255,255,255,.14); pointer-events: none; display: none; }
+.guides[data-mode="thirds"] .safe { display: block; }
+.burn {
+  position: absolute; left: 10px; bottom: 9px; z-index: 2; color: #fff;
+  text-shadow: 0 0 2px #000, 0 0 2px #000; font-size: 11px;
+}
+.burn.tr { left: auto; right: 10px; bottom: auto; top: 11px; }
+.burn.tl { bottom: auto; top: 11px; }
+.notice {
+  position: absolute; inset: 0; z-index: 2; display: none; align-content: center; justify-items: start;
+  padding: 0 12%; background: rgba(0,0,0,.72);
+}
+.notice.translucent { background: rgba(0,0,0,.45); }
+.notice.on { display: grid; }
+.notice strong { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
+.notice p { margin: 0; max-width: 46ch; color: var(--text); font-size: 14px; }
+.notice small { margin-top: 10px; color: var(--dim); }
+.flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 4; transition: opacity .35s; }
+.flash.on { opacity: .35; transition: none; }
+
+/* instrument rail */
+aside { background: var(--rail); border-left: 1px solid var(--rule); overflow-y: auto; min-height: 0; }
+section { padding: 10px 12px 12px; border-bottom: 1px solid var(--rule); }
+section h2 { margin: 0 0 8px; font-size: 11px; font-weight: 400; color: var(--dim); }
+.state { font-size: 26px; font-weight: 600; line-height: 1.05; }
+.state.go { color: var(--go); } .state.caution { color: var(--caution); }
+.state.stop { color: var(--stop); } .state.busy { color: var(--busy); }
+.explain { margin: 6px 0 0; color: var(--dim); font-size: 12px; min-height: 2.7em; }
+table { width: 100%; border-collapse: collapse; }
+td { padding: 3px 0; border-bottom: 1px solid #1d1d1b; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { color: var(--dim); }
+td:last-child { text-align: right; }
+td .unit { color: var(--faint); margin-left: 3px; }
+canvas { display: block; width: 100%; }
+#scope { height: 116px; background: #070707; border: 1px solid var(--rule); }
+.trend { display: grid; grid-template-columns: 74px 1fr 44px; align-items: center; gap: 8px; margin-top: 6px; }
+.trend span:first-child { color: var(--dim); font-size: 12px; }
+.trend span:last-child { text-align: right; }
+.trend canvas { height: 26px; }
+#history { height: 8px; margin-top: 4px; }
+.axis { display: flex; justify-content: space-between; color: var(--faint); font-size: 11px; margin-top: 3px; }
+.controls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.controls button {
+  height: 30px; padding: 0 10px; text-align: left; color: var(--text); background: transparent;
+  border: 1px solid var(--rule-hi); border-radius: 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+}
+.controls button kbd { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+.controls button:hover { border-color: var(--dim); }
+.controls button:focus-visible { outline: 1px solid var(--text); outline-offset: 1px; }
+.controls button:disabled { color: var(--faint); cursor: default; border-color: var(--rule); }
+.controls button.armed { border-color: var(--stop); color: var(--stop); }
+.controls .wide { grid-column: 1 / -1; }
+
+footer {
+  display: flex; align-items: center; gap: 16px; padding: 0 12px; border-top: 1px solid var(--rule);
+  color: var(--dim); font-size: 11px; white-space: nowrap; overflow: hidden;
+}
+footer #msg { white-space: pre; font-family: var(--mono); }
+footer #msg.bad { color: var(--stop); }
+footer #msg.good { color: var(--go); }
+footer .keys { margin-left: auto; color: var(--faint); }
+
+@media (max-width: 860px) {
+  body { grid-template-rows: auto auto 24px; height: auto; }
+  header { flex-wrap: wrap; height: auto; padding: 8px 12px; gap: 8px 16px; }
+  header .chain { order: 3; width: 100%; overflow-x: auto; }
+  main { grid-template-columns: 1fr; }
+  .stage { aspect-ratio: 4 / 3; }
+  .frame { height: auto; width: 100%; }
+  aside { border-left: 0; border-top: 1px solid var(--rule); }
+  footer .keys { display: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>FPV <span>Ball Drone · analog receive</span></h1>
+  <div class="chain" id="chain">
+    <b data-k="camera"><i></i>Camera</b>
+    <b data-k="vtx"><i></i>VTX 5917 MHz</b>
+    <b data-k="rx"><i></i>RC832 · 5-8</b>
+    <b data-k="capture"><i></i>MS2106 capture</b>
+    <b data-k="pi"><i></i>Pi streamer</b>
+  </div>
+  <span class="clock num" id="clock">--:--:--</span>
+</header>
+
+<main>
+  <div class="stage" id="stage">
+    <div class="tally" id="tally"></div>
+    <div class="frame" id="frame">
+      <img id="feed" alt="Live FPV video">
+      <div class="guides" id="guides" data-mode="off"><div class="cross"></div><div class="thirds"></div><div class="safe"></div></div>
+      <div class="burn tl num" id="burnState">—</div>
+      <div class="burn tr num" id="burnTime"></div>
+      <div class="burn num" id="burnInfo"></div>
+      <div class="notice" id="notice"><strong id="noticeTitle"></strong><p id="noticeText"></p><small id="noticeNote"></small></div>
+      <div class="flash" id="flash"></div>
+    </div>
+  </div>
+
+  <aside>
+    <section>
+      <h2>Signal</h2>
+      <div class="state" id="state">Connecting</div>
+      <p class="explain" id="explain"></p>
+    </section>
+    <section>
+      <h2>Readout</h2>
+      <table>
+        <tr><td>Frame rate</td><td class="num"><span id="r-fps">—</span><span class="unit">fps</span></td></tr>
+        <tr><td>Resolution</td><td class="num" id="r-size">—</td></tr>
+        <tr><td>Brightness</td><td class="num"><span id="r-mean">—</span><span class="unit">/255</span></td></tr>
+        <tr><td>Contrast</td><td class="num"><span id="r-std">—</span><span class="unit">σ</span></td></tr>
+        <tr><td>Frame change</td><td class="num"><span id="r-change">—</span><span class="unit">Δ</span></td></tr>
+        <tr><td>Frames</td><td class="num" id="r-seq">—</td></tr>
+        <tr><td>Status age</td><td class="num"><span id="r-age">—</span><span class="unit">s</span></td></tr>
+        <tr><td>Link</td><td class="num"><span id="r-rtt">—</span><span class="unit">ms</span></td></tr>
+        <tr><td>Device</td><td class="num" id="r-dev">—</td></tr>
+      </table>
+    </section>
+    <section>
+      <h2>Luma waveform</h2>
+      <canvas id="scope"></canvas>
+    </section>
+    <section>
+      <h2>Last 60 seconds</h2>
+      <div class="trend"><span>Frame rate</span><canvas id="t-fps"></canvas><span class="num" id="t-fps-v">—</span></div>
+      <div class="trend"><span>Change</span><canvas id="t-change"></canvas><span class="num" id="t-change-v">—</span></div>
+      <div class="trend"><span>Brightness</span><canvas id="t-mean"></canvas><span class="num" id="t-mean-v">—</span></div>
+      <canvas id="history"></canvas>
+      <div class="axis num"><span>−60 s</span><span>now</span></div>
+    </section>
+    <section>
+      <h2>Controls</h2>
+      <div class="controls">
+        <button id="b-snap">Snapshot <kbd>S</kbd></button>
+        <button id="b-full">Fullscreen <kbd>F</kbd></button>
+        <button id="b-guides">Guides: off <kbd>G</kbd></button>
+        <button id="b-aspect">Aspect: 4:3 <kbd>A</kbd></button>
+        <button id="b-reset" class="wide">Reset capture stick <kbd>R</kbd></button>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<footer>
+  <span id="msg">Waiting for the streamer…</span>
+  <span class="keys">S snapshot · F fullscreen · G guides · A aspect · R reset (press twice)</span>
+</footer>
+
+<script>
+'use strict';
+const $ = (id) => document.getElementById(id);
+const POLL_MS = 500;
+const HIST = 120;                 // 60 s at POLL_MS
+const FROZEN_MS = 2500;
+const SCOPE_MS = 250;
+const SNOW_CHANGE = 15;           // fpv_stream.py classifies change > 15 as snow
+
+const STATES = {
+  PICTURE:       { tone: 'go',      title: 'Picture',            text: 'Receiving a live picture.' },
+  SNOW:          { tone: 'caution', title: 'Static',             text: 'The receiver hears no transmitter on its channel. Set the RC832 to 5-8 (5917 MHz), check the VTX has power and is not in pit mode.' },
+  FLAT:          { tone: 'caution', title: 'Blank picture',      text: 'A steady signal with no image in it. The camera may be unplugged or covered, or the transmitter is sending an empty frame.' },
+  'NO INPUT':    { tone: 'stop',    title: 'No input',           text: 'The capture stick sees no video at all. Check the RC832 is powered and its yellow video lead is in the stick. The stick also resets itself every 30 s.' },
+  'NO DEVICE':   { tone: 'stop',    title: 'Capture stick missing', text: 'Nothing on the capture device. Check the stick is plugged into the Pi.' },
+  RESETTING:     { tone: 'busy',    title: 'Resetting',          text: 'Re-enumerating the capture stick. About 3 seconds.' },
+  'RESET FAILED':{ tone: 'stop',    title: 'Reset failed',       text: 'The USB reset helper returned an error.' },
+  STARTING:      { tone: 'busy',    title: 'Starting',           text: 'Opening the capture stick.' },
+  FROZEN:        { tone: 'caution', title: 'Frozen',             text: 'No new frames for a few seconds while the stick still reports a picture. Press Reset.' },
+  OFFLINE:       { tone: 'stop',    title: 'Streamer offline',   text: 'Cannot reach the streamer. Check the Pi is on this network and fpv-stream.service is running.' },
+};
+// Which link in the chain each state points at.
+const CHAIN = {
+  PICTURE:  { camera: 'go', vtx: 'go', rx: 'go', capture: 'go', pi: 'go' },
+  FLAT:     { camera: 'caution', vtx: 'go', rx: 'go', capture: 'go', pi: 'go' },
+  SNOW:     { vtx: 'caution', rx: 'caution', capture: 'go', pi: 'go' },
+  FROZEN:   { capture: 'caution', pi: 'go' },
+  'NO INPUT': { rx: 'caution', capture: 'stop', pi: 'go' },
+  'NO DEVICE': { capture: 'stop', pi: 'go' },
+  'RESET FAILED': { capture: 'stop', pi: 'go' },
+  RESETTING: { capture: 'busy', pi: 'go' },
+  STARTING: { capture: 'busy', pi: 'go' },
+  OFFLINE:  { pi: 'stop' },
+};
+const TONE_HEX = { go: '#3fb35f', caution: '#d9a21f', stop: '#d23b2c', busy: '#6f9fc9' };
+
+const series = { fps: [], change: [], mean: [], tone: [] };
+let lastSeq = null, lastSeqAt = performance.now(), streaming = false, current = 'OFFLINE';
+
+function store(key, value) {
+  try { if (value === undefined) return localStorage.getItem(key); localStorage.setItem(key, value); } catch (e) { return null; }
+  return null;
+}
+function say(text, kind) { const m = $('msg'); m.textContent = text; m.className = kind || ''; }
+function fmt(v, digits) { return v == null || Number.isNaN(v) ? '—' : Number(v).toFixed(digits); }
+function push(arr, v) { arr.push(v); if (arr.length > HIST) arr.shift(); }
+
+// ---------- stream ----------
+function startStream() {
+  streaming = true;
+  $('feed').src = '/stream.mjpg?t=' + Date.now();
+}
+function stopStream() {
+  streaming = false;
+  $('feed').removeAttribute('src');
+}
+$('feed').addEventListener('error', () => { if (streaming) setTimeout(() => { if (streaming) startStream(); }, 1500); });
+document.addEventListener('visibilitychange', () => (document.hidden ? stopStream() : startStream()));
+
+// ---------- status polling ----------
+async function poll() {
+  const t0 = performance.now();
+  let s = null;
+  try {
+    const r = await fetch('/status', { cache: 'no-store' });
+    if (r.ok) s = await r.json();
+  } catch (e) { s = null; }
+  render(s, performance.now() - t0);
+  setTimeout(poll, POLL_MS);
+}
+
+function classify(s, now) {
+  if (!s) return 'OFFLINE';
+  if (s.seq != null && s.seq !== lastSeq) { lastSeq = s.seq; lastSeqAt = now; }
+  if (s.signal === 'PICTURE' && now - lastSeqAt > FROZEN_MS) return 'FROZEN';
+  return STATES[s.signal] ? s.signal : 'STARTING';
+}
+
+function render(s, rtt) {
+  const now = performance.now();
+  const key = classify(s, now);
+  const st = STATES[key];
+  if (key !== current) {
+    say(new Date().toTimeString().slice(0, 8) + '   ' + st.title, key === 'PICTURE' ? 'good' : st.tone === 'stop' ? 'bad' : '');
+    current = key;
+  }
+  $('state').textContent = st.title;
+  $('state').className = 'state ' + st.tone;
+  $('explain').textContent = st.text;
+  $('tally').style.background = TONE_HEX[st.tone];
+  $('burnState').textContent = st.title.toUpperCase();
+  const chainState = CHAIN[key] || {};
+  document.querySelectorAll('#chain b').forEach((b) => { b.className = chainState[b.dataset.k] || ''; });
+
+  const live = key === 'PICTURE';
+  $('notice').classList.toggle('on', !live);
+  $('notice').classList.toggle('translucent', key === 'SNOW');
+  $('noticeTitle').textContent = st.title;
+  $('noticeText').textContent = st.text;
+  $('noticeNote').textContent = s && s.note ? s.note : '';
+
+  const has = s && s.fps != null;
+  $('r-fps').textContent = has ? fmt(s.fps, 1) : '—';
+  $('r-size').textContent = has && s.size ? s.size[0] + ' × ' + s.size[1] : '—';
+  $('r-mean').textContent = has ? fmt(s.mean, 1) : '—';
+  $('r-std').textContent = has ? fmt(s.std, 1) : '—';
+  $('r-change').textContent = has ? fmt(s.change, 1) : '—';
+  $('r-seq').textContent = s && s.seq != null ? s.seq.toLocaleString('en-US') : '—';
+  $('r-age').textContent = s && s.t ? fmt(Math.max(0, Date.now() / 1000 - s.t), 1) : '—';
+  $('r-rtt').textContent = s ? fmt(rtt, 0) : '—';
+  $('r-dev').textContent = s && s.device ? s.device : '—';
+  $('burnInfo').textContent = has && s.size ? s.size[0] + '×' + s.size[1] + '  ' + fmt(s.fps, 1) + ' fps' : '';
+
+  push(series.fps, has ? s.fps : null);
+  push(series.change, has ? s.change : null);
+  push(series.mean, has ? s.mean : null);
+  push(series.tone, st.tone);
+  $('t-fps-v').textContent = has ? fmt(s.fps, 1) : '—';
+  $('t-change-v').textContent = has ? fmt(s.change, 1) : '—';
+  $('t-mean-v').textContent = has ? fmt(s.mean, 0) : '—';
+  trend($('t-fps'), series.fps, 35, null);
+  trend($('t-change'), series.change, null, SNOW_CHANGE);
+  trend($('t-mean'), series.mean, 255, null);
+  history();
+}
+
+// ---------- canvases ----------
+function fit(canvas) {
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+  }
+  const g = canvas.getContext('2d');
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, w, h);
+  return { g, w, h };
+}
+
+function trend(canvas, data, fixedMax, threshold) {
+  const { g, w, h } = fit(canvas);
+  const vals = data.filter((v) => v != null);
+  const top = fixedMax != null ? fixedMax : Math.max(threshold || 0, ...vals, 1) * 1.15;
+  const x = (i) => w - (data.length - 1 - i) * (w / (HIST - 1));
+  const y = (v) => h - 1.5 - (Math.min(v, top) / top) * (h - 3);
+  g.strokeStyle = '#272725'; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(0, h - .5); g.lineTo(w, h - .5); g.stroke();
+  if (threshold != null) {
+    g.setLineDash([2, 3]); g.strokeStyle = '#d9a21f88';
+    g.beginPath(); g.moveTo(0, Math.round(y(threshold)) + .5); g.lineTo(w, Math.round(y(threshold)) + .5); g.stroke();
+    g.setLineDash([]);
+  }
+  g.strokeStyle = '#dcdbd6'; g.lineWidth = 1.25; g.lineJoin = 'round';
+  let open = false;
+  g.beginPath();
+  data.forEach((v, i) => {
+    if (v == null) { open = false; return; }
+    if (open) g.lineTo(x(i), y(v)); else { g.moveTo(x(i), y(v)); open = true; }
+  });
+  g.stroke();
+}
+
+function history() {
+  const { g, w, h } = fit($('history'));
+  const step = w / HIST;
+  const offset = HIST - series.tone.length;
+  g.fillStyle = '#1d1d1b'; g.fillRect(0, 0, w, h);
+  series.tone.forEach((tone, i) => {
+    g.fillStyle = TONE_HEX[tone];
+    g.fillRect((offset + i) * step, 0, Math.ceil(step), h);
+  });
+}
+
+// Luma waveform: one column per horizontal slice of the picture, brightness on the vertical axis.
+const probe = document.createElement('canvas');
+const PW = 180, PH = 120;
+probe.width = PW; probe.height = PH;
+const pg = probe.getContext('2d', { willReadFrequently: true });
+function scope() {
+  const canvas = $('scope');
+  const { g, w, h } = fit(canvas);
+  const img = $('feed');
+  const pad = 4, top = pad, bottom = h - pad;
+  const yOf = (luma) => bottom - (luma / 255) * (bottom - top);
+  // graticule: black level 16, mid 128, white 235
+  g.font = '10px ' + getComputedStyle(document.body).getPropertyValue('--mono');
+  [[16, 'black 16'], [128, '128'], [235, 'white 235']].forEach(([lv, label]) => {
+    const yy = Math.round(yOf(lv)) + .5;
+    g.strokeStyle = '#272725'; g.lineWidth = 1;
+    g.beginPath(); g.moveTo(0, yy); g.lineTo(w, yy); g.stroke();
+    g.fillStyle = '#807f79'; g.fillText(label, 4, yy - 3);
+  });
+  if (!streaming || !img.complete || !img.naturalWidth) return;
+  let px;
+  try { pg.drawImage(img, 0, 0, PW, PH); px = pg.getImageData(0, 0, PW, PH).data; } catch (e) { return; }
+  const BINS = Math.max(32, Math.floor(bottom - top));
+  const counts = new Uint16Array(PW * BINS);
+  for (let yy = 0; yy < PH; yy++) {
+    for (let xx = 0; xx < PW; xx++) {
+      const o = (yy * PW + xx) * 4;
+      const luma = 0.299 * px[o] + 0.587 * px[o + 1] + 0.114 * px[o + 2];
+      counts[xx * BINS + Math.min(BINS - 1, Math.floor(luma / 256 * BINS))]++;
+    }
+  }
+  const colW = w / PW, binH = (bottom - top) / BINS;
+  const rgb = getComputedStyle(document.documentElement).getPropertyValue('--trace').trim();
+  for (let xx = 0; xx < PW; xx++) {
+    for (let b = 0; b < BINS; b++) {
+      const c = counts[xx * BINS + b];
+      if (!c) continue;
+      g.fillStyle = 'rgba(' + rgb + ',' + Math.min(1, .18 + c / 10).toFixed(2) + ')';
+      g.fillRect(xx * colW, bottom - (b + 1) * binH, Math.max(1, colW), Math.max(1, binH));
+    }
+  }
+}
+setInterval(scope, SCOPE_MS);
+
+// ---------- controls ----------
+const GUIDE_MODES = ['off', 'cross', 'thirds'];
+const GUIDE_LABEL = { off: 'off', cross: 'centre', thirds: 'thirds' };
+function setGuides(mode) {
+  $('guides').dataset.mode = mode;
+  $('b-guides').firstChild.textContent = 'Guides: ' + GUIDE_LABEL[mode] + ' ';
+  store('fpv.guides', mode);
+}
+function cycleGuides() { setGuides(GUIDE_MODES[(GUIDE_MODES.indexOf($('guides').dataset.mode) + 1) % GUIDE_MODES.length]); }
+function setAspect(native) {
+  $('frame').classList.toggle('native', native);
+  $('b-aspect').firstChild.textContent = 'Aspect: ' + (native ? '3:2 raw' : '4:3') + ' ';
+  store('fpv.aspect', native ? 'native' : 'tv');
+}
+function toggleAspect() { setAspect(!$('frame').classList.contains('native')); }
+function fullscreen() {
+  if (document.fullscreenElement) document.exitFullscreen();
+  else if ($('stage').requestFullscreen) $('stage').requestFullscreen();
+}
+async function snapshot() {
+  try {
+    const r = await fetch('/snapshot.jpg', { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const blob = await r.blob();
+    const a = document.createElement('a');
+    const stamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'fpv-' + stamp + '.jpg';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    $('flash').classList.add('on');
+    requestAnimationFrame(() => requestAnimationFrame(() => $('flash').classList.remove('on')));
+    say('Saved fpv-' + stamp + '.jpg', 'good');
+  } catch (e) {
+    say('No frame to save yet', 'bad');
+  }
+}
+let armTimer = null;
+function disarm() {
+  clearTimeout(armTimer);
+  $('b-reset').classList.remove('armed');
+  $('b-reset').firstChild.textContent = 'Reset capture stick ';
+}
+async function reset() {
+  const b = $('b-reset');
+  if (b.disabled) return;
+  if (!b.classList.contains('armed')) {
+    b.classList.add('armed');
+    b.firstChild.textContent = 'Press again to reset ';
+    armTimer = setTimeout(disarm, 3000);
+    return;
+  }
+  disarm();
+  b.disabled = true;
+  try {
+    const r = await fetch('/reset', { method: 'POST' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    say('Reset sent to the capture stick');
+  } catch (e) {
+    say('Reset failed: streamer unreachable', 'bad');
+  }
+  setTimeout(() => { b.disabled = false; }, 4000);
+}
+$('b-snap').onclick = snapshot;
+$('b-full').onclick = fullscreen;
+$('b-guides').onclick = cycleGuides;
+$('b-aspect').onclick = toggleAspect;
+$('b-reset').onclick = reset;
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  const map = { s: snapshot, f: fullscreen, g: cycleGuides, a: toggleAspect, r: reset };
+  if (map[k]) { e.preventDefault(); map[k](); }
+});
+
+function tick() {
+  const d = new Date();
+  $('clock').textContent = d.toTimeString().slice(0, 8);
+  $('burnTime').textContent = d.toTimeString().slice(0, 8);
+}
+setInterval(tick, 1000);
+
+setGuides(GUIDE_MODES.includes(store('fpv.guides')) ? store('fpv.guides') : 'off');
+setAspect(store('fpv.aspect') === 'native');
+tick();
+startStream();
+poll();
+</script>
+</body>
+</html>

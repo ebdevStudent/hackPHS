@@ -6,6 +6,7 @@
 Endpoints (CORS-open so the laptop motor dashboard can embed them):
   /stream.mjpg   live MJPEG          /snapshot.jpg   latest frame
   /status        JSON signal report  POST /reset     USB-reset the capture stick
+  /              monitor page (fpv_page.html next to this file)
 
 Signal classes: PICTURE, SNOW (RC832 tuned to nothing), FLAT (blank screen / no
 video modulation), NO INPUT (all-zero frames: the MS210x stick sometimes latches
@@ -19,11 +20,13 @@ import subprocess
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
 
 import cv2
 import numpy as np
 
 RESET_CMD = ['sudo', '-n', '/usr/local/bin/reset-capture']
+PAGE = Path(__file__).with_name('fpv_page.html')
 
 
 class Grabber:
@@ -122,7 +125,8 @@ def make_handler(grab):
             try:
                 if path == '/status':
                     with grab.cond:
-                        body = json.dumps(grab.status).encode()
+                        body = json.dumps(dict(grab.status, seq=grab.seq,
+                                               device='/dev/video%d' % grab.device)).encode()
                     self.head(200, 'application/json', len(body))
                     self.wfile.write(body)
                 elif path == '/snapshot.jpg':
@@ -145,9 +149,12 @@ def make_handler(grab):
                         self.wfile.write(b'--frame\r\nContent-Type: image/jpeg\r\nContent-Length: '
                                          + str(len(data)).encode() + b'\r\n\r\n' + data + b'\r\n')
                 elif path == '/':
-                    body = (b'<title>FPV</title><body style="margin:0;background:#000">'
-                            b'<img src="/stream.mjpg" style="width:100%">')
-                    self.head(200, 'text/html', len(body))
+                    try:  # re-read per request so the page can be edited without a restart
+                        body = PAGE.read_bytes()
+                    except OSError:
+                        body = (b'<title>FPV</title><body style="margin:0;background:#000">'
+                                b'<img src="/stream.mjpg" style="width:100%">')
+                    self.head(200, 'text/html; charset=utf-8', len(body))
                     self.wfile.write(body)
                 else:
                     self.head(404, 'text/plain', 0)
