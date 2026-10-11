@@ -1036,3 +1036,11 @@ Camera tab (`--fpv-url`, default http://172.16.240.48:8090) that embeds the stre
 while visible. Deployed and rendered; a live drone picture is still pending (the drone
 battery was unplugged during the test). The streamer holds /dev/video0, so stop it before
 ball_demo uses the camera.
+
+**Live FPV verified (actual Pi capture).** With the drone battery connected (FC 7.36 V), the Pi
+streamer reported PICTURE continuously at ~15 fps and a captured frame shows the real room
+plus Betaflight OSD text ("BATT < FULL"): camera → AIO SmartAudio VTX (R8 5917 MHz, 25 mW)
+→ RC832 (5-8) → MS210x capture → Pi → dashboard Camera tab. Frame saved at
+`evidence/physical/fpv-first-live-frame-2026-10-11.jpg`. Earlier intermittent flat-grey
+video happened on USB power only (FC ~2.2 V): the VTX carrier was received but the camera
+had no proper supply. Flat grey = carrier without video; snow = no carrier.
