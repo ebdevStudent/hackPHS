@@ -40,7 +40,7 @@ function loadQuality() {
 }
 
 // ---------------- renderer ----------------
-const renderer = new THREE.WebGLRenderer({ canvas: $("view"), antialias: true, powerPreference: "high-performance" });
+const renderer = new THREE.WebGLRenderer({ canvas: $("view"), antialias: params.get("aa") !== "0", powerPreference: "high-performance" });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.autoUpdate = false;           // shadow maps are drawn once per frame, not again for the FPV inset
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
