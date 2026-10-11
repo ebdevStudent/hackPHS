@@ -109,3 +109,15 @@ under the drone. Two layouts work:
 
 Code: `software/ball_demo/tag_target.py` (detection + cues), `tag_kit.py` (wizard/print/detect),
 `tools/pi/drone-mode`, `tools/pi/push-roster.sh`. Tests: `software/tests/test_apriltag_targets.py`.
+
+## 6. Judge yaw slider (`/judge`)
+
+Judges can steer **yaw only**, from their phone:
+1. Operator: monitor → Operator access → **Judge yaw slider** → note the **PIN**, set the limit
+   (default ±300 of 1000), **Turn judge mode on**. This disables vision assistance (the two are exclusive).
+2. Judges open **http://<pi>:8080/judge**, enter the PIN and drag the slider. Releasing it snaps to 0.
+3. Safety: a command older than 0.5 s → yaw 0; a bridge fault or stale ESP32 ACK switches judge mode off;
+   20 wrong PINs per minute locks the PIN; judges can't reach any other setting (the PIN isn't an
+   operator token); the pilot's SD switch and all other controls are untouched. Yaw reaches the radio only
+   in `drone-mode assist` (`--trainer-output`).
+Set a fixed PIN with `BALL_JUDGE_PIN` (otherwise a random 6-digit PIN at each start).

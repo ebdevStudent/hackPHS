@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ball Drone — Judge yaw</title>
+  <style>
+    :root { --bg:#f3f5f7; --panel:#fff; --line:#d6dbe0; --text:#1d2329; --dim:#66727e; --ok:#1d8a4a; --warn:#b7791f; --bad:#c0392b; --accent:#2f6fde; }
+    * { box-sizing: border-box; }
+    body { margin:0; padding:16px; background:var(--bg); color:var(--text); font:16px/1.4 system-ui, sans-serif; }
+    main { max-width:760px; margin:0 auto; display:grid; gap:12px; }
+    h1 { font-size:20px; margin:0; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px; }
+    img { width:100%; border-radius:8px; background:#111; aspect-ratio:4/3; display:block; }
+    .status { font-weight:600; padding:8px 12px; border-radius:8px; background:#eef1f4; }
+    .status.on { background:#e3f4ea; color:var(--ok); } .status.off { color:var(--dim); } .status.bad { background:#fbe9e7; color:var(--bad); }
+    input[type=range] { width:100%; height:56px; accent-color:var(--accent); touch-action:none; }
+    input[type=range]:disabled { opacity:.35; }
+    .ends { display:flex; justify-content:space-between; color:var(--dim); font-size:14px; }
+    .value { text-align:center; font-size:28px; font-weight:700; font-variant-numeric:tabular-nums; margin:4px 0; }
+    form { display:flex; gap:8px; } form input { flex:1; font:inherit; padding:10px; border:1px solid var(--line); border-radius:8px; }
+    button { font:inherit; padding:10px 16px; border-radius:8px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+    .hint { color:var(--dim); font-size:14px; margin:6px 0 0; }
+    [hidden] { display:none !important; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Ball Drone — steer the yaw</h1>
+  <img src="/api/preview" alt="Live drone camera with tracking overlay">
+  <div id="status" class="status off">Connecting…</div>
+
+  <form id="pinform" class="panel">
+    <input id="pin" inputmode="numeric" autocomplete="off" placeholder="Judge PIN (ask the team)" maxlength="12">
+    <button>Unlock</button>
+  </form>
+
+  <section id="controls" class="panel" hidden>
+    <div class="value" id="value">0</div>
+    <input id="slider" type="range" min="-100" max="100" step="1" value="0" disabled aria-label="Yaw: left to right">
+    <div class="ends"><span>◀ turn left</span><span>centre = no turn</span><span>turn right ▶</span></div>
+    <p class="hint">Hold and drag to turn the drone. Let go and it snaps back to centre (no turn).
+      You can only change yaw. The pilot keeps throttle, height and an instant override.</p>
+  </section>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+let pin = sessionStorage.getItem('judgePin') || '';
+let holding = false, active = false, lastSent = null, sending = false;
+
+function setStatus(text, cls) { $('status').textContent = text; $('status').className = 'status ' + cls; }
+
+let pending = null;   // latest value requested while a request was in flight (never drop the release to 0)
+async function send(pct) {
+  if (!pin) return;
+  if (sending) { pending = pct; return; }
+  sending = true;
+  try {
+    const r = await fetch('/api/judge/yaw', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin, yaw_pct: pct }) });
+    const body = await r.json();
+    if (r.status === 403) { pin = ''; sessionStorage.removeItem('judgePin'); showPin('Wrong PIN, try again.'); }
+    else if (!r.ok) setStatus(body.detail || 'Not accepted', r.status === 409 ? 'off' : 'bad');
+    else lastSent = pct;
+  } catch (e) { setStatus('Connection lost', 'bad'); }
+  sending = false;
+  if (pending !== null) { const next = pending; pending = null; send(next); }
+}
+
+function release() {
+  holding = false;
+  $('slider').value = 0; $('value').textContent = '0';
+  send(0);
+}
+
+function showPin(message) {
+  $('pinform').hidden = false; $('controls').hidden = true;
+  if (message) setStatus(message, 'bad');
+}
+
+$('pinform').onsubmit = (event) => {
+  event.preventDefault();
+  pin = $('pin').value.trim();
+  if (!pin) return;
+  sessionStorage.setItem('judgePin', pin);
+  $('pinform').hidden = true; $('controls').hidden = false;
+  send(0);
+};
+
+const slider = $('slider');
+slider.addEventListener('pointerdown', () => { holding = true; });
+slider.addEventListener('input', () => {
+  const v = Number(slider.value);
+  $('value').textContent = v > 0 ? `${v} ▶` : v < 0 ? `◀ ${-v}` : '0';
+  send(v);
+});
+for (const ev of ['pointerup', 'pointercancel', 'lostpointercapture', 'touchend', 'blur']) slider.addEventListener(ev, release);
+window.addEventListener('blur', release);
+document.addEventListener('visibilitychange', () => { if (document.hidden) release(); });
+document.addEventListener('keyup', (e) => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') release(); });
+
+// Keep the server lease fresh while a judge holds the slider off-centre (it expires in 0.5 s).
+setInterval(() => { if (pin && active && holding && Number(slider.value) !== 0) send(Number(slider.value)); }, 150);
+
+async function poll() {
+  try {
+    const s = await (await fetch('/api/judge/status', { cache: 'no-store' })).json();
+    active = s.active;
+    slider.disabled = !active;
+    if (!active && Number(slider.value) !== 0) release();
+    if (!pin) setStatus(active ? 'Judge mode is ON: enter the PIN to steer' : 'Judge mode is off: waiting for the team', active ? 'on' : 'off');
+    else setStatus(active ? `Judge mode ON · steering ${s.yaw > 0 ? 'right' : s.yaw < 0 ? 'left' : 'straight'}` :
+                            'Judge mode is off: waiting for the team to turn it on', active ? 'on' : 'off');
+  } catch (e) { setStatus('Cannot reach the drone computer', 'bad'); }
+}
+if (pin) { $('pinform').hidden = true; $('controls').hidden = false; }
+poll(); setInterval(poll, 400);
+</script>
+</body>
+</html>

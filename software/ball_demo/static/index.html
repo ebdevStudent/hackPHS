@@ -116,6 +116,14 @@
               <p class="note">Applying settings disables assistance.</p>
             </details>
             <details class="settings-section">
+              <summary>Judge yaw slider</summary>
+              <p id="judge-info" class="note">Open to load the judge PIN.</p>
+              <label>Judge yaw limit (of 1000)<input id="judge-max" type="number" value="300" min="0" max="1000"></label>
+              <div class="actions"><button id="judge-on">Turn judge mode on</button><button id="judge-off">Turn judge mode off</button></div>
+              <p class="note">Judges open <code>/judge</code> on this server and enter the PIN. They can only drag yaw
+                (snaps to 0 on release, 0.5 s lease). Turning it on disables vision assistance; the pilot's SD switch still overrides.</p>
+            </details>
+            <details class="settings-section">
               <summary>AprilTags</summary>
               <ul id="roster-list" class="roster-list"><li>Open to load the roster.</li></ul>
               <button id="roster-reload">Reload tags from roster file</button>

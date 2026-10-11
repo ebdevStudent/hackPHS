@@ -22,6 +22,11 @@ WORKER_STALL_MS = 3000
 # The ESP32-S3 can reset when its port opens and needs time to boot before answering HELLO. Stay MANUAL
 # while the handshake is pending; only an unanswered handshake beyond this is a fault.
 BRIDGE_READY_S = 3.0
+# Judge yaw slider: a command older than this (page closed, network gap) sends yaw 0.
+JUDGE_LEASE_S = .5
+JUDGE_DEFAULT_MAX_YAW = 300
+# Wrong judge PINs allowed per minute before refusing further attempts.
+JUDGE_MAX_FAILURES = 20
 
 
 class Engine:
@@ -75,6 +80,11 @@ class Engine:
             from .portable_runtime import PortableRuntime
             self.portable = PortableRuntime(self, portable_calibration, portable_delay_s)
         self.navigation_config_lock = threading.Lock()
+        import os, secrets
+        # Judges get a PIN (not the operator token); it only unlocks the yaw slider.
+        self.judge_pin = os.environ.get('BALL_JUDGE_PIN') or f'{secrets.randbelow(10 ** 6):06d}'
+        self.judge = {'active': False, 'yaw': 0, 'max_yaw': JUDGE_DEFAULT_MAX_YAW, 'updated': None}
+        self.judge_failures = []
         if navigation_bundle is not None:
             self.configure_navigation(navigation_bundle, navigation_recording)
     def configure_navigation(self, bundle, recording=None):
@@ -115,6 +125,7 @@ class Engine:
             if self.navigation: self.navigation.start()
     def stop(self):
         with self.lock:
+            self.judge.update(active=False, yaw=0, updated=None)
             self.controller.enable(False)
             try: self.bridge.send(False, 0, time.monotonic())
             except Exception as error: self.session.event('neutral_send_failed', {'reason': str(error)})
@@ -154,6 +165,7 @@ class Engine:
                     'video_health': self.video_report, 'decision_ms': self.decision_ms,
                     'lease_ms_remaining': None if self.lease_deadline is None else
                         max(0., round((self.lease_deadline - now) * 1000, 1)),
+                    'judge': self.judge_snapshot(now),
                     'navigation': self.navigation.snapshot(now) if self.navigation else None}
     @property
     def synthetic_fallback(self):
@@ -302,6 +314,9 @@ class Engine:
                             now - self.bridge.last_ack >= self.settings.ack_ms / 1000 or
                             self.bridge.fault != 'none'):
                 raise ValueError('Resolve the source or bridge fault before enabling assistance')
+            if enabled and self.judge['active']:
+                self.judge.update(active=False, yaw=0, updated=None)
+                self.session.event('judge_mode', {'enabled': False, 'reason': 'vision assistance enabled'})
             self.controller.enable(enabled)
             self.lease_deadline = now + self.settings.lease_ms / 1000 if enabled and leased else None
             if not enabled:
@@ -310,6 +325,66 @@ class Engine:
                     self.controller.fail('bridge: ' + str(error))
                     self.session.event('neutral_send_failed', {'reason': str(error)})
             self.session.event('operator_assistance', {'enabled': enabled, 'leased': bool(enabled and leased)})
+    # --- judge yaw slider --------------------------------------------------------------------
+    def judge_blocked(self, now):
+        """Why judge yaw cannot reach the bridge right now, or None."""
+        if self.bridge.fault != 'none': return 'bridge fault: ' + str(self.bridge.fault)
+        if not getattr(self.bridge, 'ready', True): return 'bridge handshake pending'
+        if now - self.bridge.last_ack >= self.settings.ack_ms / 1000: return 'bridge acknowledgement stale'
+        return None
+    def judge_snapshot(self, now=None):
+        now = time.monotonic() if now is None else now
+        j = self.judge
+        fresh = j['active'] and j['updated'] is not None and now - j['updated'] <= JUDGE_LEASE_S
+        return {'active': j['active'], 'yaw': j['yaw'] if fresh else 0, 'max_yaw': j['max_yaw'],
+                'lease_ms': int(JUDGE_LEASE_S * 1000)}
+    def set_judge_mode(self, enabled, max_yaw=None):
+        """Operator-only: allow (or stop) the judges' yaw slider. Turning it on turns vision assist off."""
+        with self.lock:
+            now = time.monotonic()
+            if max_yaw is not None:
+                self.judge['max_yaw'] = int(max_yaw)
+            if enabled:
+                reason = self.judge_blocked(now)
+                if reason: raise ValueError(f'Cannot enable judge yaw: {reason}')
+                if self.controller.enabled: self.assist(False)
+            self.judge.update(active=bool(enabled), yaw=0, updated=None)
+            if not enabled:
+                try: self.bridge.send(False, 0, now)
+                except Exception as error: self.session.event('neutral_send_failed', {'reason': str(error)})
+            self.session.event('judge_mode', {'enabled': bool(enabled), 'max_yaw': self.judge['max_yaw']})
+            return self.judge_snapshot(now)
+    def check_judge_pin(self, pin):
+        import hmac
+        now = time.monotonic()
+        with self.lock:
+            self.judge_failures = [t for t in self.judge_failures if now - t < 60]
+            if len(self.judge_failures) >= JUDGE_MAX_FAILURES:
+                raise PermissionError('Too many wrong PINs: wait a minute')
+            if not hmac.compare_digest(str(pin).encode(), self.judge_pin.encode()):
+                self.judge_failures.append(now)
+                raise PermissionError('Wrong judge PIN')
+    def judge_command(self, pin, yaw_pct):
+        """Judge slider position in percent of the operator's judge yaw limit."""
+        self.check_judge_pin(pin)
+        with self.lock:
+            if not self.judge['active']:
+                raise ValueError('Judge mode is off: ask the operator to turn it on')
+            pct = max(-100, min(100, int(yaw_pct)))
+            self.judge.update(yaw=int(round(pct / 100 * self.judge['max_yaw'])), updated=time.monotonic())
+            return self.judge_snapshot()
+    def judge_output(self, tick):
+        """Control-loop side (lock held): yaw to send for the judge, or None when judge mode is off."""
+        if not self.judge['active']:
+            return None
+        reason = self.judge_blocked(tick)
+        if reason:
+            self.judge.update(active=False, yaw=0, updated=None)
+            self.session.event('judge_mode', {'enabled': False, 'reason': reason})
+            return None
+        if self.judge['updated'] is None or tick - self.judge['updated'] > JUDGE_LEASE_S:
+            return 0
+        return self.judge['yaw']
     def heartbeat(self):
         """Renew an operator lease. Never enables assistance by itself."""
         with self.lock:
@@ -538,7 +613,12 @@ class Engine:
                         self.controller.frame(self.detection, self.settings, tick - last)
                         self.decision_ms = round((time.monotonic() - self.frame.captured) * 1000, 1)
                         previous_key = key
-                    self.bridge.send(self.controller.enabled and self.controller.state == 'LOCKED', self.controller.yaw, tick)
+                    judge_yaw = self.judge_output(tick)
+                    if judge_yaw is not None:
+                        sent_enabled, sent_yaw = True, judge_yaw
+                    else:
+                        sent_enabled, sent_yaw = self.controller.enabled and self.controller.state == 'LOCKED', self.controller.yaw
+                    self.bridge.send(sent_enabled, sent_yaw, tick)
                     mock_source = self.source_spec.get('kind') == 'synthetic'
                     mock_video_healthy = (mock_source and self.frame is not None and not self.source_error and
                         not self.video_issue and not self.eof and
@@ -549,7 +629,8 @@ class Engine:
                         vision_driven=True, dt_s=1 / self.settings.control_hz)
                     state = self.snapshot()
                     self.session.sample(state)
-                    self.session.event('command', {'seq': self.bridge.seq, 'enabled': self.controller.enabled and self.controller.state == 'LOCKED', 'yaw': self.controller.yaw})
+                    self.session.event('command', {'seq': self.bridge.seq, 'enabled': sent_enabled, 'yaw': sent_yaw,
+                                                   **({'source': 'judge'} if judge_yaw is not None else {})})
                     for event in self.controller.events: self.session.event('state', event)
                     self.controller.events.clear()
                 except Exception as error:

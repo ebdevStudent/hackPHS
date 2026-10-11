@@ -28,7 +28,7 @@ function renderState(state) {
   element('scenario-label').textContent = displayName(state.source.scenario || state.source.kind);
   element('preview').alt = `${state.source_label.toLowerCase()} video with target detection outline`;
   element('session-id').textContent = `Session ${state.session}`;
-  element('state').textContent = state.state;
+  element('state').textContent = state.judge?.active ? `JUDGE · yaw ${state.judge.yaw}` : state.state;
   element('state').dataset.state = state.state;
   const yawUnit = document.createElement('em');
   yawUnit.textContent = ' / 1000';
@@ -292,6 +292,24 @@ async function loadRoster(reload = false) {
   }
 }
 element('roster-reload').onclick = () => loadRoster(true);
+
+async function judgeRequest(method, body) {
+  try {
+    const response = await fetch('/api/operator/judge', { method, headers: { Authorization: `Bearer ${operatorToken}`,
+      'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.detail || 'Judge request failed');
+    element('judge-info').textContent = `PIN ${data.pin} · judge page: ${location.origin}/judge · ` +
+      `${data.active ? `ON (limit ±${data.max_yaw})` : 'off'}`;
+    element('judge-max').value = data.max_yaw;
+    if (body) element('operator-message').textContent = data.active ? 'Judge mode on: vision assistance disabled.' : 'Judge mode off. Yaw 0.';
+  } catch (error) {
+    element('operator-message').textContent = error.message;
+  }
+}
+element('judge-on').onclick = () => judgeRequest('POST', { enabled: true, max_yaw: Number(element('judge-max').value) });
+element('judge-off').onclick = () => judgeRequest('POST', { enabled: false });
+document.querySelector('#judge-info').closest('details').addEventListener('toggle', (event) => { if (event.target.open) judgeRequest('GET'); });
 document.querySelector('#roster-list').closest('details').addEventListener('toggle', (event) => { if (event.target.open) loadRoster(); });
 
 async function loadPlayback() {

@@ -68,6 +68,16 @@ class AssistRequest(OperatorRequest):
     enabled: bool
 
 
+class JudgeModeRequest(OperatorRequest):
+    enabled: bool
+    max_yaw: int | None = Field(None, ge=0, le=1000)
+
+
+class JudgeYawRequest(OperatorRequest):
+    pin: str = Field(min_length=1, max_length=12)
+    yaw_pct: int = Field(ge=-100, le=100)
+
+
 class FaultRequest(OperatorRequest):
     fault: str
 
@@ -141,6 +151,23 @@ def create_app(engine=None, token=None):
     async def index(): return FileResponse(static / 'index.html')
     @app.get('/fallback')
     async def fallback(): return FileResponse(static / 'fallback.html')
+    @app.get('/judge')
+    async def judge_page(): return FileResponse(static / 'judge.html')
+    @app.get('/api/judge/status')
+    async def judge_status(): return engine.judge_snapshot()
+    @app.post('/api/judge/yaw')
+    async def judge_yaw(request: JudgeYawRequest):
+        # Judges hold a PIN, not the operator token: it can only move the yaw slider.
+        try: return engine.judge_command(request.pin, request.yaw_pct)
+        except PermissionError as error: raise HTTPException(429 if 'Too many' in str(error) else 403, str(error))
+        except ValueError as error: raise HTTPException(409, str(error))
+    @app.get('/api/operator/judge', dependencies=[Depends(operator)])
+    async def operator_judge(): return {**engine.judge_snapshot(), 'pin': engine.judge_pin}
+    @app.post('/api/operator/judge', dependencies=[Depends(operator)])
+    async def operator_judge_set(request: JudgeModeRequest):
+        try: result = engine.set_judge_mode(request.enabled, request.max_yaw)
+        except ValueError as error: raise HTTPException(409, str(error))
+        return {**result, 'pin': engine.judge_pin}
     @app.get('/api/health')
     async def health():
         s = engine.snapshot()
