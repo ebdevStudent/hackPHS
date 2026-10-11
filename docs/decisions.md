@@ -1023,3 +1023,16 @@ commanded R8/5917 as the earlier handoff claimed. User approved: `vtx_band = 5`,
 5917 MHz, power index 3, pit off, ready. Pi capture of `/dev/video0` (MS210x) is still
 all-zero RGB (40 frames, std 0, no OSD), so RC832 reception or RC832→capture cabling is
 unverified. Live FPV remains pending.
+
+## 2026-10-11 — FPV capture fixed by re-enumeration; Pi streamer + dashboard Camera tab
+
+The MS210x capture stick (534d:0021) returned all-zero frames until it was re-enumerated
+(USB `authorized` 0→1); afterwards RC832 snow/blank screens arrived, proving the
+RC832→capture→Pi path. Added `tools/pi/fpv_stream.py` (OpenCV, MJPEG on :8090, status with
+PICTURE/SNOW/FLAT/NO INPUT classification, auto-reset after 4 s of all-zero frames),
+`tools/pi/reset-capture` (installed to `/usr/local/bin`, with a NOPASSWD sudoers rule for
+that script only), and `fpv-stream.service` (enabled on the Pi). The motor dashboard has a
+Camera tab (`--fpv-url`, default http://172.16.240.48:8090) that embeds the stream only
+while visible. Deployed and rendered; a live drone picture is still pending (the drone
+battery was unplugged during the test). The streamer holds /dev/video0, so stop it before
+ball_demo uses the camera.

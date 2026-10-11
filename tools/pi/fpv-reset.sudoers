@@ -1,0 +1,1 @@
+hackphs ALL=(root) NOPASSWD: /usr/local/bin/reset-capture

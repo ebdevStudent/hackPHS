@@ -1,0 +1,12 @@
+[Unit]
+Description=Ball Drone FPV capture streamer (port 8090)
+After=network-online.target
+
+[Service]
+User=hackphs
+ExecStart=/opt/ball-drone/software/.venv/bin/python /home/hackphs/fpv/fpv_stream.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

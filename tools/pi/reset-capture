@@ -1,0 +1,8 @@
+#!/bin/sh
+# Re-enumerate the MS210x USB capture stick (534d:0021), like unplugging it.
+# The stick can latch all-zero frames until this happens.
+for d in /sys/bus/usb/devices/*; do
+    [ -f "$d/idVendor" ] || continue
+    [ "$(cat "$d/idVendor")" = 534d ] && [ "$(cat "$d/idProduct")" = 0021 ] || continue
+    echo 0 > "$d/authorized"; sleep 2; echo 1 > "$d/authorized"
+done

@@ -43,10 +43,33 @@
   .log { font:12px ui-monospace, monospace; color:var(--dim); max-height:180px; overflow:auto; white-space:pre-wrap; }
   .hint { color:var(--dim); font-size:12px; }
   .err { color:var(--bad); min-height:1.2em; }
+  .tab.on { background:var(--accent); color:#fff; border-color:var(--accent); }
 </style>
 </head>
 <body>
 <h1>Ball Drone — props-off motor dashboard</h1>
+<div class="bar" id="tabs">
+  <button data-tab="motors" class="tab on">Motors</button>
+  <button data-tab="camera" class="tab">Camera</button>
+</div>
+<div id="tab-camera" hidden>
+  <div class="panel">
+    <div class="bar" style="margin-bottom:8px">
+      <span id="fpvsig" class="pill">—</span>
+      <span id="fpvinfo" class="hint"></span>
+      <button id="fpvreset">Reset capture stick</button>
+      <a id="fpvsnap" target="_blank" style="color:var(--accent)">Open snapshot</a>
+    </div>
+    <div style="background:#000;border-radius:8px;overflow:hidden;max-width:960px">
+      <img id="fpvimg" alt="FPV feed" style="width:100%;display:block;aspect-ratio:3/2">
+    </div>
+    <p class="hint">Drone camera → FC video transmitter (5917 MHz, 25 mW) → RC832 (set to 5-8) → USB capture
+      stick → Pi → here. SNOW = RC832 hears nothing on its channel (drone battery out, wrong channel).
+      FLAT = blank screen. NO INPUT = capture stick stuck (auto-resets, or press Reset).
+      Motor safety (Space = STOP) still works on this tab.</p>
+  </div>
+</div>
+<div id="tab-motors">
 <div class="bar">
   <span id="conn" class="pill">…</span>
   <span id="volt" class="pill">— V</span>
@@ -114,6 +137,7 @@
   </div>
 </div>
 
+</div>
 <script>
 const $ = id => document.getElementById(id);
 const POS = { 1:[150,150,'cw'], 2:[150,50,'ccw'], 3:[50,150,'ccw'], 4:[50,50,'cw'] };
@@ -168,6 +192,41 @@ $('master').addEventListener('input', e => {
   sliders.forEach(s => s.value = e.target.value); render();
 });
 
+// --- Camera tab ---
+let tab = 'motors', fpvTimer = null;
+document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => showTab(b.dataset.tab));
+function showTab(name) {
+  tab = name; history.replaceState(null, '', '#' + name);
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === name));
+  $('tab-motors').hidden = name !== 'motors';
+  $('tab-camera').hidden = name !== 'camera';
+  const base = state.fpv_url || '';
+  if (name === 'camera' && base) {
+    $('fpvimg').src = base + '/stream.mjpg?t=' + Date.now();
+    $('fpvsnap').href = base + '/snapshot.jpg';
+    clearInterval(fpvTimer); fpvTimer = setInterval(fpvStatus, 700); fpvStatus();
+  } else {
+    $('fpvimg').removeAttribute('src');   // stop streaming when hidden
+    clearInterval(fpvTimer);
+  }
+}
+async function fpvStatus() {
+  const base = state.fpv_url;
+  try {
+    const s = await (await fetch(base + '/status', { cache: 'no-store' })).json();
+    const cls = { PICTURE: 'ok', SNOW: 'warn', FLAT: 'warn', RESETTING: 'warn' }[s.signal] || 'bad';
+    $('fpvsig').textContent = s.signal; $('fpvsig').className = 'pill ' + cls;
+    $('fpvinfo').textContent = s.fps != null
+      ? `${s.size ? s.size.join('×') : ''} · ${s.fps} fps · brightness ${s.mean} · detail ${s.std} · motion ${s.change}`
+      : (s.note || '');
+  } catch (e) {
+    $('fpvsig').textContent = 'Pi streamer unreachable'; $('fpvsig').className = 'pill bad';
+    $('fpvinfo').textContent = base;
+  }
+}
+$('fpvreset').onclick = () => fetch(state.fpv_url + '/reset', { method: 'POST' }).then(fpvStatus).catch(() => {});
+$('fpvimg').onerror = () => { if (tab === 'camera') setTimeout(() => showTab('camera'), 2000); };
+
 function pct(v) { return v <= 1000 ? 0 : ((Math.min(v,2000) - 1001) / 999 * 100).toFixed(1); }
 
 async function post(path, body) {
@@ -211,6 +270,7 @@ addEventListener('pagehide', () => navigator.sendBeacon('/api/stop', JSON.string
 function apply(r) {
   if (!r) return;
   state = r; lastOk = Date.now();
+  if (!window.tabInit && r.fpv_url) { window.tabInit = true; if (location.hash === '#camera') showTab('camera'); }
   $('err').textContent = r.error || '';
   if (!r.enabled) { sliders.forEach(s => s.value = 1000); $('master').value = 1000; }
   render();

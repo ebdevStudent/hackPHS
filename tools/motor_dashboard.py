@@ -31,8 +31,9 @@ HTML_PATH = Path(__file__).with_name('motor_dashboard.html')
 
 
 class Controller:
-    def __init__(self, port, max_value):
+    def __init__(self, port, max_value, fpv_url=''):
         self.port = port
+        self.fpv_url = fpv_url
         self.max_value = max_value
         self.lock = threading.Lock()
         self.fc = None
@@ -109,7 +110,7 @@ class Controller:
                         max_value=self.max_value, config=self.config,
                         events=self.events[-12:], port=self.port,
                         connect_error=self.connect_error,
-                        radio_arming=self.radio_arming)
+                        radio_arming=self.radio_arming, fpv_url=self.fpv_url)
 
     def request_direction(self, motor, reverse):
         with self.lock:
@@ -327,13 +328,15 @@ def main():
     parser.add_argument('--host', default='127.0.0.1',
                         help='bind address (0.0.0.0 exposes motor control to the network!)')
     parser.add_argument('--http-port', type=int, default=8765)
+    parser.add_argument('--fpv-url', default='http://172.16.240.48:8090',
+                        help='Pi FPV streamer (tools/pi/fpv_stream.py) for the Camera tab')
     parser.add_argument('--max', type=int, default=1300,
                         help='slider ceiling, 1001-2000 (default 1300 = ~30%% throttle)')
     args = parser.parse_args()
     if not 1001 <= args.max <= 2000:
         parser.error('--max must be 1001-2000')
 
-    ctl = Controller(args.port, args.max)
+    ctl = Controller(args.port, args.max, args.fpv_url.rstrip('/'))
     worker = threading.Thread(target=ctl.run, daemon=True)
     worker.start()
     server = ThreadingHTTPServer((args.host, args.http_port), make_handler(ctl))
