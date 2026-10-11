@@ -26,7 +26,7 @@ from pathlib import Path
 import urllib.request
 
 import preflight_checks
-from betaflight_motor_bench import DEFAULT_PORT, FC, dshot_percent
+from betaflight_motor_bench import DEFAULT_PORT, FC, dshot_percent, parse_trim, trim_commands
 
 HEARTBEAT_TIMEOUT = 0.5
 LOW_BATTERY = 6.4        # cut if a battery is present and sags below this
@@ -55,6 +55,7 @@ class Controller:
         self.pending_vtx_pit = None
         self.vtx = {}
         self.preflight_request = None   # (Event, result dict) for the worker
+        self.cli_request = None         # (commands, save, Event, result dict)
 
     def log(self, message):
         self.events.append(dict(t=time.strftime('%H:%M:%S'), msg=message))
@@ -178,6 +179,39 @@ class Controller:
         return dict(summary=preflight_checks.summary(checks), checks=checks, manual=preflight_checks.MANUAL,
                     t=time.strftime('%H:%M:%S'))
 
+    def run_cli(self, commands, save):
+        """HTTP-thread side: run CLI in the worker; the FC reboots, so wait for the reconnect."""
+        import threading as _t
+        with self.lock:
+            if not self.state.get('connected'):
+                raise ValueError('FC not connected over USB')
+            if self.state.get('armed'):
+                raise ValueError('FC is armed')
+            self.enabled = False
+            self.targets = [1000] * 4
+            done, box = _t.Event(), {}
+            self.cli_request = (commands, save, done, box)
+        if not done.wait(15) or 'error' in box:
+            raise ValueError(box.get('error', 'CLI timed out'))
+        deadline = time.monotonic() + 20
+        while time.monotonic() < deadline and not self.state.get('connected'):
+            time.sleep(.2)
+        return box['out']
+
+    def read_trim(self):
+        return parse_trim(self.run_cli(['mixer list', 'mixer', 'mmix'], save=False))
+
+    def apply_trim(self, weights):
+        commands = trim_commands(weights)
+        self.run_cli(commands, save=True)
+        after = self.read_trim()
+        if commands[0] == 'mixer CUSTOM' and after['mixer'] != 'CUSTOM':
+            raise ValueError('FC refused the custom mixer (this build may be quad-only): nothing changed')
+        self.log(f"Motor balance saved: {after['mixer']} {after['weights']}")
+        if any(abs(a - w) > .002 for a, w in zip(after['weights'], weights)):
+            raise ValueError(f"Read-back differs: {after['weights']}")
+        return after
+
     def request_reconnect(self):
         with self.lock:
             self.enabled = False
@@ -222,7 +256,7 @@ class Controller:
             self.targets = [1000] * 4
             self.state = dict(connected=False)
             self.log(f'FC disconnected: {reason}')
-        if fc:
+        if fc and not reason.startswith('rebooting'):   # a deliberate CLI reboot has no port to stop on
             try:
                 fc.stop()
             except Exception:
@@ -260,6 +294,17 @@ class Controller:
                     self.fc.request(99, bytes([1 if block else 0, 0]))
                 except Exception as exc:
                     self.log(f'Arming block change FAILED: {exc}')
+            if self.cli_request is not None:
+                (commands, save, done, box), self.cli_request = self.cli_request, None
+                try:
+                    self.fc.stop()
+                    time.sleep(.3)
+                    box['out'] = self.fc.cli(commands, save)
+                except Exception as exc:
+                    box['error'] = f'CLI failed: {exc}'
+                self.drop('rebooting after CLI')
+                done.set()
+                continue
             if self.preflight_request is not None:
                 (done, box), self.preflight_request = self.preflight_request, None
                 try:
@@ -378,6 +423,16 @@ def make_handler(ctl):
                 if not isinstance(body.get('allow'), bool):
                     return self.send(400, json.dumps(dict(error='bad request')))
                 error = ctl.set_radio_arming(body['allow'])
+            elif self.path == '/api/trim/read':
+                try: return self.send(200, json.dumps(ctl.read_trim()))
+                except ValueError as exc: return self.send(409, json.dumps(dict(error=str(exc))))
+            elif self.path == '/api/trim':
+                weights = body.get('weights')
+                if (not isinstance(weights, list) or len(weights) != 4 or
+                        not all(isinstance(w, (int, float)) and not isinstance(w, bool) for w in weights)):
+                    return self.send(400, json.dumps(dict(error='weights must be four numbers')))
+                try: return self.send(200, json.dumps(ctl.apply_trim([float(w) for w in weights])))
+                except ValueError as exc: return self.send(409, json.dumps(dict(error=str(exc))))
             elif self.path == '/api/preflight':
                 return self.send(200, json.dumps(ctl.preflight()))
             elif self.path == '/api/vtx':

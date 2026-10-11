@@ -149,6 +149,19 @@
         as % throttle. Real RPM needs bidirectional DShot (off on this FC), so it shows here only if that is enabled.</p>
     </div>
     <div class="panel" style="margin-top:12px">
+      <h2>Motor balance (flight trim, saved on the FC)</h2>
+      <div id="trimrows"></div>
+      <div class="bar" style="margin-top:8px">
+        <button id="trimread">Read from FC</button>
+        <button id="trimapply">Apply &amp; save</button>
+        <button id="trimreset">Reset to normal (all 100%)</button>
+        <span id="trimstatus" class="hint"></span>
+      </div>
+      <p class="hint">Lowers a motor's share of throttle in flight (Betaflight custom mixer). Use it only after checking
+        props and airflow: trim hides hardware problems. Keep changes small (95–98%); lower the STRONG motors.
+        Applying reboots the FC (~10 s), motors stop. Do a props-off tilt test afterwards.</p>
+    </div>
+    <div class="panel" style="margin-top:12px">
       <h2>Motor direction (stored in each ESC)</h2>
       <div id="dirs"></div>
       <p class="hint">Look from <b>above</b>. Betaflight default (props in): <b>M1 & M4 clockwise, M2 & M3
@@ -348,6 +361,30 @@ function renderOutputs() {
     g.stroke();
   });
 }
+
+// --- Motor balance (custom mixer throttle weights) ---
+const trimNames = ['M1 rear-right', 'M2 front-right', 'M3 rear-left', 'M4 front-left'];
+$('trimrows').innerHTML = trimNames.map((n, i) => `<div class="row"><b>M${i + 1}</b>
+  <input type="range" id="trim${i}" min="80" max="100" step="1" value="100">
+  <span class="val"><span id="trimv${i}">100 %</span><small>${n.slice(3)}</small></span></div>`).join('');
+for (let i = 0; i < 4; i++) $('trim' + i).oninput = () => { $('trimv' + i).textContent = $('trim' + i).value + ' %'; };
+function showTrim(r) {
+  r.weights.forEach((w, i) => { $('trim' + i).value = Math.round(w * 100); $('trimv' + i).textContent = Math.round(w * 100) + ' %'; });
+  $('trimstatus').textContent = `FC mixer: ${r.mixer}` + (r.custom_supported === false ? ' (custom mixer NOT available in this build)' : '');
+}
+async function trimCall(path, body, label) {
+  ['trimread', 'trimapply', 'trimreset'].forEach((id) => $(id).disabled = true);
+  $('trimstatus').textContent = label + ' (FC reboots, ~10-20 s)…';
+  try {
+    const r = await post(path, body);
+    if (r.error) throw new Error(r.error);
+    showTrim(r);
+  } catch (e) { $('trimstatus').textContent = 'Failed: ' + e.message; }
+  ['trimread', 'trimapply', 'trimreset'].forEach((id) => $(id).disabled = false);
+}
+$('trimread').onclick = () => trimCall('/api/trim/read', {}, 'Reading');
+$('trimapply').onclick = () => trimCall('/api/trim', { weights: [0, 1, 2, 3].map((i) => +$('trim' + i).value / 100) }, 'Saving');
+$('trimreset').onclick = () => trimCall('/api/trim', { weights: [1, 1, 1, 1] }, 'Resetting');
 
 function pct(v) { return v <= 1000 ? 0 : ((Math.min(v,2000) - 1001) / 999 * 100).toFixed(1); }
 

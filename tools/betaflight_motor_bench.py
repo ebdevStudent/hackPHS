@@ -218,6 +218,30 @@ class FC:
                 break
         return v
 
+    def _cli_read(self, idle=.4, total=5.0):
+        out, start = b'', time.monotonic()
+        last = start
+        while time.monotonic() - start < total:
+            chunk = self.ser.read(4096)
+            if chunk:
+                out, last = out + chunk, time.monotonic()
+            elif out.rstrip().endswith(b'#') and time.monotonic() - last > idle:
+                break
+        return out.decode(errors='replace')
+
+    def cli(self, commands, save=False):
+        """Run CLI commands. Leaving the CLI reboots the FC (save or exit): reconnect afterwards."""
+        self.ser.reset_input_buffer()
+        self.ser.write(b'#')
+        self._cli_read()
+        outputs = []
+        for command in commands:
+            self.ser.write(command.encode() + b'\n')
+            outputs.append(self._cli_read())
+        self.ser.write(b'save\n' if save else b'exit\n')
+        time.sleep(.3)
+        return '\n'.join(outputs)
+
     def motor_rpm(self):
         """Real RPM per motor from MSP_MOTOR_TELEMETRY (needs bidirectional DShot on)."""
         d = self.request(139)
@@ -274,6 +298,32 @@ class FC:
         if errors:
             report(stop_write_errors=errors,
                    action='If the motor is moving, disconnect the battery immediately')
+
+
+QUADX_MIX = [(-1, 1, -1), (-1, -1, 1), (1, 1, 1), (1, -1, -1)]   # roll, pitch, yaw per motor 1-4
+
+
+def trim_commands(weights):
+    """CLI commands for per-motor throttle weights (QuadX geometry); all 1.0 restores stock QUADX."""
+    if len(weights) != 4 or any(not .5 <= w <= 1.0 for w in weights):
+        raise ValueError('Four weights between 0.5 and 1.0 required')
+    if all(abs(w - 1) < 1e-6 for w in weights):
+        return ['mixer QUADX', 'mmix reset']
+    cmds = ['mixer CUSTOM', 'mmix reset']
+    for i, (w, (r, p, y)) in enumerate(zip(weights, QUADX_MIX)):
+        cmds.append(f'mmix {i} {w:.3f} {r:.3f} {p:.3f} {y:.3f}')
+    return cmds
+
+
+def parse_trim(text):
+    """From `mixer` + `mmix` CLI output -> {'mixer', 'weights', 'custom_supported'}."""
+    import re
+    mixer = re.search(r'Mixer:\s*(\w+)', text)
+    rows = {int(m.group(1)): float(m.group(2))
+            for m in re.finditer(r'^mmix\s+(\d+)\s+(-?\d+\.?\d*)', text, re.M)}
+    name = mixer.group(1) if mixer else None
+    weights = [rows.get(i, 1.0) for i in range(4)] if name == 'CUSTOM' and rows else [1.0] * 4
+    return {'mixer': name, 'weights': weights, 'custom_supported': 'CUSTOM' in text}
 
 
 def crc8_dvb_s2(data):

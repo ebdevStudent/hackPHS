@@ -1106,3 +1106,12 @@ All four rate profiles: `thr_expo = 60`, `throttle_limit_type = SCALE`, `throttl
 `~/Documents/betaflight-diff-all-20261011-094209-before-throttle-feel.txt`. Estimated hover with the
 cage (51–64 % power, docs/22) now sits around 64–80 % stick; raise the limit to 85–90 % if the caged
 build struggles to climb, especially with the 1100 mAh pack.
+
+## 2026-10-11 — Dashboard motor balance (per-motor flight trim via custom mixer)
+
+User reported M2/M4 (front) stronger than M1/M3. Betaflight has no per-motor trim except a custom
+mixer, so the dashboard's **Motor balance** panel writes `mixer CUSTOM` + `mmix` rows with Betaflight's
+QuadX roll/pitch/yaw coefficients and a per-motor throttle weight (80–100 %); all 100 % restores
+`mixer QUADX`. Save + reboot + read-back verification. Real FC check: mixer QUADX, CUSTOM available
+in this build. No trim applied yet (user chooses values). Hardware causes (rear props, airflow) should be
+checked first; trim masks them.
