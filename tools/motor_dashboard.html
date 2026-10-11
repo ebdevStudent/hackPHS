@@ -157,7 +157,7 @@
         <button id="trimreset">Reset to normal (all 100%)</button>
         <span id="trimstatus" class="hint"></span>
       </div>
-      <p class="hint">Lowers a motor's share of throttle in flight (Betaflight custom mixer). Use it only after checking
+      <p class="hint">Lowers a motor's share of throttle in flight (Betaflight custom mixer, 50–100 %). Below ~90 % the drone will lean toward that corner. Use it only after checking
         props and airflow: trim hides hardware problems. Keep changes small (95–98%); lower the STRONG motors.
         Applying reboots the FC (~10 s), motors stop. Do a props-off tilt test afterwards.</p>
     </div>
@@ -365,7 +365,7 @@ function renderOutputs() {
 // --- Motor balance (custom mixer throttle weights) ---
 const trimNames = ['M1 rear-right', 'M2 front-right', 'M3 rear-left', 'M4 front-left'];
 $('trimrows').innerHTML = trimNames.map((n, i) => `<div class="row"><b>M${i + 1}</b>
-  <input type="range" id="trim${i}" min="80" max="100" step="1" value="100">
+  <input type="range" id="trim${i}" min="50" max="100" step="1" value="100">
   <span class="val"><span id="trimv${i}">100 %</span><small>${n.slice(3)}</small></span></div>`).join('');
 for (let i = 0; i < 4; i++) $('trim' + i).oninput = () => { $('trimv' + i).textContent = $('trim' + i).value + ' %'; };
 function showTrim(r) {
